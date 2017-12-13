@@ -82,7 +82,7 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> "use_gm_position/selection"    from [create, destroy, ...] </summary>
         public static EMVD UseGM =                      new EMVD(EMVT.VarString,    EMVB.StoredAsIs,        EMVE.Nothing);
         /// <summary> "type" from [create]  </summary>
-                 public static EMVD UseSlot = new EMVD(EMVT.VarInteger, EMVB.StoredWhenFilled, EMVE.DefaultInteger, 0, 7);
+        public static EMVD UseSlot =                    new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 7);
         /// <summary> "type" from [create]  </summary>
         public static EMVD Type =                       new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.CreateType);
         /// <summary> "name" from [create, destroy, ...] </summary>
@@ -90,17 +90,18 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> "name" from [create, destroy, ...] </summary>    
         public static EMVD NameWithComma =              new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DefaultString,null,null,"\"","\", ");
         /// <summary> "angle" from [create, ...] </summary>
-        public static EMVD Angle =                      new EMVD(EMVT.VarInteger,    EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 360);
+        public static EMVD Angle =                      new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 360);
         /// <summary> "fleetnumber" from [create, ...] </summary>
         public static EMVD FleetNumber =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 99);
         /// <summary> "podnumber" from [create] </summary>
         public static EMVD PodNumber =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 9);
-        public static EMVD accent_color = new EMVD(EMVT.VarInteger, EMVB.StoredWhenFilled, EMVE.DefaultInteger, 0, 99);
-        public static EMVD DriveType = new EMVD(EMVT.VarString, EMVB.StoredWhenFilled, EMVE.DriveType, null, null, "\"", "\" ");
-        public static EMVD player_slot = new EMVD(EMVT.VarInteger, EMVB.StoredAsIs, EMVE.DefaultInteger, 0, 7);
+        public static EMVD accent_color =               new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 99);
+        public static EMVD DriveType =                  new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DriveType, null, null, "\"", "\" ");
+        public static EMVD player_slot =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.DefaultInteger, 0, 7);
+        public static EMVD bay_slot =                   new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.DefaultInteger, 0, 31);
         /// <summary> "MonsterType" from [create] </summary>
         public static EMVD MonsterType =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.MonsterType, 0, 7, "", "");
-        public static EMVD SensorRange = new EMVD(EMVT.VarInteger, EMVB.StoredAsIs, EMVE.SensorRange, 0, 5, "", "");
+        public static EMVD SensorRange =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.SensorRange, 0, 5, "", "");
         /// <summary> "AnomalyType" from [create] </summary>
         public static EMVD AnomalyType =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.AnomalyType, 0, 7, "", "");
         /// <summary> "meshFileName" from [create] </summary>
@@ -200,7 +201,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD Consoles =                   new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.ConsoleList,null,null,"(",") ");
 
         /// <summary> [type] from [incoming_comms_text] 
-        public static EMVD MessageType =                new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DefaultString,null,null,"\"","\" ");
+        public static EMVD CommType =                   new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.CommType,null,null,"\"","\" ");
         /// <summary> [body] from [incoming_comms_text] 
         public static EMVD Body =                       new EMVD(EMVT.Body,         EMVB.NotStored,         EMVE.DefaultBody,null,null,"","","");
         /// <summary> "title" from [big_message] </summary>

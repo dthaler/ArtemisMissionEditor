@@ -68,6 +68,7 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor EliteAbilityBits;
         public static ExpressionMemberValueEditor PlayerNames;
         public static ExpressionMemberValueEditor WarpState;
+        public static ExpressionMemberValueEditor CommType;
         public static ExpressionMemberValueEditor PathEditor;
         public static ExpressionMemberValueEditor HullID;
         public static ExpressionMemberValueEditor RaceKeys;
@@ -144,6 +145,8 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("set_variable", "Set Variable");
             XmlNameActionCheck.NewMenuGroup("Triggers");
 
+            XmlNameActionCheck.AddToDictionary("set_player_carried_type", "Player Bay");
+            XmlNameActionCheck.AddToDictionary("set_player_station_carried", "Station Bay");
             XmlNameActionCheck.AddToDictionary("set_object_property", "Set property");        
             XmlNameActionCheck.AddToDictionary("addto_object_property", "Add to property");
             XmlNameActionCheck.AddToDictionary("copy_object_property", "Copy property");
@@ -626,7 +629,17 @@ namespace ArtemisMissionEditor.Expressions
 			WarpState.AddToDictionary("4", "4");
 			WarpState.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList;
 
-			PathEditor = new ExpressionMemberValueEditor_PathEditor();
+            CommType = new ExpressionMemberValueEditor();
+            CommType.AddToDictionary("ALERT", "ALERT");
+            CommType.AddToDictionary("SIDE", "SIDE");
+            CommType.AddToDictionary("STATUS", "STATUS");
+            CommType.AddToDictionary("PLAYER", "PLAYER");
+            CommType.AddToDictionary("STATION", "STATION");
+            CommType.AddToDictionary("ENEMY", "ENEMY");
+            CommType.AddToDictionary("FRIEND", "FRIEND");
+            CommType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList;
+
+            PathEditor = new ExpressionMemberValueEditor_PathEditor();
 
 			HullID = new ExpressionMemberValueEditor_HullID();
 			HullID.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_HullIDList;
