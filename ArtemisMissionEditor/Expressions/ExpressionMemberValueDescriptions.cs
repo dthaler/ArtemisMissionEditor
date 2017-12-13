@@ -97,7 +97,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD PodNumber =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 9);
         public static EMVD accent_color =               new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 99);
         public static EMVD DriveType =                  new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DriveType, null, null, "\"", "\" ");
-        public static EMVD player_slot =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.DefaultInteger, 0, 7);
+        public static EMVD player_slot =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 7);
         public static EMVD bay_slot =                   new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.DefaultInteger, 0, 31);
         /// <summary> "MonsterType" from [create] </summary>
         public static EMVD MonsterType =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.MonsterType, 0, 7, "", "");
