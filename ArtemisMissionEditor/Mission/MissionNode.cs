@@ -219,9 +219,12 @@ namespace ArtemisMissionEditor
                 xElem.Attributes.Append(xAttr);
 
             }
-            xAttr = xDoc.CreateAttribute("id_arme");
-            xAttr.Value = ID.ToString();
-            xElem.Attributes.Append(xAttr);
+            if (ID != null)
+            {
+                xAttr = xDoc.CreateAttribute("id_arme");
+                xAttr.Value = ID.ToString();
+                xElem.Attributes.Append(xAttr);
+            }
             if (ParentID != null)
             {
                 xAttr = xDoc.CreateAttribute("parent_id_arme");
@@ -258,7 +261,7 @@ namespace ArtemisMissionEditor
                     ID = Helper.GuidTryRead(att.Value, true);
                 if (att.Name == "parent_id_arme")
                     ParentID = Helper.GuidTryRead(att.Value, true);
-                if (att.Name == "name" || att.Name == "name")
+                if (att.Name == "name_arme" || att.Name == "name")
                 {
                     Name = att.Value;
                     if (Name.Contains("Event") && Helper.IntTryParse(Name.Substring(5, Name.Length - 5)))
@@ -345,9 +348,12 @@ namespace ArtemisMissionEditor
                 xElem.Attributes.Append(xAttr);
 
             }
-            xAttr = xDoc.CreateAttribute("id_arme");
-            xAttr.Value = ID.ToString();
-            xElem.Attributes.Append(xAttr);
+            if (ID != null)
+            {
+                xAttr = xDoc.CreateAttribute("id_arme");
+                xAttr.Value = ID.ToString();
+                xElem.Attributes.Append(xAttr);
+            }
             if (ParentID != null)
             {
                 xAttr = xDoc.CreateAttribute("parent_id_arme");
@@ -383,7 +389,7 @@ namespace ArtemisMissionEditor
                     ID = Helper.GuidTryRead(att.Value, true);
                 else if (att.Name == "parent_id_arme")
                     ParentID = Helper.GuidTryRead(att.Value, true);
-                else if (att.Name == "name")
+                else if (att.Name == "name_arme" || att.Name == "name")
                     Name = att.Value;
                 else
                     ExtraAttributes.Add(att.Name);
@@ -436,9 +442,12 @@ namespace ArtemisMissionEditor
                 xElem.Attributes.Append(xAttr);
 
             }
-            xAttr = xDoc.CreateAttribute("id_arme");
-            xAttr.Value = ID.ToString();
-            xElem.Attributes.Append(xAttr);
+            if (ID != null)
+            {
+                xAttr = xDoc.CreateAttribute("id_arme");
+                xAttr.Value = ID.ToString();
+                xElem.Attributes.Append(xAttr);
+            }
             
             // Start node should not have parent id
             //if (ParentID != null)
@@ -478,7 +487,7 @@ namespace ArtemisMissionEditor
                 // Start node should not have parent id
                 //if (att.Name == "parent_id_arme")
                 //    ParentID = new Guid(att.Value);
-                if (att.Name == "name" || att.Name == "name")
+                if (att.Name == "name_arme" || att.Name == "name")
                     Name = att.Value;
             }
 
