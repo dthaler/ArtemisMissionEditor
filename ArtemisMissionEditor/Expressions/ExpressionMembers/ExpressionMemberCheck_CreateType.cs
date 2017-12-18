@@ -17,10 +17,14 @@ namespace ArtemisMissionEditor.Expressions
         /// This function is called when check needs to decide which list of ExpressionMembers to output. 
         /// After it is called, SetValue will be called, to allow for error correction. 
         /// </summary>
-        /// <example>If input is wrong, decide will choose something, and then the input will be corrected in the SetValue function</example>
+        /// <example>If input is wrong, Decide will choose something, and then the input will be corrected in the SetValue function</example>
         public override string Decide(ExpressionMemberContainer container)
 		{
-			string type = container.GetAttribute("type").ToLower();
+            string type = container.GetAttribute("type");
+            if (type != null)
+            {
+                type = type.ToLower();
+            }
 
 			switch (type)
 			{
