@@ -193,30 +193,48 @@ namespace ArtemisMissionEditor.Expressions
 
             #region set_player_carried_type
 
-
             eML = this.Add("set_player_carried_type");
-            eML.Add(new ExpressionMember("on ship in slot "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.player_slot, "player_slot"));
-            eML.Add(new ExpressionMember(". Set Bay "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.bay_slot, "bay_slot"));
-            eML.Add(new ExpressionMember(". To carry Fighter Type "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.HullID, "hullID"));
-            eML.Add(new ExpressionMember(" With Name "));
+            eML.Add(new ExpressionMember("on "));
+            eML.Add(new ExpressionMember("player "));
+            eML.Add(new ExpressionMember("ship "));
+            eML.Add(new ExpressionMember("in "));
+            eML.Add(new ExpressionMember("slot "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.player_slot, "player_slot", true));
+            eML.Add(new ExpressionMember("set "));
+            eML.Add(new ExpressionMember("bay "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.bay_slot, "bay_slot", true));
+            eML.Add(new ExpressionMember("to "));
+            eML.Add(new ExpressionMember("carry "));
+            eML.Add(new ExpressionMember("single-seat "));
+            eML.Add(new ExpressionMember("ship "));
+            eML.Add(new ExpressionMember("with "));
+            eML.Add(new ExpressionMemberCheck_HullID_HullRaceKeys(false));
+            eML.Add(new ExpressionMember("named "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name"));
-            eML.Add(new ExpressionMember(". This event only works prior to player ship creation, and as such is best used in the start block above any player spawns."));
+            eML.Add(new ExpressionMember(". "));
+            eML.Add(new ExpressionMember("This event only works "));
+            eML.Add(new ExpressionMember("prior to player ship creation, "));
+            eML.Add(new ExpressionMember("and as such is best used "));
+            eML.Add(new ExpressionMember("in the start block "));
+            eML.Add(new ExpressionMember("above any player spawns."));
 
             #endregion
 
             #region set_player_station_carried
 
-
             eML = this.Add("set_player_station_carried");
-
-            eML.Add(new ExpressionMember(" Set Details for Fighter on Station with name "));
+            eML.Add(new ExpressionMember("on "));
+            eML.Add(new ExpressionMember("station "));
+            eML.Add(new ExpressionMember("with "));
+            eML.Add(new ExpressionMember("name "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name"));
-            eML.Add(new ExpressionMember(". To carry Fighter Type "));
+            eML.Add(new ExpressionMember("to "));
+            eML.Add(new ExpressionMember("carry "));
+            eML.Add(new ExpressionMember("single-seat "));
+            eML.Add(new ExpressionMember("ship "));
+            eML.Add(new ExpressionMember("type "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.HullID, "hullID"));
-            eML.Add(new ExpressionMember(" named "));
+            eML.Add(new ExpressionMember("named "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "singleSeatName"));
 
             #endregion
