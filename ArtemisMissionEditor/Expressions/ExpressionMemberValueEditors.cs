@@ -145,8 +145,6 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("set_variable", "Set variable");
             XmlNameActionCheck.NewMenuGroup("Triggers");
 
-            XmlNameActionCheck.AddToDictionary("set_player_carried_type", "Set fighter bay contents");
-            XmlNameActionCheck.AddToDictionary("set_player_station_carried", "Set station bay contents");
             XmlNameActionCheck.AddToDictionary("set_object_property", "Set property");        
             XmlNameActionCheck.AddToDictionary("addto_object_property", "Add to property");
             XmlNameActionCheck.AddToDictionary("copy_object_property", "Copy property");
@@ -154,6 +152,9 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("set_special", "Set Special");
             XmlNameActionCheck.AddToDictionary("set_side_value", "Set side");     
             XmlNameActionCheck.AddToDictionary("set_fleet_property", "Set property of fleet");
+            XmlNameActionCheck.AddToDictionary("set_player_carried_type", "Set hanger bay contents");
+            XmlNameActionCheck.AddToDictionary("set_player_station_carried", "Add replacement fighter to station");
+            XmlNameActionCheck.AddToDictionary("clear_player_station_carried", "Remove all replacement fighters from station");
             XmlNameActionCheck.NewMenuGroup("Properties");
 
             XmlNameActionCheck.AddToDictionary("set_relative_position", "Set relative position");

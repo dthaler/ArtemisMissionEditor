@@ -58,6 +58,7 @@ namespace ArtemisMissionEditor.Expressions
                 case "spawn_external_program":
                 case "set_player_carried_type":
                 case "set_player_station_carried":
+                case "clear_player_station_carried":
                     return container.Statement.Name;
                 case "destroy":
                 case "destroy_near":
@@ -223,19 +224,18 @@ namespace ArtemisMissionEditor.Expressions
             #region set_player_station_carried
 
             eML = this.Add("set_player_station_carried");
-            eML.Add(new ExpressionMember("on "));
-            eML.Add(new ExpressionMember("station "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameStation, "name"));
             eML.Add(new ExpressionMember("with "));
-            eML.Add(new ExpressionMember("name "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name"));
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("carry "));
-            eML.Add(new ExpressionMember("single-seat "));
-            eML.Add(new ExpressionMember("ship "));
-            eML.Add(new ExpressionMember("type "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.HullID, "hullID"));
+            eML.Add(new ExpressionMemberCheck_HullID_HullRaceKeys(false));
             eML.Add(new ExpressionMember("named "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "singleSeatName"));
+
+            #endregion
+
+            #region clear_player_station_carried
+
+            eML = this.Add("clear_player_station_carried");
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameStation, "name"));
 
             #endregion
 
