@@ -149,7 +149,7 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("addto_object_property", "Add to property");
             XmlNameActionCheck.AddToDictionary("copy_object_property", "Copy property");
             XmlNameActionCheck.AddToDictionary("set_ship_text", "Set text strings");
-            XmlNameActionCheck.AddToDictionary("set_special", "Set Special");
+            XmlNameActionCheck.AddToDictionary("set_special", "Set special");
             XmlNameActionCheck.AddToDictionary("set_side_value", "Set side");     
             XmlNameActionCheck.AddToDictionary("set_fleet_property", "Set property of fleet");
             XmlNameActionCheck.AddToDictionary("set_player_carried_type", "Set hanger bay contents");
