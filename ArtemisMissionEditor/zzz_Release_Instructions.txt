@@ -15,7 +15,7 @@
     4.6. Click Media and change MSI Name to have new version
     4.7. Click brick wall icon (or hit F7) to Build
 5. Generate txt updater file (still from within Advanced Installer 10.0) as follows:
-    5.1. Opem the Updater file for Artemis Mission Editor (UpdaterArtemisMissionEditor.aip)
+    5.1. Open the Updater file for Artemis Mission Editor (UpdaterArtemisMissionEditor.aip)
     5.2. Click the "Updates" button in the menu bar and select Duplicate
     5.3. Update Duplicate description to include new version number
     5.4. Right click current update description and select Add Update -> Replaces
@@ -33,8 +33,8 @@
     5.15. Click the brick wall icon (or hit F7) to Build
 6. Upload MSI as follows:
     6.1. Launch FileZilla (an ftp application)
-    6.2. Click leftmost icon to open site manager and select ArmidaleSoftware-New
-    6.3. Click Connect
+    6.2. Click leftmost icon to open site manager
+    6.3. Connect to ArmidaleSoftware.com
     6.4. In right pane, navigate into public_html/Artemis
     6.5. In left pane, right click on new MSI file (in the Installer folder) and select Upload
 7. Test installing it manually from the web
