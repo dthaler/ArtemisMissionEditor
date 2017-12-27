@@ -7,6 +7,7 @@ Version 2.6.0.1 [2017-December-26] (Dave Thaler)
   - Added a drop down list for selecting comms types
 * Added support for clear_player_station_carried
 * Fixed some more typos
+* Fixed bug where updater couldn't be found unless it was in your PATH
 ----------------------
 Version 2.6 [2017-October-01] (Dave Thaler)
 * Add MSI installer files
