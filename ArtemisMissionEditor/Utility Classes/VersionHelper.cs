@@ -10,9 +10,10 @@ namespace ArtemisMissionEditor
 
         public static void CheckVersion()
         {
+            string path = AppDomain.CurrentDomain.BaseDirectory + UpdaterName;
             try
             {
-                Process.Start(UpdaterName, UpdaterArgs);
+                Process.Start(path, UpdaterArgs);
             }
             catch (Exception e)
             {
