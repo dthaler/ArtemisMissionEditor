@@ -17,27 +17,31 @@ namespace ArtemisMissionEditor.Expressions
         /// This function is called when check needs to decide which list of ExpressionMembers to output. 
         /// After it is called, SetValue will be called, to allow for error correction. 
         /// </summary>
-        /// <example>If input is wrong, decide will choose something, and then the input will be corrected in the SetValue function</example>
+        /// <example>If input is wrong, Decide will choose something, and then the input will be corrected in the SetValue function</example>
         public override string Decide(ExpressionMemberContainer container)
 		{
-			string type = container.GetAttribute("type");
+            string type = container.GetAttribute("type");
+            if (type != null)
+            {
+                type = type.ToLower();
+            }
 
 			switch (type)
 			{
-				case "Anomaly":		return "Anomaly";
-				case "blackHole":	return "<NAMED_MAP_OBJECT>";
+				case "anomaly":		return "Anomaly";
+				case "blackhole":	return "<NAMED_MAP_OBJECT>";
 				case "player":		return "player";
 				case "whale":		return "whale";
 				case "monster":		return "monster";
 				case "neutral":		return "neutral";
 				case "station":		return "station";
 				case "enemy":		return "enemy";
-				case "genericMesh":	return "genericMesh";
+				case "genericmesh":	return "genericMesh";
 				case "nebulas":		return "<NAMELESS_MAP_OBJECT>";
 				case "asteroids":	return "<NAMELESS_MAP_OBJECT>";
 				case "mines":		return "<NAMELESS_MAP_OBJECT>";
-                case "monsterType": return "Classic";
-                case "AnomalyType": return "Energy";
+                case "monstertype": return "Classic";
+                case "anomalytype": return "Energy";
                 case null:			return "<NULL>";
 				default:
 					return "<INVALID_TYPE>";//This must be further converted in SetValue to some valid one, and type must be set there as well
@@ -87,7 +91,7 @@ namespace ArtemisMissionEditor.Expressions
 
         private void ____Add_Monster(List<ExpressionMember> eML, bool nameMandatory = true)
             {
-                    eML.Add(new ExpressionMember("Of "));
+                    eML.Add(new ExpressionMember("of "));
             eML.Add(new ExpressionMember("type "));
             eML.Add(new ExpressionMember("<SELECT>", ExpressionMemberValueDescriptions.MonsterType, "monsterType"));
            // if (ExpressionMemberValueDescriptions = 1)
@@ -104,7 +108,7 @@ namespace ArtemisMissionEditor.Expressions
 
         private void ____Add_Anomaly(List<ExpressionMember> eML, bool nameMandatory = true)
         {
-            eML.Add(new ExpressionMember("Of "));
+            eML.Add(new ExpressionMember("of "));
             eML.Add(new ExpressionMember("type "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.AnomalyType, "AnomalyType"));
             //if (ExpressionMember = null)
@@ -161,10 +165,10 @@ namespace ArtemisMissionEditor.Expressions
 
 			eML = this.Add("<NAMED_MAP_OBJECT>");
 			____Add_Type(eML);
-           //eML.Add(new ExpressionMember("Of "));
-           // eML.Add(new ExpressionMember("type "));
-           // eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.AnomalyType, "pickupType"));
-           // eML.Add(new ExpressionMember(" "));
+            //eML.Add(new ExpressionMember("of "));
+            // eML.Add(new ExpressionMember("type "));
+            // eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.AnomalyType, "pickupType"));
+            // eML.Add(new ExpressionMember(" "));
             ____Add_Check_Point_GM(eML);
 			____Add_Name(eML);
 
@@ -172,10 +176,10 @@ namespace ArtemisMissionEditor.Expressions
 
             eML = this.Add("Anomaly");
             ____Add_Type(eML);
-            eML.Add(new ExpressionMember("Of "));
-             eML.Add(new ExpressionMember("type "));
-             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.AnomalyType, "pickupType"));
-             eML.Add(new ExpressionMember(" "));
+            eML.Add(new ExpressionMember("of "));
+            eML.Add(new ExpressionMember("type "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.AnomalyType, "pickupType"));
+            eML.Add(new ExpressionMember(" "));
             ____Add_Check_Point_GM(eML);
             ____Add_Name(eML);
 

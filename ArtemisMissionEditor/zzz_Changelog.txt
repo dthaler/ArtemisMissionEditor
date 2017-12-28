@@ -1,3 +1,13 @@
+Version 2.6.0.1 [2017-December-26] (Dave Thaler)
+* Changed events to use "name" instead of "name_arme" to fix F7 debug screen event display
+* Incorporated changes from Fish Evans:
+  - Added support for set_player_carried_type to force fighter name/type carried by a playership
+  - Added support for set_player_station_carried to force a fighter name/type 
+    that will be picked up as a replacement from a station by player ships
+  - Added a drop down list for selecting comms types
+* Added support for clear_player_station_carried
+* Fixed some more typos
+* Fixed bug in update available detection
 ----------------------
 Version 2.6 [2017-October-01] (Dave Thaler)
 * Add MSI installer files

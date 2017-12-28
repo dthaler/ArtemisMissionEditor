@@ -769,6 +769,7 @@ namespace ArtemisMissionEditor
         /// <summary>
         /// Fill mission from file
         /// </summary>
+        /// <param name="fileName">Name of file to load</param>
         public void FromFile(string fileName)
         {
             string text;
@@ -842,7 +843,7 @@ namespace ArtemisMissionEditor
 			catch (Exception ex)
 			{
                 MessageBox.Show(ex.StackTrace, ex.Message);
-                Log.Add("Loading mission from Xml failed with the following exception: ");
+                Log.Add("Loading mission from XML failed with the following exception: ");
                 Log.Add(ex);
 
 				return false;
@@ -876,7 +877,7 @@ namespace ArtemisMissionEditor
 
             if (root == null)
             {
-                Log.Add("No root Xml node found in specified Xml file. Mission was not loaded");
+                Log.Add("No root XML node found in specified XML file. Mission was not loaded");
                 Loading = false;
                 EndUpdate();
                 return false;
@@ -1081,7 +1082,7 @@ namespace ArtemisMissionEditor
         /// Called from FromState and recursively calls itself.
         /// </summary>
         /// <param name="node">Currently visited node</param>
-        ///<param name="curStep">Current step</param>
+        /// <param name="curStep">Current step</param>
         /// <param name="targetStep">Target step</param>
         private void FromState_RecursiveSelectByStep(TreeNode node, ref int curStep, int targetStep)
         {
@@ -1210,11 +1211,11 @@ namespace ArtemisMissionEditor
                     return false;
 		}
 
-		/// <summary>
-		/// Save mission to a file
-		/// </summary>
-		/// <param name="autosave">If set, mission will not remember specified filename as its new filename</param>
-		/// <returns></returns>
+        /// <summary>
+        /// Save mission to a file
+        /// </summary>
+        /// <param name="autosave">If set, mission will not remember specified filename as its new filename</param>
+        /// <returns>Whether mission was saved</returns>
         public bool Save(string fileName, bool autosave = false)
 		{
             try
@@ -1241,8 +1242,9 @@ namespace ArtemisMissionEditor
         #region Statement operation (delete, move, add...)
 
         /// <summary>
-        /// Enables or disables currently selected  statement(s)
+        /// Enables or disables currently selected statement(s)
         /// </summary>
+		/// <param name="enabled">true to enable or false to disable</param>
 		public void StatementSetEnabled(bool enabled)
 		{
 			int count = 0;

@@ -958,7 +958,9 @@ namespace ArtemisMissionEditor.SpaceMap
             if (String.IsNullOrEmpty(type)) type = TypeToString;//If this was the first called ToXml - set this object's type
             XmlElement create = base.ToXml(xDoc, missingProperties, type);
             if (String.IsNullOrEmpty(_pickupType))
-            { __AddNewAttribute(xDoc, create, "pickupType", "0"); }
+            {
+                __AddNewAttribute(xDoc, create, "pickupType", "0");
+            }
             else
             {
                 __AddNewAttribute(xDoc, create, "pickupType", _pickupType.ToString());

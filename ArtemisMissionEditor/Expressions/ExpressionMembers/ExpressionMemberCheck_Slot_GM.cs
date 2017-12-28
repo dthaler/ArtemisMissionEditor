@@ -21,9 +21,16 @@ namespace ArtemisMissionEditor.Expressions
         public override string Decide(ExpressionMemberContainer container)
         {
             if (container.GetAttribute("use_gm_selection") == null)
-                return Choices[0]; // name
+            {
+                if (container.GetAttribute("name") == null)
+                {
+                    return Choices[2]; // slot
+                }
+                else
+                    return Choices[0]; // name
+            }
             else
-                return Choices[1]; // use_gm_sel
+                return Choices[1]; // Use_gm
         }
 
         /// <summary>
@@ -34,13 +41,23 @@ namespace ArtemisMissionEditor.Expressions
         protected override void SetValueInternal(ExpressionMemberContainer container, string value)
         {
             if (value == Choices[0]) //name
-            { 
-            container.SetAttribute("use_gm_selection", null);
-            container.SetAttributeIfNull("player_slot", "");
-        }
-            else // use_gm_sel
-                container.SetAttribute("use_gm_selection", "");
-
+            {
+                container.SetAttribute("use_gm_selection", null);
+                container.SetAttribute("player_slot", null);
+                container.SetAttributeIfNull("name", "");
+            }
+            if (value == Choices[1]) //usegm
+            {
+                container.SetAttribute("use_gm_selection", " ");
+                container.SetAttribute("name", null);
+                container.SetAttribute("player_slot", null);
+            }
+            if (value == Choices[2]) //useslot
+            {
+                container.SetAttribute("use_gm_selection", null);
+                container.SetAttribute("name", null);
+                container.SetAttributeIfNull("player_slot", "");
+            } // use_gm_sel
             base.SetValueInternal(container, value);
         }
 
@@ -52,16 +69,19 @@ namespace ArtemisMissionEditor.Expressions
             : base("", ExpressionMemberValueDescriptions.Check_Name_GMSelection)
         {
             name = name ?? ExpressionMemberValueDescriptions.Name;
+            //player_slot = name ?? ExpressionMemberValueDescriptions.Name;
 
             List<ExpressionMember> eML;
-            //eML = this.Add("with name"); //Choices[0]
-           // eML.Add(new ExpressionMember("<>", name, "name"));
 
-            eML = this.Add("selected by GM "); //Choices[0]
+            eML = this.Add("with name"); //Choices[0]
+            eML.Add(new ExpressionMember("<>", name, "name"));
+
+            eML = this.Add("selected by GM "); //Choices[1]
             eML.Add(new ExpressionMember("", ExpressionMemberValueDescriptions.UseGM, "use_gm_selection"));
 
-            eML = this.Add("in player slot "); //Choices[1]
+            eML = this.Add("in player slot "); //Choices[2]
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.UseSlot, "player_slot"));
+
         }
     }
 }

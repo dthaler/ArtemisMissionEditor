@@ -68,6 +68,7 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor EliteAbilityBits;
         public static ExpressionMemberValueEditor PlayerNames;
         public static ExpressionMemberValueEditor WarpState;
+        public static ExpressionMemberValueEditor CommType;
         public static ExpressionMemberValueEditor PathEditor;
         public static ExpressionMemberValueEditor HullID;
         public static ExpressionMemberValueEditor RaceKeys;
@@ -108,11 +109,11 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck = new ExpressionMemberValueEditor_XmlName();
             XmlNameActionCheck.AddToDictionary("set_difficulty_level", "Set difficulty");
 
-           XmlNameActionCheck.AddToDictionary("set_skybox_index", "Set Skybox");
+           XmlNameActionCheck.AddToDictionary("set_skybox_index", "Set skybox");
            // XmlNameActionCheck.AddToDictionary("set_difficulty_level", "Set difficulty");
-            XmlNameActionCheck.AddToDictionary("end_mission", "End Mission");
+            XmlNameActionCheck.AddToDictionary("end_mission", "End mission");
             XmlNameActionCheck.AddToDictionary("log", "Log new entry");
-            XmlNameActionCheck.AddToDictionary("spawn_external_program", "Spawn External Program");
+            XmlNameActionCheck.AddToDictionary("spawn_external_program", "Spawn external program");
 
             //XmlNameActionCheck.AddToDictionary("<destroy>", "Destroy");
             XmlNameActionCheck.NewMenuGroup("Game Options");
@@ -121,10 +122,10 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.NewMenuGroup("Create/Destroy");
 
             
-            XmlNameActionCheck.AddToDictionary("set_comms_button", "Set Comms Button");
-            XmlNameActionCheck.AddToDictionary("clear_comms_button", "Clear Comms Button");
-            XmlNameActionCheck.AddToDictionary("set_gm_button", "Set GM Button");
-            XmlNameActionCheck.AddToDictionary("clear_gm_button", "Clear GM Button");
+            XmlNameActionCheck.AddToDictionary("set_comms_button", "Set comms button");
+            XmlNameActionCheck.AddToDictionary("clear_comms_button", "Clear comms button");
+            XmlNameActionCheck.AddToDictionary("set_gm_button", "Set GM button");
+            XmlNameActionCheck.AddToDictionary("clear_gm_button", "Clear GM button");
             XmlNameActionCheck.AddToDictionary("start_getting_keypresses_from", "Start getting keypresses from consoles: ");
             XmlNameActionCheck.AddToDictionary("end_getting_keypresses_from", "End getting keypresses from consoles: ");
             XmlNameActionCheck.NewMenuGroup("Buttons");
@@ -140,26 +141,29 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("set_player_grid_damage", "Set player ship's damage");
             XmlNameActionCheck.NewMenuGroup("Damage/Damcon");
 
-            XmlNameActionCheck.AddToDictionary("set_timer", "Set Timer");
-            XmlNameActionCheck.AddToDictionary("set_variable", "Set Variable");
+            XmlNameActionCheck.AddToDictionary("set_timer", "Set timer");
+            XmlNameActionCheck.AddToDictionary("set_variable", "Set variable");
             XmlNameActionCheck.NewMenuGroup("Triggers");
 
             XmlNameActionCheck.AddToDictionary("set_object_property", "Set property");        
             XmlNameActionCheck.AddToDictionary("addto_object_property", "Add to property");
             XmlNameActionCheck.AddToDictionary("copy_object_property", "Copy property");
             XmlNameActionCheck.AddToDictionary("set_ship_text", "Set text strings");
-            XmlNameActionCheck.AddToDictionary("set_special", "Set Special");
+            XmlNameActionCheck.AddToDictionary("set_special", "Set special");
             XmlNameActionCheck.AddToDictionary("set_side_value", "Set side");     
-            XmlNameActionCheck.AddToDictionary("set_fleet_property", "Set property of Fleet");
+            XmlNameActionCheck.AddToDictionary("set_fleet_property", "Set property of fleet");
+            XmlNameActionCheck.AddToDictionary("set_player_carried_type", "Set hanger bay contents");
+            XmlNameActionCheck.AddToDictionary("set_player_station_carried", "Add replacement fighter to station");
+            XmlNameActionCheck.AddToDictionary("clear_player_station_carried", "Remove all replacement fighters from station");
             XmlNameActionCheck.NewMenuGroup("Properties");
 
-            XmlNameActionCheck.AddToDictionary("set_relative_position", "Set Relative Position");
-            XmlNameActionCheck.AddToDictionary("set_to_gm_position", "Set Relative to GM Position");
+            XmlNameActionCheck.AddToDictionary("set_relative_position", "Set relative position");
+            XmlNameActionCheck.AddToDictionary("set_to_gm_position", "Set relative to GM position");
             XmlNameActionCheck.NewMenuGroup("Position");
 
             XmlNameActionCheck.AddToDictionary("clear_ai", "Clear AI command stack");
             XmlNameActionCheck.AddToDictionary("add_ai", "Add an AI command");
-            XmlNameActionCheck.AddToDictionary("direct", "Direct Generic Mesh");
+            XmlNameActionCheck.AddToDictionary("direct", "Direct generic mesh");
             XmlNameActionCheck.NewMenuGroup("AI");
 
 
@@ -184,8 +188,8 @@ namespace ArtemisMissionEditor.Expressions
             //XmlNameActionCheck = new ExpressionMemberValueEditor_XmlName();
             //// XmlNameActionCheck.NewMenuGroup("Interaction1");
             // XmlNameActionCheck.NewMenuGroup("Interaction");
-            //XmlNameActionCheck.AddToDictionary("set_gm_button", "Set GM Button");
-            //XmlNameActionCheck.AddToDictionary("clear_gm_button", "clear GM Button");
+            //XmlNameActionCheck.AddToDictionary("set_gm_button", "Set GM button");
+            //XmlNameActionCheck.AddToDictionary("clear_gm_button", "clear GM button");
             //XmlNameActionCheck.AddToDictionary("start_getting_keypresses_from", "Start getting keypresses from consoles: ");
             //XmlNameActionCheck.AddToDictionary("end_getting_keypresses_from", "End getting keypresses from consoles: ");
             //XmlNameActionCheck.NewMenuGroup("Ship Atributes");
@@ -213,8 +217,8 @@ namespace ArtemisMissionEditor.Expressions
             //XmlNameActionCheck.AddToDictionary("log", "Log new entry");
 
 
-            //XmlNameActionCheck.AddToMenuDictionary("set_gm_button", "Set GM Button");
-            //XmlNameActionCheck.AddToMenuDictionary("clear_gm_button", "clear GM Button");
+            //XmlNameActionCheck.AddToMenuDictionary("set_gm_button", "Set GM button");
+            //XmlNameActionCheck.AddToMenuDictionary("clear_gm_button", "clear GM button");
             //XmlNameActionCheck.AddToMenuDictionary("start_getting_keypresses_from", "Start getting keypresses from consoles: ");
             //XmlNameActionCheck.AddToMenuDictionary("end_getting_keypresses_from", "End getting keypresses from consoles: ");
             ////  XmlNameActionCheck.NewMenuGroup("Ship Atributes");
@@ -270,9 +274,9 @@ namespace ArtemisMissionEditor.Expressions
 			XmlNameConditionCheck.AddToMenuDictionary("if_object_property", "Object property");
 			XmlNameConditionCheck.AddToMenuDictionary("<location>", "Object is located");
 			XmlNameConditionCheck.AddToMenuDictionary("if_distance", "Distance between objects");
-            XmlNameConditionCheck.AddToMenuDictionary("if_comms_button", "Comms Button pressed");
+            XmlNameConditionCheck.AddToMenuDictionary("if_comms_button", "Comms button pressed");
 			XmlNameConditionCheck.AddToMenuDictionary("if_gm_key", "GM pressed a key");
-            XmlNameConditionCheck.AddToMenuDictionary("if_gm_button", "GM Button pressed");
+            XmlNameConditionCheck.AddToMenuDictionary("if_gm_button", "GM button pressed");
             XmlNameConditionCheck.AddToMenuDictionary("if_client_key", "Client pressed a key");
 			XmlNameConditionCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
 
@@ -315,7 +319,7 @@ namespace ArtemisMissionEditor.Expressions
             PropertyObject.AddToDictionary("musicObjectMasterVolume", "Game Music Volume");
             PropertyObject.AddToDictionary("soundFXVolume", "Game Sound Volume");
             PropertyObject.AddToDictionary("gameTimeLimit", "Game Time Limit");
-            PropertyObject.AddToDictionary("nebulaIsOpaque", "Nebular Hides From Sensors");
+            PropertyObject.AddToDictionary("nebulaIsOpaque", "Nebula Hides From Sensors");
             PropertyObject.AddToDictionary("networkTickSpeed", "Network Tick Speed");
             PropertyObject.AddToDictionary("playerWeapon", "Player Damage");
             PropertyObject.AddToDictionary("playerShields", "Player Shield");
@@ -626,7 +630,17 @@ namespace ArtemisMissionEditor.Expressions
 			WarpState.AddToDictionary("4", "4");
 			WarpState.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList;
 
-			PathEditor = new ExpressionMemberValueEditor_PathEditor();
+            CommType = new ExpressionMemberValueEditor();
+            CommType.AddToDictionary("ALERT", "ALERT");
+            CommType.AddToDictionary("SIDE", "SIDE");
+            CommType.AddToDictionary("STATUS", "STATUS");
+            CommType.AddToDictionary("PLAYER", "PLAYER");
+            CommType.AddToDictionary("STATION", "STATION");
+            CommType.AddToDictionary("ENEMY", "ENEMY");
+            CommType.AddToDictionary("FRIEND", "FRIEND");
+            CommType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList;
+
+            PathEditor = new ExpressionMemberValueEditor_PathEditor();
 
 			HullID = new ExpressionMemberValueEditor_HullID();
 			HullID.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_HullIDList;

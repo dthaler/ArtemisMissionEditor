@@ -15,6 +15,19 @@
     <ROW Section="Update 2.6" Key="FilePath" Value="[APPDIR]ArtemisMissionEditor.exe"/>
     <ROW Section="Update 2.6" Key="Version" Value="2.6.0.0"/>
     <ROW Section="Update 2.6" Key="Description" Value="Updated to support Artemis 2.6"/>
+    <ROW Section="Update 2.6.0.1" Key="Name" Value="Artemis Mission Editor 2.6.0.1"/>
+    <ROW Section="Update 2.6.0.1" Key="ProductVersion" Value="2.6.0.1"/>
+    <ROW Section="Update 2.6.0.1" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.0.1.msi"/>
+    <ROW Section="Update 2.6.0.1" Key="Size" Value="ArtemisMissionEditorInstaller.2.6.0.1.msi"/>
+    <ROW Section="Update 2.6.0.1" Key="ReleaseDate" Value="19354"/>
+    <ROW Section="Update 2.6.0.1" Key="MD5" Value="ArtemisMissionEditorInstaller.2.6.0.1.msi"/>
+    <ROW Section="Update 2.6.0.1" Key="ServerFileName" Value="ArtemisMissionEditorInstaller.2.6.0.1.msi"/>
+    <ROW Section="Update 2.6.0.1" Key="Flags" Value="Critical"/>
+    <ROW Section="Update 2.6.0.1" Key="FilePath" Value="[APPDIR]ArtemisMissionEditor.exe"/>
+    <ROW Section="Update 2.6.0.1" Key="Version" Value="2.6.0.1"/>
+    <ROW Section="Update 2.6.0.1" Key="Feature" Value="Added support for set_player_carried_type to force fighter name/type carried by a playership&#13;&#10;Added support for set_player_station_carried to force a fighter name/type that will be picked up as a replacement from a station by player ships&#13;&#10;Added support for clear_player_station_carried&#13;&#10;Added a drop down list for selecting comms types&#13;&#10;"/>
+    <ROW Section="Update 2.6.0.1" Key="BugFix" Value="Changed events to use &quot;name&quot; instead of &quot;name_arme&quot; to fix F7 debug screen event display in Artemis&#13;&#10;Fixed some more typos&#13;&#10;Fixed bug in update available detection"/>
+    <ROW Section="Update 2.6.0.1" Key="Replaces" Value="Update 2.6"/>
     <ATTRIBUTE name="OutputFileName" value="ArtemisMissionEditorUpdates.txt"/>
     <ATTRIBUTE name="OutputFolder" value="."/>
   </COMPONENT>
