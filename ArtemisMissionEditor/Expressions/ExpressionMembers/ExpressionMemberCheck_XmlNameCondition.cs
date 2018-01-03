@@ -128,8 +128,9 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("on "));
             eML.Add(new ExpressionMember("side "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "sideValue"));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Blank_Not, "countSurrendered"));
-            eML.Add(new ExpressionMember("including "));
+            eML.Add(new ExpressionMember("and "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Do_Dont, "countSurrendered"));
+            eML.Add(new ExpressionMember("count "));
             eML.Add(new ExpressionMember("surrendered "));
             eML.Add(new ExpressionMember("ships "));
 			

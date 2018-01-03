@@ -228,7 +228,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD tII1_3 =                     new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 2, "", " ");
         public static EMVD Flt_0_100 =                  new EMVD(EMVT.VarDouble,    EMVB.StoredWhenFilled,  EMVE.DefaultDouble,0.0,100.0,""," ");
         public static EMVD Flt_Minus100k_100k =         new EMVD(EMVT.VarDouble,    EMVB.StoredWhenFilled,  EMVE.DefaultDouble,-100000.0,100000.0,""," ");
-        public static EMVD Bool_Blank_Not =             new EMVD(EMVT.VarBool,      EMVB.StoredWhenFilled,  EMVE.DefaultBool,"not","",""," ");
+        public static EMVD Bool_Do_Dont =             new EMVD(EMVT.VarBool,      EMVB.StoredWhenFilled,  EMVE.DefaultBool,"don't","do",""," ");
         public static EMVD Bool_Yes_No =                new EMVD(EMVT.VarBool,      EMVB.StoredWhenFilled,  EMVE.DefaultBool,"no","yes",""," ");
         /// <summary> value for eliteAIType </summary>
         public static EMVD EliteAIType =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.EliteAIType,0,2,"\"","\" ");

@@ -201,15 +201,19 @@ namespace ArtemisMissionEditor.Expressions
 			eML = this.Add("TARGET_THROTTLE");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("heading "));
-			eML.Add(new ExpressionMember("towards "));
-			eML.Add(new ExpressionMember("object "));
-			eML.Add(new ExpressionMember("named "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "targetName"));
-			eML.Add(new ExpressionMember("moving "));
 			eML.Add(new ExpressionMember("at "));
 			eML.Add(new ExpressionMember("throttle "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueT, "value1"));
-			eML.Add(new ExpressionMember("\" ")); 
+			eML.Add(new ExpressionMember(" towards "));
+			eML.Add(new ExpressionMember("object "));
+			eML.Add(new ExpressionMember("named "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "targetName"));
+			eML.Add(new ExpressionMember("and "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Do_Dont, "value2"));
+			eML.Add(new ExpressionMember("treat "));
+			eML.Add(new ExpressionMember("it "));
+			eML.Add(new ExpressionMember("as "));
+			eML.Add(new ExpressionMember("friendly\" "));
 			____Add_Name(eML);
 
 			#endregion
