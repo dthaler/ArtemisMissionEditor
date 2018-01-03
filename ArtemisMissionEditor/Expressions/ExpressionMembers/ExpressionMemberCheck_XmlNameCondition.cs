@@ -125,6 +125,13 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Comparator, "comparator"));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueF, "value", true));
 			eML.Add(new ExpressionMemberCheck_AllShips_FleetNumber());
+            eML.Add(new ExpressionMember("on "));
+            eML.Add(new ExpressionMember("side "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "sideValue"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Blank_Not, "countSurrendered"));
+            eML.Add(new ExpressionMember("including "));
+            eML.Add(new ExpressionMember("surrendered "));
+            eML.Add(new ExpressionMember("ships "));
 			
 			#endregion
 

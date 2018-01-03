@@ -25,10 +25,10 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> Commentary expression for editing comments </summary>
         public static EMVD Commentary =                 new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DefaultString,null,null,"","","");
 
-        /// <summary> Root check member for expression evalutaion of an action </summary>
+        /// <summary> Root check member for expression evaluation of an action </summary>
         public static EMVD Check_XmlNameA =             new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.XmlNameActionCheck);
 
-        /// <summary> Root check member for expression evalutaion of a condition </summary>
+        /// <summary> Root check member for expression evaluation of a condition </summary>
         public static EMVD Check_XmlNameC =             new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.XmlNameConditionCheck);
             
         /// <summary> Unknown expression for editing something not known to the editor </summary>
@@ -228,6 +228,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD tII1_3 =                     new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 2, "", " ");
         public static EMVD Flt_0_100 =                  new EMVD(EMVT.VarDouble,    EMVB.StoredWhenFilled,  EMVE.DefaultDouble,0.0,100.0,""," ");
         public static EMVD Flt_Minus100k_100k =         new EMVD(EMVT.VarDouble,    EMVB.StoredWhenFilled,  EMVE.DefaultDouble,-100000.0,100000.0,""," ");
+        public static EMVD Bool_Blank_Not =             new EMVD(EMVT.VarBool,      EMVB.StoredWhenFilled,  EMVE.DefaultBool,"not","",""," ");
         public static EMVD Bool_Yes_No =                new EMVD(EMVT.VarBool,      EMVB.StoredWhenFilled,  EMVE.DefaultBool,"no","yes",""," ");
         /// <summary> value for eliteAIType </summary>
         public static EMVD EliteAIType =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.EliteAIType,0,2,"\"","\" ");
@@ -313,7 +314,7 @@ namespace ArtemisMissionEditor.Expressions
 
         /// <summary> "ship" from set_special </summary>
         public static EMVD ShipState =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.SpecialShipType, -1, 3,"\"","\" ");
-        /// <summary> "capitain" from set_special </summary>
+        /// <summary> "captain" from set_special </summary>
         public static EMVD CaptainState =               new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.SpecialCapitainType, -1, 5, "\"", "\" ");
         public static EMVD SpecialState = new EMVD(EMVT.VarString, EMVB.StoredWhenFilled, EMVE.SpecialSpecialState, null, null, "\"", "\" ");
         public static EMVD SpecialSwitchState = new EMVD(EMVT.VarString, EMVB.StoredWhenFilled, EMVE.SpecialSpecialSwitchState, null, null, "\"", "\" ");

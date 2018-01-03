@@ -50,7 +50,7 @@ namespace ArtemisMissionEditor.Expressions
 		{
 			List<ExpressionMember> eML;
 
-			eML = this.Add("when counting all enemies"); //Choices[0]
+			eML = this.Add("when counting all ships"); //Choices[0]
 			//In case this is point, it looks like this : "... at point (x, y, z)"
 
 			eML = this.Add("in fleet number"); //Choices[1]
