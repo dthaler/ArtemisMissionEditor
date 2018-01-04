@@ -68,7 +68,7 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor EliteAbilityBits;
         public static ExpressionMemberValueEditor PlayerNames;
         public static ExpressionMemberValueEditor WarpState;
-        public static ExpressionMemberValueEditor CommType;
+        public static ExpressionMemberValueEditor CommTypes;
         public static ExpressionMemberValueEditor PathEditor;
         public static ExpressionMemberValueEditor HullID;
         public static ExpressionMemberValueEditor RaceKeys;
@@ -606,6 +606,8 @@ namespace ArtemisMissionEditor.Expressions
 			NamedStationName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedStationNameList;
             Mission.NamesListUpdated += new Action(() => { NamedStationName.InvalidateContextMenuStrip(); });
 
+			CommTypes = new ExpressionMemberValueEditor_CommTypes();
+
 			ConsoleList = new ExpressionMemberValueEditor_ConsoleList();
 
 			EliteAIType = new ExpressionMemberValueEditor();
@@ -629,16 +631,6 @@ namespace ArtemisMissionEditor.Expressions
 			WarpState.AddToDictionary("3", "3");
 			WarpState.AddToDictionary("4", "4");
 			WarpState.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList;
-
-            CommType = new ExpressionMemberValueEditor();
-            CommType.AddToDictionary("ALERT", "ALERT");
-            CommType.AddToDictionary("SIDE", "SIDE");
-            CommType.AddToDictionary("STATUS", "STATUS");
-            CommType.AddToDictionary("PLAYER", "PLAYER");
-            CommType.AddToDictionary("STATION", "STATION");
-            CommType.AddToDictionary("ENEMY", "ENEMY");
-            CommType.AddToDictionary("FRIEND", "FRIEND");
-            CommType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList;
 
             PathEditor = new ExpressionMemberValueEditor_PathEditor();
 

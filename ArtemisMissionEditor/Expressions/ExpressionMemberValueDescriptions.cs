@@ -201,7 +201,8 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD Consoles =                   new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.ConsoleList,null,null,"(",") ");
 
         /// <summary> [type] from [incoming_comms_text] 
-        public static EMVD CommType =                   new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.CommType,null,null,"\"","\" ");
+        public static EMVD CommTypes =                  new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.CommTypes,null,null,"\"","\" ");
+
         /// <summary> [body] from [incoming_comms_text] 
         public static EMVD Body =                       new EMVD(EMVT.Body,         EMVB.NotStored,         EMVE.DefaultBody,null,null,"","","");
         /// <summary> "title" from [big_message] </summary>

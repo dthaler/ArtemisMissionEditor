@@ -68,17 +68,17 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> List of context menu items </summary>
         public List<string> MenuItems;
 
-        /// <summary> Dictionary for conversion of Xml values to Display values </summary>
+        /// <summary> Dictionary for conversion of XML values to Display values </summary>
         public Dictionary<string, string> XmlValueToDisplay;
 
-        /// <summary> Dictionary for conversion of Display values to Xml values </summary>
+        /// <summary> Dictionary for conversion of Display values to XML values </summary>
         public Dictionary<string, string> DisplayValueToXml;
 		
         /// <summary>
-        /// Add Xml to Display links to all relevant dictionaries
+        /// Add XML to Display links to all relevant dictionaries
         /// </summary>
-        /// <param name="xml">Value how it is sotred in Xml</param>
-        /// <param name="display">Value hos it is displayed</param>
+        /// <param name="xml">Value how it is stored in XML</param>
+        /// <param name="display">Value how it is displayed</param>
         public void AddToDictionary(string xml, string display)
         {
             if (xml != null)
@@ -89,14 +89,14 @@ namespace ArtemisMissionEditor.Expressions
                 MenuItems.Add(display);
 		}
 
-        /// <summary> Dictionary for conversion of Xml values to Menu items </summary>
+        /// <summary> Dictionary for conversion of XML values to Menu items </summary>
 		public Dictionary<string, string> XmlValueToMenu;
 
-        /// <summary> Dictionary for conversion of Menu items to Xml values </summary>
+        /// <summary> Dictionary for conversion of Menu items to XML values </summary>
         public Dictionary<string, string> MenuValueToXml;
 		
         /// <summary>
-        /// Add Xml to Menu linkts to all relevant dictionaries
+        /// Add XML to Menu links to all relevant dictionaries
         /// </summary>
         /// <param name="xml"></param>
         /// <param name="menu"></param>
@@ -107,9 +107,9 @@ namespace ArtemisMissionEditor.Expressions
 		}
 
         /// <summary>
-        /// Convert Xml value to display value
+        /// Convert XML value to display value
         /// </summary>
-        /// <param name="value">Value from Xml</param>
+        /// <param name="value">Value from XML</param>
         /// <param name="type">Value type</param>
         /// <param name="min">Min limit</param>
         /// <param name="max">Max limit</param>
@@ -147,9 +147,9 @@ namespace ArtemisMissionEditor.Expressions
 		}
 
         /// <summary>
-        /// Convert display or input value to Xml value
+        /// Convert display or input value to XML value
         /// </summary>
-        /// <param name="value">Value from Xml</param>
+        /// <param name="value">Value from XML</param>
         /// <param name="type">Value type</param>
         /// <param name="min">Min limit</param>
         /// <param name="max">Max limit</param>
@@ -323,7 +323,7 @@ namespace ArtemisMissionEditor.Expressions
         }
 
         /// <summary>
-        /// Convert displayed or input value into value stored in Xml
+        /// Convert displayed or input value into value stored in XML
         /// </summary>
         /// <param name="value">Displayed or input value</param>
         public override string ValueToXml(string value, ExpressionMemberValueType type, object min, object max)
@@ -332,12 +332,47 @@ namespace ArtemisMissionEditor.Expressions
         }
 
         /// <summary>
-        /// Shows a gui form to edit the container's expression member
+        /// Shows a GUI form to edit the container's expression member
         /// </summary>
         /// <param name="container"></param>
         public override void ShowEditingDialog(ExpressionMemberContainer container, ExpressionMemberValueDescription description, string defaultValue)
         {
             KeyValuePair<bool, string> result = DialogAbilityBits.Show(container.Member.Name, container.GetValue());
+            if (result.Key)
+                ValueChosen(container, result.Value);
+        }
+    }
+
+    /// <summary>
+    /// Editor for Comms Types
+    /// </summary>
+    public sealed class ExpressionMemberValueEditor_CommTypes : ExpressionMemberValueEditor
+    {
+        /// <summary>
+        /// Convert inner value into displayed value
+        /// </summary>
+        /// <param name="value">Inner value</param>
+        public override string ValueToDisplay(string value, ExpressionMemberValueType type, object min, object max)
+        {
+            return value ?? "None";
+        }
+
+        /// <summary>
+        /// Convert displayed or input value into value stored in XML
+        /// </summary>
+        /// <param name="value">Displayed or input value</param>
+        public override string ValueToXml(string value, ExpressionMemberValueType type, object min, object max)
+        {
+            return value;
+        }
+
+        /// <summary>
+        /// Shows a GUI form to edit the container's expression member
+        /// </summary>
+        /// <param name="container"></param>
+        public override void ShowEditingDialog(ExpressionMemberContainer container, ExpressionMemberValueDescription description, string defaultValue)
+        {
+            KeyValuePair<bool, string> result = DialogCommTypes.Show(container.Member.Name, container.GetValue());
             if (result.Key)
                 ValueChosen(container, result.Value);
         }
@@ -383,7 +418,7 @@ namespace ArtemisMissionEditor.Expressions
         }
 
         /// <summary>
-        /// Convert displayed or input value into value stored in Xml
+        /// Convert displayed or input value into value stored in XML
         /// </summary>
         /// <param name="value">Displayed or input value</param>
         public override string ValueToXml(string value, ExpressionMemberValueType type, object min, object max)
@@ -392,7 +427,7 @@ namespace ArtemisMissionEditor.Expressions
         }
 
         /// <summary>
-        /// Shows a gui form to edit the container's expression member
+        /// Shows a GUI form to edit the container's expression member
         /// </summary>
         /// <param name="container"></param>
         public override void ShowEditingDialog(ExpressionMemberContainer container, ExpressionMemberValueDescription description, string defaultValue)
@@ -422,7 +457,7 @@ namespace ArtemisMissionEditor.Expressions
         }
 
         /// <summary>
-        /// Convert displayed or input value into value stored in Xml
+        /// Convert displayed or input value into value stored in XML
         /// </summary>
         /// <param name="value">Displayed or input value</param>
         public override string ValueToXml(string value, ExpressionMemberValueType type, object min, object max)
@@ -453,7 +488,7 @@ namespace ArtemisMissionEditor.Expressions
     public sealed class ExpressionMemberValueEditor_HullKeys : ExpressionMemberValueEditor
     {
         /// <summary>
-        /// Shows a gui form to edit the container's expression member
+        /// Shows a GUI form to edit the container's expression member
         /// </summary>
         /// <param name="container"></param>
         public override void ShowEditingDialog(ExpressionMemberContainer container, ExpressionMemberValueDescription description, string defaultValue)
@@ -470,7 +505,7 @@ namespace ArtemisMissionEditor.Expressions
     public sealed class ExpressionMemberValueEditor_PathEditor : ExpressionMemberValueEditor
     {
         /// <summary>
-        /// Shows a gui form to edit the container's expression member
+        /// Shows a GUI form to edit the container's expression member
         /// </summary>
         /// <param name="container"></param>
         public override void ShowEditingDialog(ExpressionMemberContainer container, ExpressionMemberValueDescription description, string defaultValue)
@@ -503,7 +538,7 @@ namespace ArtemisMissionEditor.Expressions
         }
 
         /// <summary>
-        /// Convert displayed or input value into value stored in Xml
+        /// Convert displayed or input value into value stored in XML
         /// </summary>
         /// <param name="value">Displayed or input value</param>
         public override string ValueToXml(string value, ExpressionMemberValueType type, object min, object max)
@@ -522,7 +557,7 @@ namespace ArtemisMissionEditor.Expressions
     public sealed class ExpressionMemberValueEditor_RaceKeys : ExpressionMemberValueEditor
     {
         /// <summary>
-        /// Shows a gui form to edit the container's expression member
+        /// Shows a GUI form to edit the container's expression member
         /// </summary>
         public override void ShowEditingDialog(ExpressionMemberContainer container, ExpressionMemberValueDescription description, string defaultValue)
         {
@@ -533,7 +568,7 @@ namespace ArtemisMissionEditor.Expressions
     }
 
     /// <summary>
-    /// Editor for Xml Name check (aka main check / first check) 
+    /// Editor for XML Name check (aka main check / first check) 
     /// (where we choose the kind of statement this is, like "If variable" or "Set property")
     /// </summary>
     public sealed class ExpressionMemberValueEditor_XmlName : ExpressionMemberValueEditor
@@ -557,7 +592,7 @@ namespace ArtemisMissionEditor.Expressions
         }
 
         /// <summary>
-        /// Convert displayed or input value into value stored in Xml
+        /// Convert displayed or input value into value stored in XML
         /// </summary>
         /// <param name="value">Displayed or input value</param>
         public override string ValueToXml(string value, ExpressionMemberValueType type, object min, object max)

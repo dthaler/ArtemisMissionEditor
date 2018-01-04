@@ -429,7 +429,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("from "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.MessageFrom, "from"));
             eML.Add(new ExpressionMember("of type "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.CommType, "type"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.CommTypes, "type"));
             eML.Add(new ExpressionMember("and body: "));
             eML.Add(new ExpressionMember_Body());
 
