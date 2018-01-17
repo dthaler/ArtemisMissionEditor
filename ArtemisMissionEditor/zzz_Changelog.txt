@@ -172,7 +172,7 @@ Version 2.1.1.4 [2014-07-21] (Alexey Andronov)
 * CODE: Rewritten ExceptionMember/ExceptionMemberCheck code a bit
 * CODE: Reworked DrawSpaceMap code a bit to make it more readable
 * CODE: Fixed and improved code here and there for the sake of it...
-* CODE: Introduced better way of checking for wether a statement should be edited on space map
+* CODE: Introduced better way of checking for whether a statement should be edited on space map
 * Small fix to information form
 * Removed log warning for opening vesselData file with version 2.1 (which is parsed quite fine)
 * Fixed side appearing for create statements that cannot have a side (like anomaly)
