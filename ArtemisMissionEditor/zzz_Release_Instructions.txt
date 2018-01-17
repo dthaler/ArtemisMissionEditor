@@ -1,5 +1,5 @@
 1. Update AssemblyVersion in Properties\AssemblyInfo.cs.  The current convention is
-   x.x.x.y where 'x.x.x' is the Artemis version, and 'y' counts up from 0 for each
+   x.x.y where 'x.x' is the Artemis version, and 'y' counts up from 0 for each
    Artemis Mission Editor release that supports that Artemis version.
 2. Build the release as follows:
     2.1. Launch Visual Studio 2017
@@ -46,5 +46,6 @@
          select Upload
 9. Test installing it
 10. Check in updated aip files
-11. Update wiki page at http://artemiswiki.pbworks.com/w/page/53389687/Mission%20Editor
-12. Announce release in Artemis forums
+11. Add a git tag for the release version (e.g., "git tag 2.6.1", "git push --tags")
+12. Update wiki page at http://artemiswiki.pbworks.com/w/page/53389687/Mission%20Editor
+13. Announce release in Artemis forums

@@ -1,0 +1,50 @@
+;aiu;
+
+[Update 2.6.1]
+ProductVersion=2.6.1
+Name=Artemis Mission Editor 2.6.1
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.1.msi
+Size=1585664
+ReleaseDate=16/01/2018
+MD5=48e04f4bceb988061cce9e7bf0c9e9ee
+ServerFileName=ArtemisMissionEditorInstaller.2.6.1.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.6.1.0
+Feature=Added sideValue and countSurrendered arguments to if_fleet_count
+Feature1=Added value2 argument to TARGET_THROTTLE AI block
+Feature2=Added support for multiple message types in the same comms message
+BugFix= Fixed some more typos
+Replaces=All
+
+[Update 2.6.0.1]
+ProductVersion=2.6.0.1
+Name=Artemis Mission Editor 2.6.0.1
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.0.1.msi
+Size=1583616
+ReleaseDate=26/12/2017
+MD5=c35040fb649dc6084cfdd50e4b3af396
+ServerFileName=ArtemisMissionEditorInstaller.2.6.0.1.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.6.0.1
+Feature=Added support for set_player_carried_type to force fighter name/type carried by a playership
+Feature1=Added support for set_player_station_carried to force a fighter name/type that will be picked up as a replacement from a station by player ships
+Feature2=Added support for clear_player_station_carried
+Feature3=Added a drop down list for selecting comms types
+BugFix=Changed events to use "name" instead of "name_arme" to fix F7 debug screen event display in Artemis
+BugFix1=Fixed some more typos
+BugFix2=Fixed bug in update available detection
+Replaces=All
+
+[Update 2.6]
+ProductVersion=2.6.0.0
+Name=Artemis Mission Editor 2.6
+URL=http://www.example.com/downloads/ArtemisMissionEditorInstaller.2.6.msi
+Size=1583616
+MD5=72deef9dc1ae805094af04d469c065f4
+ServerFileName=ArtemisMissionEditorInstaller.2.6.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.6.0.0
+Description=Updated to support Artemis 2.6

@@ -1,3 +1,9 @@
+Version 2.6.1 [2018-January-16] (Dave Thaler)
+* Added sideValue and countSurrendered arguments to if_fleet_count
+* Added value2 argument to TARGET_THROTTLE AI block
+* Added support for multiple message types in the same comms message
+* Fixed some more typos 
+----------------------
 Version 2.6.0.1 [2017-December-26] (Dave Thaler)
 * Changed events to use "name" instead of "name_arme" to fix F7 debug screen event display
 * Incorporated changes from Fish Evans:

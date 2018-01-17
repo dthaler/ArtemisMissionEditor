@@ -8,10 +8,10 @@
     <ROW Property="ALLUSERS" Value="1" MultiBuildValue="DefaultBuild:2"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="Manufacturer" Value="Armidale Software"/>
-    <ROW Property="ProductCode" Value="1033:{39237EE2-EC5E-4A47-A5DE-059ED54798CF} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{34830395-A499-404A-8B1C-62AD5323FF3D} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Artemis Mission Editor"/>
-    <ROW Property="ProductVersion" Value="2.6.0.1" Type="32"/>
+    <ROW Property="ProductVersion" Value="2.6.1" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{952B3ADB-0A7C-4407-B9A9-3B80D5AF5CA5}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME#x86_Release:Windows 9x/ME" ValueLocId="-"/>
@@ -43,7 +43,7 @@
     <ROW Name="AI_APPPATH_PERBUILD_ArtemisMissionEditor.exe.config" Path="[|AI_PROPPATH_PERBUILD_ArtemisMissionEditor.exe.config]" Type="2" Content="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="." PackageFileName="ArtemisMissionEditorInstaller.2.6.0.1" Languages="en" InstallationType="4" UseLargeSchema="true"/>
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="." PackageFileName="ArtemisMissionEditorInstaller.2.6.1" Languages="en" InstallationType="4" UseLargeSchema="true"/>
     <ROW BuildKey="x86_Release" BuildName="x86_Release" BuildOrder="2" BuildType="0" PackageFolder="C:\Users\thale\OneDrive\Documents\Advanced Installer\Projects\Artemis Mission Editor\x86_ReleaseSetupFiles" PackageFileName="setup" Languages="en" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtractionFolder="[AppDataFolder][|Manufacturer]\[|ProductName] [|ProductVersion]\install" UseLargeSchema="true"/>
     <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
   </COMPONENT>
@@ -160,7 +160,6 @@
     <ROW IniFile="AppDir" FileName="Artemi~1.ini|ArtemisMissionEditorUpdater.ini" DirProperty="APPDIR" Section="General" Key="AppDir" Value="[APPDIR]" Action="0" Component_="updater.exe"/>
     <ROW IniFile="ApplicationName" FileName="Artemi~1.ini|ArtemisMissionEditorUpdater.ini" DirProperty="APPDIR" Section="General" Key="ApplicationName" Value="[ProductName]" Action="0" Component_="updater.exe"/>
     <ROW IniFile="ApplicationVersion" FileName="Artemi~1.ini|ArtemisMissionEditorUpdater.ini" DirProperty="APPDIR" Section="General" Key="ApplicationVersion" Value="[ProductVersion]" Action="0" Component_="updater.exe"/>
-    <ROW IniFile="CheckFrequency" FileName="Artemi~1.ini|ArtemisMissionEditorUpdater.ini" DirProperty="APPDIR" Section="General" Key="CheckFrequency" Value="2" Action="0" Component_="updater.exe"/>
     <ROW IniFile="CompanyName" FileName="Artemi~1.ini|ArtemisMissionEditorUpdater.ini" DirProperty="APPDIR" Section="General" Key="CompanyName" Value="[Manufacturer]" Action="0" Component_="updater.exe"/>
     <ROW IniFile="DefaultCommandLine" FileName="Artemi~1.ini|ArtemisMissionEditorUpdater.ini" DirProperty="APPDIR" Section="General" Key="DefaultCommandLine" Value="/checknow" Action="0" Component_="updater.exe"/>
     <ROW IniFile="DownloadsFolder" FileName="Artemi~1.ini|ArtemisMissionEditorUpdater.ini" DirProperty="APPDIR" Section="General" Key="DownloadsFolder" Value="[AppDataFolder][Manufacturer]\[ProductName]\updates\" Action="0" Component_="updater.exe"/>
@@ -238,6 +237,6 @@
     <ROW SearchKey="AAFDE9CF_9E01_43FE_869C_F81D4708C0CF_NET_45_SEARCH" Prereq="AAFDE9CF_9E01_43FE_869C_F81D4708C0CF" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\Version" VerMin="4.5" Order="3" Property="AI_NET_40CP_45_PREREQSEARCH_PROP"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.UpdaterComponent">
-    <ROW Updater="updater.exe" URL="URL" SearchFreq="CheckFrequency" DownloadsFolder="DownloadsFolder" ID="ID" TargetDir="AppDir" AppName="ApplicationName" AppVersion="ApplicationVersion" CompanyName="CompanyName" DefCommandLine="DefaultCommandLine" IconIndex="0" UnistallCASeq="AI_UPDATER_UNINSTALL" Description="[|UpdaterName] [|ProductVersion] © [|Manufacturer], Inc, 2017"/>
+    <ROW Updater="updater.exe" URL="URL" DownloadsFolder="DownloadsFolder" ID="ID" TargetDir="AppDir" AppName="ApplicationName" AppVersion="ApplicationVersion" CompanyName="CompanyName" DefCommandLine="DefaultCommandLine" IconIndex="0" UnistallCASeq="AI_UPDATER_UNINSTALL" Description="[|UpdaterName] [|ProductVersion] © [|Manufacturer], Inc, 2018"/>
   </COMPONENT>
 </DOCUMENT>
