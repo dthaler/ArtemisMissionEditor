@@ -96,18 +96,20 @@ namespace ArtemisMissionEditor
         }
     }
 
+    public class VesselDataChangedEventArgs : EventArgs { }
+
     public sealed class VesselData
     {
         private static List<string> ParserLog;
 
         private static VesselData _current = new VesselData();
-        public static VesselData Current { get { return _current; } set { _current = value; OnVesselDataChanged(); } }
+        public static VesselData Current { get { return _current; } set { _current = value; OnVesselDataChanged(null, null); } }
 
-        public static event Action VesselDataChanged;
-        private static void OnVesselDataChanged()
+        public static event EventHandler<VesselDataChangedEventArgs> VesselDataChanged;
+        private static void OnVesselDataChanged(object sender, VesselDataChangedEventArgs e)
         {
             if (VesselDataChanged != null)
-                VesselDataChanged();
+                VesselDataChanged(sender, e);
         }
 
         public List<string> RaceNames { get; private set; }
@@ -760,7 +762,7 @@ namespace ArtemisMissionEditor
                 Log.Add("Unable to open file: " + path );
                 Log.Add("Error message: ");
                 Log.Add(ex);
-                OnVesselDataChanged(); 
+                OnVesselDataChanged(this, null); 
 				Log.Add("There were problems when loading vesselData.xml");
                 return;
             }
@@ -790,7 +792,7 @@ namespace ArtemisMissionEditor
                 foreach (string item in ParserLog)
                     Log.Add(item);
             }
-            OnVesselDataChanged();
+            OnVesselDataChanged(this, null);
 
 			if (error)
 				Log.Add("There were problems when loading vesselData.xml");

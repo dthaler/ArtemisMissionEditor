@@ -53,7 +53,7 @@ namespace ArtemisMissionEditor.Forms
             InitializeComponent();
 
             Log.NewLogEntry += _E_Log_NewLogEntry;
-			_E_Log_NewLogEntry();
+			_E_Log_NewLogEntry(this, null);
 
             Mission.Current = new Mission();
 			Mission.Current.AssignFlowPanel(_FM_flp_Bottom_Right);
@@ -67,7 +67,7 @@ namespace ArtemisMissionEditor.Forms
             Mission.Current.New(true);
 		}
 
-        private void _E_Log_NewLogEntry()
+        private void _E_Log_NewLogEntry(object sender, NewLogEntryEventArgs e)
         {
             if (Log.LogLines.Count > 0)
                 _FM_ss_Main_s_1.Text = Log.LogLines[Log.LogLines.Count-1].ToString();
@@ -110,16 +110,16 @@ namespace ArtemisMissionEditor.Forms
             Settings.SettingAutoSaveIntervalChanged += UpdateAutosaveTimer;
 
 			
-            UpdateVesselDataText();
-            UpdateAutosaveTimer();
+            UpdateVesselDataText(sender, null);
+            UpdateAutosaveTimer(sender, null);
         }
 
-        private void UpdateVesselDataText()
+        private void UpdateVesselDataText(object sender, VesselDataChangedEventArgs e)
         {
             _FM_ss_Main_VesselData.Text = "[vesselData.xml]: " + VesselData.Current.HullRaceList.Count.ToString() + " races and " + VesselData.Current.VesselList.Count.ToString() + " vessels.";
         }
 
-        private void UpdateAutosaveTimer()
+        private void UpdateAutosaveTimer(object sender, SettingAutoSaveIntervalChangedEventArgs e)
         {
             _FM_t_AutoUpdateTimer.Enabled = Settings.Current.AutoSaveInterval != 0;
             _FM_t_AutoUpdateTimer.Interval = 1 + Settings.Current.AutoSaveInterval * 60 * 1000;

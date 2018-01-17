@@ -17,6 +17,12 @@ namespace ArtemisMissionEditor
         ChildGoesUnder = 3
     }
 
+    public sealed class NodeMovedEventArgs : EventArgs
+    {
+        public bool SuspendUpdate { get; private set; }
+        public NodeMovedEventArgs(bool suspendUpdate) { this.SuspendUpdate = suspendUpdate; }
+    }
+
     /// <summary>
     /// Extended TreeView class with specific features (drag&drop support etc.)
     /// </summary>
@@ -57,16 +63,16 @@ namespace ArtemisMissionEditor
         public List<TreeNode> SelectedNodes;
 
 		/// <summary> Happens when a node was moved in the tree </summary>
-        public delegate void NodeMovedEventHandler(TreeNode node, bool suspendUpdate);
+        public delegate void NodeMovedEventHandler(object sender, NodeMovedEventArgs e);
         public event NodeMovedEventHandler NodeMoved;
 
         /// <summary>
         /// Occurs when a node was moved in the TreeViewWx
         /// </summary>
-        public void OnNodeMoved(TreeNode node, bool suspendUpdate = false)
+        public void OnNodeMoved(TreeNode node, NodeMovedEventArgs e)
         {
-            if (node!=null && NodeMoved != null)
-                NodeMoved(node, suspendUpdate);
+            if ((node != null) && (NodeMoved != null))
+                NodeMoved(node, e);
         }
 
 		/// <summary> Checks is the node is a folder (can accept child nodes) </summary>
@@ -444,7 +450,7 @@ namespace ArtemisMissionEditor
             if (!suspendUpdate)
                 EndUpdate();
 
-            OnNodeMoved(result, suspendUpdate);
+            OnNodeMoved(result, new NodeMovedEventArgs(suspendUpdate));
         }
 
 		public TreeNode FindNode_RecursivelyFind(TreeNode node, Func<TreeNode, bool> searcher)

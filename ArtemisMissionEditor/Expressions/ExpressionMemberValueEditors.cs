@@ -584,27 +584,27 @@ namespace ArtemisMissionEditor.Expressions
 
 			TimerName = new ExpressionMemberValueEditor();
 			TimerName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_TimerNameList;
-            Mission.NamesListUpdated += new Action(() => { TimerName.InvalidateContextMenuStrip(); });
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { TimerName.InvalidateContextMenuStrip(); });
 
 			VariableName = new ExpressionMemberValueEditor();
 			VariableName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_VariableNameList;
-            Mission.NamesListUpdated += new Action(() => { VariableName.InvalidateContextMenuStrip(); });
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { VariableName.InvalidateContextMenuStrip(); });
 
 			GMButtonText = new ExpressionMemberValueEditor();
 			GMButtonText.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_GMButtonTextList;
-            Mission.NamesListUpdated += new Action(() => { GMButtonText.InvalidateContextMenuStrip(); });
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { GMButtonText.InvalidateContextMenuStrip(); });
 
 			CommsButtonText = new ExpressionMemberValueEditor();
 			CommsButtonText.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_CommsButtonTextList;
-            Mission.NamesListUpdated += new Action(() => { CommsButtonText.InvalidateContextMenuStrip(); });
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { CommsButtonText.InvalidateContextMenuStrip(); });
 
 			NamedAllName = new ExpressionMemberValueEditor();
 			NamedAllName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedAllNameList;
-            Mission.NamesListUpdated += new Action(() => { NamedAllName.InvalidateContextMenuStrip(); });
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedAllName.InvalidateContextMenuStrip(); });
 			
 			NamedStationName = new ExpressionMemberValueEditor();
 			NamedStationName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedStationNameList;
-            Mission.NamesListUpdated += new Action(() => { NamedStationName.InvalidateContextMenuStrip(); });
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedStationName.InvalidateContextMenuStrip(); });
 
 			CommTypes = new ExpressionMemberValueEditor_CommTypes();
 
@@ -636,13 +636,13 @@ namespace ArtemisMissionEditor.Expressions
 
 			HullID = new ExpressionMemberValueEditor_HullID();
 			HullID.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_HullIDList;
-            VesselData.VesselDataChanged += new Action(() => { HullID.InvalidateContextMenuStrip(); });
+            VesselData.VesselDataChanged += new EventHandler<VesselDataChangedEventArgs>((s, e) => { HullID.InvalidateContextMenuStrip(); });
 	
 			RaceKeys = new ExpressionMemberValueEditor_RaceKeys();
-            VesselData.VesselDataChanged += new Action(() => { RaceKeys.InvalidateContextMenuStrip(); });
+            VesselData.VesselDataChanged += new EventHandler<VesselDataChangedEventArgs>((s, e) => { RaceKeys.InvalidateContextMenuStrip(); });
 
 			HullKeys = new ExpressionMemberValueEditor_HullKeys();
-            VesselData.VesselDataChanged += new Action(() => { HullKeys.InvalidateContextMenuStrip(); });
+            VesselData.VesselDataChanged += new EventHandler<VesselDataChangedEventArgs>((s, e) => { HullKeys.InvalidateContextMenuStrip(); });
 		}
     }
 }

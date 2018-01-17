@@ -15,6 +15,9 @@ using System.Reflection;
 
 namespace ArtemisMissionEditor
 {
+    public sealed class SettingAutoSaveIntervalChangedEventArgs : EventArgs { }
+    public sealed class SettingsCurrentChangedEventArgs : EventArgs { }
+
     /// <summary>
     /// Contains all settings that are (mostly) user-editable.
     /// </summary>
@@ -33,21 +36,21 @@ namespace ArtemisMissionEditor
         
         private static Settings _current = new Settings();
         [Browsable(false)]
-        public static Settings Current { get { return _current; } set { _current = value; OnSettingsCurrentChanged(); } }
+        public static Settings Current { get { return _current; } set { _current = value; OnSettingsCurrentChanged(null, null); } }
 
-        public static event Action SettingsCurrentChanged;
-        private static void OnSettingsCurrentChanged()
+        public static event EventHandler<SettingsCurrentChangedEventArgs> SettingsCurrentChanged;
+        private static void OnSettingsCurrentChanged(object sender, SettingsCurrentChangedEventArgs e)
         {
             if (SettingsCurrentChanged != null)
-                SettingsCurrentChanged();
-            OnSettingAutoSaveIntervalChanged();
+                SettingsCurrentChanged(sender, e);
+            OnSettingAutoSaveIntervalChanged(sender, null);
         }
 
-        public static event Action SettingAutoSaveIntervalChanged;
-        private static void OnSettingAutoSaveIntervalChanged()
+        public static event EventHandler<SettingAutoSaveIntervalChangedEventArgs> SettingAutoSaveIntervalChanged;
+        private static void OnSettingAutoSaveIntervalChanged(object sender, SettingAutoSaveIntervalChangedEventArgs e)
         {
             if (SettingAutoSaveIntervalChanged != null)
-                SettingAutoSaveIntervalChanged();
+                SettingAutoSaveIntervalChanged(sender, e);
         }
         
         #region Miscellaneous Settings (edited in PropertyGrid)
@@ -199,7 +202,7 @@ namespace ArtemisMissionEditor
         public int AutoSaveInterval
         {
             get { return _autoSaveInterval; }
-            set { _autoSaveInterval = Math.Max(0, value); if (this == Current) OnSettingAutoSaveIntervalChanged(); }
+            set { _autoSaveInterval = Math.Max(0, value); if (this == Current) OnSettingAutoSaveIntervalChanged(this, null); }
         }
         private int _autoSaveInterval;
         

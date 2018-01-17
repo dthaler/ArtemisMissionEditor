@@ -354,7 +354,6 @@ namespace ArtemisMissionEditor.Expressions
 
             eML.Add(new ExpressionMember("for "));
             eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMember("with "));
             eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll));
 
             eML.Add(new ExpressionMember("change name to "));
@@ -377,7 +376,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "value", true));
             eML.Add(new ExpressionMember("for "));
-             eML.Add(new ExpressionMember("object "));
+            eML.Add(new ExpressionMember("object "));
             eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll));
          //   eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name", true));
             #endregion
