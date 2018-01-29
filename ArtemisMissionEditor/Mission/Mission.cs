@@ -23,16 +23,16 @@ namespace ArtemisMissionEditor
         /// </summary>
         public static Mission Current { get { return _current; } set { _current = value; } }
         private static Mission _current;
-        
+
         /// <summary> Flag to supress selection events while pasting </summary>
         private bool SuppressSelectionEvents;
-        
+
         /// <summary> Flag to supress selection events while pasting </summary>
         private bool SupressSelectionEvents;
-        
+
         /// <summary> Flag to supress afterexpand and aftercollapse events while mass-operating</summary>
         private bool SupressExpandCollapseEvents;
-        
+
         /// <summary> Semaphore for begin/end update </summary>
         private int UpdateSemaphoreCounter;
 
@@ -46,13 +46,13 @@ namespace ArtemisMissionEditor
         #region Name lists and other tracked mission parameters
 
         //The list of names of objects present in such statements as creating set_variable create set_timer
-        
+
         /// <summary> Variable names and headers for context menus</summary>
         public KeyValuePair<List<string>, List<string>> VariableNamesList { get { return new KeyValuePair<List<string>,List<string>>(VariableNames,VariableNameHeaders); } }
-        
+
         /// <summary> Timer names and headers for context menus</summary>
         public KeyValuePair<List<string>, List<string>> TimerNamesList { get { return new KeyValuePair<List<string>,List<string>>(TimerNames,TimerNameHeaders); } }
-        
+
         /// <summary> GM button names and headers for context menus</summary>
         public KeyValuePair<List<string>, List<string>> GMButtonTextsList { get { return new KeyValuePair<List<string>,List<string>>(GMButtonNames,GMButtonNameHeaders); } }
 
@@ -61,73 +61,73 @@ namespace ArtemisMissionEditor
 
         /// <summary> Station names and headers for context menus</summary>
         public KeyValuePair<List<string>, List<string>> StationNamesList { get { return new KeyValuePair<List<string>, List<string>>(NamedObjectNames["station"], new List<string>()); } }
-        
+
         /// <summary> All names of all kinds of named objects </summary>
         public Dictionary<string, List<string>> AllNamesLists { get { return NamedObjectNames; } }
-        
+
         /// <summary> All nodes where the variable is checked</summary>
         public Dictionary<string, List<MissionNode>> VariableCheckLocations { get; private set; }
-        
+
         /// <summary> All variables that are set</summary>
         public List<string> VariableSetNames { get; private set; }
-        
+
         /// <summary> All variables that are checked</summary>
         public List<string> VariableCheckNames { get; private set; }
-        
+
         /// <summary> All timers that are set</summary>
         public List<string> TimerSetNames { get; private set; }
-        
+
         /// <summary> All timers that are checked</summary>
         public List<string> TimerCheckNames { get; private set; }
-        
+
         /// <summary> All GM buttons that are set</summary>
         public List<string> GMButtonSetNames { get; private set; }
-        
+
         /// <summary> All GM buttons that are checked</summary>
         public List<string> GMButtonCheckNames { get; private set; }
-        
+
         /// <summary> All Comms buttons that are set</summary>
         public List<string> CommsButtonSetNames { get; private set; }
-        
+
         /// <summary> All Comms buttons that are checked</summary>
         public List<string> CommsButtonCheckNames { get; private set; }
-        
+
         /// <summary> All objects that are created</summary>
         public List<string> AllCreatedObjectNames { get; private set; }
-        
+
         /// <summary> All variables set or checked in the mission</summary>
         private List<string> VariableNames;
-        
+
         /// <summary> Variable headers for variable names context menus</summary>
         private List<string> VariableNameHeaders;
-        
+
         /// <summary> All timers set or checked in the mission</summary>
         private List<string> TimerNames;
-        
+
         /// <summary> Timer headers for timer names context menus</summary>
-        private List<string> TimerNameHeaders; 
-        
+        private List<string> TimerNameHeaders;
+
         /// <summary> All GM buttons set or checked in the mission</summary>
         private List<string> GMButtonNames;
-        
+
         /// <summary> GM button headers for GM button names context menus</summary>
-        private List<string> GMButtonNameHeaders; 
-        
+        private List<string> GMButtonNameHeaders;
+
         /// <summary> All Comms buttons set or checked in the mission</summary>
         private List<string> CommsButtonNames;
-        
+
         /// <summary> Comms button headers for Comms button names context menus</summary>
-        private List<string> CommsButtonNameHeaders; 
-        
+        private List<string> CommsButtonNameHeaders;
+
         /// <summary> All named objects created in the mission</summary>
         private Dictionary<string, List<string>> NamedObjectNames;
-        
+
         /// <summary> Whether or not the mission contains an "End Mission" statement (and how many of them)</summary>
         public int AmountOfMissionEndStatements { get; private set; }
 
         /// <summary> How many "Create player" statements there are in the mission</summary>
         public int AmountOfCreatePlayerStatements { get; private set; }
-        
+
         #endregion
 
         #region Mission inner parameters
@@ -139,28 +139,28 @@ namespace ArtemisMissionEditor
         /// <summary> Start node of the mission</summary>
         public TreeNode StartNode { get { return _startNode; } }
         private TreeNode _startNode;
-        
+
         /// <summary> Node whose create statements are used as background for the Spae Map</summary>
         public TreeNode BackgroundNode { get; set; }
-        
+
         /// <summary> Commentary before mission script root node</summary>
         public string CommentsBeforeRoot;
-        
+
         /// <summary> Commentary after mission script root node</summary>
         public string CommentsAfterRoot;
-        
+
         /// <summary> Player names used in the mission</summary>
         public string[] PlayerShipNames;
-        
+
         /// <summary> Mission version </summary>
         public string VersionNumber;
 
         /// <summary> Total number of events in the mission</summary>
         public int EventCount { get; private set; }
-        
+
         /// <summary> Flag that there are changes that need saving to file </summary>
         private bool _changesPending = false;
-        
+
         /// <summary> Flag that there are changes that need saving to file </summary>
         public bool ChangesPending { get { return _changesPending; } set { if (_changesPending != value) { _changesPending = value; FormMain.UpdateFormText(); } } }
 
@@ -169,19 +169,19 @@ namespace ArtemisMissionEditor
 
         /// <summary> Dependancy graph of the mission </summary>
         public DependencyGraph Dependencies { get; set; }
-        
+
         /// <summary> Recalculate dependancy graph of the mission </summary>
         public void RecalculateDependencies() { Dependencies.Recalculate(this); }
 
         /// <summary> Stack of states for undo</summary>
         public Stack<MissionSavedState> UndoStack { get; private set; }
-        
+
         /// <summary> Stack of states for redo</summary>
         public Stack<MissionSavedState> RedoStack { get; private set; }
 
         /// <summary> Undo text description</summary>
         public string UndoDescription { get { if (UndoStack.Count < 2) return null; return UndoStack.Peek().Description; } }
-        
+
         /// <summary> Redo text description</summary>
         public string RedoDescription { get { if (RedoStack.Count == 0) return null; return RedoStack.Peek().Description; } }
 
@@ -190,31 +190,31 @@ namespace ArtemisMissionEditor
         #region Assigned Controls
 
         //TODO: this must be rewritten because it's clunky
-        
+
         /// <summary> TreeView control that displays a tree of nodes for this mission </summary>
         private TreeViewEx TreeViewNodes;
-        
+
         /// <summary> TreeView control that displays a tree of statements for this node </summary>
         private TreeViewEx TreeViewStatements;
-        
+
         /// <summary> Flow layout panel that displays expression for the selected statement in this mission</summary>
         private FlowLayoutPanel FlowLayoutPanelMain;
-        
+
         /// <summary> Form that hosts the mission</summary>
         private Forms.FormMain FormMain;
-        
+
         /// <summary> Label that displays current node name</summary>
         private Label LabelMain;
-        
+
         /// <summary> Status strip that displays mission information</summary>
         private StatusStrip StatusStripMain;
-        
+
         /// <summary> Toolstrip that displays total number of objects in the mission</summary>
         private ToolStripStatusLabel ToolStripObjectsTotal;
-        
+
         /// <summary> Context strip menu used for right-clicking labels</summary>
         private ContextMenuStrip ContextMenuStripForLabels;
-                
+
         /// <summary> Assign new TreeView for the nodes to the mission</summary>
         public void AssignNodeTreeView(TreeViewEx value = null)
         {
@@ -374,7 +374,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// In this method we check whether a node can get placed near another node. 
+        /// In this method we check whether a node can get placed near another node.
         /// </summary>
         /// <param name="parent">Node being the receiver</param>
         /// <param name="child">Node that is trying to get attached</param>
@@ -442,7 +442,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// In this method we check whether a statement can get placed near another statement. 
+        /// In this method we check whether a statement can get placed near another statement.
         /// </summary>
         /// <param name="parent">Node being the receiver</param>
         /// <param name="child">Node that is trying to get attached</param>
@@ -503,7 +503,7 @@ namespace ArtemisMissionEditor
         }
 
         #endregion
-        
+
         public Mission()
         {
             TreeViewNodes = null;
@@ -555,20 +555,20 @@ namespace ArtemisMissionEditor
             NamedObjectNames.Add("station", new List<string>());
             NamedObjectNames.Add("monster", new List<string>());
             NamedObjectNames.Add("whale", new List<string>());
-            
+
             UndoStack = new Stack<MissionSavedState>();
             RedoStack = new Stack<MissionSavedState>();
 
             EventCount = 0;
-            
+
             SuppressSelectionEvents = false;
             SupressSelectionEvents = false;
             SupressExpandCollapseEvents = false;
             UpdateSemaphoreCounter = 0;
         }
 
-        /// <summary> 
-        /// Begin update of treeviews: calls BeginUpdate() of both TreeViews 
+        /// <summary>
+        /// Begin update of treeviews: calls BeginUpdate() of both TreeViews
         /// </summary>
         private void BeginUpdate(bool suppressSelectionEvents = false)
         {
@@ -583,8 +583,8 @@ namespace ArtemisMissionEditor
             }
         }
 
-        /// <summary> 
-        /// End update of treeviews: calls EndUpdate() of both TreeViews 
+        /// <summary>
+        /// End update of treeviews: calls EndUpdate() of both TreeViews
         /// </summary>
         private void EndUpdate(bool suppressSelectionEvents = false)
         {
@@ -603,7 +603,7 @@ namespace ArtemisMissionEditor
                 }
             }
         }
-        
+
         #region Undo / Redo / Change registration
 
         /// <summary>
@@ -636,18 +636,18 @@ namespace ArtemisMissionEditor
             while (UndoStack.Count == 0 || UndoStack.Peek() != state)
                 UndoStack.Push(RedoStack.Pop());
             FromState(UndoStack.Peek());
-            
+
             UpdateObjectsText();
         }
-        
-        /// <summary> 
+
+        /// <summary>
         /// Registers a change, adding a new state into undo the stack and cleaning the redo stack. Also raises ChangesPending flag.
         /// </summary>
         public void RegisterChange(string shortDescription)
         {
             ChangesPending = true;
             Dependencies.Invalidate();
-            
+
             UndoStack.Push(ToState(shortDescription));
             RedoStack.Clear();
 
@@ -672,7 +672,7 @@ namespace ArtemisMissionEditor
             else
                 while (tmpStack.Count > 0)
                     UndoStack.Push(tmpStack.Pop());
-            
+
             UndoStack.Peek().ChangesPending = false;
             ChangesPending = false;
         }
@@ -702,7 +702,7 @@ namespace ArtemisMissionEditor
 
             TreeNode newTNode = new TreeNode();
             MissionNode_Start newMNode = new MissionNode_Start();
-            
+
             string xml = "<root>" + Settings.Current.NewMissionStartBlock + "</root>";
             XmlDocument xDoc = new XmlDocument();
             try
@@ -730,14 +730,14 @@ namespace ArtemisMissionEditor
             FlowLayoutPanel_Clear();
 
             TreeViewNodes.SelectedNode = newTNode;
-            
+
             BackgroundNode = newTNode;
-            
+
             TruncateUndoStack(0);
         }
 
-        /// <summary> 
-        /// Clear mission contents 
+        /// <summary>
+        /// Clear mission contents
         /// </summary>
         /// <param name="fromState">True if clearing in order to restore from state, in this case we do not clear file path</param>
         private void Clear(bool fromState = false)
@@ -750,7 +750,7 @@ namespace ArtemisMissionEditor
             CommentsBeforeRoot = "";
             PlayerShipNames = Settings.Current.PlayerShipNames;
             VersionNumber = "1.0";
-            
+
             BeginUpdate();
 
             TreeViewNodes.NodesClear();
@@ -777,7 +777,7 @@ namespace ArtemisMissionEditor
             string text;
             using (StreamReader streamReader = new StreamReader(fileName))
                text = streamReader.ReadToEnd();
-            
+
             text = Helper.FixMissionXml(text);
             if (FromXml(text))
             {
@@ -854,7 +854,7 @@ namespace ArtemisMissionEditor
             Clear(fromState);
             Loading = !supressLoadingSignal;
             BeginUpdate();
-            
+
             List<TreeNode> NodesToExpand = new List<TreeNode>();
             Guid? bgGuid = null;
 
@@ -947,14 +947,14 @@ namespace ArtemisMissionEditor
 
             EndUpdate();
             Loading = false;
-            
+
             //Expand nodes that are supposed to be expanded
             foreach (TreeNode node in NodesToExpand)
                 node.Expand();
 
             return true;
         }
-        
+
         /// <summary>
         /// Get Xml string containing the mission
         /// </summary>
@@ -1021,7 +1021,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Generate Xml for the current node and its contents. 
+        /// Generate Xml for the current node and its contents.
         /// Called from ToXml method, recursively calls itself.
         /// </summary>
         /// <param name="root">Root node of the mission (mission_data)</param>
@@ -1036,14 +1036,14 @@ namespace ArtemisMissionEditor
             for (int i = 0; i < tNode.Nodes.Count; i++)
                 ToXml_RecursivelyOut(root, xDoc, tNode.Nodes[i], full);
         }
-        
+
         /// <summary>
         /// Load mission contents from saved state
         /// </summary>
         private void FromState(MissionSavedState state)
         {
             Dependencies.Invalidate();
-            
+
             BeginUpdate();
 
             FromXml(state.Xml, true, true);
@@ -1080,7 +1080,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Select mission node by "step" value. 
+        /// Select mission node by "step" value.
         /// Called from FromState and recursively calls itself.
         /// </summary>
         /// <param name="node">Currently visited node</param>
@@ -1096,7 +1096,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Select mission statement by tag value. 
+        /// Select mission statement by tag value.
         /// Called from FromState and recursively calls iself.
         /// </summary>
         /// <param name="node">Currently visited node</param>
@@ -1133,7 +1133,7 @@ namespace ArtemisMissionEditor
             {
                 int curStep = -1;
                 foreach (TreeNode node in TreeViewNodes.Nodes)
-                    if (ToState_RecursivelyGetSelected(node, ref curStep)) 
+                    if (ToState_RecursivelyGetSelected(node, ref curStep))
                         break;
                 result.SelectedNode = curStep;
             }
@@ -1158,7 +1158,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Get selected node. 
+        /// Get selected node.
         /// Called from ToState and recursively calls itself.
         /// </summary>
         /// <param name="node">Currently visited node</param>
@@ -1166,7 +1166,7 @@ namespace ArtemisMissionEditor
         private bool ToState_RecursivelyGetSelected(TreeNode node, ref int curStep)
         {
             foreach (TreeNode child in node.Nodes)
-                if (ToState_RecursivelyGetSelected(child, ref curStep)) 
+                if (ToState_RecursivelyGetSelected(child, ref curStep))
                     return true;
             curStep++;
             if (TreeViewNodes.SelectedNode == node)
@@ -1225,7 +1225,7 @@ namespace ArtemisMissionEditor
                 using (StreamWriter streamWriter = new StreamWriter(fileName, false))
                     streamWriter.Write(ToXml());
 
-                if (!autosave) 
+                if (!autosave)
                 {
                     FilePath = fileName;
                     TruncateUndoStack(Settings.Current.AmountOfUndoEntriesToKeep);
@@ -1297,7 +1297,7 @@ namespace ArtemisMissionEditor
                 RegisterChange((enabled ? "Enabled" : "Disabled") + " " + count + " statement(s)");
         }
 
-        /// <summary> 
+        /// <summary>
         /// Delete currently selected statement(s)
         /// </summary>
         public void StatementDelete()
@@ -1312,7 +1312,7 @@ namespace ArtemisMissionEditor
                     TreeViewStatements.Nodes.Remove(node);
 
             EndUpdate();
-            
+
             ImportMissionNodeContentsFromStatementTree();
 
             RegisterChange("Deleted statement(s)");
@@ -1357,7 +1357,7 @@ namespace ArtemisMissionEditor
             MissionStatement newStatement = new MissionStatement((MissionNode)TreeViewNodes.SelectedNode.Tag);
             newStatement.IsCommentary = true;
             newStatement.Name = "Commentary";
-            
+
             if (StatementAddNew(newStatement, nodeUnderCursor))
                 RegisterChange("New commentary statement");
         }
@@ -1387,7 +1387,7 @@ namespace ArtemisMissionEditor
             if (StatementAddNew(newStatement, nodeUnderCursor))
                 RegisterChange("New action statement");
         }
-        
+
         /// <summary>
         /// Inner part of adding new statement, returns whether update (change register) is required
         /// </summary>
@@ -1452,10 +1452,10 @@ namespace ArtemisMissionEditor
                 else
                     ultimateParent.Nodes.Add(toInsert);
             }
-            
+
             return true;
         }
-        
+
         /// <summary>
         /// Check whether selected statement has source Xml (meaning it was read from file rather than added in the editor)
         /// </summary>
@@ -1465,8 +1465,8 @@ namespace ArtemisMissionEditor
                 return false;
 
             if (!(TreeViewStatements.SelectedNode.Tag is MissionStatement))
-                return false; 
-            
+                return false;
+
             return !string.IsNullOrEmpty(((MissionStatement)TreeViewStatements.SelectedNode.Tag).SourceXML);
         }
 
@@ -1483,7 +1483,7 @@ namespace ArtemisMissionEditor
 
             return ((MissionStatement)TreeViewStatements.SelectedNode.Tag).ToXml(new XmlDocument()).OuterXml;
         }
-        
+
         /// <summary>
         /// Show Xml of the selected statement in a MessageBox
         /// </summary>
@@ -1517,7 +1517,7 @@ namespace ArtemisMissionEditor
         {
             string result = StatementGetXml();
 
-            if (result != null) 
+            if (result != null)
                 Clipboard.SetText(result);
         }
 
@@ -1594,7 +1594,7 @@ namespace ArtemisMissionEditor
                 TreeViewStatements.SelectedNode = lastNode;
                 lastNode = newTNode;
                 TreeViewStatements.ExpandAll();
-                
+
                 ImportMissionNodeContentsFromStatementTree();
             }
 
@@ -1622,7 +1622,7 @@ namespace ArtemisMissionEditor
         {
             if (TreeViewNodes.SelectedNode == null)
                 return;
-            
+
             BeginUpdate();
 
             foreach (TreeNode node in TreeViewNodes.SelectedNodes.ToList())
@@ -1640,7 +1640,7 @@ namespace ArtemisMissionEditor
                 }
 
             EndUpdate();
-            
+
             RecalculateNodeCount();
 
             RegisterChange("Deleted node(s)");
@@ -1677,8 +1677,8 @@ namespace ArtemisMissionEditor
             if (TreeViewNodes.SelectedNode == null)
                 return;
 
-            if (TreeViewNodes.SelectedNode.PrevNode != null 
-                && TreeViewNodes.IsFolder(TreeViewNodes.SelectedNode.PrevNode) 
+            if (TreeViewNodes.SelectedNode.PrevNode != null
+                && TreeViewNodes.IsFolder(TreeViewNodes.SelectedNode.PrevNode)
                 && TreeViewNodes.IsAllowedToHaveRelation(TreeViewNodes.SelectedNode.PrevNode, TreeViewNodes.SelectedNode, NodeRelationship.ChildGoesInside))
                 TreeViewNodes.MoveNode(TreeViewNodes.SelectedNode, TreeViewNodes.SelectedNode.PrevNode, NodeRelationship.ChildGoesInside);
             else if (TreeViewNodes.SelectedNode.NextNode != null)
@@ -1724,9 +1724,9 @@ namespace ArtemisMissionEditor
                 xDoc.Save(writer);
             }
 
-            return sb.ToString(); 
+            return sb.ToString();
         }
-        
+
         /// <summary>
         /// Show selected node's Xml in a MessageBox
         /// </summary>
@@ -1768,13 +1768,13 @@ namespace ArtemisMissionEditor
 
             foreach (TreeNode node in TreeViewNodes.SelectedNodes)
                 Xml += ((MissionNode)node.Tag).ToXml(new XmlDocument(), true).OuterXml;
-            
+
             if (!string.IsNullOrWhiteSpace(Xml))
                 Clipboard.SetText(Xml);
 
             return !string.IsNullOrWhiteSpace(Xml);
         }
-        
+
         /// <summary>
         /// Paste text from clipboard as nodes
         /// </summary>
@@ -1803,7 +1803,7 @@ namespace ArtemisMissionEditor
             bool folderMode = false;
 
             BeginUpdate(true);
-            
+
             //PASTING FOLDER
             if (root.ChildNodes.Count == 1 && root.ChildNodes[0].Name == "folder_arme")
             {
@@ -1898,7 +1898,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Find out whether a node with specified GUI exists in the mission. 
+        /// Find out whether a node with specified GUI exists in the mission.
         /// Called from NodePaste.
         /// </summary>
         private bool NodePaste_Exists(Guid? ID)
@@ -1909,7 +1909,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Find out whether a node with specified GUI exists in the current node's children list. 
+        /// Find out whether a node with specified GUI exists in the current node's children list.
         /// Called from NodePaste_Exists, recursively calls itself.
         /// </summary>
         private bool NodePaste_Exists_RecursivelySearch(TreeNode node, Guid? ID)
@@ -1922,7 +1922,7 @@ namespace ArtemisMissionEditor
 
             return false;
         }
-        
+
         /// <summary>
         /// Expand all nodes in the treeview.
         /// </summary>
@@ -1999,7 +1999,7 @@ namespace ArtemisMissionEditor
 
             RegisterChange("New event node");
         }
-        
+
         /// <summary>
         /// Add new comment to the mission
         /// </summary>
@@ -2039,7 +2039,7 @@ namespace ArtemisMissionEditor
 
             RegisterChange("New folder node");
         }
-        
+
         /// <summary>
         /// Insert one node inside other node, if possible, or below it, if not possible
         /// </summary>
@@ -2058,14 +2058,14 @@ namespace ArtemisMissionEditor
         }
 
         #endregion
-               
+
         #region Update and Recalculate
 
         /// <summary>
         /// Sets mission node's statement list with contents of statement treeview
         /// </summary>
         /// <remarks>
-        /// Used when drag and drop or copypaste or move or delete or w/e operation was preformed on the Statements TreeView, 
+        /// Used when drag and drop or copypaste or move or delete or w/e operation was preformed on the Statements TreeView,
         /// will reload MissionNode's list of statements from the control
         /// </remarks>
         private void ImportMissionNodeContentsFromStatementTree()
@@ -2164,7 +2164,7 @@ namespace ArtemisMissionEditor
 
             EndUpdate();
         }
-        
+
         /// <summary>
         /// Recalculate mission's node count
         /// </summary>
@@ -2176,7 +2176,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Calculate node count for the nodes that are children to the current node. 
+        /// Calculate node count for the nodes that are children to the current node.
         /// Called from RecalculateNodeCount and recursively calls itself.
         /// </summary>
         /// <param name="node">Current node</param>
@@ -2188,9 +2188,9 @@ namespace ArtemisMissionEditor
             if (node.Tag is MissionNode_Event)
                 EventCount = ((MissionNode_Event)node.Tag).SerialNumber > EventCount ? ((MissionNode_Event)node.Tag).SerialNumber : EventCount;
         }
-        
-        /// <summary> 
-        /// Update "Total: ..." text in the main form's status bar 
+
+        /// <summary>
+        /// Update "Total: ..." text in the main form's status bar
         /// </summary>
         private void UpdateObjectsText()
         {
@@ -2208,7 +2208,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Calculate number of items in the nodes that are child to current node. 
+        /// Calculate number of items in the nodes that are child to current node.
         /// Called from UpdateObjectsText and recursively calls itself.
         /// </summary>
         private void UpdateObjectsText_RecursivelyCount(TreeNode node, ref int folders, ref int events, ref int comments, ref int unknowns, ref int actions, ref int conditions)
@@ -2241,7 +2241,7 @@ namespace ArtemisMissionEditor
                 }
             }
         }
-                
+
         /// <summary>
         /// Update list of all sorts of names used in the mission
         /// </summary>
@@ -2410,7 +2410,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Update names lists for nodes that are child to current node. 
+        /// Update names lists for nodes that are child to current node.
         /// Called from UpdateNamesLists and recursively calls itself.
         /// </summary>
         /// <param name="node">Current node</param>
@@ -2599,7 +2599,7 @@ namespace ArtemisMissionEditor
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// Update the expression shown in the flow layout panel. Makes sure to select the same item that was selected before.
         /// </summary>
         public void UpdateExpression()
@@ -2610,7 +2610,7 @@ namespace ArtemisMissionEditor
             foreach (Control c in FlowLayoutPanelMain.Controls)
                 if (c.Focused)
                     activeControl = c;
-            
+
             ExpressionMemberValueDescription lastFocusedValueDescription = (activeControl != null && activeControl is NormalSelectableLabel && activeControl.Tag is ExpressionMemberContainer) ? ((ExpressionMemberContainer)activeControl.Tag).Member.ValueDescription : null;
             string lastFocusedValueName = (activeControl != null && activeControl is NormalSelectableLabel && activeControl.Tag is ExpressionMemberContainer) ? ((ExpressionMemberContainer)activeControl.Tag).Member.Name : null;
             List<NormalLabel> listMatchesValueDescription = new List<NormalLabel>();
@@ -2619,7 +2619,7 @@ namespace ArtemisMissionEditor
             // Part 2: Repopulating FlowLayoutPanel
 
             TreeNode node = TreeViewStatements.SelectedNode;
-            if (node == null || !(node.Tag is MissionStatement)) 
+            if (node == null || !(node.Tag is MissionStatement))
                 return;
             MissionStatement statement = (MissionStatement)node.Tag;
 
@@ -2627,7 +2627,7 @@ namespace ArtemisMissionEditor
 
             FlowLayoutPanelMain.SuspendLayout();
             FlowLayoutPanel_Clear();
-            
+
             //TODO: Update the expression in the flowchart [Forgot what this means] <-- WTF does this mean?
             // Maybe originally I wanted to update the expression directly in the flow chart without clearing and repopulating it?
             foreach (ExpressionMemberContainer item in statement.Expression)
@@ -2647,14 +2647,14 @@ namespace ArtemisMissionEditor
                 {
                     label = new NormalLabel();
                 }
-                
+
                 label.Tag = item;
 
                 if (item.Member.RequiresLinebreak)
                     FlowLayoutPanelMain.SetFlowBreak(FlowLayoutPanelMain.Controls[FlowLayoutPanelMain.Controls.Count - 1], true);
 
                 FlowLayoutPanelMain.Controls.Add(label);
-                
+
                 UpdateLabel(label);
             }
 
@@ -2721,7 +2721,7 @@ namespace ArtemisMissionEditor
 
             FlowLayoutPanelMain.ResumeLayout();
         }
-        
+
         /// <summary>
         /// Selects the specified label by its number (used when pressing a number hotkey)
         /// </summary>
@@ -2741,7 +2741,7 @@ namespace ArtemisMissionEditor
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// Update all the statements in the statement tree and updates expression if nessecary.
         /// </summary>
         public void UpdateStatementTree()
@@ -2792,9 +2792,9 @@ namespace ArtemisMissionEditor
                 ms.ConfirmUpdate();
             }
         }
-        
-        /// <summary> 
-        /// Refreshes the label display - resetting text, width and height 
+
+        /// <summary>
+        /// Refreshes the label display - resetting text, width and height
         /// </summary>
         private void UpdateLabel(NormalLabel label)
         {
@@ -2828,7 +2828,7 @@ namespace ArtemisMissionEditor
 
             return true;
         }
-        
+
         /// <summary>
         /// Returns whether the "Get node's Xml" option is available
         /// </summary>
@@ -2882,13 +2882,13 @@ namespace ArtemisMissionEditor
                 Program.FormMissionPropertiesInstance.Show();
             }
         }
-        
+
         #endregion
 
         #region Find and Replace functionality
 
-        /// <summary> 
-        /// Check for match, taking search terms in account 
+        /// <summary>
+        /// Check for match, taking search terms in account
         /// </summary>
         private bool Find_CheckStringForMatch(string text1, MissionSearchCommand msc)
         {
@@ -2905,8 +2905,8 @@ namespace ArtemisMissionEditor
                 return text1.Contains(text2);
         }
 
-        /// <summary> 
-        /// Checks if current selection (node and/or statement) matches the search criteria 
+        /// <summary>
+        /// Checks if current selection (node and/or statement) matches the search criteria
         /// </summary>
         public bool Find_DoesCurrentSelectionMatch(MissionSearchCommand msc)
         {
@@ -2919,8 +2919,8 @@ namespace ArtemisMissionEditor
             return Find_CheckStatementForMatch(TreeViewNodes.SelectedNode, (MissionStatement)TreeViewStatements.SelectedNode.Tag, -1, -1, msc).Valid;
         }
 
-        /// <summary> 
-        /// Check if the mission node matches the search criteria, return search result if it does 
+        /// <summary>
+        /// Check if the mission node matches the search criteria, return search result if it does
         /// </summary>
         private MissionSearchResult Find_CheckNodeForMatch(TreeNode node, MissionNode mNode, int curNode, MissionSearchCommand msc)
         {
@@ -2933,15 +2933,15 @@ namespace ArtemisMissionEditor
             //... or commentaries
             if (msc.Commentaries && node.Tag is MissionNode_Comment)
                 statisfies = statisfies | Find_CheckStringForMatch(mNode.Name, msc);
-                    
+
             if (statisfies)
                 return new MissionSearchResult(curNode, 0, mNode.Name, node, null);
 
             return new MissionSearchResult(curNode, 0, null, node, null);
         }
 
-        /// <summary> 
-        /// Check if mission statement matches the search criteria, return search result if it does 
+        /// <summary>
+        /// Check if mission statement matches the search criteria, return search result if it does
         /// </summary>
         private MissionSearchResult Find_CheckStatementForMatch(TreeNode node, MissionStatement statement, int curNode, int curStatement, MissionSearchCommand msc)
         {
@@ -2954,7 +2954,7 @@ namespace ArtemisMissionEditor
 
                 return new MissionSearchResult(curNode, curStatement, null, node, statement);
             }
-            
+
             bool statisfies = false;
 
             //Look for xml attribute names
@@ -2977,14 +2977,14 @@ namespace ArtemisMissionEditor
             return new MissionSearchResult(curNode, curStatement, null, node, statement);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Add the search result to the list if its not null. Returns true if we have to stop after this (we found the first in firstOnly mode, or reached the last)
         /// </summary>
         private bool Find_TryAdd(List<MissionSearchResult> list, MissionSearchResult item, bool firstOnly, ref int limitNode, ref int limitStatement)
         {
             //Stopper for when coming for a second time
             bool last = limitNode == item.CurNode && limitStatement == item.CurStatement;
-            
+
             //Remember from what to begin if in first mode
             if (firstOnly && !last && TreeViewNodes.SelectedNode == item.Node && (GetSelectedNonStatementNodePosition() == item.CurStatement || (TreeViewStatements.SelectedNode != null && TreeViewStatements.SelectedNode.Tag == item.Statement)))
             {
@@ -3006,12 +3006,12 @@ namespace ArtemisMissionEditor
         /// Also used to look for the first after the current (Find Next and Find Previous).
         /// </summary>
         /// <remarks>
-        /// In "firstOnly" mode, we actually search twice, because we always start from the first node and statement, 
-        /// but we must actually find first that happens after the current one. 
+        /// In "firstOnly" mode, we actually search twice, because we always start from the first node and statement,
+        /// but we must actually find first that happens after the current one.
         /// Therefore, we start from the first, and when we reach the current, we flag it as "limitNode" and "limitStatement",
-        /// and only since then does the first found node cause a return. 
+        /// and only since then does the first found node cause a return.
         /// And then if we reach the flagged node for the second time, we also return (with zero results)
-        /// </remarks>        
+        /// </remarks>
         public List<MissionSearchResult> FindAll(MissionSearchCommand msc, bool forward = true, bool firstOnly = false)
         {
             List<MissionSearchResult> result = new List<MissionSearchResult>();
@@ -3037,9 +3037,9 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Recursively look for matches in nodes that are child to the current node. 
-        /// Also used to look for first only (Find Next and Find Previous. 
-        /// Returns if we found first in firstOnly mode or reached last node. 
+        /// Recursively look for matches in nodes that are child to the current node.
+        /// Also used to look for first only (Find Next and Find Previous.
+        /// Returns if we found first in firstOnly mode or reached last node.
         /// Called from FindAll and recursively calls itself.
         /// </summary>
         private bool FindAll_RecursivelyFind(TreeNode node, ref int curNode, List<MissionSearchResult> list, MissionSearchCommand msc, bool forward, bool firstOnly, ref int limitNode, ref int limitStatement)
@@ -3050,7 +3050,7 @@ namespace ArtemisMissionEditor
             int curStatement = forward ? 0 : mNode.Conditions.Count + mNode.Actions.Count + 1;
 
             for (int i = 0; i < node.Nodes.Count; i++)
-                if (FindAll_RecursivelyFind(node.Nodes[forward ? i : node.Nodes.Count - 1 - i], ref curNode, list, msc, forward, firstOnly, ref limitNode, ref limitStatement)) 
+                if (FindAll_RecursivelyFind(node.Nodes[forward ? i : node.Nodes.Count - 1 - i], ref curNode, list, msc, forward, firstOnly, ref limitNode, ref limitStatement))
                     return true;
 
             //Skip node in we are only looking in the current node and this isn't current node
@@ -3060,29 +3060,29 @@ namespace ArtemisMissionEditor
             if (forward)
             {
                 //Check if node matches our search criteria
-                if (Find_TryAdd(list, Find_CheckNodeForMatch(node, mNode, curNode, msc), firstOnly, ref limitNode, ref limitStatement)) 
+                if (Find_TryAdd(list, Find_CheckNodeForMatch(node, mNode, curNode, msc), firstOnly, ref limitNode, ref limitStatement))
                     return true;
 
                 //Then we start looking through statements
                 for (int i = 0; i < mNode.Conditions.Count; i++)
-                    if (Find_TryAdd(list, Find_CheckStatementForMatch(node, mNode.Conditions[forward ? i : mNode.Conditions.Count - 1 - i], curNode, forward ? ++curStatement : --curStatement, msc), firstOnly, ref limitNode, ref limitStatement)) 
+                    if (Find_TryAdd(list, Find_CheckStatementForMatch(node, mNode.Conditions[forward ? i : mNode.Conditions.Count - 1 - i], curNode, forward ? ++curStatement : --curStatement, msc), firstOnly, ref limitNode, ref limitStatement))
                         return true;
                 for (int i = 0; i < mNode.Actions.Count; i++)
-                    if (Find_TryAdd(list, Find_CheckStatementForMatch(node, mNode.Actions[forward ? i : mNode.Actions.Count - 1 - i], curNode, forward ? ++curStatement : --curStatement, msc), firstOnly, ref limitNode, ref limitStatement)) 
+                    if (Find_TryAdd(list, Find_CheckStatementForMatch(node, mNode.Actions[forward ? i : mNode.Actions.Count - 1 - i], curNode, forward ? ++curStatement : --curStatement, msc), firstOnly, ref limitNode, ref limitStatement))
                         return true;
             }
             else
             {
                 //Then we start looking through statements
                 for (int i = 0; i < mNode.Actions.Count; i++)
-                    if (Find_TryAdd(list, Find_CheckStatementForMatch(node, mNode.Actions[forward ? i : mNode.Actions.Count - 1 - i], curNode, forward ? ++curStatement : --curStatement, msc), firstOnly, ref limitNode, ref limitStatement)) 
+                    if (Find_TryAdd(list, Find_CheckStatementForMatch(node, mNode.Actions[forward ? i : mNode.Actions.Count - 1 - i], curNode, forward ? ++curStatement : --curStatement, msc), firstOnly, ref limitNode, ref limitStatement))
                         return true;
                 for (int i = 0; i < mNode.Conditions.Count; i++)
-                    if (Find_TryAdd(list, Find_CheckStatementForMatch(node, mNode.Conditions[forward ? i : mNode.Conditions.Count - 1 - i], curNode, forward ? ++curStatement : --curStatement, msc), firstOnly, ref limitNode, ref limitStatement)) 
+                    if (Find_TryAdd(list, Find_CheckStatementForMatch(node, mNode.Conditions[forward ? i : mNode.Conditions.Count - 1 - i], curNode, forward ? ++curStatement : --curStatement, msc), firstOnly, ref limitNode, ref limitStatement))
                         return true;
 
                 //Check if node matches our search criteria
-                if (Find_TryAdd(list, Find_CheckNodeForMatch(node, mNode, curNode, msc), firstOnly, ref limitNode, ref limitStatement)) 
+                if (Find_TryAdd(list, Find_CheckNodeForMatch(node, mNode, curNode, msc), firstOnly, ref limitNode, ref limitStatement))
                     return true;
             }
 
@@ -3111,15 +3111,15 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Finds problematic places in the child nodes of the current node. 
+        /// Finds problematic places in the child nodes of the current node.
         /// Called from FindProblems and recursively calls itself.
         /// </summary>
         private void FindProblems_RecursivelyCheckNodes(TreeNode node, ref int curNode, List<MissionSearchResult> result)
         {
             //Preset list of statements that take names (under different, khm, names) of named objects
             string[] statementsThatTakeName = new string[]{
-                "destroy", 
-                "destroy_near", 
+                "destroy",
+                "destroy_near",
                 "add_ai",
                 "clear_ai",
                 "direct",
@@ -3188,10 +3188,12 @@ namespace ArtemisMissionEditor
                         bool onlyNotExists = true;
                         bool noIfVariable = true;
                         bool noIfButton = true;
+                        bool noIfProperty = true;
                         List<string> variablesCheckedHere = new List<string>();
                         List<string> timersCheckedHere = new List<string>();
                         List<string> gmButtonsCheckedHere = new List<string>();
                         List<string> commsButtonsCheckedHere = new List<string>();
+                        List<string> propertiesCheckedHere = new List<string>();
                         foreach (MissionStatement statement in mNode.Conditions)
                         {
                             if (statement.Kind == MissionStatementKind.Condition && statement.Name != "if_timer_finished")
@@ -3215,24 +3217,31 @@ namespace ArtemisMissionEditor
                                 noIfButton = false;
                                 commsButtonsCheckedHere.Add(statement.GetAttribute("text"));
                             }
+                            if (statement.Kind == MissionStatementKind.Condition && statement.Name == "if_object_property")
+                            {
+                                noIfProperty = false;
+                                string name = statement.GetAttribute("name") + "." + statement.GetAttribute("property");
+                                propertiesCheckedHere.Add(name);
+                            }
                         }
-                        
+
                         // Event has only "timer_finished" conditions
                         if (onlyTimers && !hasEndMission)
                             result.Add(new MissionSearchResult(curNode, 0, "Event contains only \"Timer finished\" condition(s). Once the timer finishes, it will keep executing on every tick, potentially introducing performance issues or even crashes.", node, null));
-                        
+
                         // Event has only "object_not_exists" conditions
                         if (onlyNotExists && !hasEndMission)
                             result.Add(new MissionSearchResult(curNode, 0, "Event contains only \"Object does not exist\" condition(s). While the specified object does not exist, it will keep executing on every tick, potentially introducing performance issues or even crashes.", node, null));
-                        
-                        // Event has no "if_variable", "if_gm_button", or "if_comms_button" conditions
-                        if (noIfVariable && noIfButton && !hasEndMission)
-                            result.Add(new MissionSearchResult(curNode, 0, "Event contains no \"If variable\", \"If GM button\", or \"If Comms button\" conditions. While this is not a mistake, it is recommended to have at least one such condition, or ensure that something inside the event always invalidates one of the conditions.", node, null));
-                        
+
+                        // Event has no "if_variable", "if_gm_button", "if_object_property", or "if_comms_button" conditions
+                        if (noIfVariable && noIfButton && noIfProperty && !hasEndMission)
+                            result.Add(new MissionSearchResult(curNode, 0, "Event contains no \"If variable\", \"If object property\", \"If GM button\", or \"If Comms button\" conditions. While this is not a mistake, it is recommended to have at least one such condition, or ensure that something inside the event always invalidates one of the conditions.", node, null));
+
                         // Event has no set_variable mirroring if_variable
                         if (timersCheckedHere.Count > 0 || variablesCheckedHere.Count > 0)
                         {
                             List<string> variablesSetHere = new List<string>();
+                            List<string> propertiesSetHere = new List<string>();
                             List<string> timersSetHere = new List<string>();
                             List<string> gmButtonsSetHere = new List<string>();
                             List<string> commsButtonsSetHere = new List<string>();
@@ -3246,6 +3255,17 @@ namespace ArtemisMissionEditor
                                     gmButtonsSetHere.Add(mNode.Actions[i].GetAttribute("text"));
                                 if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "set_comms_button")
                                     commsButtonsSetHere.Add(mNode.Actions[i].GetAttribute("text"));
+                                if (mNode.Actions[i].Kind == MissionStatementKind.Action &&
+                                    (mNode.Actions[i].Name == "set_object_property" || mNode.Actions[i].Name == "addto_object_property"))
+                                {
+                                    string name = mNode.Actions[i].GetAttribute("name") + "." + mNode.Actions[i].GetAttribute("property");
+                                    propertiesSetHere.Add(name);
+                                }
+                                if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "copy_object_property")
+                                {
+                                    string name = mNode.Actions[i].GetAttribute("name2") + "." + mNode.Actions[i].GetAttribute("property");
+                                    propertiesSetHere.Add(name);
+                                }
                             }
                             bool noCorrespondingSet = true;
                             foreach (string checkedVar in variablesCheckedHere)
@@ -3257,6 +3277,18 @@ namespace ArtemisMissionEditor
                                     if (String.IsNullOrEmpty(setVar))
                                         continue;
                                     if (setVar == checkedVar)
+                                        noCorrespondingSet = false;
+                                }
+                            }
+                            foreach (string checkedProp in propertiesCheckedHere)
+                            {
+                                if (String.IsNullOrEmpty(checkedProp))
+                                    continue;
+                                foreach (string setProp in propertiesSetHere)
+                                {
+                                    if (String.IsNullOrEmpty(setProp))
+                                        continue;
+                                    if (setProp == checkedProp)
                                         noCorrespondingSet = false;
                                 }
                             }
@@ -3366,36 +3398,36 @@ namespace ArtemisMissionEditor
                     string attName;
                     if (statement.Name == "set_variable" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !VariableCheckNames.Contains(attName))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Variable named \"" + attName + "\" is set, but never checked.", node, statement));
-                    
+
                     // Reference to a timer that is never checked
                     if (statement.Name == "set_timer" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !TimerCheckNames.Contains(attName))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Timer named \"" + attName + "\" is set, but never checked.", node, statement));
-                    
+
                     // Reference to a GM button that is never checked
                     if (statement.Name == "set_gm_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !GMButtonCheckNames.Contains(attName))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "GM button named \"" + attName + "\" is set, but never checked.", node, statement));
-                    
+
                     // Reference to clearing a GM button that is never set
                     if (statement.Name == "clear_gm_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !GMButtonSetNames.Contains(attName))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "GM button named \"" + attName + "\" is cleared, but never set.", node, statement));
-                    
+
                     // Reference to a Comms button that is never checked
                     if (statement.Name == "set_comms_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !CommsButtonCheckNames.Contains(attName))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Comms button named \"" + attName + "\" is set, but never checked.", node, statement));
-                    
+
                     // Reference to clearing a Comms button that is never set
                     if (statement.Name == "clear_comms_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !CommsButtonSetNames.Contains(attName))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Comms button named \"" + attName + "\" is cleared, but never set.", node, statement));
-                    
+
                     // Add/set_property for object which name figures in the list of objects created in the same statement
                     //TODO: Confirm or deny that this problem exists and fix this statement (also maybe copy_object_property?)
                     //if ((statement.Name == "addto_object_property" || statement.Name == "set_object_property"|| statement.Name == "add_ai"|| statement.Name == "clear_ai") && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && listCreatedInThisNode.Contains(attName))
                     //    result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Changing properties of an object \"" + attName + "\" in the event where it was just created will not work correctly.", node, statement));
-                    
+
                     // Setting side of an object that was just created
                     if (statement.Name == "set_side_value" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && namesCreatedInThisNode.Contains(attName))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "You can set the side value of an object \"" + attName + "\" in its create statement without utilising a second statement.", node, statement));
-                    
+
                     // Check path to art
                     if (statement.Name == "create" && statement.GetAttribute("type") == "genericMesh")
                     {
@@ -3410,7 +3442,7 @@ namespace ArtemisMissionEditor
                                 result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified a path relative to the mission folder. Paths to art assets should be relative to the Artemis folder.", node, statement));
                         }
                     }
-                    
+
                     // Check path to sound
                     string soundPath;
                     if ((statement.Name == "incoming_message" && !String.IsNullOrWhiteSpace(soundPath = statement.GetAttribute("fileName")))
@@ -3424,7 +3456,7 @@ namespace ArtemisMissionEditor
                         else if (path.Contains("dat"))
                             result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified a path relative to the Artemis folder. Paths to sound assets should be relative to the mission folder.", node, statement));
                     }
-                    
+
                     // Refernce to a name never created
                     List<string> namesToCheck = new List<string>();
                     if (statementsThatTakeName.Contains(statement.Name))
@@ -3464,7 +3496,7 @@ namespace ArtemisMissionEditor
                     }
                 }
             }
-            
+
             foreach (TreeNode child in node.Nodes)
                 FindProblems_RecursivelyCheckNodes(child, ref curNode, result);
         }
@@ -3489,7 +3521,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Highlight errors in nodes that are child to the current node. Returns how many nodes were highlighted. 
+        /// Highlight errors in nodes that are child to the current node. Returns how many nodes were highlighted.
         /// Called from HighlightErrors and recursively calls itself.
         /// </summary>
         public int HighlightErrors_RecursivelyFind(TreeNode node)
@@ -3513,7 +3545,7 @@ namespace ArtemisMissionEditor
 
             return count;
         }
-        
+
         /// <summary>
         /// Highlights statement if it's erroneous and returns whether or not it was highlighted
         /// </summary>
@@ -3607,8 +3639,8 @@ namespace ArtemisMissionEditor
             return replacements;
         }
 
-        /// <summary> 
-        /// Replace in currently selected node and statement 
+        /// <summary>
+        /// Replace in currently selected node and statement
         /// </summary>
         public int ReplaceCurrent(MissionSearchCommand msc)
         {
@@ -3638,7 +3670,7 @@ namespace ArtemisMissionEditor
                 replacements += ReplaceAll_RecursiveReplace(TreeViewNodes.Nodes[i], ref curNode, list, msc);
 
             OutputMissionNodeContentsToStatementTree();
-            
+
             RegisterChange("Replaced '" + msc.Input + "' with '" + msc.Replacement + "' " + replacements.ToString() + " time(s).");
 
             EndUpdate();
@@ -3647,7 +3679,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Replace according to specified command in all nodes that are child to the current node. 
+        /// Replace according to specified command in all nodes that are child to the current node.
         /// Called from ReplaceAll and recursively calls itself.
         /// </summary>
         private int ReplaceAll_RecursiveReplace(TreeNode node, ref int curNode, List<MissionSearchResult> list, MissionSearchCommand msc)
@@ -3697,16 +3729,16 @@ namespace ArtemisMissionEditor
                 return null;
 
             TreeNode result = null;
-            
+
             foreach (TreeNode node in TreeViewStatements.Nodes)
-                if ((result = GetStatementNode_RecursivelySelect(node, statement)) != null) 
+                if ((result = GetStatementNode_RecursivelySelect(node, statement)) != null)
                     return result;
 
             return null;
         }
 
         /// <summary>
-        /// Try to find node that represents the supplied statement in the child nodes of the current node. 
+        /// Try to find node that represents the supplied statement in the child nodes of the current node.
         /// Called from GetStatementNode and recursively calls itself.
         /// </summary>
         /// <param name="node"></param>
@@ -3716,7 +3748,7 @@ namespace ArtemisMissionEditor
         {
             TreeNode result = null;
             foreach (TreeNode child in node.Nodes)
-                if ((result = GetStatementNode_RecursivelySelect(child, statement)) != null) 
+                if ((result = GetStatementNode_RecursivelySelect(child, statement)) != null)
                     return result;
 
             if (node.Tag == statement)
@@ -3724,7 +3756,7 @@ namespace ArtemisMissionEditor
 
             return null;
         }
-        
+
         /// <summary>
         /// Select statement (either forcing it to be single selected statement or allowing it to get added to selection if Shift was pressed)
         /// </summary>
@@ -3746,9 +3778,9 @@ namespace ArtemisMissionEditor
                 _E_statementTV_AfterSelect(null, null);
             }
         }
-        
+
         /// <summary>
-        /// Find first label in the list of labels representing currently selected statement that is capable of receiving +/- commands. 
+        /// Find first label in the list of labels representing currently selected statement that is capable of receiving +/- commands.
         /// </summary>
         /// <remarks>
         /// Used to increment or decrement statement's value without selecting it when appropriate (like, with set_variable action)
@@ -3835,12 +3867,12 @@ namespace ArtemisMissionEditor
             bool convertEvents = false;
             bool convertFolders = false;
             int convertedCount = 0;
-            
+
             foreach (TreeNode node in TreeViewNodes.SelectedNodes)
             {
                 if (node.Parent != null)
-                    continue; 
-                
+                    continue;
+
                 convertEvents = convertEvents || (node.Tag is MissionNode_Event && (((MissionNode_Event)node.Tag).Actions.Count > 0 || ((MissionNode_Event)node.Tag).Conditions.Count > 0));
                 convertFolders = convertFolders || (node.Nodes.Count > 0);
             }
@@ -3867,15 +3899,15 @@ namespace ArtemisMissionEditor
                     continue;
                 if (!convertFolders && node.Nodes.Count > 0)
                     continue;
-                
-                
+
+
                 MissionNode_Comment mnc = new MissionNode_Comment();
                 mnc.Name = node.Text;
                 node.Nodes.Clear();
                 node.Tag = mnc;
                 node.ImageIndex = mnc.ImageIndex;
                 node.SelectedImageIndex = mnc.ImageIndex;
-                
+
                 if (node == TreeViewNodes.SelectedNode)
                     OutputMissionNodeContentsToStatementTree();
 
@@ -3897,8 +3929,8 @@ namespace ArtemisMissionEditor
             foreach (TreeNode node in TreeViewNodes.SelectedNodes)
             {
                 if (node.Tag is MissionNode_Comment && TreeViewNodes.Nodes.IndexOf(_startNode) > TreeViewNodes.Nodes.IndexOf(node))
-                    continue; 
-                
+                    continue;
+
                 convertFolders = convertFolders || (node.Nodes.Count > 0);
             }
 
@@ -3961,7 +3993,7 @@ namespace ArtemisMissionEditor
             foreach (TreeNode node in TreeViewNodes.SelectedNodes)
             {
                 if (node.Tag is MissionNode_Comment && TreeViewNodes.Nodes.IndexOf(_startNode) > TreeViewNodes.Nodes.IndexOf(node))
-                    continue; 
+                    continue;
 
                 convertEvents = convertEvents || (node.Tag is MissionNode_Event && (((MissionNode_Event)node.Tag).Actions.Count > 0 || ((MissionNode_Event)node.Tag).Conditions.Count > 0));
             }
@@ -3995,7 +4027,7 @@ namespace ArtemisMissionEditor
                 {
                     mnf.ID = Guid.NewGuid();
                     mnf.ParentID = null;
-                } 
+                }
                 node.Tag = mnf;
                 node.ImageIndex = mnf.ImageIndex;
                 node.SelectedImageIndex = mnf.ImageIndex;
@@ -4050,8 +4082,8 @@ namespace ArtemisMissionEditor
         #region Space map interaction
 
         /// <summary>
-        /// Returns whether or not the user can invoke "Add via space map" 
-        /// or "Edit on space map" options on the specified node. 
+        /// Returns whether or not the user can invoke "Add via space map"
+        /// or "Edit on space map" options on the specified node.
         /// If not specified, selected node from Nodes TreeView is used.
         /// </summary>
         /// <param name="node">Node from Nodes Treeview. If null - selected node is used.</param>
@@ -4061,7 +4093,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Returns whether or not the user can invoke "Edit on space map" option on the specified node. 
+        /// Returns whether or not the user can invoke "Edit on space map" option on the specified node.
         /// If not specified, selected node from Nodes TreeView is used.
         /// </summary>
         /// <param name="node">Node from Nodes Treeview. If null - selected node is used.</param>
@@ -4071,8 +4103,8 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Returns whether or not the user can invoke "Add via space map" 
-        /// but not "Edit on space map" option on the specified node. 
+        /// Returns whether or not the user can invoke "Add via space map"
+        /// but not "Edit on space map" option on the specified node.
         /// If not specified, selected node from Nodes TreeView is used.
         /// </summary>
         /// <param name="node">Node from Nodes Treeview. If null - selected node is used.</param>
@@ -4082,7 +4114,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Returns the amount of "create" statements the specified node. 
+        /// Returns the amount of "create" statements the specified node.
         /// Returns -1 if specified node cannot contain a create statement.
         /// If not specified, selected node from Nodes TreeView is used.
         /// </summary>
@@ -4102,7 +4134,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Handles everything about "Add via space map" feature 
+        /// Handles everything about "Add via space map" feature
         /// (preparing data, opening the map, parsing the results).
         /// </summary>
         /// <param name="nodeUnderCursor">Specified when invoked via dropdown menu, unspecified when invoked via hotkey</param>
@@ -4119,7 +4151,7 @@ namespace ArtemisMissionEditor
             XmlDocument xDoc;
             XmlNode root;
             string bgXml = "<bgInput></bgInput>";
-            
+
             if (Settings.Current.ShowStartStatementsInBackground && BackgroundNode != TreeViewNodes.SelectedNode)
             {
                 MissionNode bgNode = (MissionNode)BackgroundNode.Tag;
@@ -4167,7 +4199,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Handles everything about "Edit on space map" feature 
+        /// Handles everything about "Edit on space map" feature
         /// (preparing data, opening the map, parsing the results).
         /// </summary>
         /// <param name="nodeUnderCursor">Specified when invoked via dropdown menu, unspecified when invoked via hotkey</param>
@@ -4194,7 +4226,7 @@ namespace ArtemisMissionEditor
             XmlNode root;
             string editXml = "<createInput></createInput>";
             string bgXml = "<bgInput></bgInput>";
-            
+
             xDoc = new XmlDocument();
             root = xDoc.CreateElement("createInput");
             xDoc.AppendChild(root);
@@ -4245,7 +4277,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Process results from "Add via space map" or "Edit on space map" features. 
+        /// Process results from "Add via space map" or "Edit on space map" features.
         /// Adds and removes nessecary actions to the current statement.
         /// </summary>
         /// <param name="toDelete">List of original statements that were submitted for editing.</param>
@@ -4263,7 +4295,7 @@ namespace ArtemisMissionEditor
 
             //Target point for all objects that are not after an Imported object
             int target_point = topmost == -1 ? curNode.Actions.Count : topmost;
-            
+
             // Import Named objects from Space map
 
             i = result.NamedObjects.Count;
@@ -4297,7 +4329,7 @@ namespace ArtemisMissionEditor
             {
                 ParseSpaceMapCreateResults_InsertNameless(ref i, curNode, target_point, result, xDoc, missingProperties);
             }
-            
+
             //Final stuff
 
             foreach (MissionStatement statement in toDelete)
@@ -4313,7 +4345,7 @@ namespace ArtemisMissionEditor
         private void ParseSpaceMapCreateResults_InsertNamed(ref int i, MissionNode curNode, int position, SpaceMap.Space result, XmlDocument xDoc, List<string> missingProperties)
         {
             i--;
-            missingProperties.Clear(); 
+            missingProperties.Clear();
             curNode.Actions.Insert(position,
                 MissionStatement.NewFromXML(result.NamedObjects[i].ToXml(xDoc, missingProperties), curNode));
 
@@ -4354,7 +4386,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Handles everything about "Edit statement on space map" feature 
+        /// Handles everything about "Edit statement on space map" feature
         /// (preparing data, opening the map, parsing the results).
         /// </summary>
         public void EditStatementOnSpaceMap()
@@ -4365,7 +4397,7 @@ namespace ArtemisMissionEditor
             int i = 0;
 
             MissionNode curNode = (MissionNode)TreeViewNodes.SelectedNode.Tag;
-            
+
             XmlDocument xDoc;
             XmlNode root;
             string statementXml = "<statementInput></statementInput>";
@@ -4393,7 +4425,7 @@ namespace ArtemisMissionEditor
             MissionStatement curStatement = (MissionStatement)TreeViewStatements.SelectedNode.Tag;
             root.AppendChild(curStatement.ToXml(xDoc));
             statementXml = xDoc.OuterXml;
-            
+
             if (Settings.Current.ShowStartStatementsInBackground)
             {
                 MissionNode bgNode = (MissionNode)BackgroundNode.Tag;
@@ -4419,7 +4451,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Process results from "Edit statement on space map" feature. 
+        /// Process results from "Edit statement on space map" feature.
         /// </summary>
         /// <param name="curStatement">Statement being edited</param>
         /// <param name="result">Result from space map dialog</param>
@@ -4457,7 +4489,7 @@ namespace ArtemisMissionEditor
             }
              ((ExpressionMemberContainer)label.Tag).OnClick(label, where, mode);
         }
-       
+
         /// <summary>
         /// Label was clicked by mouse.
         /// </summary>
@@ -4572,7 +4604,7 @@ namespace ArtemisMissionEditor
             if (e.KeyCode == Keys.OemMinus || e.KeyCode == Keys.Subtract)
             {
                 e.IsInputKey = true;
-                
+
                 ExpressionMemberValueEditorActivationMode mode = ExpressionMemberValueEditorActivationMode.Minus;
                 mode = Control.ModifierKeys == (Keys.Alt)                    ? ExpressionMemberValueEditorActivationMode.Minus01        : mode;
                 mode = Control.ModifierKeys == (Keys.Shift)                    ? ExpressionMemberValueEditorActivationMode.Minus10        : mode;
@@ -4584,7 +4616,7 @@ namespace ArtemisMissionEditor
             if (e.KeyCode == Keys.Oemplus || e.KeyCode == Keys.Add)
             {
                 e.IsInputKey = true;
-                
+
                 ExpressionMemberValueEditorActivationMode mode =              ExpressionMemberValueEditorActivationMode.Plus;
                 mode = Control.ModifierKeys == (Keys.Alt)                    ? ExpressionMemberValueEditorActivationMode.Plus01        : mode;
                 mode = Control.ModifierKeys == (Keys.Shift)                    ? ExpressionMemberValueEditorActivationMode.Plus10        : mode;
@@ -4619,7 +4651,7 @@ namespace ArtemisMissionEditor
             if (!e.SuspendUpdate)
                 RegisterChange("Statement moved");
         }
-        
+
         /// <summary>
         /// After node was selected in mission nodes tree
         /// </summary>
@@ -4723,7 +4755,7 @@ namespace ArtemisMissionEditor
                 FormMain.BeginInvoke(new Action(() =>
                 New()
                 ));
-            } 
+            }
             if (e.KeyData == (Keys.O | Keys.Control))
             {
                 e.SuppressKeyPress = true;
@@ -5022,7 +5054,7 @@ namespace ArtemisMissionEditor
                 e.SuppressKeyPress = true;
                 StatementSetEnabled(true);
             }
-            
+
             //CMS keys
             if (e.KeyCode == Keys.Up && Control.ModifierKeys == Keys.Control)
             {
@@ -5133,7 +5165,7 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Gets text representation of the difference for nodes that are child to the current node. 
+        /// Gets text representation of the difference for nodes that are child to the current node.
         /// Called from GetDifferenceVersusSource and recursively calls itself.
         /// </summary>
         private void GetDifferenceVersusSource_RecursivelyOutput
