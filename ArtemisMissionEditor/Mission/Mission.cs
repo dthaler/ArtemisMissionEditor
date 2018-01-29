@@ -2345,7 +2345,70 @@ namespace ArtemisMissionEditor
             if (this == Current)
                 OnNamesListUpdated(this, null);
         }
-        
+
+        /// <summary>
+        /// Update names lists for variables embedded in text.
+        /// </summary>
+        /// <param name="statement">Statement</param>
+        /// <param name="attName">Attribute name</param>
+        private void UpdateNamesLists_ScanText(MissionStatement statement, string attName)
+        {
+            string text = statement.GetAttribute(attName);
+            if (text == null)
+            {
+                return;
+            }
+            string[] substrings = text.Split('|');
+            for (int i = 1; i < substrings.Length; i += 2)
+            {
+                string var_name = substrings[i];
+                VariableCheckNames.Add(var_name);
+            }
+        }
+
+        /// <summary>
+        /// Update names lists for variables in an expression.
+        /// </summary>
+        /// <param name="statement">Statement</param>
+        /// <param name="attName">Attribute name</param>
+        private void UpdateNamesLists_ScanExpression(MissionStatement statement, string attName)
+        {
+            string expr = statement.GetAttribute(attName);
+            if (expr == null)
+            {
+                return;
+            }
+            bool inVariable = false;
+            int startIndex = -1;
+            for (int i = 0; i < expr.Length; i++)
+            {
+                char c = expr[i];
+                if (Char.IsLetter(c))
+                {
+                    if (!inVariable)
+                    {
+                        inVariable = true;
+                        startIndex = i;
+                    }
+                }
+                else if (!Char.IsDigit(c))
+                {
+                    if (inVariable)
+                    {
+                        inVariable = false;
+                        string var_name = expr.Substring(startIndex, i - startIndex);
+                        VariableCheckNames.Add(var_name);
+                    }
+                }
+            }
+            if (inVariable)
+            {
+                inVariable = false;
+                string var_name = expr.Substring(startIndex, expr.Length - startIndex);
+                VariableCheckNames.Add(var_name);
+            }
+        }
+
         /// <summary>
         /// Update names lists for nodes that are child to current node. 
         /// Called from UpdateNamesLists and recursively calls itself.
@@ -2378,6 +2441,14 @@ namespace ArtemisMissionEditor
                             VariableCheckLocations.Add(var_name, new List<MissionNode>());
                         VariableCheckLocations[var_name].Add(((MissionNode)node.Tag));
                     }
+                }
+
+                if (statement.Name == "if_distance" ||
+                    statement.Name == "if_difficulty" ||
+                    statement.Name == "if_fleet_count" ||
+                    statement.Name == "if_variable")
+                {
+                    UpdateNamesLists_ScanExpression(statement, "value");
                 }
 
                 if (statement.Name == "if_timer_finished")
@@ -2423,6 +2494,22 @@ namespace ArtemisMissionEditor
                 if (statement.Kind != MissionStatementKind.Action)
                     continue;
 
+
+                if (statement.Name == "add_ai")
+                {
+                    UpdateNamesLists_ScanExpression(statement, "value1");
+                    UpdateNamesLists_ScanExpression(statement, "value2");
+                    UpdateNamesLists_ScanExpression(statement, "value3");
+                    UpdateNamesLists_ScanExpression(statement, "value4");
+                }
+
+                if ((statement.Name == "addto_object_property") ||
+                    (statement.Name == "set_object_property") ||
+                    (statement.Name == "set_variable"))
+                {
+                    UpdateNamesLists_ScanExpression(statement, "value");
+                }
+
                 if (statement.Name == "create")
                 {
                     string type = statement.GetAttribute("type");
@@ -2437,6 +2524,16 @@ namespace ArtemisMissionEditor
 
                     if (type == "player")
                         AmountOfCreatePlayerStatements++;
+
+                    UpdateNamesLists_ScanExpression(statement, "x");
+                    UpdateNamesLists_ScanExpression(statement, "y");
+                    UpdateNamesLists_ScanExpression(statement, "z");
+                    UpdateNamesLists_ScanExpression(statement, "angle");
+                }
+
+                if (statement.Name == "log_text")
+                {
+                    UpdateNamesLists_ScanText(statement, "text");
                 }
 
                 if (statement.Name == "set_variable")
@@ -2461,6 +2558,8 @@ namespace ArtemisMissionEditor
                         if (!TimerSetNames.Contains(var_timer))
                             TimerSetNames.Add(var_timer);
                     }
+
+                    UpdateNamesLists_ScanExpression(statement, "seconds");
                 }
 
                 if (statement.Name == "set_gm_button")
@@ -2485,6 +2584,12 @@ namespace ArtemisMissionEditor
                         if (!CommsButtonSetNames.Contains(var_text))
                             CommsButtonSetNames.Add(var_text);
                     }
+                }
+
+                if (statement.Name == "set_ship_text")
+                {
+                    UpdateNamesLists_ScanText(statement, "scan_desc");
+                    UpdateNamesLists_ScanText(statement, "hailtext");
                 }
 
                 if (statement.Name == "end_mission")
