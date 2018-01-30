@@ -3157,6 +3157,7 @@ namespace ArtemisMissionEditor
 
                 // Find all objects created in this node
                 List<string> namesCreatedInThisNode = new List<string>();
+                List<string> namesDestroyedInThisNode = new List<string>();
                 bool hasEndMission = false;
                 bool hasNonEndMission = false;
                 foreach (MissionStatement statement in mNode.Actions)
@@ -3166,6 +3167,8 @@ namespace ArtemisMissionEditor
                     string attName;
                     if (statement.Name == "create" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")))
                         namesCreatedInThisNode.Add(attName);
+                    if (statement.Name == "destroy" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")))
+                        namesDestroyedInThisNode.Add(attName);
                     if (statement.Name == "end_mission")
                         hasEndMission = true;
                     else if (statement.Name != "log")
@@ -3189,6 +3192,7 @@ namespace ArtemisMissionEditor
                         bool noIfVariable = true;
                         bool noIfButton = true;
                         bool noIfProperty = true;
+                        List<string> namesCheckedHere = new List<string>();
                         List<string> variablesCheckedHere = new List<string>();
                         List<string> timersCheckedHere = new List<string>();
                         List<string> gmButtonsCheckedHere = new List<string>();
@@ -3196,32 +3200,50 @@ namespace ArtemisMissionEditor
                         List<string> propertiesCheckedHere = new List<string>();
                         foreach (MissionStatement statement in mNode.Conditions)
                         {
-                            if (statement.Kind == MissionStatementKind.Condition && statement.Name != "if_timer_finished")
+                            if (statement.Kind != MissionStatementKind.Condition)
+                                continue;
+                            if (statement.Name != "if_timer_finished")
                                 onlyTimers = false;
-                            if (statement.Kind == MissionStatementKind.Condition && statement.Name != "if_not_exists")
+                            if (statement.Name != "if_not_exists")
                                 onlyNotExists = false;
-                            if (statement.Kind == MissionStatementKind.Condition && statement.Name == "if_variable")
+                            if (statement.Name == "if_variable")
                             {
                                 noIfVariable = false;
                                 variablesCheckedHere.Add(statement.GetAttribute("name"));
                             }
-                            if (statement.Kind == MissionStatementKind.Condition && statement.Name == "if_timer_finished")
+                            if (statement.Name == "if_timer_finished")
                                 timersCheckedHere.Add(statement.GetAttribute("name"));
-                            if (statement.Kind == MissionStatementKind.Condition && statement.Name == "if_gm_button")
+                            if (statement.Name == "if_gm_button")
                             {
                                 noIfButton = false;
                                 gmButtonsCheckedHere.Add(statement.GetAttribute("text"));
                             }
-                            if (statement.Kind == MissionStatementKind.Condition && statement.Name == "if_comms_button")
+                            if (statement.Name == "if_comms_button")
                             {
                                 noIfButton = false;
                                 commsButtonsCheckedHere.Add(statement.GetAttribute("text"));
                             }
-                            if (statement.Kind == MissionStatementKind.Condition && statement.Name == "if_object_property")
+                            if (statement.Name == "if_object_property")
                             {
                                 noIfProperty = false;
                                 string name = statement.GetAttribute("name") + "." + statement.GetAttribute("property");
                                 propertiesCheckedHere.Add(name);
+                            }
+                            // Look for names whose existence is checked for.
+                            if (statementsThatTakeName.Contains(statement.Name) && statement.Name != "if_not_exists")
+                            {
+                                string name = statement.GetAttribute("name");
+                                if (!String.IsNullOrEmpty(name))
+                                    namesCheckedHere.Add(name);
+                            }
+                            if (statementsThatTakeName12.Contains(statement.Name))
+                            {
+                                string name = statement.GetAttribute("name1");
+                                if (!String.IsNullOrEmpty(name))
+                                    namesCheckedHere.Add(name);
+                                name = statement.GetAttribute("name2");
+                                if (!String.IsNullOrEmpty(name))
+                                    namesCheckedHere.Add(name);
                             }
                         }
 
@@ -3325,6 +3347,18 @@ namespace ArtemisMissionEditor
                                     if (String.IsNullOrEmpty(setTimer))
                                         continue;
                                     if (setTimer == checkedTimer)
+                                        noCorrespondingSet = false;
+                                }
+                            }
+                            foreach (string checkedName in namesCheckedHere)
+                            {
+                                if (String.IsNullOrEmpty(checkedName))
+                                    continue;
+                                foreach (string destroyedName in namesDestroyedInThisNode)
+                                {
+                                    if (String.IsNullOrEmpty(destroyedName))
+                                        continue;
+                                    if (destroyedName == checkedName)
                                         noCorrespondingSet = false;
                                 }
                             }
