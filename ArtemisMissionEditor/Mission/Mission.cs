@@ -3188,11 +3188,8 @@ namespace ArtemisMissionEditor
                     if (mNode.Conditions.Count > 0)
                     {
                         bool onlyTimers = true;
-                        bool onlyNotExists = true;
-                        bool noIfVariable = true;
-                        bool noIfButton = true;
-                        bool noIfProperty = true;
                         List<string> namesCheckedHere = new List<string>();
+                        List<string> namesCheckedForNonExistenceHere = new List<string>();
                         List<string> variablesCheckedHere = new List<string>();
                         List<string> timersCheckedHere = new List<string>();
                         List<string> gmButtonsCheckedHere = new List<string>();
@@ -3204,28 +3201,18 @@ namespace ArtemisMissionEditor
                                 continue;
                             if (statement.Name != "if_timer_finished")
                                 onlyTimers = false;
-                            if (statement.Name != "if_not_exists")
-                                onlyNotExists = false;
+                            if (statement.Name == "if_not_exists")
+                                namesCheckedForNonExistenceHere.Add(statement.GetAttribute("name"));
                             if (statement.Name == "if_variable")
-                            {
-                                noIfVariable = false;
                                 variablesCheckedHere.Add(statement.GetAttribute("name"));
-                            }
                             if (statement.Name == "if_timer_finished")
                                 timersCheckedHere.Add(statement.GetAttribute("name"));
                             if (statement.Name == "if_gm_button")
-                            {
-                                noIfButton = false;
                                 gmButtonsCheckedHere.Add(statement.GetAttribute("text"));
-                            }
                             if (statement.Name == "if_comms_button")
-                            {
-                                noIfButton = false;
                                 commsButtonsCheckedHere.Add(statement.GetAttribute("text"));
-                            }
                             if (statement.Name == "if_object_property")
                             {
-                                noIfProperty = false;
                                 string name = statement.GetAttribute("name") + "." + statement.GetAttribute("property");
                                 propertiesCheckedHere.Add(name);
                             }
@@ -3250,14 +3237,6 @@ namespace ArtemisMissionEditor
                         // Event has only "timer_finished" conditions
                         if (onlyTimers && !hasEndMission)
                             result.Add(new MissionSearchResult(curNode, 0, "Event contains only \"Timer finished\" condition(s). Once the timer finishes, it will keep executing on every tick, potentially introducing performance issues or even crashes.", node, null));
-
-                        // Event has only "object_not_exists" conditions
-                        if (onlyNotExists && !hasEndMission)
-                            result.Add(new MissionSearchResult(curNode, 0, "Event contains only \"Object does not exist\" condition(s). While the specified object does not exist, it will keep executing on every tick, potentially introducing performance issues or even crashes.", node, null));
-
-                        // Event has no "if_variable", "if_gm_button", "if_object_property", or "if_comms_button" conditions
-                        if (noIfVariable && noIfButton && noIfProperty && !hasEndMission)
-                            result.Add(new MissionSearchResult(curNode, 0, "Event contains no \"If variable\", \"If object property\", \"If GM button\", or \"If Comms button\" conditions. While this is not a mistake, it is recommended to have at least one such condition, or ensure that something inside the event always invalidates one of the conditions.", node, null));
 
                         // Event has no set_variable mirroring if_variable
                         if (timersCheckedHere.Count > 0 || variablesCheckedHere.Count > 0)
@@ -3359,6 +3338,18 @@ namespace ArtemisMissionEditor
                                     if (String.IsNullOrEmpty(destroyedName))
                                         continue;
                                     if (destroyedName == checkedName)
+                                        noCorrespondingSet = false;
+                                }
+                            }
+                            foreach (string checkedName in namesCheckedForNonExistenceHere)
+                            {
+                                if (String.IsNullOrEmpty(checkedName))
+                                    continue;
+                                foreach (string createdName in namesCreatedInThisNode)
+                                {
+                                    if (String.IsNullOrEmpty(createdName))
+                                        continue;
+                                    if (createdName == checkedName)
                                         noCorrespondingSet = false;
                                 }
                             }
