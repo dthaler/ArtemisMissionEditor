@@ -82,9 +82,8 @@ namespace ArtemisMissionEditor.Expressions
             eML = this.Add("selected by GM "); //Choices[1]
 			eML.Add(new ExpressionMember("", ExpressionMemberValueDescriptions.UseGM, "use_gm_selection"));
           
-            eML = this.Add("in player slot "); //Choices[2]
+            eML = this.Add("in player slot"); //Choices[2]
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.UseSlot, "player_slot"));
-       
-            }
+        }
 	}
 }
