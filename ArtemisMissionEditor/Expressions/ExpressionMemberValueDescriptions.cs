@@ -171,7 +171,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD Check_DistanceNebula =       new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DistanceNebulaCheck,null,null,""," ");
         /// <summary> "value" radius from [add_ai] </summary>
         public static EMVD ValueRadius =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger,0,100000,""," ");
-        /// <summary> "value" radius (/w trailing) from [add_ai] </summary>
+        /// <summary> "value" radius (without trailing space) from [add_ai] </summary>
         public static EMVD ValueRadiusQ =               new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger,0,100000,"","");
         /// <summary> "value" throttle from [add_ai] </summary>
         public static EMVD ValueT =                     new EMVD(EMVT.VarDouble,    EMVB.StoredWhenFilled,  EMVE.DefaultDouble,0.0,null,"","","0.0");
@@ -238,6 +238,8 @@ namespace ArtemisMissionEditor.Expressions
 
         /// <summary> "value" from [set_object_property,...] </summary>
         public static EMVD ValueF =                     new EMVD(EMVT.VarDouble,    EMVB.StoredWhenFilled,  EMVE.DefaultDouble);
+        /// <summary> float value with no trailing space </summary>
+        public static EMVD ValueFQ =                    new EMVD(EMVT.VarDouble,    EMVB.StoredWhenFilled,  EMVE.DefaultDouble, null, null, "", "");
 
         /// <summary> "property" from [set_fleet_property]  </summary>
         public static EMVD PropertyF =                  new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.PropertyFleet, null, null, "\"", "\" ", "fleetSpacing");

@@ -24,29 +24,34 @@ namespace ArtemisMissionEditor.Expressions
 
 			switch (type)
 			{
-				case "TRY_TO_BECOME_LEADER":return "<NOTHING>";
-				case "CHASE_PLAYER":		return "<CHASE>";
-				case "CHASE_AI_SHIP":		return "<CHASE>";
-				case "CHASE_STATION":		return "<CHASE_NO_NEBULA>";
-				case "CHASE_WHALE":			return "<CHASE_NO_NEBULA>";
-				case "AVOID_WHALE":			return "<AVOID>";
+				case "ATTACK":				return "ATTACK";
 				case "AVOID_BLACK_HOLE":	return "<AVOID>";
+				case "AVOID_WHALE":			return "<AVOID>";
+				case "CHASE_AI_SHIP":		return "<CHASE>";
 				case "CHASE_ANGER":			return "<NOTHING>";
 				case "CHASE_FLEET":			return "CHASE_FLEET";
-				case "FOLLOW_LEADER":		return "<NOTHING>";
-				case "FOLLOW_COMMS_ORDERS": return "<NOTHING>";
-				//case "FOLLOW_NEUTRAL_PATH": return "<NOTHING>";
-				case "LEADER_LEADS":		return "<NOTHING>";
-				case "SPCL_AI":			return "<NOTHING>";
-				case "DIR_THROTTLE":		return "DIR_THROTTLE";
-				case "POINT_THROTTLE":		return "POINT_THROTTLE";
-				case "TARGET_THROTTLE":		return "TARGET_THROTTLE";
-				case "ATTACK":				return "ATTACK";
+				case "CHASE_MONSTER":		return "<CHASE_NO_NEBULA>";
+				case "CHASE_PLAYER":		return "<CHASE>";
+				case "CHASE_STATION":		return "<CHASE_NO_NEBULA>";
+				case "CHASE_WHALE":			return "<CHASE_NO_NEBULA>";
 				case "DEFEND":				return "DEFEND";
-				case "PROCEED_TO_EXIT":		return "<NOTHING>";
+				case "DIR_THROTTLE":		return "DIR_THROTTLE";
 				case "FIGHTER_BINGO":		return "<NOTHING>";
-				case "LAUNCH_FIGHTERS":		return "LAUNCH_FIGHTERS";
+				case "FOLLOW_COMMS_ORDERS": return "<NOTHING>";
+				case "FOLLOW_LEADER":		return "<NOTHING>";
+				case "FRENZY_ATTACK":		return "<NOTHING>";
+				case "GO_TO_HOLE":		    return "GO_TO_HOLE";
 				case "GUARD_STATION":       return "GUARD_STATION";
+				case "LAUNCH_FIGHTERS":		return "LAUNCH_FIGHTERS";
+				case "LEADER_LEADS":		return "<NOTHING>";
+				case "MOVE_WITH_GROUP":		return "MOVE_WITH_GROUP";
+				case "POINT_THROTTLE":		return "POINT_THROTTLE";
+				case "PROCEED_TO_EXIT":		return "<NOTHING>";
+				case "RELEASE_PIRANHAS":	return "RELEASE_PIRANHAS";
+				case "SPCL_AI":			    return "<NOTHING>";
+				case "STAY_CLOSE":			return "STAY_CLOSE";
+				case "TARGET_THROTTLE":		return "TARGET_THROTTLE";
+				case "TRY_TO_BECOME_LEADER":return "<NOTHING>";
 				default:
 					return "<INVALID_TYPE>";//This must be further converted in SetValue to some valid one, and type must be set there as well
 			}
@@ -107,7 +112,7 @@ namespace ArtemisMissionEditor.Expressions
 
 			#endregion
 
-			#region <CHASE>		(CHASE_PLAYER, CHASE_NEUTRAL, CHASE_ENEMY)
+			#region <CHASE>		(CHASE_PLAYER, CHASE_AI_SHIP)
 
 			eML = this.Add("<CHASE>");
 			____Add_Type(eML);
@@ -119,7 +124,7 @@ namespace ArtemisMissionEditor.Expressions
 
 			#endregion
 
-			#region <CHASE_NO_NEBULA>		(CHASE_STATION, CHASE_WHALE)
+			#region <CHASE_NO_NEBULA>		(CHASE_STATION, CHASE_WHALE, CHASE_MONSTER)
 
 			eML = this.Add("<CHASE_NO_NEBULA>");
 			____Add_Type(eML);
@@ -128,7 +133,8 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("is "));
 			eML.Add(new ExpressionMember("closer "));
 			eML.Add(new ExpressionMember("than "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadius, "value1"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
+            eML.Add(new ExpressionMember("\" "));
 			____Add_Name(eML);
 
 			#endregion
@@ -142,7 +148,8 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("is "));
 			eML.Add(new ExpressionMember("closer "));
 			eML.Add(new ExpressionMember("than "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadius, "value1"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
+            eML.Add(new ExpressionMember("\" "));
 			____Add_Name(eML);
 
 			#endregion
@@ -178,6 +185,50 @@ namespace ArtemisMissionEditor.Expressions
 
 			#endregion
 
+			#region GO_TO_HOLE
+
+            eML = this.Add("GO_TO_HOLE");
+            ____Add_Type(eML);
+            eML.Add(new ExpressionMember("with "));
+            eML.Add(new ExpressionMember("value1 "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value1"));
+            eML.Add(new ExpressionMember(", "));
+            eML.Add(new ExpressionMember("value2 "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value2"));
+            eML.Add(new ExpressionMember(", "));
+            eML.Add(new ExpressionMember("value3 "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value3"));
+            eML.Add(new ExpressionMember(", "));
+            eML.Add(new ExpressionMember("and "));
+            eML.Add(new ExpressionMember("value4 "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value4"));
+            eML.Add(new ExpressionMember("\" "));
+            ____Add_Name(eML);
+
+			#endregion
+
+			#region MOVE_WITH_GROUP
+
+            eML = this.Add("MOVE_WITH_GROUP");
+            ____Add_Type(eML);
+            eML.Add(new ExpressionMember("at "));
+            eML.Add(new ExpressionMember("throttle "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueT, "value1"));
+            eML.Add(new ExpressionMember(", "));
+            eML.Add(new ExpressionMember("value2 "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value2"));
+            eML.Add(new ExpressionMember(", "));
+            eML.Add(new ExpressionMember("value3 "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value3"));
+            eML.Add(new ExpressionMember(", "));
+            eML.Add(new ExpressionMember("and "));
+            eML.Add(new ExpressionMember("value4 "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value4"));
+            eML.Add(new ExpressionMember("\" "));
+            ____Add_Name(eML);
+
+			#endregion
+
 			#region POINT_THROTTLE
 
 			eML = this.Add("POINT_THROTTLE");
@@ -193,6 +244,47 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueT, "value4"));
 			eML.Add(new ExpressionMember("\" "));
 			____Add_Name(eML);
+
+			#endregion
+
+			#region RELEASE_PIRANHAS
+
+            eML = this.Add("RELEASE_PIRANHAS");
+            ____Add_Type(eML);
+            eML.Add(new ExpressionMember("if "));
+            eML.Add(new ExpressionMember("something "));
+            eML.Add(new ExpressionMember("comes "));
+            eML.Add(new ExpressionMember("closer "));
+            eML.Add(new ExpressionMember("than "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
+            eML.Add(new ExpressionMember("\" "));
+            ____Add_Name(eML);
+
+			#endregion
+
+			#region STAY_CLOSE
+
+            eML = this.Add("STAY_CLOSE");
+            ____Add_Type(eML);
+            eML.Add(new ExpressionMember("to "));
+            eML.Add(new ExpressionMember("pod "));
+            eML.Add(new ExpressionMember("within "));
+            eML.Add(new ExpressionMember("range "));
+            eML.Add(new ExpressionMember("of "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadius, "value1"));
+			eML.Add(new ExpressionMember("moving "));
+			eML.Add(new ExpressionMember("at "));
+			eML.Add(new ExpressionMember("throttle "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueT, "value2"));
+            eML.Add(new ExpressionMember(", "));
+            eML.Add(new ExpressionMember("value3 "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value3"));
+            eML.Add(new ExpressionMember(", "));
+            eML.Add(new ExpressionMember("and "));
+            eML.Add(new ExpressionMember("value4 "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value4"));
+            eML.Add(new ExpressionMember("\" "));
+            ____Add_Name(eML);
 
 			#endregion
 
@@ -243,7 +335,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("is "));
 			eML.Add(new ExpressionMember("closer "));
 			eML.Add(new ExpressionMember("than "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadius, "value2"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value2"));
 			eML.Add(new ExpressionMember(", "));
 			eML.Add(new ExpressionMember("engaging "));
 			eML.Add(new ExpressionMember("anyone "));
@@ -266,7 +358,8 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("is "));
 			eML.Add(new ExpressionMember("closer "));
 			eML.Add(new ExpressionMember("than "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadius, "value1"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
+            eML.Add(new ExpressionMember("\" "));
 			____Add_Name(eML);
 
 			#endregion
@@ -278,7 +371,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("using "));
 			eML.Add(new ExpressionMember("magic "));
 			eML.Add(new ExpressionMember("number "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Radius, "value1"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
 			eML.Add(new ExpressionMember("\" "));
 			____Add_Name(eML);
 
