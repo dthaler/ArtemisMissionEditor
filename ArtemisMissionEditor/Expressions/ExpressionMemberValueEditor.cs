@@ -279,11 +279,6 @@ namespace ArtemisMissionEditor.Expressions
             ValueSelectorContextMenuStrip = null;
             LastUser = null;
         }
-
-        public static implicit operator ExpressionMemberValueEditor(int v)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     /// <summary>

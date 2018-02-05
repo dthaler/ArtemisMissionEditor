@@ -126,7 +126,7 @@ namespace ArtemisMissionEditor
         {
             ID = null;
             ParentID = null;
-            SetDefaultName();
+            Name = null;
             ExtraAttributes = new List<string>();
             Conditions = new List<MissionStatement>();
             Actions = new List<MissionStatement>();

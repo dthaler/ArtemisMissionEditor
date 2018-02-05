@@ -263,7 +263,6 @@ namespace ArtemisMissionEditor.Expressions
 						((ToolStripMenuItem)curCMS.Items[0]).DropDownItems[0].PerformClick();
 					else
 						curCMS.Items[0].PerformClick();
-					curCMS.Close();
 					return;
 				}
 				if (mode == ExpressionMemberValueEditorActivationMode.PreviousMenuItem)
