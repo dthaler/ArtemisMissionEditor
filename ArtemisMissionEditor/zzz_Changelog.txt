@@ -1,3 +1,9 @@
+Version 2.6.2 [2018-February-6] (Dave Thaler)
+* Added add_ai support for monster AI blocks
+* Many improvements to "Potential Problems" checking
+* Fixed some more typos
+* Cleaned up code so it builds without any compiler warnings
+----------------------
 Version 2.6.1 [2018-January-16] (Dave Thaler)
 * Added sideValue and countSurrendered arguments to if_fleet_count
 * Added value2 argument to TARGET_THROTTLE AI block
