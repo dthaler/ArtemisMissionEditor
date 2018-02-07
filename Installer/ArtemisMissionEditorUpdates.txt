@@ -1,5 +1,22 @@
 ;aiu;
 
+[Update 2.6.2]
+Name=Artemis Mission Editor 2.6.2
+ProductVersion=2.6.2
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.2.msi
+Size=1586176
+ReleaseDate=06/02/2018
+MD5=8555ebed6b9f4ccbcf9f69863275df8c
+ServerFileName=ArtemisMissionEditorInstaller.2.6.2.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.6.2.0
+Feature=Added add_ai support for monster AI blocks
+Enhancement=Many improvements to "Potential Problems" checking
+BugFix=Fixed some more typos
+BugFix1=Cleaned up code so it builds without any compiler warnings
+Replaces=All
+
 [Update 2.6.1]
 ProductVersion=2.6.1
 Name=Artemis Mission Editor 2.6.1
@@ -38,8 +55,8 @@ BugFix2=Fixed bug in update available detection
 Replaces=All
 
 [Update 2.6]
-ProductVersion=2.6.0.0
 Name=Artemis Mission Editor 2.6
+ProductVersion=2.6.0.0
 URL=http://www.example.com/downloads/ArtemisMissionEditorInstaller.2.6.msi
 Size=1583616
 MD5=72deef9dc1ae805094af04d469c065f4
