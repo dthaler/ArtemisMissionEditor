@@ -335,14 +335,14 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("is "));
 			eML.Add(new ExpressionMember("closer "));
 			eML.Add(new ExpressionMember("than "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value2"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
 			eML.Add(new ExpressionMember(", "));
 			eML.Add(new ExpressionMember("engaging "));
 			eML.Add(new ExpressionMember("anyone "));
 			eML.Add(new ExpressionMember("within "));
 			eML.Add(new ExpressionMember("range "));
 			eML.Add(new ExpressionMember("of "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value2"));
 			eML.Add(new ExpressionMember("\" "));
 			____Add_Name(eML);
 
