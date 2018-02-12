@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using System.Xml;
 using System.IO;
 using System.Drawing;
-using System.Diagnostics;
 using ArtemisMissionEditor.Expressions;
 
 namespace ArtemisMissionEditor
