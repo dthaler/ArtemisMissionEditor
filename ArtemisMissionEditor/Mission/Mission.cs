@@ -2524,10 +2524,37 @@ namespace ArtemisMissionEditor
                     if (type == "player")
                         AmountOfCreatePlayerStatements++;
 
+                    // Named object attributes.
                     UpdateNamesLists_ScanExpression(statement, "x");
                     UpdateNamesLists_ScanExpression(statement, "y");
                     UpdateNamesLists_ScanExpression(statement, "z");
                     UpdateNamesLists_ScanExpression(statement, "angle");
+
+                    // Unnamed object attributes.
+                    UpdateNamesLists_ScanExpression(statement, "startX");
+                    UpdateNamesLists_ScanExpression(statement, "startY");
+                    UpdateNamesLists_ScanExpression(statement, "startZ");
+                    UpdateNamesLists_ScanExpression(statement, "startAngle");
+                    UpdateNamesLists_ScanExpression(statement, "endX");
+                    UpdateNamesLists_ScanExpression(statement, "endY");
+                    UpdateNamesLists_ScanExpression(statement, "endZ");
+                    UpdateNamesLists_ScanExpression(statement, "endAngle");
+                    UpdateNamesLists_ScanExpression(statement, "count");
+                    UpdateNamesLists_ScanExpression(statement, "radius");
+                    UpdateNamesLists_ScanExpression(statement, "randomRange");
+                    UpdateNamesLists_ScanExpression(statement, "randomSeed");
+                }
+
+                if (statement.Name == "set_player_carried_type")
+                {
+                    string named_name = statement.GetAttribute("name");
+                    if (named_name != null)
+                    {
+                        if (!NamedObjectNames["player"].Contains(named_name))
+                            NamedObjectNames["player"].Add(named_name);
+                        if (!AllCreatedObjectNames.Contains(named_name))
+                            AllCreatedObjectNames.Add(named_name);
+                    }
                 }
 
                 if (statement.Name == "log_text")
