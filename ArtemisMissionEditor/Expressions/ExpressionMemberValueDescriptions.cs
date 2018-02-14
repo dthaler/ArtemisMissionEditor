@@ -305,6 +305,8 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> "name" from [if_variable] </summary>
         public static EMVD NameVariable =               new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.VariableName,null,null,"\"","\" ");
        // public static EMVD GMText = new EMVD(EMVT.VarString, EMVB.StoredWhenFilled, EMVE.VariableName, null, null, "\"", "\" ");
+        /// <summary> "id" from [spawn_external_program] </summary>
+        public static EMVD ExternalProgramID =          new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.ExternalProgramID,null,null,"\"","\" ");
 
         /// <summary> "name" from many places </summary>
         public static EMVD NameAll =                    new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedAllName,null,null,"\"","\" ");

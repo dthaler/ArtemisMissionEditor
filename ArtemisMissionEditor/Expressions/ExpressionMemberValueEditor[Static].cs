@@ -297,6 +297,14 @@ namespace ArtemisMissionEditor.Expressions
         }
 
         /// <summary>
+        /// Context menu strip for external program IDs
+        /// </summary>
+        internal static ContextMenuStrip PrepareContextMenuStrip_ExternalProgramIDList(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)
+        {
+            return PrepareContextMenuStrip_SpecifiedListPlusDialog(container, editor, mode, Mission.Current.ExternalProgramIDsList);
+        }
+
+        /// <summary>
         /// Context menu strip for station names
         /// </summary>
         internal static ContextMenuStrip PrepareContextMenuStrip_NamedStationNameList(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)

@@ -52,6 +52,18 @@ namespace ArtemisMissionEditor
         /// <summary> Timer names and headers for context menus</summary>
         public KeyValuePair<List<string>, List<string>> TimerNamesList { get { return new KeyValuePair<List<string>,List<string>>(TimerNames,TimerNameHeaders); } }
 
+        /// <summary> External program IDs and headers for context menus</summary>
+        public KeyValuePair<List<string>, List<string>> ExternalProgramIDsList { get { return new KeyValuePair<List<string>,List<string>>(ExternalProgramIDs,ExternalProgramIDHeaders); } }
+
+        /// <summary> All external program IDs that are checked</summary>
+        public List<string> ExternalProgramCheckIDs { get; private set; }
+
+        /// <summary> All external program IDs that are spawned</summary>
+        public List<string> ExternalProgramSpawnIDs { get; private set; }
+
+        /// <summary> All nodes where the external program ID is checked</summary>
+        public Dictionary<string, List<MissionNode>> ExternalProgramCheckLocations { get; private set; }
+
         /// <summary> GM button names and headers for context menus</summary>
         public KeyValuePair<List<string>, List<string>> GMButtonTextsList { get { return new KeyValuePair<List<string>,List<string>>(GMButtonNames,GMButtonNameHeaders); } }
 
@@ -99,6 +111,15 @@ namespace ArtemisMissionEditor
 
         /// <summary> Variable headers for variable names context menus</summary>
         private List<string> VariableNameHeaders;
+
+        /// <summary> All external programs that are spawned</summary>
+        public List<string> ExternalProgramSpawnNames { get; private set; }
+
+        /// <summary> All external program IDs set or checked in the mission</summary>
+        private List<string> ExternalProgramIDs;
+
+        /// <summary> External program headers for external program IDs context menus</summary>
+        private List<string> ExternalProgramIDHeaders;
 
         /// <summary> All timers set or checked in the mission</summary>
         private List<string> TimerNames;
@@ -540,6 +561,11 @@ namespace ArtemisMissionEditor
             VariableNameHeaders = new List<string>();
             TimerNames = new List<string>();
             TimerNameHeaders = new List<string>();
+            ExternalProgramSpawnIDs = new List<string>();
+            ExternalProgramCheckIDs = new List<string>();
+            ExternalProgramCheckLocations = new Dictionary<string, List<MissionNode>>();
+            ExternalProgramIDs = new List<string>();
+            ExternalProgramIDHeaders = new List<string>();
             GMButtonNames = new List<string>();
             GMButtonNameHeaders = new List<string>();
             CommsButtonNames = new List<string>();
@@ -2251,6 +2277,10 @@ namespace ArtemisMissionEditor
             NamedObjectNames["player"].AddRange(PlayerShipNames);
             AmountOfMissionEndStatements = 0;
             AmountOfCreatePlayerStatements = 0;
+            ExternalProgramIDs.Clear();
+            ExternalProgramSpawnIDs.Clear();
+            ExternalProgramCheckIDs.Clear();
+            ExternalProgramCheckLocations.Clear();
             VariableNames.Clear();
             VariableSetNames.Clear();
             VariableCheckNames.Clear();
@@ -2278,6 +2308,7 @@ namespace ArtemisMissionEditor
             GMButtonNames.Sort();
             TimerNames.Sort();
             VariableNames.Sort();
+            ExternalProgramIDs.Sort();
 
             if (VariableNames.Count > Settings.Current.NamesPerSubmenu)
             {
@@ -2338,6 +2369,21 @@ namespace ArtemisMissionEditor
                 if (CommsButtonNames.Count - 1 >= i * Settings.Current.NamesPerSubmenu)
                 {
                     CommsButtonNameHeaders.Add(CommsButtonNames[i * Settings.Current.NamesPerSubmenu] + " - " + CommsButtonNames[CommsButtonNames.Count - 1]);
+                }
+            }
+
+            if (ExternalProgramIDs.Count > Settings.Current.NamesPerSubmenu)
+            {
+                int i;
+                for (i = 0; i < ExternalProgramIDs.Count / Settings.Current.NamesPerSubmenu; i++)
+                {
+                    string first = ExternalProgramIDs[i * Settings.Current.NamesPerSubmenu];
+                    string last = ExternalProgramIDs[(i + 1) * Settings.Current.NamesPerSubmenu - 1];
+                    ExternalProgramIDHeaders.Add(first + " - " + last);
+                }
+                if (ExternalProgramIDs.Count - 1 >= i * Settings.Current.NamesPerSubmenu)
+                {
+                    ExternalProgramIDHeaders.Add(ExternalProgramIDs[i * Settings.Current.NamesPerSubmenu] + " - " + ExternalProgramIDs[ExternalProgramIDs.Count - 1]);
                 }
             }
 
@@ -2426,6 +2472,22 @@ namespace ArtemisMissionEditor
             {
                 if (statement.Kind != MissionStatementKind.Condition)
                     continue;
+
+                if (statement.Name == "if_external_program_active" ||
+                    statement.Name == "if_external_program_finished")
+                {
+                    string var_id = statement.GetAttribute("id");
+                    if (var_id != null)
+                    {
+                        if (!ExternalProgramIDs.Contains(var_id))
+                            ExternalProgramIDs.Add(var_id);
+                        if (!ExternalProgramCheckIDs.Contains(var_id))
+                            ExternalProgramCheckIDs.Add(var_id);
+                        if (!ExternalProgramCheckLocations.Keys.Contains(var_id))
+                            ExternalProgramCheckLocations.Add(var_id, new List<MissionNode>());
+                        ExternalProgramCheckLocations[var_id].Add(((MissionNode)node.Tag));
+                    }
+                }
 
                 if (statement.Name == "if_variable")
                 {
@@ -2560,6 +2622,18 @@ namespace ArtemisMissionEditor
                 if (statement.Name == "log_text")
                 {
                     UpdateNamesLists_ScanText(statement, "text");
+                }
+
+                if (statement.Name == "spawn_external_program")
+                {
+                    string var_id = statement.GetAttribute("id");
+                    if (var_id != null)
+                    {
+                        if (!ExternalProgramIDs.Contains(var_id))
+                            ExternalProgramIDs.Add(var_id);
+                        if (!ExternalProgramSpawnIDs.Contains(var_id))
+                            ExternalProgramSpawnIDs.Add(var_id);
+                    }
                 }
 
                 if (statement.Name == "set_variable")
@@ -3403,6 +3477,10 @@ namespace ArtemisMissionEditor
                             string attName;
                             if (statement.Name == "if_variable" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !VariableSetNames.Contains(attName))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "Variable named \"" + attName + "\" is checked for, but never set.", node, statement));
+
+                            // Reference to an external program ID that is never spawned
+                            if ((statement.Name == "if_external_program_active" || statement.Name == "if_external_program_finished") && !String.IsNullOrEmpty(attName = statement.GetAttribute("id")) && !ExternalProgramSpawnIDs.Contains(attName))
+                                result.Add(new MissionSearchResult(curNode, i + 1, "External program with ID \"" + attName + "\" is checked for, but never spawned.", node, statement));
 
                             // Reference to a timer that is never set
                             if (statement.Name == "if_timer_finished" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !TimerSetNames.Contains(attName))

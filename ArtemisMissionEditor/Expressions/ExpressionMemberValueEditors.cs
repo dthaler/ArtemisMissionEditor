@@ -56,6 +56,7 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor GMButtonText;
         public static ExpressionMemberValueEditor CommsButtonText;
         public static ExpressionMemberValueEditor GMText;
+        public static ExpressionMemberValueEditor ExternalProgramID;
         public static ExpressionMemberValueEditor VariableName;
         public static ExpressionMemberValueEditor NamedAllName;
         public static ExpressionMemberValueEditor NamedStationName;
@@ -252,9 +253,11 @@ namespace ArtemisMissionEditor.Expressions
 			XmlNameConditionCheck.AddToDictionary("if_timer_finished", "Timer");
 			XmlNameConditionCheck.AddToDictionary("if_damcon_members", "Amount of DamCon members");
 			XmlNameConditionCheck.AddToDictionary("if_fleet_count", "Ship count");
-			XmlNameConditionCheck.AddToDictionary("if_docked", "Player ship is docked");
+			XmlNameConditionCheck.AddToDictionary("if_docked", "Player ship");
 			XmlNameConditionCheck.AddToDictionary("if_player_is_targeting", "Player ship is targeting");
-			XmlNameConditionCheck.AddToDictionary("<existance>", "Object");
+			XmlNameConditionCheck.AddToDictionary("if_external_program_active", "External program");
+			XmlNameConditionCheck.AddToDictionary("if_external_program_finished", "External program");
+			XmlNameConditionCheck.AddToDictionary("<existence>", "Object");
             XmlNameConditionCheck.AddToDictionary("<location>", "Object");
             XmlNameConditionCheck.AddToDictionary("if_object_property", "Property");
 			XmlNameConditionCheck.AddToDictionary("if_distance", "Distance");
@@ -263,10 +266,12 @@ namespace ArtemisMissionEditor.Expressions
 			XmlNameConditionCheck.AddToDictionary("if_gm_key", "GM key pressed");
             XmlNameConditionCheck.AddToDictionary("if_gm_button", "GM Button pressed");
             XmlNameConditionCheck.AddToDictionary("if_client_key", "Client pressed");
+            XmlNameConditionCheck.AddToMenuDictionary("if_external_program_active", "External program is running");
+            XmlNameConditionCheck.AddToMenuDictionary("if_external_program_finished", "External program has finished");
             XmlNameConditionCheck.AddToMenuDictionary("if_timer_finished", "Timer has finished");
 			XmlNameConditionCheck.AddToMenuDictionary("if_damcon_members", "Amount of DamCon members");
 			XmlNameConditionCheck.AddToMenuDictionary("if_fleet_count", "Ship count (in a fleet)");
-            XmlNameConditionCheck.AddToMenuDictionary("<existance>", "Object exists / doesn't");
+            XmlNameConditionCheck.AddToMenuDictionary("<existence>", "Object exists / doesn't");
 			XmlNameConditionCheck.AddToMenuDictionary("if_object_property", "Object property");
 			XmlNameConditionCheck.AddToMenuDictionary("<location>", "Object is located");
 			XmlNameConditionCheck.AddToMenuDictionary("if_distance", "Distance between objects");
@@ -587,6 +592,11 @@ namespace ArtemisMissionEditor.Expressions
 			TimerName = new ExpressionMemberValueEditor();
 			TimerName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_TimerNameList;
             Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { TimerName.InvalidateContextMenuStrip(); });
+
+			ExternalProgramID = new ExpressionMemberValueEditor();
+			ExternalProgramID.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_ExternalProgramIDList;
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { ExternalProgramID.InvalidateContextMenuStrip(); });
+
 
 			VariableName = new ExpressionMemberValueEditor();
 			VariableName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_VariableNameList;

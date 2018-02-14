@@ -35,10 +35,12 @@ namespace ArtemisMissionEditor.Expressions
                 case "if_gm_button":
                 case "if_client_key":
                 case "if_distance":
+                case "if_external_program_active":
+                case "if_external_program_finished":
                     return container.Statement.Name;
                 case "if_exists":
                 case "if_not_exists":
-                    return "<existance>";
+                    return "<existence>";
                 case "if_inside_sphere":
                 case "if_outside_sphere":
                 case "if_inside_box":
@@ -67,7 +69,7 @@ namespace ArtemisMissionEditor.Expressions
 				//{
 				//}
 				//For all many-to-one
-				if (value == "<existance>")
+				if (value == "<existence>")
 				    if (container.Statement.Name != "if_exists" && container.Statement.Name != "if_not_exists")
 				        container.Statement.Name = "if_exists";
 				if (value == "<location>")
@@ -100,6 +102,24 @@ namespace ArtemisMissionEditor.Expressions
 
 			eML = this.Add("if_timer_finished");
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameTimer, "name", true));
+			eML.Add(new ExpressionMember("has "));
+			eML.Add(new ExpressionMember("finished"));
+
+			#endregion
+
+			#region if_external_program_active
+
+			eML = this.Add("if_external_program_active");
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ExternalProgramID, "id", true));
+			eML.Add(new ExpressionMember("is "));
+			eML.Add(new ExpressionMember("running"));
+
+			#endregion
+
+			#region if_external_program_finished
+
+			eML = this.Add("if_external_program_finished");
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ExternalProgramID, "id", true));
 			eML.Add(new ExpressionMember("has "));
 			eML.Add(new ExpressionMember("finished"));
 
@@ -141,13 +161,13 @@ namespace ArtemisMissionEditor.Expressions
 			#region if_docked
 
 			eML = this.Add("if_docked");
-			eML.Add(new ExpressionMember("to "));
-			eML.Add(new ExpressionMember("station "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameStation, "name", true));
-			eML.Add(new ExpressionMember("with "));
-			eML.Add(new ExpressionMember("ship "));
 			eML.Add(new ExpressionMember("named "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameCreatePlayer, "player_name", false));
+			eML.Add(new ExpressionMember("is "));
+			eML.Add(new ExpressionMember("docked "));
+			eML.Add(new ExpressionMember("with "));
+			eML.Add(new ExpressionMember("station "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameStation, "name", true));
 
 			#endregion
 
@@ -162,7 +182,7 @@ namespace ArtemisMissionEditor.Expressions
 
 			#region if_exists / if_not_exists
 
-			eML = this.Add("<existance>");
+			eML = this.Add("<existence>");
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name", true));
 			eML.Add(new ExpressionMemberCheck_Existance());
 

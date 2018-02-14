@@ -334,7 +334,7 @@ namespace ArtemisMissionEditor.Expressions
             #region set_variable
 
             eML = this.Add("set_variable");
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameVariable, "name",true));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameVariable, "name", true));
             eML.Add(new ExpressionMemberCheck_SetVariable());
 
             #endregion
@@ -560,7 +560,7 @@ namespace ArtemisMissionEditor.Expressions
 
             eML = this.Add("spawn_external_program");
             eML.Add(new ExpressionMember("with id "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Text, "id"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ExternalProgramID, "id"));
             eML.Add(new ExpressionMember("using executable "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Text, "name"));
             eML.Add(new ExpressionMember("and command line "));
