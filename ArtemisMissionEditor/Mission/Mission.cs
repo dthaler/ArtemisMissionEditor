@@ -3168,6 +3168,9 @@ namespace ArtemisMissionEditor
             string[] statementsThatTakeTargetName = new string[]{
                 "direct",
                 };
+            string[] statementsThatTakePlayerName = new string[]{
+                "if_docked",
+                };
             string[] statementsThatTakeName12 = new string[]{
                 "copy_object_property",
                 "set_relative_position",
@@ -3417,12 +3420,18 @@ namespace ArtemisMissionEditor
                             if (statement.Name == "if_distance" && (statement.GetAttribute("comparator") == "EQUALS" || statement.GetAttribute("comparator") == "NOT"))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "Distance is checked for equality. In practice, distance will almost never be equal to an exact value. You should use \"lesser\" and \"greater\" comparisons instead.", node, statement));
 
+                            // Docked check with a player name that is not checked for existence
+                            if (statement.Name == "if_docked" && !String.IsNullOrEmpty(attName = statement.GetAttribute("player_name")) && !namesCheckedHere.Contains(attName))
+                                result.Add(new MissionSearchResult(curNode, i + 1, "Ship named \"" + attName + "\" is checked if docked, but not tested for existence so ship 0 might be tested instead.", node, statement));
+
                             // Reference to a name never created
                             List<string> namesToCheck = new List<string>();
                             if (statementsThatTakeName.Contains(statement.Name))
                                 namesToCheck.Add(statement.GetAttribute("name"));
                             if (statementsThatTakeTargetName.Contains(statement.Name))
                                 namesToCheck.Add(statement.GetAttribute("targetName"));
+                            if (statementsThatTakePlayerName.Contains(statement.Name))
+                                namesToCheck.Add(statement.GetAttribute("player_name"));
                             if (statementsThatTakeName12.Contains(statement.Name))
                             {
                                 namesToCheck.Add(statement.GetAttribute("name1"));
@@ -3508,12 +3517,14 @@ namespace ArtemisMissionEditor
                             result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified a path relative to the Artemis folder. Paths to sound assets should be relative to the mission folder.", node, statement));
                     }
 
-                    // Refernce to a name never created
+                    // Reference to a name never created
                     List<string> namesToCheck = new List<string>();
                     if (statementsThatTakeName.Contains(statement.Name))
                         namesToCheck.Add(statement.GetAttribute("name"));
                     if (statementsThatTakeTargetName.Contains(statement.Name))
                         namesToCheck.Add(statement.GetAttribute("targetName"));
+                    if (statementsThatTakePlayerName.Contains(statement.Name))
+                        namesToCheck.Add(statement.GetAttribute("player_name"));
                     if (statementsThatTakeName12.Contains(statement.Name))
                     {
                         namesToCheck.Add(statement.GetAttribute("name1"));

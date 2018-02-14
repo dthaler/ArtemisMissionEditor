@@ -144,6 +144,10 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("to "));
 			eML.Add(new ExpressionMember("station "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameStation, "name", true));
+			eML.Add(new ExpressionMember("with "));
+			eML.Add(new ExpressionMember("ship "));
+			eML.Add(new ExpressionMember("named "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameCreatePlayer, "player_name", false));
 
 			#endregion
 
