@@ -32,6 +32,7 @@ namespace ArtemisMissionEditor.Expressions
                 case "big_message":                
                 case "end_mission":                
                 case "incoming_comms_text":        
+                case "gm_instructions":        
                 case "set_object_property":        
                 case "set_fleet_property":
                 case "set_comms_button":
@@ -244,6 +245,16 @@ namespace ArtemisMissionEditor.Expressions
             eML = this.Add("clear_gm_button");
             eML.Add(new ExpressionMember("with text "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.TextGMButton, "text"));
+
+            #endregion
+
+            #region gm_instructions
+
+            eML = this.Add("gm_instructions");
+            eML.Add(new ExpressionMember("with title "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Text, "title"));
+            eML.Add(new ExpressionMember("and body: "));
+            eML.Add(new ExpressionMember_Body());
 
             #endregion
 

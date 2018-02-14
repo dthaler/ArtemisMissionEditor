@@ -123,6 +123,7 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("clear_comms_button", "Clear comms button");
             XmlNameActionCheck.AddToDictionary("set_gm_button", "Set GM button");
             XmlNameActionCheck.AddToDictionary("clear_gm_button", "Clear GM button");
+            XmlNameActionCheck.AddToDictionary("gm_instructions", "GM instructions button");
             XmlNameActionCheck.AddToDictionary("start_getting_keypresses_from", "Start getting keypresses from consoles: ");
             XmlNameActionCheck.AddToDictionary("end_getting_keypresses_from", "End getting keypresses from consoles: ");
             XmlNameActionCheck.NewMenuGroup("Buttons");
