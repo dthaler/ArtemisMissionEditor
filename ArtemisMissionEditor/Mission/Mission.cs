@@ -2479,6 +2479,7 @@ namespace ArtemisMissionEditor
                     string var_id = statement.GetAttribute("id");
                     if (var_id != null)
                     {
+                        var_id = CollapseName(var_id);
                         if (!ExternalProgramIDs.Contains(var_id))
                             ExternalProgramIDs.Add(var_id);
                         if (!ExternalProgramCheckIDs.Contains(var_id))
@@ -2494,6 +2495,7 @@ namespace ArtemisMissionEditor
                     string var_name = statement.GetAttribute("name");
                     if (var_name != null)
                     {
+                        var_name = CollapseName(var_name);
                         if (!VariableNames.Contains(var_name))
                             VariableNames.Add(var_name);
                         if (!VariableCheckNames.Contains(var_name))
@@ -2517,6 +2519,7 @@ namespace ArtemisMissionEditor
                     string var_timer = statement.GetAttribute("name");
                     if (var_timer != null)
                     {
+                        var_timer = CollapseName(var_timer);
                         if (!TimerNames.Contains(var_timer))
                             TimerNames.Add(var_timer);
                         if (!TimerCheckNames.Contains(var_timer))
@@ -2529,6 +2532,7 @@ namespace ArtemisMissionEditor
                     string var_text = statement.GetAttribute("text");
                     if (var_text != null)
                     {
+                        var_text = CollapseName(var_text);
                         if (!GMButtonNames.Contains(var_text))
                             GMButtonNames.Add(var_text);
                         if (!GMButtonCheckNames.Contains(var_text))
@@ -2541,6 +2545,7 @@ namespace ArtemisMissionEditor
                     string var_text = statement.GetAttribute("text");
                     if (var_text != null)
                     {
+                        var_text = CollapseName(var_text);
                         if (!CommsButtonNames.Contains(var_text))
                             CommsButtonNames.Add(var_text);
                         if (!CommsButtonCheckNames.Contains(var_text))
@@ -2577,6 +2582,7 @@ namespace ArtemisMissionEditor
                     string named_name;
                     if (type != null && (named_name = statement.GetAttribute("name")) != null)
                     {
+                        named_name = CollapseName(named_name);
                         if (NamedObjectNames.ContainsKey(type) && !NamedObjectNames[type].Contains(named_name))
                             NamedObjectNames[type].Add(named_name);
                         if (!AllCreatedObjectNames.Contains(named_name))
@@ -2612,6 +2618,7 @@ namespace ArtemisMissionEditor
                     string named_name = statement.GetAttribute("name");
                     if (named_name != null)
                     {
+                        named_name = CollapseName(named_name);
                         if (!NamedObjectNames["player"].Contains(named_name))
                             NamedObjectNames["player"].Add(named_name);
                         if (!AllCreatedObjectNames.Contains(named_name))
@@ -2629,6 +2636,7 @@ namespace ArtemisMissionEditor
                     string var_id = statement.GetAttribute("id");
                     if (var_id != null)
                     {
+                        var_id = CollapseName(var_id);
                         if (!ExternalProgramIDs.Contains(var_id))
                             ExternalProgramIDs.Add(var_id);
                         if (!ExternalProgramSpawnIDs.Contains(var_id))
@@ -2641,6 +2649,7 @@ namespace ArtemisMissionEditor
                     string var_name = statement.GetAttribute("name");
                     if (var_name != null)
                     {
+                        var_name = CollapseName(var_name);
                         if (!VariableNames.Contains(var_name))
                             VariableNames.Add(var_name);
                         if (!VariableSetNames.Contains(var_name))
@@ -2653,6 +2662,7 @@ namespace ArtemisMissionEditor
                     string var_timer = statement.GetAttribute("name");
                     if (var_timer != null)
                     {
+                        var_timer = CollapseName(var_timer);
                         if (!TimerNames.Contains(var_timer))
                             TimerNames.Add(var_timer);
                         if (!TimerSetNames.Contains(var_timer))
@@ -2667,6 +2677,7 @@ namespace ArtemisMissionEditor
                     string var_text = statement.GetAttribute("text");
                     if (var_text != null)
                     {
+                        var_text = CollapseName(var_text);
                         if (!GMButtonNames.Contains(var_text))
                             GMButtonNames.Add(var_text);
                         if (!GMButtonSetNames.Contains(var_text))
@@ -2679,6 +2690,7 @@ namespace ArtemisMissionEditor
                     string var_text = statement.GetAttribute("text");
                     if (var_text != null)
                     {
+                        var_text = CollapseName(var_text);
                         if (!CommsButtonNames.Contains(var_text))
                             CommsButtonNames.Add(var_text);
                         if (!CommsButtonSetNames.Contains(var_text))
@@ -3211,6 +3223,35 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
+        /// When a name contains variable formatting such as "X|foo|", we cannot
+        /// know the actual name since we do not know the value of foo.  So we
+        /// replace the variable name with "*", as in "X*"
+        /// </summary>
+        private string CollapseName(string name)
+        {
+            if (name == null)
+            {
+                return "";
+            }
+            for (int start = name.IndexOf('|'); start >= 0; start = name.IndexOf("|"))
+            {
+                int end = name.IndexOf('|', start + 1);
+                if (end == -1)
+                {
+                    // Odd number of '|', so leave as is.
+                    return name;
+                }
+
+                // Replace start to end with "*".
+                string newname = name.Substring(0, start);
+                newname += "*";
+                newname += name.Substring(end + 1);
+                name = newname;
+            }
+            return name;
+        }
+
+        /// <summary>
         /// Finds problematic places in the child nodes of the current node.
         /// Called from FindProblems and recursively calls itself.
         /// </summary>
@@ -3270,9 +3311,9 @@ namespace ArtemisMissionEditor
                         continue;
                     string attName;
                     if (statement.Name == "create" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")))
-                        namesCreatedInThisNode.Add(attName);
+                        namesCreatedInThisNode.Add(CollapseName(attName));
                     if (statement.Name == "destroy" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")))
-                        namesDestroyedInThisNode.Add(attName);
+                        namesDestroyedInThisNode.Add(CollapseName(attName));
                     if (statement.Name == "end_mission")
                         hasEndMission = true;
                     else if (statement.Name != "log")
@@ -3306,18 +3347,18 @@ namespace ArtemisMissionEditor
                             if (statement.Name != "if_timer_finished")
                                 onlyTimers = false;
                             if (statement.Name == "if_not_exists")
-                                namesCheckedForNonExistenceHere.Add(statement.GetAttribute("name"));
+                                namesCheckedForNonExistenceHere.Add(CollapseName(statement.GetAttribute("name")));
                             if (statement.Name == "if_variable")
-                                variablesCheckedHere.Add(statement.GetAttribute("name"));
+                                variablesCheckedHere.Add(CollapseName(statement.GetAttribute("name")));
                             if (statement.Name == "if_timer_finished")
-                                timersCheckedHere.Add(statement.GetAttribute("name"));
+                                timersCheckedHere.Add(CollapseName(statement.GetAttribute("name")));
                             if (statement.Name == "if_gm_button")
-                                gmButtonsCheckedHere.Add(statement.GetAttribute("text"));
+                                gmButtonsCheckedHere.Add(CollapseName(statement.GetAttribute("text")));
                             if (statement.Name == "if_comms_button")
-                                commsButtonsCheckedHere.Add(statement.GetAttribute("text"));
+                                commsButtonsCheckedHere.Add(CollapseName(statement.GetAttribute("text")));
                             if (statement.Name == "if_object_property")
                             {
-                                string name = statement.GetAttribute("name") + "." + statement.GetAttribute("property");
+                                string name = CollapseName(statement.GetAttribute("name")) + "." + statement.GetAttribute("property");
                                 propertiesCheckedHere.Add(name);
                             }
                             // Look for names whose existence is checked for.
@@ -3325,16 +3366,16 @@ namespace ArtemisMissionEditor
                             {
                                 string name = statement.GetAttribute("name");
                                 if (!String.IsNullOrEmpty(name))
-                                    namesCheckedHere.Add(name);
+                                    namesCheckedHere.Add(CollapseName(name));
                             }
                             if (statementsThatTakeName12.Contains(statement.Name))
                             {
                                 string name = statement.GetAttribute("name1");
                                 if (!String.IsNullOrEmpty(name))
-                                    namesCheckedHere.Add(name);
+                                    namesCheckedHere.Add(CollapseName(name));
                                 name = statement.GetAttribute("name2");
                                 if (!String.IsNullOrEmpty(name))
-                                    namesCheckedHere.Add(name);
+                                    namesCheckedHere.Add(CollapseName(name));
                             }
                         }
 
@@ -3353,23 +3394,23 @@ namespace ArtemisMissionEditor
                             for (int i = 0; i < mNode.Actions.Count; i++)
                             {
                                 if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "set_variable")
-                                    variablesSetHere.Add(mNode.Actions[i].GetAttribute("name"));
+                                    variablesSetHere.Add(CollapseName(mNode.Actions[i].GetAttribute("name")));
                                 if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "set_timer")
-                                    timersSetHere.Add(mNode.Actions[i].GetAttribute("name"));
+                                    timersSetHere.Add(CollapseName(mNode.Actions[i].GetAttribute("name")));
                                 if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "set_gm_button")
-                                    gmButtonsSetHere.Add(mNode.Actions[i].GetAttribute("text"));
+                                    gmButtonsSetHere.Add(CollapseName(mNode.Actions[i].GetAttribute("text")));
                                 if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "set_comms_button")
-                                    commsButtonsSetHere.Add(mNode.Actions[i].GetAttribute("text"));
+                                    commsButtonsSetHere.Add(CollapseName(mNode.Actions[i].GetAttribute("text")));
                                 if (mNode.Actions[i].Kind == MissionStatementKind.Action &&
                                     (mNode.Actions[i].Name == "set_object_property" || mNode.Actions[i].Name == "addto_object_property"))
                                 {
                                     string name = mNode.Actions[i].GetAttribute("name") + "." + mNode.Actions[i].GetAttribute("property");
-                                    propertiesSetHere.Add(name);
+                                    propertiesSetHere.Add(CollapseName(name));
                                 }
                                 if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "copy_object_property")
                                 {
                                     string name = mNode.Actions[i].GetAttribute("name2") + "." + mNode.Actions[i].GetAttribute("property");
-                                    propertiesSetHere.Add(name);
+                                    propertiesSetHere.Add(CollapseName(name));
                                 }
                             }
                             bool noCorrespondingSet = true;
@@ -3476,23 +3517,23 @@ namespace ArtemisMissionEditor
 
                             // Reference to a variable that is never set
                             string attName;
-                            if (statement.Name == "if_variable" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !VariableSetNames.Contains(attName))
+                            if (statement.Name == "if_variable" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !VariableSetNames.Contains(CollapseName(attName)))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "Variable named \"" + attName + "\" is checked for, but never set.", node, statement));
 
                             // Reference to an external program ID that is never spawned
-                            if ((statement.Name == "if_external_program_active" || statement.Name == "if_external_program_finished") && !String.IsNullOrEmpty(attName = statement.GetAttribute("id")) && !ExternalProgramSpawnIDs.Contains(attName))
+                            if ((statement.Name == "if_external_program_active" || statement.Name == "if_external_program_finished") && !String.IsNullOrEmpty(attName = statement.GetAttribute("id")) && !ExternalProgramSpawnIDs.Contains(CollapseName(attName)))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "External program with ID \"" + attName + "\" is checked for, but never spawned.", node, statement));
 
                             // Reference to a timer that is never set
-                            if (statement.Name == "if_timer_finished" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !TimerSetNames.Contains(attName))
+                            if (statement.Name == "if_timer_finished" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !TimerSetNames.Contains(CollapseName(attName)))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "Timer named \"" + attName + "\" is checked for, but never set.", node, statement));
 
                             // Reference to a GM button that is never set
-                            if (statement.Name == "if_gm_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !GMButtonSetNames.Contains(attName))
+                            if (statement.Name == "if_gm_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !GMButtonSetNames.Contains(CollapseName(attName)))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "GM button named \"" + attName + "\" is checked for, but never set.", node, statement));
 
                             // Reference to a Comms button that is never set
-                            if (statement.Name == "if_comms_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !CommsButtonSetNames.Contains(attName))
+                            if (statement.Name == "if_comms_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !CommsButtonSetNames.Contains(CollapseName(attName)))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "Comms button named \"" + attName + "\" is checked for, but never set.", node, statement));
 
                             // Distance equality check (hardly ever happens)
@@ -3500,21 +3541,21 @@ namespace ArtemisMissionEditor
                                 result.Add(new MissionSearchResult(curNode, i + 1, "Distance is checked for equality. In practice, distance will almost never be equal to an exact value. You should use \"lesser\" and \"greater\" comparisons instead.", node, statement));
 
                             // Check with a player name that is not checked for existence
-                            if ((statement.Name == "if_docked" || statement.Name == "if_player_is_targeting") && !String.IsNullOrEmpty(attName = statement.GetAttribute("player_name")) && !namesCheckedHere.Contains(attName))
+                            if ((statement.Name == "if_docked" || statement.Name == "if_player_is_targeting") && !String.IsNullOrEmpty(attName = statement.GetAttribute("player_name")) && !namesCheckedHere.Contains(CollapseName(attName)))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "Ship named \"" + attName + "\" is checked with " + statement.Name + ", but not tested for existence so ship 0 might be tested instead.", node, statement));
 
                             // Reference to a name never created
                             List<string> namesToCheck = new List<string>();
                             if (statementsThatTakeName.Contains(statement.Name))
-                                namesToCheck.Add(statement.GetAttribute("name"));
+                                namesToCheck.Add(CollapseName(statement.GetAttribute("name")));
                             if (statementsThatTakeTargetName.Contains(statement.Name))
-                                namesToCheck.Add(statement.GetAttribute("targetName"));
+                                namesToCheck.Add(CollapseName(statement.GetAttribute("targetName")));
                             if (statementsThatTakePlayerName.Contains(statement.Name))
-                                namesToCheck.Add(statement.GetAttribute("player_name"));
+                                namesToCheck.Add(CollapseName(statement.GetAttribute("player_name")));
                             if (statementsThatTakeName12.Contains(statement.Name))
                             {
-                                namesToCheck.Add(statement.GetAttribute("name1"));
-                                namesToCheck.Add(statement.GetAttribute("name2"));
+                                namesToCheck.Add(CollapseName(statement.GetAttribute("name1")));
+                                namesToCheck.Add(CollapseName(statement.GetAttribute("name2")));
                             }
                             foreach (string name in namesToCheck)
                             {
@@ -3535,36 +3576,36 @@ namespace ArtemisMissionEditor
 
                     // Reference to a variable that is never checked
                     string attName;
-                    if (statement.Name == "set_variable" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !VariableCheckNames.Contains(attName))
+                    if (statement.Name == "set_variable" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !VariableCheckNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Variable named \"" + attName + "\" is set, but never checked.", node, statement));
 
                     // Reference to a timer that is never checked
-                    if (statement.Name == "set_timer" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !TimerCheckNames.Contains(attName))
+                    if (statement.Name == "set_timer" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !TimerCheckNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Timer named \"" + attName + "\" is set, but never checked.", node, statement));
 
                     // Reference to a GM button that is never checked
-                    if (statement.Name == "set_gm_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !GMButtonCheckNames.Contains(attName))
+                    if (statement.Name == "set_gm_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !GMButtonCheckNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "GM button named \"" + attName + "\" is set, but never checked.", node, statement));
 
                     // Reference to clearing a GM button that is never set
-                    if (statement.Name == "clear_gm_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !GMButtonSetNames.Contains(attName))
+                    if (statement.Name == "clear_gm_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !GMButtonSetNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "GM button named \"" + attName + "\" is cleared, but never set.", node, statement));
 
                     // Reference to a Comms button that is never checked
-                    if (statement.Name == "set_comms_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !CommsButtonCheckNames.Contains(attName))
+                    if (statement.Name == "set_comms_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !CommsButtonCheckNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Comms button named \"" + attName + "\" is set, but never checked.", node, statement));
 
                     // Reference to clearing a Comms button that is never set
-                    if (statement.Name == "clear_comms_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !CommsButtonSetNames.Contains(attName))
+                    if (statement.Name == "clear_comms_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !CommsButtonSetNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Comms button named \"" + attName + "\" is cleared, but never set.", node, statement));
 
                     // Add/set_property for object which name figures in the list of objects created in the same statement
                     //TODO: Confirm or deny that this problem exists and fix this statement (also maybe copy_object_property?)
-                    //if ((statement.Name == "addto_object_property" || statement.Name == "set_object_property"|| statement.Name == "add_ai"|| statement.Name == "clear_ai") && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && listCreatedInThisNode.Contains(attName))
+                    //if ((statement.Name == "addto_object_property" || statement.Name == "set_object_property" || statement.Name == "add_ai"|| statement.Name == "clear_ai") && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && listCreatedInThisNode.Contains(CollapseName(attName)))
                     //    result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Changing properties of an object \"" + attName + "\" in the event where it was just created will not work correctly.", node, statement));
 
                     // Setting side of an object that was just created
-                    if (statement.Name == "set_side_value" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && namesCreatedInThisNode.Contains(attName))
+                    if (statement.Name == "set_side_value" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && namesCreatedInThisNode.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "You can set the side value of an object \"" + attName + "\" in its create statement without utilising a second statement.", node, statement));
 
                     // Check path to art
@@ -3598,16 +3639,16 @@ namespace ArtemisMissionEditor
 
                     // Reference to a name never created
                     List<string> namesToCheck = new List<string>();
-                    if (statementsThatTakeName.Contains(statement.Name))
-                        namesToCheck.Add(statement.GetAttribute("name"));
+                    if (statementsThatTakeName.Contains(statement.Name) && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")))
+                        namesToCheck.Add(CollapseName(attName));
                     if (statementsThatTakeTargetName.Contains(statement.Name))
-                        namesToCheck.Add(statement.GetAttribute("targetName"));
+                        namesToCheck.Add(CollapseName(statement.GetAttribute("targetName")));
                     if (statementsThatTakePlayerName.Contains(statement.Name))
-                        namesToCheck.Add(statement.GetAttribute("player_name"));
+                        namesToCheck.Add(CollapseName(statement.GetAttribute("player_name")));
                     if (statementsThatTakeName12.Contains(statement.Name))
                     {
-                        namesToCheck.Add(statement.GetAttribute("name1"));
-                        namesToCheck.Add(statement.GetAttribute("name2"));
+                        namesToCheck.Add(CollapseName(statement.GetAttribute("name1")));
+                        namesToCheck.Add(CollapseName(statement.GetAttribute("name2")));
                     }
                     foreach (string name in namesToCheck)
                     {
