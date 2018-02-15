@@ -44,7 +44,7 @@ namespace ArtemisMissionEditor.Expressions
 				container.SetAttribute("randomFloatLow", null);
 				container.SetAttribute("randomFloatHigh", null);
 				container.SetAttribute("value", null);
-				container.SetAttribute("integer", null);
+				container.SetAttributeIfNull("integer", "yes");
 			}
 			if (value == Choices[(int)Choice.RandomFloat])
 			{
@@ -53,7 +53,6 @@ namespace ArtemisMissionEditor.Expressions
 				container.SetAttributeIfNull("randomFloatLow", "0.0");
 				container.SetAttributeIfNull("randomFloatHigh", "0.0");
 				container.SetAttribute("value", null);
-				container.SetAttribute("integer", null);
 			}
 			if (value == Choices[(int)Choice.Exact])
 			{
@@ -93,6 +92,8 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.RandInt, "randomIntLow"));
 			eML.Add(new ExpressionMember("... "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.RandInt, "randomIntHigh")); 
+			eML.Add(new ExpressionMember("as ")); 
+			eML.Add(new ExpressionMember("Integer", ExpressionMemberValueDescriptions.VariableType, "integer"));
 
 			eML = this.Add("to a random float"); //Choices[2]
 			eML.Add(new ExpressionMember("within "));
