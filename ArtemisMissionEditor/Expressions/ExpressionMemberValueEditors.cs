@@ -255,7 +255,7 @@ namespace ArtemisMissionEditor.Expressions
 			XmlNameConditionCheck.AddToDictionary("if_damcon_members", "Amount of DamCon members");
 			XmlNameConditionCheck.AddToDictionary("if_fleet_count", "Ship count");
 			XmlNameConditionCheck.AddToDictionary("if_docked", "Player ship");
-			XmlNameConditionCheck.AddToDictionary("if_player_is_targeting", "Player ship is targeting");
+			XmlNameConditionCheck.AddToDictionary("if_player_is_targeting", "Player ship");
 			XmlNameConditionCheck.AddToDictionary("if_external_program_active", "External program");
 			XmlNameConditionCheck.AddToDictionary("if_external_program_finished", "External program");
 			XmlNameConditionCheck.AddToDictionary("<existence>", "Object");
@@ -267,6 +267,8 @@ namespace ArtemisMissionEditor.Expressions
 			XmlNameConditionCheck.AddToDictionary("if_gm_key", "GM key pressed");
             XmlNameConditionCheck.AddToDictionary("if_gm_button", "GM Button pressed");
             XmlNameConditionCheck.AddToDictionary("if_client_key", "Client pressed");
+            XmlNameConditionCheck.AddToMenuDictionary("if_docked", "Player ship is docked");
+            XmlNameConditionCheck.AddToMenuDictionary("if_player_is_targeting", "Player ship is targeting");
             XmlNameConditionCheck.AddToMenuDictionary("if_external_program_active", "External program is running");
             XmlNameConditionCheck.AddToMenuDictionary("if_external_program_finished", "External program has finished");
             XmlNameConditionCheck.AddToMenuDictionary("if_timer_finished", "Timer has finished");

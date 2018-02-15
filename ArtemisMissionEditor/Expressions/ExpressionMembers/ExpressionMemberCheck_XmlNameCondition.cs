@@ -174,6 +174,10 @@ namespace ArtemisMissionEditor.Expressions
             #region if_player_is_targeting
 
             eML = this.Add("if_player_is_targeting");
+			eML.Add(new ExpressionMember("named "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameCreatePlayer, "player_name", false));
+			eML.Add(new ExpressionMember("is "));
+			eML.Add(new ExpressionMember("targeting "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name", true));
 
 			#endregion

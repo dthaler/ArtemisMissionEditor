@@ -3244,6 +3244,7 @@ namespace ArtemisMissionEditor
                 };
             string[] statementsThatTakePlayerName = new string[]{
                 "if_docked",
+                "if_player_is_targeting",
                 };
             string[] statementsThatTakeName12 = new string[]{
                 "copy_object_property",
@@ -3498,9 +3499,9 @@ namespace ArtemisMissionEditor
                             if (statement.Name == "if_distance" && (statement.GetAttribute("comparator") == "EQUALS" || statement.GetAttribute("comparator") == "NOT"))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "Distance is checked for equality. In practice, distance will almost never be equal to an exact value. You should use \"lesser\" and \"greater\" comparisons instead.", node, statement));
 
-                            // Docked check with a player name that is not checked for existence
-                            if (statement.Name == "if_docked" && !String.IsNullOrEmpty(attName = statement.GetAttribute("player_name")) && !namesCheckedHere.Contains(attName))
-                                result.Add(new MissionSearchResult(curNode, i + 1, "Ship named \"" + attName + "\" is checked if docked, but not tested for existence so ship 0 might be tested instead.", node, statement));
+                            // Check with a player name that is not checked for existence
+                            if ((statement.Name == "if_docked" || statement.Name == "if_player_is_targeting") && !String.IsNullOrEmpty(attName = statement.GetAttribute("player_name")) && !namesCheckedHere.Contains(attName))
+                                result.Add(new MissionSearchResult(curNode, i + 1, "Ship named \"" + attName + "\" is checked with " + statement.Name + ", but not tested for existence so ship 0 might be tested instead.", node, statement));
 
                             // Reference to a name never created
                             List<string> namesToCheck = new List<string>();

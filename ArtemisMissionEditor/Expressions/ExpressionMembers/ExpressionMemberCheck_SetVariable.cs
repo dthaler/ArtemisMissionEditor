@@ -44,7 +44,6 @@ namespace ArtemisMissionEditor.Expressions
 				container.SetAttribute("randomFloatLow", null);
 				container.SetAttribute("randomFloatHigh", null);
 				container.SetAttribute("value", null);
-				container.SetAttributeIfNull("integer", "yes");
 			}
 			if (value == Choices[(int)Choice.RandomFloat])
 			{
