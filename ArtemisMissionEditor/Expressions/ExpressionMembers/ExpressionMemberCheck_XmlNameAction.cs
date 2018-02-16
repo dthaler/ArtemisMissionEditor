@@ -190,6 +190,8 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.GMH, "h"));
             eML.Add(new ExpressionMember(" Button Width:"));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.GMW, "w"));
+            eML.Add(new ExpressionMember(" All Buttons Width:"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.GMW, "menu_w"));
 
             #endregion
 
