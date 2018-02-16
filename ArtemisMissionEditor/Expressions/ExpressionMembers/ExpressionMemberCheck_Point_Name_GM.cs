@@ -43,7 +43,8 @@ namespace ArtemisMissionEditor.Expressions
             }
             if (value == Choices[1])  //gm_pos
             {
-                container.SetAttribute("use_gm_position", "");
+                if (container.GetAttribute("use_gm_position") == null)
+                    container.SetAttribute("use_gm_position", "");
                 container.SetAttribute("name", null);
             }
             if (value == Choices[2]) // name

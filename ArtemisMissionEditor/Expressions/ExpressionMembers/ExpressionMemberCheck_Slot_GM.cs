@@ -48,7 +48,8 @@ namespace ArtemisMissionEditor.Expressions
             }
             if (value == Choices[1]) //usegm
             {
-                container.SetAttribute("use_gm_selection", " ");
+                if (container.GetAttribute("use_gm_selection") == null)
+                    container.SetAttribute("use_gm_selection", "");
                 container.SetAttribute("name", null);
                 container.SetAttribute("player_slot", null);
             }
@@ -57,7 +58,7 @@ namespace ArtemisMissionEditor.Expressions
                 container.SetAttribute("use_gm_selection", null);
                 container.SetAttribute("name", null);
                 container.SetAttributeIfNull("player_slot", "");
-            } // use_gm_sel
+            }
             base.SetValueInternal(container, value);
         }
 

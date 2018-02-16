@@ -39,7 +39,7 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary>
         /// Called after Decide has made its choice, or, as usual for ExpressionMembers, after user edited the value through a Dialog.
         /// For checks, SetValue must change the attributes/etc of the statement according to the newly chosen value
-        /// <example>If you chose "Use GM ...", SetValue will set "use_gm_..." attribute to ""</example>
+        /// <example>If you chose "Use GM ...", SetValue will set "use_gm_..." attribute to "" if it was null</example>
         /// </summary>
         protected override void SetValueInternal(ExpressionMemberContainer container, string value)
 		{
@@ -49,18 +49,19 @@ namespace ArtemisMissionEditor.Expressions
                 container.SetAttribute("player_slot", null);
                 container.SetAttributeIfNull("name", "");
             }
-                if (value == Choices[1]) //usegm
-                {
-                    container.SetAttribute("use_gm_selection", " ");
-                    container.SetAttribute("name", null);
-                    container.SetAttribute("player_slot", null);
-                }
+            if (value == Choices[1]) //usegm
+            {
+                if (container.GetAttribute("use_gm_selection") == null)
+                    container.SetAttribute("use_gm_selection", "");
+                container.SetAttribute("name", null);
+                container.SetAttribute("player_slot", null);
+            }
             if (value == Choices[2]) //useslot
-                {
-                    container.SetAttribute("use_gm_selection", null);
-                    container.SetAttribute("name", null);
-                    container.SetAttributeIfNull("player_slot", "");
-                }// use_gm_sel
+            {
+                container.SetAttribute("use_gm_selection", null);
+                container.SetAttribute("name", null);
+                container.SetAttributeIfNull("player_slot", "");
+            }
 			base.SetValueInternal(container, value);
 		}
 

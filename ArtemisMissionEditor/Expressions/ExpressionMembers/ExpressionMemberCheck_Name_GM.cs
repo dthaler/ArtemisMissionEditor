@@ -35,7 +35,7 @@ namespace ArtemisMissionEditor.Expressions
         {
             if (value == Choices[0]) //name
                 container.SetAttribute("use_gm_selection", null);
-            else // use_gm_sel
+            else if (container.GetAttribute("use_gm_selection") == null) // use_gm_sel
                 container.SetAttribute("use_gm_selection", "");
 
             base.SetValueInternal(container, value);
