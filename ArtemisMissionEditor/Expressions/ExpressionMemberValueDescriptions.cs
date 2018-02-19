@@ -174,8 +174,8 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> "value" radius (without trailing space) from [add_ai] </summary>
         public static EMVD ValueRadiusQ =               new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger,0,100000,"","");
         /// <summary> "value" throttle from [add_ai] </summary>
-        public static EMVD ValueT =                     new EMVD(EMVT.VarDouble,    EMVB.StoredWhenFilled,  EMVE.DefaultDouble,0.0,null,"","","0.0");
-
+        public static EMVD Throttle =                   new EMVD(EMVT.VarDouble,    EMVB.StoredWhenFilled,  EMVE.DefaultDouble,0.0,null,"","","0.0");
+        
         /// <summary> Check targetName / point from [direct]  </summary>
         public static EMVD Check_Point_TargetName =     new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DefaultCheck,null,null,""," ");
         /// <summary> Check convert direct    from [direct]  </summary>

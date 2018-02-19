@@ -24,36 +24,42 @@ namespace ArtemisMissionEditor.Expressions
 
 			switch (type)
 			{
-				case "ATTACK":				return "ATTACK";
-				case "AVOID_BLACK_HOLE":	return "<AVOID>";
-				case "AVOID_WHALE":			return "<AVOID>";
-				case "CHASE_AI_SHIP":		return "<CHASE>";
-				case "CHASE_ANGER":			return "<NOTHING>";
-				case "CHASE_FLEET":			return "CHASE_FLEET";
-				case "CHASE_MONSTER":		return "<CHASE_NO_NEBULA>";
-				case "CHASE_PLAYER":		return "<CHASE>";
-				case "CHASE_STATION":		return "<CHASE_NO_NEBULA>";
-				case "CHASE_WHALE":			return "<CHASE_NO_NEBULA>";
-				case "DEFEND":				return "DEFEND";
-				case "DIR_THROTTLE":		return "DIR_THROTTLE";
-				case "FIGHTER_BINGO":		return "<NOTHING>";
-				case "FOLLOW_COMMS_ORDERS": return "<NOTHING>";
-				case "FOLLOW_LEADER":		return "<NOTHING>";
-				case "FRENZY_ATTACK":		return "<NOTHING>";
-				case "GO_TO_HOLE":		    return "GO_TO_HOLE";
-				case "GUARD_STATION":       return "GUARD_STATION";
-				case "LAUNCH_FIGHTERS":		return "LAUNCH_FIGHTERS";
-				case "LEADER_LEADS":		return "<NOTHING>";
-				case "MOVE_WITH_GROUP":		return "MOVE_WITH_GROUP";
-				case "POINT_THROTTLE":		return "POINT_THROTTLE";
-				case "PROCEED_TO_EXIT":		return "<NOTHING>";
-				case "RELEASE_PIRANHAS":	return "RELEASE_PIRANHAS";
-				case "SPCL_AI":			    return "<NOTHING>";
-				case "STAY_CLOSE":			return "STAY_CLOSE";
-				case "TARGET_THROTTLE":		return "TARGET_THROTTLE";
-				case "TRY_TO_BECOME_LEADER":return "<NOTHING>";
+				case "ATTACK":  				return "ATTACK";
+				case "AVOID_SIGNAL":    		return "AVOID_SIGNAL";
+				case "AVOID_BLACK_HOLE":    	return "<AVOID>";
+				case "AVOID_WHALE":  			return "<AVOID>";
+				case "CHASE_AI_SHIP":    		return "<CHASE>";
+				case "CHASE_ANGER":  			return "<NOTHING>";
+				case "CHASE_FLEET":  			return "CHASE_FLEET";
+				case "CHASE_MONSTER":    		return "<CHASE_NO_NEBULA>";
+				case "CHASE_OTHER_MONSTERS":	return "<CHASE_NO_NEBULA>";
+				case "CHASE_PLAYER":    		return "<CHASE>";
+				case "CHASE_SIGNAL":    		return "CHASE_SIGNAL";
+				case "CHASE_STATION":    		return "<CHASE_NO_NEBULA>";
+				case "CHASE_WHALE":  			return "<CHASE_NO_NEBULA>";
+				case "DEFEND":  				return "DEFEND";
+				case "DIR_THROTTLE":    		return "DIR_THROTTLE";
+				case "DRAGON_NEST":     		return "<NOTHING>";
+				case "FIGHTER_BINGO":    		return "<NOTHING>";
+				case "FOLLOW_COMMS_ORDERS":     return "<NOTHING>";
+				case "FOLLOW_LEADER":    		return "<NOTHING>";
+				case "FRENZY_ATTACK":    		return "<NOTHING>";
+				case "GO_TO_HOLE":  		    return "GO_TO_HOLE";
+				case "GUARD_STATION":           return "GUARD_STATION";
+				case "LAUNCH_FIGHTERS":  		return "LAUNCH_FIGHTERS";
+				case "LEADER_LEADS":    		return "<NOTHING>";
+				case "MOVE_WITH_GROUP":  		return "MOVE_WITH_GROUP";
+				case "PLAY_IN_ASTEROIDS":     	return "<NOTHING>";
+				case "POINT_THROTTLE":  		return "POINT_THROTTLE";
+				case "PROCEED_TO_EXIT":  		return "<NOTHING>";
+				case "RANDOM_PATROL":    	    return "RANDOM_PATROL";
+				case "RELEASE_PIRANHAS":    	return "RELEASE_PIRANHAS";
+				case "SPCL_AI":  			    return "<NOTHING>";
+				case "STAY_CLOSE":  			return "STAY_CLOSE";
+				case "TARGET_THROTTLE":  		return "TARGET_THROTTLE";
+				case "TRY_TO_BECOME_LEADER":    return "<NOTHING>";
 				default:
-					return "<INVALID_TYPE>";//This must be further converted in SetValue to some valid one, and type must be set there as well
+					return "<INVALID_TYPE>"; // This must be further converted in SetValue to some valid one, and type must be set there as well.
 			}
 		}
 
@@ -154,6 +160,45 @@ namespace ArtemisMissionEditor.Expressions
 
 			#endregion
 
+			#region AVOID_SIGNAL
+
+			eML = this.Add("AVOID_SIGNAL");
+			____Add_Type(eML);
+			eML.Add(new ExpressionMember("with "));
+			eML.Add(new ExpressionMember("magic "));
+			eML.Add(new ExpressionMember("value "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value1"));
+            eML.Add(new ExpressionMember("\" "));
+			____Add_Name(eML);
+
+			#endregion
+
+			#region CHASE_SIGNAL
+
+			eML = this.Add("CHASE_SIGNAL");
+			____Add_Type(eML);
+			eML.Add(new ExpressionMember("with "));
+			eML.Add(new ExpressionMember("magic "));
+			eML.Add(new ExpressionMember("value "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value1"));
+            eML.Add(new ExpressionMember("\" "));
+			____Add_Name(eML);
+
+			#endregion
+
+			#region RANDOM_PATROL
+
+			eML = this.Add("RANDOM_PATROL");
+			____Add_Type(eML);
+			eML.Add(new ExpressionMember("with "));
+			eML.Add(new ExpressionMember("magic "));
+			eML.Add(new ExpressionMember("value "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value1"));
+            eML.Add(new ExpressionMember("\" "));
+			____Add_Name(eML);
+
+			#endregion
+
 			#region CHASE_FLEET
 
 			eML = this.Add("CHASE_FLEET");
@@ -179,7 +224,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("moving "));
 			eML.Add(new ExpressionMember("at "));
 			eML.Add(new ExpressionMember("throttle "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueT, "value2"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Throttle, "value2"));
 			eML.Add(new ExpressionMember("\" "));
 			____Add_Name(eML);
 
@@ -213,7 +258,7 @@ namespace ArtemisMissionEditor.Expressions
             ____Add_Type(eML);
             eML.Add(new ExpressionMember("at "));
             eML.Add(new ExpressionMember("throttle "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueT, "value1"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Throttle, "value1"));
             eML.Add(new ExpressionMember(", "));
             eML.Add(new ExpressionMember("value2 "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value2"));
@@ -241,7 +286,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("moving "));
 			eML.Add(new ExpressionMember("at "));
 			eML.Add(new ExpressionMember("throttle "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueT, "value4"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Throttle, "value4"));
 			eML.Add(new ExpressionMember("\" "));
 			____Add_Name(eML);
 
@@ -275,7 +320,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("moving "));
 			eML.Add(new ExpressionMember("at "));
 			eML.Add(new ExpressionMember("throttle "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueT, "value2"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Throttle, "value2"));
             eML.Add(new ExpressionMember(", "));
             eML.Add(new ExpressionMember("value3 "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value3"));
@@ -295,7 +340,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("heading "));
 			eML.Add(new ExpressionMember("at "));
 			eML.Add(new ExpressionMember("throttle "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueT, "value1"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Throttle, "value1"));
 			eML.Add(new ExpressionMember(" towards "));
 			eML.Add(new ExpressionMember("object "));
 			eML.Add(new ExpressionMember("named "));
@@ -320,7 +365,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("moving "));
 			eML.Add(new ExpressionMember("at "));
 			eML.Add(new ExpressionMember("throttle "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueT, "value1"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Throttle, "value1"));
 			eML.Add(new ExpressionMember("\" "));
 			____Add_Name(eML);
 

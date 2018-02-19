@@ -301,6 +301,7 @@ namespace ArtemisMissionEditor.Expressions
 			AIType.AddToDictionary("CHASE_MONSTER", "CHASE MONSTER ");
 			AIType.AddToDictionary("CHASE_OTHER_MONSTERS", "CHASE OTHER MONSTERS ");
 			AIType.AddToDictionary("CHASE_PLAYER", "CHASE PLAYER ");
+			AIType.AddToDictionary("CHASE_SIGNAL", "CHASE SIGNAL ");
 			AIType.AddToDictionary("CHASE_STATION", "CHASE STATION ");
 			AIType.AddToDictionary("CHASE_WHALE", "CHASE WHALE ");
 			AIType.AddToDictionary("DEFEND", "DEFEND ");
@@ -315,7 +316,7 @@ namespace ArtemisMissionEditor.Expressions
 			AIType.AddToDictionary("LAUNCH_FIGHTERS", "LAUNCH FIGHTERS ");
 			AIType.AddToDictionary("LEADER_LEADS", "LEADER LEADS");
 			AIType.AddToDictionary("MOVE_WITH_GROUP", "MOVE WITH GROUP ");
-			AIType.AddToDictionary("PLAY_IN_ASTEROIDS", "PLAY IN ASTEROIDS ");
+			AIType.AddToDictionary("PLAY_IN_ASTEROIDS", "PLAY IN ASTEROIDS");
 			AIType.AddToDictionary("POINT_THROTTLE", "POINT THROTTLE ");
 			AIType.AddToDictionary("PROCEED_TO_EXIT", "PROCEED TO EXIT");
 			AIType.AddToDictionary("RANDOM_PATROL", "RANDOM PATROL ");
