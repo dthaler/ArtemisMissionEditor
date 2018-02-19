@@ -90,8 +90,8 @@ namespace ArtemisMissionEditor.Expressions
         /// </summary>
 
         private void ____Add_Monster(List<ExpressionMember> eML, bool nameMandatory = true)
-            {
-                    eML.Add(new ExpressionMember("of "));
+        {
+            eML.Add(new ExpressionMember("of "));
             eML.Add(new ExpressionMember("type "));
             eML.Add(new ExpressionMember("<SELECT>", ExpressionMemberValueDescriptions.MonsterType, "monsterType"));
            // if (ExpressionMemberValueDescriptions = 1)
