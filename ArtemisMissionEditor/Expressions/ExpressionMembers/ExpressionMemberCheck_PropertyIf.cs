@@ -61,8 +61,11 @@ namespace ArtemisMissionEditor.Expressions
 				case "missileStoresHoming": 	return "<DEFAULT>";
 				case "missileStoresNuke": 		return "<DEFAULT>";
 				case "missileStoresMine": 		return "<DEFAULT>";
-				case "missileStoresECM": 		return "<DEFAULT>";
+				case "missileStoresEMP": 		return "<DEFAULT>";
                 case "missileStoresPShock":     return "<DEFAULT>";
+                case "missileStoresBeacon":     return "<DEFAULT>";
+                case "missileStoresProbe":      return "<DEFAULT>";
+                case "missileStoresTag":        return "<DEFAULT>";
                 //VALUES FOR SHIELDED SHIPS		
                 case "throttle": 				return "<DEFAULT>";
 				case "steering": 				return "<DEFAULT>";
@@ -105,7 +108,11 @@ namespace ArtemisMissionEditor.Expressions
 				case "countHoming": 			return "<DEFAULT>";
 				case "countNuke": 				return "<DEFAULT>";
 				case "countMine": 				return "<DEFAULT>";
-				case "countECM": 				return "<DEFAULT>";
+				case "countEMP": 				return "<DEFAULT>";
+				case "countShk": 				return "<DEFAULT>";
+				case "countBea": 				return "<DEFAULT>";
+				case "countPro": 				return "<DEFAULT>";
+				case "countTag": 				return "<DEFAULT>";
 				case "energy": 					return "<DEFAULT>";
 				case "warpState":				return "<DEFAULT>";
 				case "currentRealSpeed":		return "<DEFAULT>";

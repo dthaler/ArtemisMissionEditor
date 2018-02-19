@@ -368,8 +368,11 @@ namespace ArtemisMissionEditor.Expressions
 			PropertyObject.AddToDictionary("missileStoresHoming", "missileStoresHoming");
 			PropertyObject.AddToDictionary("missileStoresNuke", "missileStoresNuke");
 			PropertyObject.AddToDictionary("missileStoresMine", "missileStoresMine");
-			PropertyObject.AddToDictionary("missileStoresECM", "missileStoresECM");
+			PropertyObject.AddToDictionary("missileStoresEMP", "missileStoresEMP");
             PropertyObject.AddToDictionary("missileStoresPShock", "missileStoresPShock");
+            PropertyObject.AddToDictionary("missileStoresBeacon", "missileStoresBeacon");
+            PropertyObject.AddToDictionary("missileStoresProbe", "missileStoresProbe");
+            PropertyObject.AddToDictionary("missileStoresTag", "missileStoresTag");
             PropertyObject.NewMenuGroup("Stations");
 			PropertyObject.AddToDictionary("throttle", "throttle");
 			PropertyObject.AddToDictionary("steering", "steering");
@@ -413,7 +416,11 @@ namespace ArtemisMissionEditor.Expressions
 			PropertyObject.AddToDictionary("countHoming", "countHoming");
 			PropertyObject.AddToDictionary("countNuke", "countNuke");
 			PropertyObject.AddToDictionary("countMine", "countMine");
-			PropertyObject.AddToDictionary("countECM", "countECM");
+			PropertyObject.AddToDictionary("countEMP", "countEMP");
+			PropertyObject.AddToDictionary("countShk", "countShk");
+			PropertyObject.AddToDictionary("countBea", "countBea");
+			PropertyObject.AddToDictionary("countPro", "countPro");
+			PropertyObject.AddToDictionary("countTag", "countTag");
 			PropertyObject.AddToDictionary("energy", "energy");
 			PropertyObject.AddToDictionary("warpState", "warpState");
 			PropertyObject.AddToDictionary("currentRealSpeed", "currentRealSpeed");

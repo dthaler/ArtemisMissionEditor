@@ -56,13 +56,16 @@ namespace ArtemisMissionEditor.Expressions
                 case "angleDelta":                 return "<DEFAULT>";
                 case "artScale":                 return "<DEFAULT>";
                 //VALUES FOR STATIONS            
-                case "shieldState":             return "<FLT-+INF>";
+                case "shieldState":              return "<FLT-+INF>";
                 case "canBuild":                 return "<BOOLYESNO>";
-                case "missileStoresHoming":     return "<INT0...+INF>";
-                case "missileStoresNuke":         return "<INT0...+INF>";
-                case "missileStoresMine":         return "<INT0...+INF>";
-                case "missileStoresECM":         return "<INT0...+INF>";
-                case "missileStoresPShock":     return "<INT0...+INF>";
+                case "missileStoresHoming":      return "<INT0...+INF>";
+                case "missileStoresNuke":        return "<INT0...+INF>";
+                case "missileStoresMine":        return "<INT0...+INF>";
+                case "missileStoresEMP":         return "<INT0...+INF>";
+                case "missileStoresPShock":      return "<INT0...+INF>";
+                case "missileStoresBeacon":      return "<INT0...+INF>";
+                case "missileStoresProbe":       return "<INT0...+INF>";
+                case "missileStoresTag":         return "<INT0...+INF>";
                 //VALUES FOR SHIELDED SHIPS        
                 case "throttle":                 return "<DEFAULT>";
                 case "steering":                 return "<DEFAULT>";
@@ -102,14 +105,18 @@ namespace ArtemisMissionEditor.Expressions
                 case "exitPointY":                 return "<FLT-100K...100K>";
                 case "exitPointZ":                 return "<FLT0...100K>";
                 //VALUES FOR PLAYERS            
-                case "countHoming":             return "<INT0...+INF>";
+                case "countHoming":               return "<INT0...+INF>";
                 case "countNuke":                 return "<INT0...+INF>";
                 case "countMine":                 return "<INT0...+INF>";
-                case "countECM":                 return "<INT0...+INF>";
-                case "energy":                     return "<INT0...+INF>";
-                case "warpState":                return "<INT0...4>";
-                case "currentRealSpeed":        return "<READ_ONLY>";
-                case "totalCoolant":            return "<INT0...+INF>";
+                case "countEMP":                  return "<INT0...+INF>";
+                case "countShk":                  return "<INT0...+INF>";
+                case "countBea":                  return "<INT0...+INF>";
+                case "countPro":                  return "<INT0...+INF>";
+                case "countTag":                  return "<INT0...+INF>";
+                case "energy":                    return "<INT0...+INF>";
+                case "warpState":                 return "<INT0...4>";
+                case "currentRealSpeed":          return "<READ_ONLY>";
+                case "totalCoolant":              return "<INT0...+INF>";
                 //DEFAULT CASE
                 default:
                     return "<UNKNOWN_PROPERTY>";
