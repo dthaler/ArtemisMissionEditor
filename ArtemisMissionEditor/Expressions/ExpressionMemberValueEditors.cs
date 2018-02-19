@@ -289,19 +289,23 @@ namespace ArtemisMissionEditor.Expressions
 			SetVariableCheck.AddToMenuDictionary("<to>", "to an exact value");
 			SetVariableCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
 
+            // Add brain stack blocks.  There should be a trailing space if and only if the block uses arguments.
 			AIType = new ExpressionMemberValueEditor();
 			AIType.AddToDictionary("ATTACK", "ATTACK ");
 			AIType.AddToDictionary("AVOID_BLACK_HOLE", "AVOID BLACK HOLE ");
+			AIType.AddToDictionary("AVOID_SIGNAL", "AVOID SIGNAL ");
 			AIType.AddToDictionary("AVOID_WHALE", "AVOID WHALE ");
 			AIType.AddToDictionary("CHASE_AI_SHIP", "CHASE AI SHIP ");
 			AIType.AddToDictionary("CHASE_ANGER", "CHASE ANGER");
 			AIType.AddToDictionary("CHASE_FLEET", "CHASE FLEET ");
 			AIType.AddToDictionary("CHASE_MONSTER", "CHASE MONSTER ");
+			AIType.AddToDictionary("CHASE_OTHER_MONSTERS", "CHASE OTHER MONSTERS ");
 			AIType.AddToDictionary("CHASE_PLAYER", "CHASE PLAYER ");
 			AIType.AddToDictionary("CHASE_STATION", "CHASE STATION ");
 			AIType.AddToDictionary("CHASE_WHALE", "CHASE WHALE ");
 			AIType.AddToDictionary("DEFEND", "DEFEND ");
 			AIType.AddToDictionary("DIR_THROTTLE", "DIR THROTTLE ");
+			AIType.AddToDictionary("DRAGON_NEST", "DRAGON NEST");
 			AIType.AddToDictionary("FIGHTER_BINGO", "FIGHTER BINGO");
 			AIType.AddToDictionary("FOLLOW_COMMS_ORDERS", "FOLLOW COMMS ORDERS");
 			AIType.AddToDictionary("FOLLOW_LEADER", "FOLLOW LEADER");
@@ -311,8 +315,10 @@ namespace ArtemisMissionEditor.Expressions
 			AIType.AddToDictionary("LAUNCH_FIGHTERS", "LAUNCH FIGHTERS ");
 			AIType.AddToDictionary("LEADER_LEADS", "LEADER LEADS");
 			AIType.AddToDictionary("MOVE_WITH_GROUP", "MOVE WITH GROUP ");
+			AIType.AddToDictionary("PLAY_IN_ASTEROIDS", "PLAY IN ASTEROIDS ");
 			AIType.AddToDictionary("POINT_THROTTLE", "POINT THROTTLE ");
 			AIType.AddToDictionary("PROCEED_TO_EXIT", "PROCEED TO EXIT");
+			AIType.AddToDictionary("RANDOM_PATROL", "RANDOM PATROL ");
 			AIType.AddToDictionary("RELEASE_PIRANHAS", "RELEASE PIRANHAS ");
 			AIType.AddToDictionary("SPCL_AI", "SPCL AI");
 			AIType.AddToDictionary("STAY_CLOSE", "STAY CLOSE ");
@@ -490,14 +496,15 @@ namespace ArtemisMissionEditor.Expressions
             SpecialShipType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
 
             MonsterType = new ExpressionMemberValueEditor();
-            MonsterType.AddToDictionary("0", "Classic");
+            MonsterType.AddToDictionary("0", "Typhon");
             MonsterType.AddToDictionary("1", "Whale");
             MonsterType.AddToDictionary("2", "Shark");
             MonsterType.AddToDictionary("3", "Dragon");
             MonsterType.AddToDictionary("4", "Piranha");
-            MonsterType.AddToDictionary("5", "Tube");
-            MonsterType.AddToDictionary("6", "Bug");
-            MonsterType.AddToDictionary("7", "Derelict");
+            MonsterType.AddToDictionary("5", "Charybdis");
+            MonsterType.AddToDictionary("6", "NSect");
+            MonsterType.AddToDictionary("7", "Jelly");
+            MonsterType.AddToDictionary("8", "Wreck");
             MonsterType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
 
             DriveType = new ExpressionMemberValueEditor();
