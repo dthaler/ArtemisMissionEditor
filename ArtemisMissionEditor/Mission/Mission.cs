@@ -172,8 +172,11 @@ namespace ArtemisMissionEditor
         /// <summary> Player names used in the mission</summary>
         public string[] PlayerShipNames;
 
-        /// <summary> Mission version </summary>
+        /// <summary> Mission version</summary>
         public string VersionNumber;
+
+        /// <summary> Description</summary>
+        public string Description;
 
         /// <summary> Total number of events in the mission</summary>
         public int EventCount { get; private set; }
@@ -775,6 +778,7 @@ namespace ArtemisMissionEditor
             CommentsBeforeRoot = "";
             PlayerShipNames = Settings.Current.PlayerShipNames;
             VersionNumber = "1.0";
+            Description = null;
 
             BeginUpdate();
 
@@ -924,6 +928,13 @@ namespace ArtemisMissionEditor
 
             foreach (XmlNode item in root.ChildNodes)
             {
+                // Parse mission_description node, if any.
+                if (item.Name == "mission_description")
+                {
+                    Description = item.InnerText.Replace("\r\n", "").Replace("^", "\r\n");
+                    continue;
+                }
+
                 TreeNode newNode = new TreeNode();
                 MissionNode newMissionNode = MissionNode.NewFromXML(item);
 
@@ -1005,7 +1016,7 @@ namespace ArtemisMissionEditor
                 root.Attributes.Append(xAtt);
                 xDoc.AppendChild(root);
             }
-            if (BackgroundNode!=null)
+            if (BackgroundNode != null)
             {
                 xAtt = xDoc.CreateAttribute("background_id_arme");
                 xAtt.Value = ((MissionNode)BackgroundNode.Tag).ID.ToString();
@@ -1018,6 +1029,13 @@ namespace ArtemisMissionEditor
                 xAtt.Value = Helper.StringArrayToLine(PlayerShipNames);
                 root.Attributes.Append(xAtt);
                 xDoc.AppendChild(root);
+            }
+
+            if (!String.IsNullOrEmpty(Description))
+            {
+                XmlElement elt = xDoc.CreateElement("mission_description");
+                elt.InnerText = Description.Replace("\r\n", "^");
+                root.AppendChild(elt);
             }
 
             //Out the xml's!
@@ -1079,6 +1097,7 @@ namespace ArtemisMissionEditor
             CommentsAfterRoot = state.CommentsAfter;
             PlayerShipNames = state.PlayerShipNames;
             VersionNumber = state.VersionNumber;
+            Description = state.Description;
 
             //Find selected node
             if (state.SelectedNode >= 0)
@@ -1153,6 +1172,7 @@ namespace ArtemisMissionEditor
             result.CommentsAfter = CommentsAfterRoot;
             result.PlayerShipNames = PlayerShipNames;
             result.VersionNumber = VersionNumber;
+            result.Description = Description;
             result.SelectedNode = -1;
             if (TreeViewNodes.SelectedNode!=null)
             {
@@ -3217,6 +3237,9 @@ namespace ArtemisMissionEditor
             List<MissionSearchResult> result = new List<MissionSearchResult>();
 
             int curNode = 0;
+
+            if (String.IsNullOrEmpty(Description))
+                result.Add(new MissionSearchResult(0, 0, "Mission has no description. Consider adding one under Edit->Properties...", null, null));
 
             foreach (TreeNode node in TreeViewNodes.Nodes)
                 FindProblems_RecursivelyCheckNodes(node, ref curNode, result);
