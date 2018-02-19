@@ -2570,10 +2570,18 @@ namespace ArtemisMissionEditor
                 }
 
                 if ((statement.Name == "addto_object_property") ||
-                    (statement.Name == "set_object_property") ||
-                    (statement.Name == "set_variable"))
+                    (statement.Name == "set_object_property"))
                 {
                     UpdateNamesLists_ScanExpression(statement, "value");
+                }
+
+                if (statement.Name == "set_variable")
+                {
+                    UpdateNamesLists_ScanExpression(statement, "value");
+                    UpdateNamesLists_ScanExpression(statement, "randomIntLow");
+                    UpdateNamesLists_ScanExpression(statement, "randomIntHigh");
+                    UpdateNamesLists_ScanExpression(statement, "randomFloatLow");
+                    UpdateNamesLists_ScanExpression(statement, "randomFloatHigh");
                 }
 
                 if (statement.Name == "create")
