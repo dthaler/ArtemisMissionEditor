@@ -573,6 +573,7 @@ namespace ArtemisMissionEditor.Expressions
             AnomalyType.AddToDictionary("5", "Speed");
             AnomalyType.AddToDictionary("6", "Shield");
             AnomalyType.AddToDictionary("7", "Code Case");
+            AnomalyType.AddToDictionary("8", "Beacon");
             AnomalyType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
 
             SpecialCapitainType = new ExpressionMemberValueEditor();

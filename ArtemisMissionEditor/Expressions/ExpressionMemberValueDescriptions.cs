@@ -100,10 +100,10 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD player_slot =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 7);
         public static EMVD bay_slot =                   new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.DefaultInteger, 0, 31);
         /// <summary> "MonsterType" from [create] </summary>
-        public static EMVD MonsterType =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.MonsterType, 0, 7, "", "");
+        public static EMVD MonsterType =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.MonsterType, 0, 8, "", "");
         public static EMVD SensorRange =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.SensorRange, 0, 5, "", "");
         /// <summary> "AnomalyType" from [create] </summary>
-        public static EMVD AnomalyType =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.AnomalyType, 0, 7, "", "");
+        public static EMVD AnomalyType =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.AnomalyType, 0, 8, "", "");
         /// <summary> "meshFileName" from [create] </summary>
         public static EMVD MeshFileName =               new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.PathEditor,
                                                         "DeleD Mesh Files|*.dxs|All Files|*.*;Select Delgine mesh file",
