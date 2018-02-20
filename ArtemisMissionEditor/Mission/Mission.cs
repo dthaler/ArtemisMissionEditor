@@ -3310,6 +3310,7 @@ namespace ArtemisMissionEditor
                 "if_exists",
                 "if_not_exists",
                 "if_object_property",
+                "if_scan_level",
                 };
             string[] statementsThatTakeTargetName = new string[]{
                 "direct",

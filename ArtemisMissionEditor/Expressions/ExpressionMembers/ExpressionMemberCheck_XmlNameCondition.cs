@@ -37,6 +37,7 @@ namespace ArtemisMissionEditor.Expressions
                 case "if_distance":
                 case "if_external_program_active":
                 case "if_external_program_finished":
+                case "if_scan_level":
                     return container.Statement.Name;
                 case "if_exists":
                 case "if_not_exists":
@@ -196,6 +197,18 @@ namespace ArtemisMissionEditor.Expressions
 
 			eML = this.Add("if_object_property");
 			eML.Add(new ExpressionMemberCheck_PropertyIf());
+
+			#endregion
+
+			#region if_scan_level
+
+			eML = this.Add("if_scan_level");
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll));
+            eML.Add(new ExpressionMember("for "));
+            eML.Add(new ExpressionMember("side "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "side"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Comparator, "comparator"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ScanLevel, "value", true));
 
 			#endregion
 

@@ -263,6 +263,7 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameConditionCheck.AddToDictionary("if_object_property", "Property");
 			XmlNameConditionCheck.AddToDictionary("if_distance", "Distance");
 			XmlNameConditionCheck.AddToDictionary("if_difficulty", "Difficulty level");
+			XmlNameConditionCheck.AddToDictionary("if_scan_level", "Scan level of object");
             XmlNameConditionCheck.AddToDictionary("if_comms_button", "Comms Button pressed");
 			XmlNameConditionCheck.AddToDictionary("if_gm_key", "GM key pressed");
             XmlNameConditionCheck.AddToDictionary("if_gm_button", "GM Button pressed");
@@ -278,6 +279,7 @@ namespace ArtemisMissionEditor.Expressions
 			XmlNameConditionCheck.AddToMenuDictionary("if_object_property", "Object property");
 			XmlNameConditionCheck.AddToMenuDictionary("<location>", "Object is located");
 			XmlNameConditionCheck.AddToMenuDictionary("if_distance", "Distance between objects");
+			XmlNameConditionCheck.AddToMenuDictionary("if_scan_level", "Object scan level");
             XmlNameConditionCheck.AddToMenuDictionary("if_comms_button", "Comms button pressed");
 			XmlNameConditionCheck.AddToMenuDictionary("if_gm_key", "GM pressed a key");
             XmlNameConditionCheck.AddToMenuDictionary("if_gm_button", "GM button pressed");

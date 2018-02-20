@@ -281,6 +281,10 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD FleetNumberIf =              new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 99,""," ");
         /// <summary> Check allships/fleetnumber from [if_gm_key] </summary>
         public static EMVD Check_Letter_KeyID =         new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DefaultCheck);
+
+        /// <summary> "value" from [if_scan_level] </summary>
+        public static EMVD ScanLevel =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 2, "","");
+
         /// <summary> "value" from [if_gm_key] </summary>
         public static EMVD KeyID =                      new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 128,""," ");
         /// <summary> keyText from [if_gm_key] </summary>
