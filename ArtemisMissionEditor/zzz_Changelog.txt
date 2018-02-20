@@ -1,4 +1,4 @@
-Version 2.6.2 [2018-February-19] (Dave Thaler)
+Version 2.7.0 [2018-February-19] (Dave Thaler)
 * Added new brain stack blocks for Artemis 2.7
 * Added new monster names for Artemis 2.7
 * Added new player & station properties for beacons, probes, and tags

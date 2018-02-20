@@ -1,8 +1,35 @@
 ;aiu;
 
+[Update 2.7]
+Name=Artemis Mission Editor 2.7
+ProductVersion=2.7
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.msi
+Size=1589248
+ReleaseDate=19/02/2018
+MD5=fe9ab0eef833b894fb6db205f61d7406
+ServerFileName=ArtemisMissionEditorInstaller.2.7.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.0.0
+Feature=Added new brain stack blocks for Artemis 2.7
+Feature1=Added new monster names for Artemis 2.7
+Feature2=Added new player & station properties for beacons, probes, and tags
+Feature3=Added systemCur* player ship properties added in Artemis 2.6.3
+Feature4=Added mission_description and gm_instructions commands
+Feature5=Added conditions if_scan_level, if_external_program_active, if_external_program_finished
+Feature6=Added player_name attribute to if_docked and if_player_is_targeting
+Feature7=Added menu_w attribute to set_gm_button
+Feature8=Added sideValue attribute to incoming_comms_text
+Enhancement=More improvements to "Potential Problems" checking
+BugFix=Subtitles are now correctly marked as optional in big_message
+BugFix1=Preserve the string values of use_gm_position and use_gm_selection attributes
+BugFix2=Don't lose integer attribute when setting a variable to a random int
+BugFix3=Corrected display of DEFEND ai block arguments
+Replaces=All
+
 [Update 2.6.2]
-Name=Artemis Mission Editor 2.6.2
 ProductVersion=2.6.2
+Name=Artemis Mission Editor 2.6.2
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.2.msi
 Size=1586176
 ReleaseDate=06/02/2018
@@ -35,8 +62,8 @@ BugFix= Fixed some more typos
 Replaces=All
 
 [Update 2.6.0.1]
-ProductVersion=2.6.0.1
 Name=Artemis Mission Editor 2.6.0.1
+ProductVersion=2.6.0.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.0.1.msi
 Size=1583616
 ReleaseDate=26/12/2017
@@ -55,8 +82,8 @@ BugFix2=Fixed bug in update available detection
 Replaces=All
 
 [Update 2.6]
-Name=Artemis Mission Editor 2.6
 ProductVersion=2.6.0.0
+Name=Artemis Mission Editor 2.6
 URL=http://www.example.com/downloads/ArtemisMissionEditorInstaller.2.6.msi
 Size=1583616
 MD5=72deef9dc1ae805094af04d469c065f4

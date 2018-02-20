@@ -55,6 +55,20 @@
     <ROW Section="Update 2.6.2" Key="Enhancement" Value="Many improvements to &quot;Potential Problems&quot; checking"/>
     <ROW Section="Update 2.6.2" Key="BugFix" Value="Fixed some more typos&#13;&#10;Cleaned up code so it builds without any compiler warnings"/>
     <ROW Section="Update 2.6.2" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1"/>
+    <ROW Section="Update 2.7" Key="Name" Value="Artemis Mission Editor 2.7"/>
+    <ROW Section="Update 2.7" Key="ProductVersion" Value="2.7"/>
+    <ROW Section="Update 2.7" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.msi"/>
+    <ROW Section="Update 2.7" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.msi"/>
+    <ROW Section="Update 2.7" Key="ReleaseDate" Value="19539"/>
+    <ROW Section="Update 2.7" Key="MD5" Value="ArtemisMissionEditorInstaller.2.7.msi"/>
+    <ROW Section="Update 2.7" Key="ServerFileName" Value="ArtemisMissionEditorInstaller.2.7.msi"/>
+    <ROW Section="Update 2.7" Key="Flags" Value="Critical"/>
+    <ROW Section="Update 2.7" Key="FilePath" Value="[APPDIR]ArtemisMissionEditor.exe"/>
+    <ROW Section="Update 2.7" Key="Version" Value="2.7.0.0"/>
+    <ROW Section="Update 2.7" Key="Feature" Value="Added new brain stack blocks for Artemis 2.7&#13;&#10;Added new monster names for Artemis 2.7&#13;&#10;Added new player &amp; station properties for beacons, probes, and tags&#13;&#10;Added systemCur* player ship properties added in Artemis 2.6.3&#13;&#10;Added mission_description and gm_instructions commands&#13;&#10;Added conditions if_scan_level, if_external_program_active, if_external_program_finished&#13;&#10;Added player_name attribute to if_docked and if_player_is_targeting&#13;&#10;Added menu_w attribute to set_gm_button&#13;&#10;Added sideValue attribute to incoming_comms_text"/>
+    <ROW Section="Update 2.7" Key="Enhancement" Value="More improvements to &quot;Potential Problems&quot; checking"/>
+    <ROW Section="Update 2.7" Key="BugFix" Value="Subtitles are now correctly marked as optional in big_message&#13;&#10;Preserve the string values of use_gm_position and use_gm_selection attributes&#13;&#10;Don&apos;t lose integer attribute when setting a variable to a random int&#13;&#10;Corrected display of DEFEND ai block arguments"/>
+    <ROW Section="Update 2.7" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2"/>
     <ATTRIBUTE name="OutputFileName" value="ArtemisMissionEditorUpdates.txt"/>
     <ATTRIBUTE name="OutputFolder" value="."/>
   </COMPONENT>
