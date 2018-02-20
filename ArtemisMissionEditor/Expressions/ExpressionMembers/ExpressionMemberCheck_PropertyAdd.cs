@@ -118,6 +118,30 @@ namespace ArtemisMissionEditor.Expressions
 				case "warpState":				return "<DEFAULT>";
 				case "currentRealSpeed":		return "<READ_ONLY>";
                 case "totalCoolant":            return "<DEFAULT>";
+                case "systemCurCoolantBeam":         return "<DEFAULT>";
+                case "systemCurCoolantTorpedo":      return "<DEFAULT>";
+                case "systemCurCoolantTactical":     return "<DEFAULT>";
+                case "systemCurCoolantTurning":      return "<DEFAULT>";
+                case "systemCurCoolantImpulse":      return "<DEFAULT>";
+                case "systemCurCoolantWarp":         return "<DEFAULT>";
+                case "systemCurCoolantFrontShield":  return "<DEFAULT>";
+                case "systemCurCoolantBackShield":   return "<DEFAULT>";
+                case "systemCurHeatBeam":            return "<DEFAULT>";
+                case "systemCurHeatTorpedo":         return "<DEFAULT>";
+                case "systemCurHeatTactical":        return "<DEFAULT>";
+                case "systemCurHeatTurning":         return "<DEFAULT>";
+                case "systemCurHeatImpulse":         return "<DEFAULT>";
+                case "systemCurHeatWarp":            return "<DEFAULT>";
+                case "systemCurHeatFrontShield":     return "<DEFAULT>";
+                case "systemCurHeatBackShield":      return "<DEFAULT>";
+                case "systemCurEnergyBeam":          return "<DEFAULT>";
+                case "systemCurEnergyTorpedo":       return "<DEFAULT>";
+                case "systemCurEnergyTactical":      return "<DEFAULT>";
+                case "systemCurEnergyTurning":       return "<DEFAULT>";
+                case "systemCurEnergyImpulse":       return "<DEFAULT>";
+                case "systemCurEnergyWarp":          return "<DEFAULT>";
+                case "systemCurEnergyFrontShield":   return "<DEFAULT>";
+                case "systemCurEnergyBackShield":    return "<DEFAULT>";
 				//DEFAULT CASE
 				default:
 					return "<UNKNOWN_PROPERTY>";

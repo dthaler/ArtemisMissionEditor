@@ -425,6 +425,35 @@ namespace ArtemisMissionEditor.Expressions
 			PropertyObject.AddToDictionary("warpState", "warpState");
 			PropertyObject.AddToDictionary("currentRealSpeed", "currentRealSpeed");
 			PropertyObject.AddToDictionary("totalCoolant", "totalCoolant");
+
+            // Player properties added in Artemis v2.6.3.
+			PropertyObject.AddToDictionary("systemCurCoolantBeam", "systemCurCoolantBeam");
+			PropertyObject.AddToDictionary("systemCurCoolantTorpedo", "systemCurCoolantTorpedo");
+			PropertyObject.AddToDictionary("systemCurCoolantTactical", "systemCurCoolantTactical");
+			PropertyObject.AddToDictionary("systemCurCoolantTurning", "systemCurCoolantTurning");
+			PropertyObject.AddToDictionary("systemCurCoolantImpulse", "systemCurCoolantImpulse");
+			PropertyObject.AddToDictionary("systemCurCoolantWarp", "systemCurCoolantWarp");
+			PropertyObject.AddToDictionary("systemCurCoolantFrontShield", "systemCurCoolantFrontShield");
+			PropertyObject.AddToDictionary("systemCurCoolantBackShield", "systemCurCoolantBackShield");
+
+			PropertyObject.AddToDictionary("systemCurHeatBeam", "systemCurHeatBeam");
+			PropertyObject.AddToDictionary("systemCurHeatTorpedo", "systemCurHeatTorpedo");
+			PropertyObject.AddToDictionary("systemCurHeatTactical", "systemCurHeatTactical");
+			PropertyObject.AddToDictionary("systemCurHeatTurning", "systemCurHeatTurning");
+			PropertyObject.AddToDictionary("systemCurHeatImpulse", "systemCurHeatImpulse");
+			PropertyObject.AddToDictionary("systemCurHeatWarp", "systemCurHeatWarp");
+			PropertyObject.AddToDictionary("systemCurHeatFrontShield", "systemCurHeatFrontShield");
+			PropertyObject.AddToDictionary("systemCurHeatBackShield", "systemCurHeatBackShield");
+
+			PropertyObject.AddToDictionary("systemCurEnergyBeam", "systemCurEnergyBeam");
+			PropertyObject.AddToDictionary("systemCurEnergyTorpedo", "systemCurEnergyTorpedo");
+			PropertyObject.AddToDictionary("systemCurEnergyTactical", "systemCurEnergyTactical");
+			PropertyObject.AddToDictionary("systemCurEnergyTurning", "systemCurEnergyTurning");
+			PropertyObject.AddToDictionary("systemCurEnergyImpulse", "systemCurEnergyImpulse");
+			PropertyObject.AddToDictionary("systemCurEnergyWarp", "systemCurEnergyWarp");
+			PropertyObject.AddToDictionary("systemCurEnergyFrontShield", "systemCurEnergyFrontShield");
+			PropertyObject.AddToDictionary("systemCurEnergyBackShield", "systemCurEnergyBackShield");
+
 			PropertyObject.NewMenuGroup("Players");
 			PropertyObject.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
 
