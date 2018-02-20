@@ -1,3 +1,19 @@
+Version 2.6.2 [2018-February-19] (Dave Thaler)
+* Added new brain stack blocks for Artemis 2.7
+* Added new monster names for Artemis 2.7
+* Added new player & station properties for beacons, probes, and tags
+* Added systemCur* player ship properties added in Artemis 2.6.3
+* Added mission_description and gm_instructions commands
+* Added conditions if_scan_level, if_external_program_active, if_external_program_finished
+* Added player_name attribute to if_docked and if_player_is_targeting
+* Added menu_w attribute to set_gm_button
+* Added sideValue attribute to incoming_comms_text
+* Subtitles are now correctly marked as optional in big_message
+* Preserve the string values of use_gm_position and use_gm_selection attributes
+* More improvements to "Potential Problems" checking
+* Corrected display of DEFEND ai block arguments
+* Don't lose integer attribute when setting a variable to a random int
+----------------------
 Version 2.6.2 [2018-February-6] (Dave Thaler)
 * Added add_ai support for monster AI blocks
 * Many improvements to "Potential Problems" checking
