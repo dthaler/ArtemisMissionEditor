@@ -313,6 +313,14 @@ namespace ArtemisMissionEditor.Expressions
         }
 
         /// <summary>
+        /// Context menu strip for monster names
+        /// </summary>
+        internal static ContextMenuStrip PrepareContextMenuStrip_NamedMonsterNameList(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)
+        {
+            return PrepareContextMenuStrip_SpecifiedListPlusDialog(container, editor, mode, Mission.Current.MonsterNamesList);
+        }
+
+        /// <summary>
         /// Context menu strip for specified list (used by timers, variables and stations)
         /// </summary>
         private static ContextMenuStrip PrepareContextMenuStrip_SpecifiedListPlusDialog(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode, KeyValuePair<List<string>, List<string>> list)

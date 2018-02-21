@@ -73,6 +73,9 @@ namespace ArtemisMissionEditor
         /// <summary> Station names and headers for context menus</summary>
         public KeyValuePair<List<string>, List<string>> StationNamesList { get { return new KeyValuePair<List<string>, List<string>>(NamedObjectNames["station"], new List<string>()); } }
 
+        /// <summary> Monster names and headers for context menus</summary>
+        public KeyValuePair<List<string>, List<string>> MonsterNamesList { get { return new KeyValuePair<List<string>, List<string>>(NamedObjectNames["monster"], new List<string>()); } }
+
         /// <summary> All names of all kinds of named objects </summary>
         public Dictionary<string, List<string>> AllNamesLists { get { return NamedObjectNames; } }
 
@@ -2641,10 +2644,23 @@ namespace ArtemisMissionEditor
                     UpdateNamesLists_ScanExpression(statement, "randomSeed");
                 }
 
+                if (statement.Name == "set_monster_tag_data")
+                {
+                    string named_name = statement.GetAttribute("name");
+                    if (!String.IsNullOrEmpty(named_name))
+                    {
+                        named_name = CollapseName(named_name);
+                        if (!NamedObjectNames["monster"].Contains(named_name))
+                            NamedObjectNames["monster"].Add(named_name);
+                        if (!AllCreatedObjectNames.Contains(named_name))
+                            AllCreatedObjectNames.Add(named_name);
+                    }
+                }
+
                 if (statement.Name == "set_player_carried_type")
                 {
                     string named_name = statement.GetAttribute("name");
-                    if (named_name != null)
+                    if (!String.IsNullOrEmpty(named_name))
                     {
                         named_name = CollapseName(named_name);
                         if (!NamedObjectNames["player"].Contains(named_name))

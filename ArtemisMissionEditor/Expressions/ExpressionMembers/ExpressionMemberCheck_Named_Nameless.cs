@@ -98,6 +98,8 @@ namespace ArtemisMissionEditor.Expressions
 			
 			eML = this.Add("nebulas"); //Choices[3]
 			____Add_Nameless(eML);
+            eML.Add(new ExpressionMember("of "    ));
+            eML.Add(new ExpressionMember("type "    ));                                                                             eML.Add(new ExpressionMember("<>",      ExpressionMemberValueDescriptions.NebulaType, "nebType"));
 
             eML = this.Add("whales"); //Choices[4]
             ____Add_Nameless(eML);

@@ -37,7 +37,7 @@ namespace ArtemisMissionEditor.Expressions
 				case "station":		return "station";
 				case "enemy":		return "enemy";
 				case "genericmesh":	return "genericMesh";
-				case "nebulas":		return "<NAMELESS_MAP_OBJECT>";
+				case "nebulas":		return "nebulas";
 				case "asteroids":	return "<NAMELESS_MAP_OBJECT>";
 				case "mines":		return "<NAMELESS_MAP_OBJECT>";
                 case "monstertype": return "Classic";
@@ -296,7 +296,7 @@ namespace ArtemisMissionEditor.Expressions
 
 			#endregion
            
-			#region <NAMELESS_MAP_OBJECT>		(Nebulas / Asteroids / Mines)
+			#region <NAMELESS_MAP_OBJECT>		(Asteroids / Mines)
 
 			eML = this.Add("<NAMELESS_MAP_OBJECT>");
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Count, "count"));
@@ -317,6 +317,37 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("seed "	));
 			eML.Add(new ExpressionMember("of "      ));
 			eML.Add(new ExpressionMember("<>",		ExpressionMemberValueDescriptions.RandomSeed, "randomSeed"));
+
+			#endregion
+
+			#region nebulas                     (Nebulas)
+
+			eML = this.Add("nebulas");
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Count, "count"));
+			____Add_Type(eML);
+			eML.Add(new ExpressionMember("of "	));
+			eML.Add(new ExpressionMember("type "	));
+			eML.Add(new ExpressionMember("<>",		ExpressionMemberValueDescriptions.NebulaType, "nebType"));
+			eML.Add(new ExpressionMember("on "		));
+			eML.Add(new ExpressionMember("the "		));
+			eML.Add(new ExpressionMemberCheck_Line_Circle());
+			eML.Add(new ExpressionMember("spread "	));
+			eML.Add(new ExpressionMember("randomly ")); 
+			eML.Add(new ExpressionMember("in "      ));
+			eML.Add(new ExpressionMember("the "     ));
+			eML.Add(new ExpressionMember("range "	));
+			eML.Add(new ExpressionMember("of "      ));
+			eML.Add(new ExpressionMember("<>",		ExpressionMemberValueDescriptions.RandomRange, "randomRange"));
+			eML.Add(new ExpressionMember("with "	));
+			eML.Add(new ExpressionMember("the "     ));
+			eML.Add(new ExpressionMember("random "	));
+			eML.Add(new ExpressionMember("seed "	));
+			eML.Add(new ExpressionMember("of "      ));
+			eML.Add(new ExpressionMember("<>",		ExpressionMemberValueDescriptions.RandomSeed, "randomSeed"));
+
+			#endregion
+
+			#region <INVALID_TYPE>
 
 			eML = this.Add("<INVALID_TYPE>");
 			____Add_Type(eML);

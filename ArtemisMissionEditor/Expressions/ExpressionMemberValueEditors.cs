@@ -60,6 +60,7 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor VariableName;
         public static ExpressionMemberValueEditor NamedAllName;
         public static ExpressionMemberValueEditor NamedStationName;
+        public static ExpressionMemberValueEditor NamedMonsterName;
         public static ExpressionMemberValueEditor ConsoleList;
         public static ExpressionMemberValueEditor EliteAIType;
         public static ExpressionMemberValueEditor EliteAbilityBits;
@@ -104,20 +105,17 @@ namespace ArtemisMissionEditor.Expressions
 			DefaultCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
 
             XmlNameActionCheck = new ExpressionMemberValueEditor_XmlName();
-            XmlNameActionCheck.AddToDictionary("set_difficulty_level", "Set difficulty");
 
-           XmlNameActionCheck.AddToDictionary("set_skybox_index", "Set skybox");
-           // XmlNameActionCheck.AddToDictionary("set_difficulty_level", "Set difficulty");
+            XmlNameActionCheck.AddToDictionary("set_difficulty_level", "Set difficulty");
+            XmlNameActionCheck.AddToDictionary("set_skybox_index", "Set skybox");
             XmlNameActionCheck.AddToDictionary("end_mission", "End mission");
             XmlNameActionCheck.AddToDictionary("log", "Log new entry");
             XmlNameActionCheck.AddToDictionary("spawn_external_program", "Spawn external program");
-
-            //XmlNameActionCheck.AddToDictionary("<destroy>", "Destroy");
             XmlNameActionCheck.NewMenuGroup("Game Options");
+
             XmlNameActionCheck.AddToDictionary("create", "Create");
             XmlNameActionCheck.AddToDictionary("<destroy>", "Destroy");
             XmlNameActionCheck.NewMenuGroup("Create/Destroy");
-
             
             XmlNameActionCheck.AddToDictionary("set_comms_button", "Set comms button");
             XmlNameActionCheck.AddToDictionary("clear_comms_button", "Clear comms button");
@@ -150,6 +148,7 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("set_special", "Set special");
             XmlNameActionCheck.AddToDictionary("set_side_value", "Set side");     
             XmlNameActionCheck.AddToDictionary("set_fleet_property", "Set property of fleet");
+            XmlNameActionCheck.AddToDictionary("set_monster_tag_data", "Set tag");
             XmlNameActionCheck.AddToDictionary("set_player_carried_type", "Set hanger bay contents");
             XmlNameActionCheck.AddToDictionary("set_player_station_carried", "Add replacement fighter to station");
             XmlNameActionCheck.AddToDictionary("clear_player_station_carried", "Remove all replacement fighters from station");
@@ -164,7 +163,6 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("direct", "Direct generic mesh");
             XmlNameActionCheck.NewMenuGroup("AI");
 
-
             XmlNameActionCheck.AddToMenuDictionary("start_getting_keypresses_from", "Start getting keypresses from consoles");
             XmlNameActionCheck.AddToMenuDictionary("end_getting_keypresses_from", "End getting keypresses from consoles");
             XmlNameActionCheck.AddToMenuDictionary("set_special", "Set ship's special values");
@@ -174,6 +172,7 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToMenuDictionary("copy_object_property", "Copy property of object");
             XmlNameActionCheck.AddToMenuDictionary("addto_object_property", "Add to property of object");
             XmlNameActionCheck.AddToMenuDictionary("set_fleet_property", "Set property of fleet");
+            XmlNameActionCheck.AddToMenuDictionary("set_monster_tag_data", "Set monster tag");
             XmlNameActionCheck.AddToMenuDictionary("set_relative_position", "Set position relative to object");
             XmlNameActionCheck.AddToMenuDictionary("add_ai", "Add AI command");
             XmlNameActionCheck.AddToMenuDictionary("clear_ai", "Clear AI commands");
@@ -667,6 +666,10 @@ namespace ArtemisMissionEditor.Expressions
 			NamedStationName = new ExpressionMemberValueEditor();
 			NamedStationName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedStationNameList;
             Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedStationName.InvalidateContextMenuStrip(); });
+
+			NamedMonsterName = new ExpressionMemberValueEditor();
+			NamedMonsterName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedMonsterNameList;
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedMonsterName.InvalidateContextMenuStrip(); });
 
 			CommTypes = new ExpressionMemberValueEditor_CommTypes();
 

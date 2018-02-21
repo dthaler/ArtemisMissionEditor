@@ -99,6 +99,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD DriveType =                  new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DriveType, null, null, "\"", "\" ");
         public static EMVD player_slot =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 7);
         public static EMVD bay_slot =                   new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.DefaultInteger, 0, 31);
+        public static EMVD TagSlot =                    new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.DefaultInteger, 0, 3);
         /// <summary> "MonsterType" from [create] </summary>
         public static EMVD MonsterType =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.MonsterType, 0, 8, "", "");
         public static EMVD SensorRange =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.SensorRange, 0, 5, "", "");
@@ -282,6 +283,9 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> Check allships/fleetnumber from [if_gm_key] </summary>
         public static EMVD Check_Letter_KeyID =         new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DefaultCheck);
 
+        /// <summary> "nebType" from [create] </summary>
+        public static EMVD NebulaType =                 new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 1, 3);
+
         /// <summary> "value" from [if_scan_level] </summary>
         public static EMVD ScanLevel =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 2, "","");
 
@@ -318,6 +322,8 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD NameAllWithColon =           new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedAllName,null,null,"\"","\": ");
         /// <summary> "name" from [if_docked] </summary>
         public static EMVD NameStation =                new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedStationName,null,null,"\"","\" ");
+        /// <summary> "name" from [set_monster_tag_data] </summary>
+        public static EMVD NameMonster =                new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedMonsterName,null,null,"\"","\" ");
         /// <summary> "name" from [create] </summary>
         public static EMVD NameCreatePlayer =           new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.PlayerNames,null,null,"\"","\" ");        
 

@@ -57,6 +57,7 @@ namespace ArtemisMissionEditor.Expressions
                 case "set_special":
                 case "set_side_value":
                 case "spawn_external_program":
+                case "set_monster_tag_data":
                 case "set_player_carried_type":
                 case "set_player_station_carried":
                 case "clear_player_station_carried":
@@ -192,6 +193,22 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.GMW, "w"));
             eML.Add(new ExpressionMember(" All Buttons Width:"));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.GMW, "menu_w"));
+
+            #endregion
+
+            #region set_player_carried_type
+
+            eML = this.Add("set_monster_tag_data");
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.TagSlot, "tag_slot", true));
+            eML.Add(new ExpressionMember("on "));
+            eML.Add(new ExpressionMember("monster "));
+            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameMonster));
+            eML.Add(new ExpressionMember("with "));
+            eML.Add(new ExpressionMember("source "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Text, "sourcetext"));
+            eML.Add(new ExpressionMember("and "));
+            eML.Add(new ExpressionMember("date "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Text, "datetext"));
 
             #endregion
 
