@@ -2575,6 +2575,17 @@ namespace ArtemisMissionEditor
                             CommsButtonCheckNames.Add(var_text);
                     }
                 }
+
+                if (statement.Name == "if_monster_tag_matches")
+                {
+                    string named_name = statement.GetAttribute("name");
+                    if (!String.IsNullOrEmpty(named_name))
+                    {
+                        named_name = CollapseName(named_name);
+                        if (!NamedObjectNames["monster"].Contains(named_name))
+                            NamedObjectNames["monster"].Add(named_name);
+                    }
+                }
             }
 
             //Fill lists based on Actions
@@ -2652,8 +2663,6 @@ namespace ArtemisMissionEditor
                         named_name = CollapseName(named_name);
                         if (!NamedObjectNames["monster"].Contains(named_name))
                             NamedObjectNames["monster"].Add(named_name);
-                        if (!AllCreatedObjectNames.Contains(named_name))
-                            AllCreatedObjectNames.Add(named_name);
                     }
                 }
 
@@ -3326,6 +3335,7 @@ namespace ArtemisMissionEditor
                 "if_exists",
                 "if_not_exists",
                 "if_object_property",
+                "if_monster_tag_matches",
                 "if_scan_level",
                 };
             string[] statementsThatTakeTargetName = new string[]{
