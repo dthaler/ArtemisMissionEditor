@@ -58,6 +58,7 @@ namespace ArtemisMissionEditor.Expressions
                 case "set_side_value":
                 case "spawn_external_program":
                 case "set_monster_tag_data":
+                case "set_named_object_tag_state":
                 case "set_player_carried_type":
                 case "set_player_station_carried":
                 case "clear_player_station_carried":
@@ -196,7 +197,7 @@ namespace ArtemisMissionEditor.Expressions
 
             #endregion
 
-            #region set_player_carried_type
+            #region set_monster_tag_data
 
             eML = this.Add("set_monster_tag_data");
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.TagSlot, "tag_slot", true));
@@ -209,6 +210,26 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("and "));
             eML.Add(new ExpressionMember("date "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Text, "datetext"));
+
+            #endregion
+
+            #region set_named_object_tag_state
+
+            eML = this.Add("set_named_object_tag_state");
+            eML.Add(new ExpressionMember("on "));
+            eML.Add(new ExpressionMember("object "));
+            // TODO: replace NameAll with something that supports only Enemies and Neutrals.
+            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAll));
+            eML.Add(new ExpressionMember("to "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Yes_No, "tagged"));
+            eML.Add(new ExpressionMember("with "));
+            eML.Add(new ExpressionMember("source "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Text, "tagSourceName"));
+            eML.Add(new ExpressionMember("which "));
+            eML.Add(new ExpressionMember("is "));
+            eML.Add(new ExpressionMember("on "));
+            eML.Add(new ExpressionMember("side "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "tagSourceSide"));
 
             #endregion
 
@@ -408,7 +429,6 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("for "));
             eML.Add(new ExpressionMember("object "));
             eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll));
-         //   eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name", true));
             #endregion
 
             #region set_special

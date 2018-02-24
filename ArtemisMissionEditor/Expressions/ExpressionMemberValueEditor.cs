@@ -119,6 +119,8 @@ namespace ArtemisMissionEditor.Expressions
 			{
                 case ExpressionMemberValueType.VarBool:
 					int tmpBool;
+                    if (value == null)
+                        break;
 					if (!Helper.IntTryParse(value, out tmpBool))
 						tmpBool = 0;
 					if (min != null && max != null)
@@ -158,6 +160,8 @@ namespace ArtemisMissionEditor.Expressions
 			switch (type)
 			{
 				case ExpressionMemberValueType.VarBool:
+                    if (value == "Default")
+                        value = null;
 					if ((min != null && value == min.ToString()) || (min == null && value == "false"))
 						value = "0";
 					if ((max != null && value == max.ToString()) || (max == null && value == "true"))

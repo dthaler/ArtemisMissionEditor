@@ -250,7 +250,7 @@ namespace ArtemisMissionEditor.Expressions
                 editor.ValueSelectorContextMenuStrip.Items.Clear();
                 editor.ValueSelectorContextMenuStrip.Tag = false;
 
-                foreach (string item in new string[2] { container.Member.ValueToDisplay("1"), container.Member.ValueToDisplay("0") })
+                foreach (string item in new string[3] { "Default", container.Member.ValueToDisplay("1"), container.Member.ValueToDisplay("0") })
                 {
                     ToolStripItem tsi = editor.ValueSelectorContextMenuStrip.Items.Add(item);
                     tsi.Tag = container;

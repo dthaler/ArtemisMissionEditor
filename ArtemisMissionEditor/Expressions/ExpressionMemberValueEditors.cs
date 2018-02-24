@@ -148,7 +148,8 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("set_special", "Set special");
             XmlNameActionCheck.AddToDictionary("set_side_value", "Set side");     
             XmlNameActionCheck.AddToDictionary("set_fleet_property", "Set property of fleet");
-            XmlNameActionCheck.AddToDictionary("set_monster_tag_data", "Set tag");
+            XmlNameActionCheck.AddToDictionary("set_monster_tag_data", "Set monster tag");
+            XmlNameActionCheck.AddToDictionary("set_named_object_tag_state", "Set enemy or neutral tag");
             XmlNameActionCheck.AddToDictionary("set_player_carried_type", "Set hanger bay contents");
             XmlNameActionCheck.AddToDictionary("set_player_station_carried", "Add replacement fighter to station");
             XmlNameActionCheck.AddToDictionary("clear_player_station_carried", "Remove all replacement fighters from station");
@@ -172,7 +173,8 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToMenuDictionary("copy_object_property", "Copy property of object");
             XmlNameActionCheck.AddToMenuDictionary("addto_object_property", "Add to property of object");
             XmlNameActionCheck.AddToMenuDictionary("set_fleet_property", "Set property of fleet");
-            XmlNameActionCheck.AddToMenuDictionary("set_monster_tag_data", "Set monster tag");
+            XmlNameActionCheck.AddToMenuDictionary("set_monster_tag_data", "Set tag on monster");
+            XmlNameActionCheck.AddToMenuDictionary("set_named_object_tag_state", "Set tag on enemy or neutral");
             XmlNameActionCheck.AddToMenuDictionary("set_relative_position", "Set position relative to object");
             XmlNameActionCheck.AddToMenuDictionary("add_ai", "Add AI command");
             XmlNameActionCheck.AddToMenuDictionary("clear_ai", "Clear AI commands");
@@ -345,8 +347,6 @@ namespace ArtemisMissionEditor.Expressions
             PropertyObject.AddToDictionary("playerShields", "Player Shield");
             PropertyObject.AddToDictionary("sensorSetting", "Sensor Range");
 
-            // PropertyObject.AddToDictionary("roll", "roll");
-            // PropertyObject.AddToDictionary("", "sideValue");
             PropertyObject.NewMenuGroup("Game Properties");
             PropertyObject.AddToDictionary("positionX", "positionX");
 			PropertyObject.AddToDictionary("positionY", "positionY");
