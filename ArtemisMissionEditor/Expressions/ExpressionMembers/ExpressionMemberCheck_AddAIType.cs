@@ -93,7 +93,7 @@ namespace ArtemisMissionEditor.Expressions
 		/// </summary>
 		private void ____Add_Name(List<ExpressionMember> eML, ExpressionMemberValueDescription name = null)
 		{
-            name = name ?? ExpressionMemberValueDescriptions.NameAll;
+            name = name ?? ExpressionMemberValueDescriptions.NameAIShip;
 
 			eML.Add(new ExpressionMember("for "));
 			eML.Add(new ExpressionMember("object "));

@@ -218,8 +218,7 @@ namespace ArtemisMissionEditor.Expressions
             eML = this.Add("set_named_object_tag_state");
             eML.Add(new ExpressionMember("on "));
             eML.Add(new ExpressionMember("object "));
-            // TODO: replace NameAll with something that supports only Enemies and Neutrals.
-            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAll));
+            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAIShip));
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Yes_No, "tagged"));
             eML.Add(new ExpressionMember("with "));
@@ -360,7 +359,7 @@ namespace ArtemisMissionEditor.Expressions
             eML = this.Add("clear_ai");
             eML.Add(new ExpressionMember("for "));
             eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAll));
+            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAIShip));
 
             #endregion
 
@@ -405,7 +404,7 @@ namespace ArtemisMissionEditor.Expressions
 
             eML.Add(new ExpressionMember("for "));
             eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAIShip));
 
             eML.Add(new ExpressionMember("change name to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameWithComma, "newname"));
@@ -436,7 +435,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("for AI ship "));
             eML.Add(new ExpressionMember("with "));
             eML.Add(new ExpressionMember("name "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name", true));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAIShip, "name", true));
             eML.Add(new ExpressionMember(". Set ship"));
             eML.Add(new ExpressionMember(" sub "));
             eML.Add(new ExpressionMember("type "));
@@ -567,7 +566,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Damage, "value"));
             eML.Add(new ExpressionMember("on ship "));
-            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer));
             eML.Add(new ExpressionMember(", "));
             eML.Add(new ExpressionMember("node "));
             eML.Add(new ExpressionMember("number "));
@@ -595,7 +594,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("number "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Teamindex, "team_index"));
             eML.Add(new ExpressionMember(". On Ship "));
-            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer));
 
             #endregion
 

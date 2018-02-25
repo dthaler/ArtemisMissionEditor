@@ -316,21 +316,25 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> "id" from [spawn_external_program] </summary>
         public static EMVD ExternalProgramID =          new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.ExternalProgramID,null,null,"\"","\" ");
 
-        /// <summary> "name" from many places </summary>
+        /// <summary> Object "name" from [create] </summary>
         public static EMVD NameAll =                    new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedAllName,null,null,"\"","\" ");
-        /// <summary> "name" from many places </summary>
+        /// <summary> Object "name" from [create] </summary>
         public static EMVD NameAllWithColon =           new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedAllName,null,null,"\"","\": ");
-        /// <summary> "name" from [if_docked] </summary>
+        /// <summary> Station "name" from [create] </summary>
         public static EMVD NameStation =                new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedStationName,null,null,"\"","\" ");
-        /// <summary> "name" from [set_monster_tag_data] </summary>
+        /// <summary> Monster "name" from [create] </summary>
         public static EMVD NameMonster =                new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedMonsterName,null,null,"\"","\" ");
-        /// <summary> "name" from [create] </summary>
-        public static EMVD NameCreatePlayer =           new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.PlayerNames,null,null,"\"","\" ");        
+        /// <summary> Player "name" of player from [create] </summary>
+        public static EMVD NamePlayer =                 new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.PlayerNames,null,null,"\"","\" ");
+        /// <summary> AI ship "name" from [create] </summary>
+        public static EMVD NameAIShip =                 new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedAIShipName,null,null,"\"","\" ");
+        /// <summary> AI ship "name" from [create] </summary>
+        public static EMVD NameScannableObject =        new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.ScannableObjectName,null,null,"\"","\" ");
 
         /// <summary> "ship" from set_special </summary>
         public static EMVD ShipState =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.SpecialShipType, -1, 3,"\"","\" ");
         /// <summary> "captain" from set_special </summary>
-        public static EMVD CaptainState =               new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.SpecialCapitainType, -1, 5, "\"", "\" ");
+        public static EMVD CaptainState =               new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.SpecialCaptainType, -1, 5, "\"", "\" ");
         public static EMVD SpecialState = new EMVD(EMVT.VarString, EMVB.StoredWhenFilled, EMVE.SpecialSpecialState, null, null, "\"", "\" ");
         public static EMVD SpecialSwitchState = new EMVD(EMVT.VarString, EMVB.StoredWhenFilled, EMVE.SpecialSpecialSwitchState, null, null, "\"", "\" ");
 

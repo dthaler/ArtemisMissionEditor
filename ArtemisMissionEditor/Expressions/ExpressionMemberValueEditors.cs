@@ -44,7 +44,7 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor SensorRange;
         public static ExpressionMemberValueEditor PlayerSlot;
         public static ExpressionMemberValueEditor AnomalyType;
-        public static ExpressionMemberValueEditor SpecialCapitainType;
+        public static ExpressionMemberValueEditor SpecialCaptainType;
         public static ExpressionMemberValueEditor SpecialSpecialState;
         public static ExpressionMemberValueEditor SpecialSpecialSwitchState;
 
@@ -61,6 +61,8 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor NamedAllName;
         public static ExpressionMemberValueEditor NamedStationName;
         public static ExpressionMemberValueEditor NamedMonsterName;
+        public static ExpressionMemberValueEditor NamedAIShipName;
+        public static ExpressionMemberValueEditor ScannableObjectName;
         public static ExpressionMemberValueEditor ConsoleList;
         public static ExpressionMemberValueEditor EliteAIType;
         public static ExpressionMemberValueEditor EliteAbilityBits;
@@ -144,12 +146,12 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("set_object_property", "Set property");        
             XmlNameActionCheck.AddToDictionary("addto_object_property", "Add to property");
             XmlNameActionCheck.AddToDictionary("copy_object_property", "Copy property");
-            XmlNameActionCheck.AddToDictionary("set_ship_text", "Set text strings");
-            XmlNameActionCheck.AddToDictionary("set_special", "Set special");
+            XmlNameActionCheck.AddToDictionary("set_ship_text", "Set AI ship text strings");
+            XmlNameActionCheck.AddToDictionary("set_special", "Set AI ship special");
+            XmlNameActionCheck.AddToDictionary("set_named_object_tag_state", "Set AI ship tag");
             XmlNameActionCheck.AddToDictionary("set_side_value", "Set side");     
             XmlNameActionCheck.AddToDictionary("set_fleet_property", "Set property of fleet");
             XmlNameActionCheck.AddToDictionary("set_monster_tag_data", "Set monster tag");
-            XmlNameActionCheck.AddToDictionary("set_named_object_tag_state", "Set enemy or neutral tag");
             XmlNameActionCheck.AddToDictionary("set_player_carried_type", "Set hanger bay contents");
             XmlNameActionCheck.AddToDictionary("set_player_station_carried", "Add replacement fighter to station");
             XmlNameActionCheck.AddToDictionary("clear_player_station_carried", "Remove all replacement fighters from station");
@@ -166,15 +168,15 @@ namespace ArtemisMissionEditor.Expressions
 
             XmlNameActionCheck.AddToMenuDictionary("start_getting_keypresses_from", "Start getting keypresses from consoles");
             XmlNameActionCheck.AddToMenuDictionary("end_getting_keypresses_from", "End getting keypresses from consoles");
-            XmlNameActionCheck.AddToMenuDictionary("set_special", "Set ship's special values");
+            XmlNameActionCheck.AddToMenuDictionary("set_special", "Set AI ship's special values");
+            XmlNameActionCheck.AddToMenuDictionary("set_named_object_tag_state", "Set AI ship's tag");
+            XmlNameActionCheck.AddToMenuDictionary("set_ship_text", "Set AI ship's text");
             XmlNameActionCheck.AddToMenuDictionary("set_side_value", "Set object's side");
-            XmlNameActionCheck.AddToMenuDictionary("set_ship_text", "Set object's text");
             XmlNameActionCheck.AddToMenuDictionary("set_object_property", "Set property of object");
             XmlNameActionCheck.AddToMenuDictionary("copy_object_property", "Copy property of object");
             XmlNameActionCheck.AddToMenuDictionary("addto_object_property", "Add to property of object");
             XmlNameActionCheck.AddToMenuDictionary("set_fleet_property", "Set property of fleet");
-            XmlNameActionCheck.AddToMenuDictionary("set_monster_tag_data", "Set tag on monster");
-            XmlNameActionCheck.AddToMenuDictionary("set_named_object_tag_state", "Set tag on enemy or neutral");
+            XmlNameActionCheck.AddToMenuDictionary("set_monster_tag_data", "Set monster's tag");
             XmlNameActionCheck.AddToMenuDictionary("set_relative_position", "Set position relative to object");
             XmlNameActionCheck.AddToMenuDictionary("add_ai", "Add AI command");
             XmlNameActionCheck.AddToMenuDictionary("clear_ai", "Clear AI commands");
@@ -579,16 +581,16 @@ namespace ArtemisMissionEditor.Expressions
             AnomalyType.AddToDictionary("8", "Beacon");
             AnomalyType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
 
-            SpecialCapitainType = new ExpressionMemberValueEditor();
-            SpecialCapitainType.AddToDictionary(null,   "Unspecified");
-            SpecialCapitainType.AddToDictionary("-1",   "Nothing");
-            SpecialCapitainType.AddToDictionary("0",    "Cowardly");
-            SpecialCapitainType.AddToDictionary("1",    "Brave");
-            SpecialCapitainType.AddToDictionary("2",    "Bombastic");
-            SpecialCapitainType.AddToDictionary("3",    "Seething");
-            SpecialCapitainType.AddToDictionary("4",    "Duplicitous");
-            SpecialCapitainType.AddToDictionary("5",    "Exceptional");
-            SpecialCapitainType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
+            SpecialCaptainType = new ExpressionMemberValueEditor();
+            SpecialCaptainType.AddToDictionary(null,   "Unspecified");
+            SpecialCaptainType.AddToDictionary("-1",   "Nothing");
+            SpecialCaptainType.AddToDictionary("0",    "Cowardly");
+            SpecialCaptainType.AddToDictionary("1",    "Brave");
+            SpecialCaptainType.AddToDictionary("2",    "Bombastic");
+            SpecialCaptainType.AddToDictionary("3",    "Seething");
+            SpecialCaptainType.AddToDictionary("4",    "Duplicitous");
+            SpecialCaptainType.AddToDictionary("5",    "Exceptional");
+            SpecialCaptainType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
 
             SpecialSpecialSwitchState = new ExpressionMemberValueEditor();
             SpecialSpecialSwitchState.AddToDictionary(null, "add");
@@ -673,7 +675,15 @@ namespace ArtemisMissionEditor.Expressions
 			NamedMonsterName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedMonsterNameList;
             Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedMonsterName.InvalidateContextMenuStrip(); });
 
-			CommTypes = new ExpressionMemberValueEditor_CommTypes();
+            NamedAIShipName = new ExpressionMemberValueEditor();
+            NamedAIShipName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedAIShipNameList;
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedAIShipName.InvalidateContextMenuStrip(); });
+
+            ScannableObjectName = new ExpressionMemberValueEditor();
+            ScannableObjectName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_ScannableObjectNameList;
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { ScannableObjectName.InvalidateContextMenuStrip(); });
+
+            CommTypes = new ExpressionMemberValueEditor_CommTypes();
 
 			ConsoleList = new ExpressionMemberValueEditor_ConsoleList();
 

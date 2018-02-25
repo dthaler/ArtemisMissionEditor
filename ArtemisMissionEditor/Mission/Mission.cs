@@ -76,6 +76,28 @@ namespace ArtemisMissionEditor
         /// <summary> Monster names and headers for context menus</summary>
         public KeyValuePair<List<string>, List<string>> MonsterNamesList { get { return new KeyValuePair<List<string>, List<string>>(NamedObjectNames["monster"], new List<string>()); } }
 
+        /// <summary> AI ship names and headers for context menus</summary>
+        public Dictionary<string, List<string>> AIShipNamesLists { get {
+                var kvp = new Dictionary<string, List<string>>();
+                kvp.Add("enemy", NamedObjectNames["enemy"]);
+                kvp.Add("neutral", NamedObjectNames["neutral"]);
+                return kvp;
+            }}
+
+        /// <summary> AI ship names and headers for context menus</summary>
+        public Dictionary<string, List<string>> ScannableObjectNamesLists
+        {
+            get
+            {
+                var kvp = new Dictionary<string, List<string>>();
+                kvp.Add("Anomaly", NamedObjectNames["Anomaly"]);
+                kvp.Add("enemy", NamedObjectNames["enemy"]);
+                kvp.Add("neutral", NamedObjectNames["neutral"]);
+                kvp.Add("monster", NamedObjectNames["monster"]);
+                return kvp;
+            }
+        }
+
         /// <summary> All names of all kinds of named objects </summary>
         public Dictionary<string, List<string>> AllNamesLists { get { return NamedObjectNames; } }
 

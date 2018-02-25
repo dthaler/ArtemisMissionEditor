@@ -321,7 +321,23 @@ namespace ArtemisMissionEditor.Expressions
         }
 
         /// <summary>
-        /// Context menu strip for specified list (used by timers, variables and stations)
+        /// Context menu strip for AI ships
+        /// </summary>
+        internal static ContextMenuStrip PrepareContextMenuStrip_NamedAIShipNameList(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)
+        {
+            return PrepareContextMenuStrip_SpecifiedNestedListPlusDialog(container, editor, mode, Mission.Current.AIShipNamesLists);
+        }
+
+        /// <summary>
+        /// Context menu strip for scannable objects
+        /// </summary>
+        internal static ContextMenuStrip PrepareContextMenuStrip_ScannableObjectNameList(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)
+        {
+            return PrepareContextMenuStrip_SpecifiedNestedListPlusDialog(container, editor, mode, Mission.Current.ScannableObjectNamesLists);
+        }
+
+        /// <summary>
+        /// Context menu strip for specified list (used by timers, variables, etc.)
         /// </summary>
         private static ContextMenuStrip PrepareContextMenuStrip_SpecifiedListPlusDialog(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode, KeyValuePair<List<string>, List<string>> list)
         {

@@ -200,7 +200,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.player_slot, "player_slot"));
             ____Add_Check_Point_GM(eML);
 			____Add_Angle(eML);
-			____Add_Name(eML, false, ExpressionMemberValueDescriptions.NameCreatePlayer);
+			____Add_Name(eML, false, ExpressionMemberValueDescriptions.NamePlayer);
             eML.Add(new ExpressionMemberCheck_Side());
             eML.Add(new ExpressionMember("with "));
             eML.Add(new ExpressionMember("accent colour "));

@@ -164,7 +164,7 @@ namespace ArtemisMissionEditor.Expressions
 
 			eML = this.Add("if_docked");
 			eML.Add(new ExpressionMember("named "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameCreatePlayer, "player_name", false));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NamePlayer, "player_name", false));
 			eML.Add(new ExpressionMember("is "));
 			eML.Add(new ExpressionMember("docked "));
 			eML.Add(new ExpressionMember("with "));
@@ -177,7 +177,7 @@ namespace ArtemisMissionEditor.Expressions
 
             eML = this.Add("if_player_is_targeting");
 			eML.Add(new ExpressionMember("named "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameCreatePlayer, "player_name", false));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NamePlayer, "player_name", false));
 			eML.Add(new ExpressionMember("is "));
 			eML.Add(new ExpressionMember("targeting "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name", true));
@@ -215,7 +215,7 @@ namespace ArtemisMissionEditor.Expressions
 			#region if_scan_level
 
 			eML = this.Add("if_scan_level");
-            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameScannableObject));
             eML.Add(new ExpressionMember("for "));
             eML.Add(new ExpressionMember("side "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "side"));
