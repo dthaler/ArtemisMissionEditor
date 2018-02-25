@@ -20,10 +20,33 @@ namespace ArtemisMissionEditor.Expressions
         /// <example>If input is wrong, decide will choose something, and then the input will be corrected in the SetValue function</example>
         public override string Decide(ExpressionMemberContainer container)
         {
-            if (container.GetAttribute("sideValue") == null)
-                return Choices[0]; // "... on default side"
-            else
-                return Choices[1]; // "... on side #"
+            if (container.GetAttribute("sideValue") != null)
+                return Choices[1]; // "... side #"
+
+            // The attribute on incoming_comms_text was called "side" prior to Artemis 2.6.
+            if (container.GetAttribute("side") != null)
+            {
+                return "<OBSOLETE_SIDE>";
+            }
+
+            return Choices[0]; // "... default side" 
+        }
+
+        /// <summary>
+        /// Called after Decide has made its choice, or, as usual for ExpressionMembers, after user edited the value through a Dialog.
+        /// For checks, SetValue must change the attributes/etc of the statement according to the newly chosen value
+        /// <example>If you chose "Use GM ...", SetValue will set "use_gm_..." attribute to ""</example>
+        /// </summary> 
+        protected override void SetValueInternal(ExpressionMemberContainer container, string value)
+        {
+            if (value == "<OBSOLETE_SIDE>")
+            {
+                // Convert "side" attribute to "sideValue" attribute.
+                value = Choices[1]; // "... side #"
+                container.SetAttribute("sideValue", container.GetAttribute("side"));
+            }
+
+            base.SetValueInternal(container, value);
         }
 
         /// <summary>
@@ -36,12 +59,10 @@ namespace ArtemisMissionEditor.Expressions
             List<ExpressionMember> eML;
             
             eML = this.Add("default"); //Choices[0]
-            eML.Add(new ExpressionMember("on "));
             eML.Add(new ExpressionMember("default", ExpressionMemberValueDescriptions.SideValue, "sideValue"));
             eML.Add(new ExpressionMember("side "));
 
             eML = this.Add("specified"); //Choices[1]
-            eML.Add(new ExpressionMember("on "));
             eML.Add(new ExpressionMember("side "));
             eML.Add(new ExpressionMember("default", ExpressionMemberValueDescriptions.SideValue, "sideValue"));
         }

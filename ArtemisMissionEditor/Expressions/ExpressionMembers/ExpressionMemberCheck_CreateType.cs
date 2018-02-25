@@ -201,6 +201,7 @@ namespace ArtemisMissionEditor.Expressions
             ____Add_Check_Point_GM(eML);
 			____Add_Angle(eML);
 			____Add_Name(eML, false, ExpressionMemberValueDescriptions.NamePlayer);
+            eML.Add(new ExpressionMember("on "));
             eML.Add(new ExpressionMemberCheck_Side());
             eML.Add(new ExpressionMember("with "));
             eML.Add(new ExpressionMember("accent colour "));
@@ -231,6 +232,7 @@ namespace ArtemisMissionEditor.Expressions
 			____Add_Angle(eML);
 			____Add_Name(eML);
 			____Add_Check_HullID_HullRaceKeys(eML);
+            eML.Add(new ExpressionMember("on "));
             eML.Add(new ExpressionMemberCheck_Side());
 
 			#endregion
@@ -243,6 +245,7 @@ namespace ArtemisMissionEditor.Expressions
 			____Add_Angle(eML);
 			____Add_Name(eML,true);
 			____Add_Check_HullID_HullRaceKeys(eML);
+            eML.Add(new ExpressionMember("on "));
             eML.Add(new ExpressionMemberCheck_Side());
 
 			#endregion
@@ -255,6 +258,7 @@ namespace ArtemisMissionEditor.Expressions
 			____Add_Angle(eML);
 			____Add_Name(eML);
 			____Add_Check_HullID_HullRaceKeys(eML);
+            eML.Add(new ExpressionMember("on "));
             eML.Add(new ExpressionMemberCheck_Side());
             eML.Add(new ExpressionMember("with "    ));
 			eML.Add(new ExpressionMember("fleet "   ));

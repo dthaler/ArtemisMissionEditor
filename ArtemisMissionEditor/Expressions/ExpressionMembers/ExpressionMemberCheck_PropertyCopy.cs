@@ -112,8 +112,8 @@ namespace ArtemisMissionEditor.Expressions
 				case "countHoming": 			return "<DEFAULT>";
 				case "countNuke": 				return "<DEFAULT>";
 				case "countMine": 				return "<DEFAULT>";
-                case "countECM":                return "<OBSOLETE_COUNTECM>";
-                case "countEMP": 				return "<DEFAULT>";
+				case "countECM":                return "<OBSOLETE_COUNTECM>";
+				case "countEMP": 				return "<DEFAULT>";
 				case "countShk": 				return "<DEFAULT>";
 				case "countBea": 				return "<DEFAULT>";
 				case "countPro": 				return "<DEFAULT>";

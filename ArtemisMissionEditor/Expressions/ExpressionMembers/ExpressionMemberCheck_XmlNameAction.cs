@@ -476,8 +476,8 @@ namespace ArtemisMissionEditor.Expressions
             eML = this.Add("incoming_comms_text");
             eML.Add(new ExpressionMember("from "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.MessageFrom, "from"));
-            eML.Add(new ExpressionMember("to side "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "sideValue"));
+            eML.Add(new ExpressionMember("to "));
+            eML.Add(new ExpressionMemberCheck_Side());
             eML.Add(new ExpressionMember("of type "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.CommTypes, "type"));
             eML.Add(new ExpressionMember("and body: "));
