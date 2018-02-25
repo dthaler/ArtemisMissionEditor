@@ -3414,7 +3414,6 @@ namespace ArtemisMissionEditor
                     }
                     if (mNode.Conditions.Count > 0)
                     {
-                        bool onlyTimers = true;
                         List<string> namesCheckedHere = new List<string>();
                         List<string> namesCheckedForNonExistenceHere = new List<string>();
                         List<string> variablesCheckedHere = new List<string>();
@@ -3426,8 +3425,6 @@ namespace ArtemisMissionEditor
                         {
                             if (statement.Kind != MissionStatementKind.Condition)
                                 continue;
-                            if (statement.Name != "if_timer_finished")
-                                onlyTimers = false;
                             if (statement.Name == "if_not_exists")
                                 namesCheckedForNonExistenceHere.Add(CollapseName(statement.GetAttribute("name")));
                             if (statement.Name == "if_variable")
@@ -3460,10 +3457,6 @@ namespace ArtemisMissionEditor
                                     namesCheckedHere.Add(CollapseName(name));
                             }
                         }
-
-                        // Event has only "timer_finished" conditions
-                        if (onlyTimers && !hasEndMission)
-                            result.Add(new MissionSearchResult(curNode, 0, "Event contains only \"Timer finished\" condition(s). Once the timer finishes, it will keep executing on every tick, potentially introducing performance issues or even crashes.", node, null));
 
                         // Event has no set_variable mirroring if_variable
                         if (timersCheckedHere.Count > 0 || variablesCheckedHere.Count > 0)
@@ -3756,7 +3749,7 @@ namespace ArtemisMissionEditor
                     if (statement.Name == "create" && (statement.GetAttribute("type") == "station" || statement.GetAttribute("type") == "enemy" || statement.GetAttribute("type") == "neutral"))
                     {
                         if (String.IsNullOrWhiteSpace(statement.GetAttribute("hullID")) && String.IsNullOrWhiteSpace(statement.GetAttribute("hullKeys")))
-                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create " + statement.GetAttribute("type") + "\" statement does not specify a hullID and no hull keys. When this statement is executed the sever will crash.", node, statement));
+                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create " + statement.GetAttribute("type") + "\" statement does not specify a hullID and no hull keys. When this statement is executed the server will crash.", node, statement));
                     }
                 }
             }
@@ -5484,7 +5477,7 @@ namespace ArtemisMissionEditor
             {
                 XmlAttribute atto = xOld.Attributes[attn.Name];
                 if (atto == null)
-                    diffs += "\r\n" + "Attribute: added <" + attn.Name + ">";
+                    diffs += "\r\n" + "Attribute: <" + attn.Name + "> added";
             }
             if (!String.IsNullOrEmpty(diffs))
             {
