@@ -1,3 +1,13 @@
+Version 2.7.1 [2018-February-24] (Dave Thaler)
+* Added tag commands set_monster_tag_data, set_named_object_tag_state
+* Added tag conditions if_monster_tag_matches, if_object_tag_matches
+* Added nebType attribute to create/destroy nebulae
+* For actions/conditions that affect AI ships or scannable objects, only show the object types that are allowed
+* Remove player_slot from set_damcon_members since it doesn't work
+* Convert obsolete values: ELITE_AI to SPCL_AI, countECM to countEMP, missileStoresECM to missileStoresEMP
+* Convert incoming_comms_text "side" to "sideValue"
+* More improvements to "Potential Problems" checking
+----------------------
 Version 2.7.0 [2018-February-19] (Dave Thaler)
 * Added new brain stack blocks for Artemis 2.7
 * Added new monster names for Artemis 2.7
