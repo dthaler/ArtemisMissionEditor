@@ -1,5 +1,26 @@
 ;aiu;
 
+[Update 2.7.1]
+Name=Artemis Mission Editor 2.7.1
+ProductVersion=2.7.1
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.1.msi
+Size=1590272
+ReleaseDate=24/02/2018
+MD5=79e49e2ae1c015b1d7842f4f624a2ae3
+ServerFileName=ArtemisMissionEditorInstaller.2.7.1.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.1.0
+Feature=Added commands set_monster_tag_data, set_named_object_tag_state
+Feature1=Added conditions if_monster_tag_matches, if_object_tag_matches
+Feature2=Added nebType attribute to create/destroy nebulae
+Enhancement=Convert obsolete values: ELITE_AI to SPCL_AI, countECM to countEMP, missileStoresECM to missileStoresEMP
+Enhancement1=Convert incoming_comms_text "side" to "sideValue"
+Enhancement2=More improvements to "Potential Problems" checking
+BugFix=For actions/conditions that affect AI ships or scannable objects, only show the object types that are allowed
+BugFix1=Remove player_slot from set_damcon_members since it doesn't work
+Replaces=All
+
 [Update 2.7]
 Name=Artemis Mission Editor 2.7
 ProductVersion=2.7
