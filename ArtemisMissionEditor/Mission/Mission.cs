@@ -3365,6 +3365,9 @@ namespace ArtemisMissionEditor
             string[] statementsThatTakeTargetName = new string[]{
                 "direct",
                 };
+            string[] statementsThatTakeObjectName = new string[]{
+                "if_object_tag_matches",
+                };
             string[] statementsThatTakePlayerName = new string[]{
                 "if_docked",
                 "if_player_is_targeting",
@@ -3625,6 +3628,8 @@ namespace ArtemisMissionEditor
                                 namesToCheck.Add(CollapseName(statement.GetAttribute("name")));
                             if (statementsThatTakeTargetName.Contains(statement.Name))
                                 namesToCheck.Add(CollapseName(statement.GetAttribute("targetName")));
+                            if (statementsThatTakeObjectName.Contains(statement.Name))
+                                namesToCheck.Add(CollapseName(statement.GetAttribute("objectName")));
                             if (statementsThatTakePlayerName.Contains(statement.Name))
                                 namesToCheck.Add(CollapseName(statement.GetAttribute("player_name")));
                             if (statementsThatTakeName12.Contains(statement.Name))
@@ -3718,6 +3723,8 @@ namespace ArtemisMissionEditor
                         namesToCheck.Add(CollapseName(attName));
                     if (statementsThatTakeTargetName.Contains(statement.Name))
                         namesToCheck.Add(CollapseName(statement.GetAttribute("targetName")));
+                    if (statementsThatTakeObjectName.Contains(statement.Name))
+                        namesToCheck.Add(CollapseName(statement.GetAttribute("objectName")));
                     if (statementsThatTakePlayerName.Contains(statement.Name))
                         namesToCheck.Add(CollapseName(statement.GetAttribute("player_name")));
                     if (statementsThatTakeName12.Contains(statement.Name))

@@ -260,6 +260,7 @@ namespace ArtemisMissionEditor.Expressions
 			XmlNameConditionCheck.AddToDictionary("if_docked", "Player ship");
 			XmlNameConditionCheck.AddToDictionary("if_player_is_targeting", "Player ship");
 			XmlNameConditionCheck.AddToDictionary("if_monster_tag_matches", "Monster");
+			XmlNameConditionCheck.AddToDictionary("if_object_tag_matches", "AI ship");
 			XmlNameConditionCheck.AddToDictionary("if_external_program_active", "External program");
 			XmlNameConditionCheck.AddToDictionary("if_external_program_finished", "External program");
 			XmlNameConditionCheck.AddToDictionary("<existence>", "Object");
@@ -282,6 +283,7 @@ namespace ArtemisMissionEditor.Expressions
 			XmlNameConditionCheck.AddToMenuDictionary("<existence>", "Object exists / doesn't");
 			XmlNameConditionCheck.AddToMenuDictionary("if_object_property", "Object property");
 			XmlNameConditionCheck.AddToMenuDictionary("if_monster_tag_matches", "Monster has tag");
+			XmlNameConditionCheck.AddToMenuDictionary("if_object_tag_matches", "AI ship has tag");
 			XmlNameConditionCheck.AddToMenuDictionary("<location>", "Object is located");
 			XmlNameConditionCheck.AddToMenuDictionary("if_distance", "Distance between objects");
 			XmlNameConditionCheck.AddToMenuDictionary("if_scan_level", "Object scan level");

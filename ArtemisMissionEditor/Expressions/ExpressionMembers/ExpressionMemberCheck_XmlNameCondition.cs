@@ -39,6 +39,7 @@ namespace ArtemisMissionEditor.Expressions
                 case "if_external_program_finished":
                 case "if_scan_level":
                 case "if_monster_tag_matches":
+                case "if_object_tag_matches":
                     return container.Statement.Name;
                 case "if_exists":
                 case "if_not_exists":
@@ -206,6 +207,17 @@ namespace ArtemisMissionEditor.Expressions
 			eML = this.Add("if_monster_tag_matches");
 			eML.Add(new ExpressionMember("named "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameMonster, "name", true));
+			eML.Add(new ExpressionMember("has "));
+			eML.Add(new ExpressionMember("tag "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Text, "string"));
+
+			#endregion
+
+			#region if_object_tag_matches
+
+			eML = this.Add("if_object_tag_matches");
+			eML.Add(new ExpressionMember("named "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAIShip, "objectName", true));
 			eML.Add(new ExpressionMember("has "));
 			eML.Add(new ExpressionMember("tag "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Text, "string"));
