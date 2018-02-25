@@ -132,7 +132,7 @@ namespace ArtemisMissionEditor.Expressions
             #region if_damcon_members
 
             eML = this.Add("if_damcon_members");
-            eML.Add(new ExpressionMemberCheck_Slot_GM(ExpressionMemberValueDescriptions.NameAll));
+            eML.Add(new ExpressionMemberCheck_Slot_GM(ExpressionMemberValueDescriptions.NamePlayer));
             eML.Add(new ExpressionMember("in "));
 			eML.Add(new ExpressionMember("team "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Teamindex, "team_index"));

@@ -594,7 +594,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("number "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Teamindex, "team_index"));
             eML.Add(new ExpressionMember(". On Ship "));
-            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer));
+            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NamePlayer));
 
             #endregion
 
