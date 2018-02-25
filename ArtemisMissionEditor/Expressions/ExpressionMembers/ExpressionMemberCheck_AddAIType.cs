@@ -54,6 +54,7 @@ namespace ArtemisMissionEditor.Expressions
 				case "PROCEED_TO_EXIT":  		return "<NOTHING>";
 				case "RANDOM_PATROL":    	    return "RANDOM_PATROL";
 				case "RELEASE_PIRANHAS":    	return "RELEASE_PIRANHAS";
+				case "ELITE_AI":                return "<OBSOLETE_ELITE_AI>";
 				case "SPCL_AI":  			    return "<NOTHING>";
 				case "STAY_CLOSE":  			return "STAY_CLOSE";
 				case "TARGET_THROTTLE":  		return "TARGET_THROTTLE";
@@ -75,6 +76,12 @@ namespace ArtemisMissionEditor.Expressions
 				value = "<NOTHING>";
 				container.SetAttribute("type", "PROCEED_TO_EXIT");
 			}
+            else if (value == "<OBSOLETE_ELITE_AI>")
+            {
+                // Convert ELITE_AI to SPCL_AI.
+                value = "<NOTHING>";
+                container.SetAttribute("type", "SPCL_AI");
+            }
 
 			base.SetValueInternal(container, value);
 		}

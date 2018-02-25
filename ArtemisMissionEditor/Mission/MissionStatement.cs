@@ -270,7 +270,7 @@ namespace ArtemisMissionEditor
 		/// </summary>
 		/// <param name="name">Name of the attribute</param>
 		/// <param name="value">If value=null, attribute will be removed, if present. If value!=null, attribute will be set, if present, or added, if not present</param>
-		private void AttribuesAddSetRemove(string name, string value)
+		private void AttributesAddSetRemove(string name, string value)
 		{
 			if (Attributes.ContainsKey(name))
 			{
@@ -296,10 +296,10 @@ namespace ArtemisMissionEditor
 				if (arr.Contains(name))
 					foreach (string item in arr)
 						if (name != item)
-							AttribuesAddSetRemove(item, null);
+							AttributesAddSetRemove(item, null);
 
 			//Then set the attribute
-			AttribuesAddSetRemove(name, value);
+			AttributesAddSetRemove(name, value);
 
 			//Then check for bound attributes
 			if (value != null)
@@ -320,8 +320,8 @@ namespace ArtemisMissionEditor
 					if (Helper.DoubleTryParse(lowSValue == null ? null : lowSValue, out lowValue) && Helper.DoubleTryParse(highSValue == null ? null : highSValue, out highValue))
 						if (lowValue > highValue)
 						{
-							AttribuesAddSetRemove(low, highSValue);
-							AttribuesAddSetRemove(high, lowSValue);
+							AttributesAddSetRemove(low, highSValue);
+							AttributesAddSetRemove(high, lowSValue);
 						}
 				}
 			}

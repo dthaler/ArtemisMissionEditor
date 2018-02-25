@@ -61,6 +61,7 @@ namespace ArtemisMissionEditor.Expressions
                 case "missileStoresHoming":      return "<INT0...+INF>";
                 case "missileStoresNuke":        return "<INT0...+INF>";
                 case "missileStoresMine":        return "<INT0...+INF>";
+                case "missileStoresECM":         return "<OBSOLETE_MISSILESTORESECM>";
                 case "missileStoresEMP":         return "<INT0...+INF>";
                 case "missileStoresPShock":      return "<INT0...+INF>";
                 case "missileStoresBeacon":      return "<INT0...+INF>";
@@ -108,6 +109,7 @@ namespace ArtemisMissionEditor.Expressions
                 case "countHoming":                 return "<INT0...+INF>";
                 case "countNuke":                   return "<INT0...+INF>";
                 case "countMine":                   return "<INT0...+INF>";
+                case "countECM":                    return "<OBSOLETE_COUNTECM>";
                 case "countEMP":                    return "<INT0...+INF>";
                 case "countShk":                    return "<INT0...+INF>";
                 case "countBea":                    return "<INT0...+INF>";
@@ -154,6 +156,20 @@ namespace ArtemisMissionEditor.Expressions
         /// </summary>
         protected override void SetValueInternal(ExpressionMemberContainer container, string value)
         {
+            if (value == "<OBSOLETE_COUNTECM>")
+            {
+                // Convert countECM to countEMP.
+                value = "<INT0...+INF>";
+                container.SetAttribute("property", "countEMP");
+            }
+
+            if (value == "<OBSOLETE_MISSILESTORESECM>")
+            {
+                // Convert missileStoresECM to missileStoresEMP.
+                value = "<INT0...+INF>";
+                container.SetAttribute("property", "missileStoresEMP");
+            }
+
             if (value == "<BOOLYESNO>")
             {
                 string flag = container.GetAttribute("value");

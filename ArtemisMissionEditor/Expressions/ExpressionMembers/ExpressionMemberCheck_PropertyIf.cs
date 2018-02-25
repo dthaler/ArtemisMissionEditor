@@ -61,7 +61,8 @@ namespace ArtemisMissionEditor.Expressions
 				case "missileStoresHoming": 	return "<DEFAULT>";
 				case "missileStoresNuke": 		return "<DEFAULT>";
 				case "missileStoresMine": 		return "<DEFAULT>";
-				case "missileStoresEMP": 		return "<DEFAULT>";
+                case "missileStoresECM":        return "<OBSOLETE_MISSILESTORESECM>";
+                case "missileStoresEMP": 		return "<DEFAULT>";
                 case "missileStoresPShock":     return "<DEFAULT>";
                 case "missileStoresBeacon":     return "<DEFAULT>";
                 case "missileStoresProbe":      return "<DEFAULT>";
@@ -108,7 +109,8 @@ namespace ArtemisMissionEditor.Expressions
 				case "countHoming": 			return "<DEFAULT>";
 				case "countNuke": 				return "<DEFAULT>";
 				case "countMine": 				return "<DEFAULT>";
-				case "countEMP": 				return "<DEFAULT>";
+                case "countECM":                return "<OBSOLETE_COUNTECM>";
+                case "countEMP": 				return "<DEFAULT>";
 				case "countShk": 				return "<DEFAULT>";
 				case "countBea": 				return "<DEFAULT>";
 				case "countPro": 				return "<DEFAULT>";
@@ -154,12 +156,26 @@ namespace ArtemisMissionEditor.Expressions
         /// </summary>
         protected override void SetValueInternal(ExpressionMemberContainer container, string value)
 		{
-			//if (value == "<INVALID_PROPERTY>")
-			//{
-			//    value = "<DEFAULT>";
-			//    container.SetAttribute("property", "positionX");
-			//}
-			if (Mission.Current.Loading && value == "<UNKNOWN_PROPERTY>")
+            if (value == "<OBSOLETE_COUNTECM>")
+            {
+                // Convert countECM to countEMP.
+                value = "<DEFAULT>";
+                container.SetAttribute("property", "countEMP");
+            }
+
+            if (value == "<OBSOLETE_MISSILESTORESECM>")
+            {
+                // Convert missileStoresECM to missileStoresEMP.
+                value = "<DEFAULT>";
+                container.SetAttribute("property", "missileStoresEMP");
+            }
+
+            //if (value == "<INVALID_PROPERTY>")
+            //{
+            //    value = "<DEFAULT>";
+            //    container.SetAttribute("property", "positionX");
+            //}
+            if (Mission.Current.Loading && value == "<UNKNOWN_PROPERTY>")
 				Log.Add("Warning! Unknown property " + container.GetAttribute("property") + " detected in event: " + container.Statement.Parent.Name + "!");
 
 			base.SetValueInternal(container, value);
