@@ -432,24 +432,25 @@ namespace ArtemisMissionEditor.Expressions
 
             #region set_special
             eML = this.Add("set_special");
-            eML.Add(new ExpressionMember("for AI ship "));
+            eML.Add(new ExpressionMember("for "));
+            eML.Add(new ExpressionMember("ship "));
             eML.Add(new ExpressionMember("with "));
             eML.Add(new ExpressionMember("name "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAIShip, "name", true));
-            eML.Add(new ExpressionMember(". Set ship"));
-            eML.Add(new ExpressionMember(" sub "));
-            eML.Add(new ExpressionMember("type "));
-            eML.Add(new ExpressionMember("as "));
+            eML.Add(new ExpressionMember(". Set "));
+            eML.Add(new ExpressionMember("ship "));
+            eML.Add(new ExpressionMember("subtype "));
+            eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<unspecified>", ExpressionMemberValueDescriptions.ShipState, "ship"));
             eML.Add(new ExpressionMember(", with "));
             eML.Add(new ExpressionMember("captain "));
             eML.Add(new ExpressionMember("personality "));
             eML.Add(new ExpressionMember("<unspecified>", ExpressionMemberValueDescriptions.CaptainState, "captain"));
             eML.Add(new ExpressionMember("and "));
-            eML.Add(new ExpressionMember("Add", ExpressionMemberValueDescriptions.SpecialSwitchState, "clear"));
-            eML.Add(new ExpressionMember(" special ability "));
+            eML.Add(new ExpressionMember("add", ExpressionMemberValueDescriptions.SpecialSwitchState, "clear"));
+            eML.Add(new ExpressionMember("special "));
+            eML.Add(new ExpressionMember("ability "));
             eML.Add(new ExpressionMember("<unspecified>", ExpressionMemberValueDescriptions.SpecialState, "ability"));
-
 
             #endregion
 
