@@ -40,6 +40,7 @@ namespace ArtemisMissionEditor.Expressions
                 case "if_scan_level":
                 case "if_monster_tag_matches":
                 case "if_object_tag_matches":
+                case "if_in_nebula":
                     return container.Statement.Name;
                 case "if_exists":
                 case "if_not_exists":
@@ -173,6 +174,16 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameStation, "name", true));
 
 			#endregion
+
+			#region if_in_nebula
+
+			eML = this.Add("if_in_nebula");
+			eML.Add(new ExpressionMemberCheck_Slot_GM(ExpressionMemberValueDescriptions.NamePlayer));
+			eML.Add(new ExpressionMember("is "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NebulaTypeOrNone, "compare", true));
+            eML.Add(new ExpressionMember("nebula"));
+
+            #endregion
 
             #region if_player_is_targeting
 

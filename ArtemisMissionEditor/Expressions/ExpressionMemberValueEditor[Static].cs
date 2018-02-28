@@ -110,13 +110,13 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary>
         /// Default context menu strip, with Dialog option and separator for the first value.
         /// </summary>
-        internal static ContextMenuStrip PrepareContextMenuStrip_DefaultListPlusDialogWithFirstSepearted(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)
+        internal static ContextMenuStrip PrepareContextMenuStrip_DefaultListPlusDialogWithFirstSeparated(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)
         {
             return PrepareContextMenuStrip_DefaultListWithOptions(container, editor, mode, true, true);
         }
 
         /// <summary>
-        /// Default context menu strip, providing a choice of Dialog and first value separator options
+        /// Default context menu strip, providing a choice of Dialog and first value separator options.
         /// </summary>
         private static ContextMenuStrip PrepareContextMenuStrip_DefaultListWithOptions(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode, bool plusDialogItem, bool firstSeparated)
         {

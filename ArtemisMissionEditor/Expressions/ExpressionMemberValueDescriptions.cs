@@ -284,7 +284,9 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD Check_Letter_KeyID =         new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DefaultCheck);
 
         /// <summary> "nebType" from [create] </summary>
-        public static EMVD NebulaType =                 new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 1, 3);
+        public static EMVD NebulaType =                 new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.NebulaType, 1, 3);
+        /// <summary> "compare" from [if_in_nebula] </summary>
+        public static EMVD NebulaTypeOrNone =           new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.NebulaTypeOrNone, 0, 3);
 
         /// <summary> "value" from [if_scan_level] </summary>
         public static EMVD ScanLevel =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 2, "","");

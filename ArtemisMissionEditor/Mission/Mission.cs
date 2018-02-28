@@ -3354,6 +3354,7 @@ namespace ArtemisMissionEditor
                 "if_outside_box",
                 "if_inside_sphere",
                 "if_outside_sphere",
+                "if_in_nebula",
                 "if_docked",
                 "if_player_is_targeting",
                 "if_exists",

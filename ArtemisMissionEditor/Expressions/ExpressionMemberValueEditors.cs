@@ -48,6 +48,8 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor SpecialSpecialState;
         public static ExpressionMemberValueEditor SpecialSpecialSwitchState;
 
+        public static ExpressionMemberValueEditor NebulaType;
+        public static ExpressionMemberValueEditor NebulaTypeOrNone;
         public static ExpressionMemberValueEditor Side;
         public static ExpressionMemberValueEditor Comparator;
         public static ExpressionMemberValueEditor DistanceNebulaCheck;
@@ -258,6 +260,7 @@ namespace ArtemisMissionEditor.Expressions
 			XmlNameConditionCheck.AddToDictionary("if_damcon_members", "Amount of DamCon members");
 			XmlNameConditionCheck.AddToDictionary("if_fleet_count", "Ship count");
 			XmlNameConditionCheck.AddToDictionary("if_docked", "Player ship");
+			XmlNameConditionCheck.AddToDictionary("if_in_nebula", "Player ship");
 			XmlNameConditionCheck.AddToDictionary("if_player_is_targeting", "Player ship");
 			XmlNameConditionCheck.AddToDictionary("if_monster_tag_matches", "Monster");
 			XmlNameConditionCheck.AddToDictionary("if_object_tag_matches", "AI ship");
@@ -274,6 +277,7 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameConditionCheck.AddToDictionary("if_gm_button", "GM Button pressed");
             XmlNameConditionCheck.AddToDictionary("if_client_key", "Client pressed");
             XmlNameConditionCheck.AddToMenuDictionary("if_docked", "Player ship is docked");
+            XmlNameConditionCheck.AddToMenuDictionary("if_in_nebula", "Player ship is in nebula");
             XmlNameConditionCheck.AddToMenuDictionary("if_player_is_targeting", "Player ship is targeting");
             XmlNameConditionCheck.AddToMenuDictionary("if_external_program_active", "External program is running");
             XmlNameConditionCheck.AddToMenuDictionary("if_external_program_finished", "External program has finished");
@@ -619,7 +623,21 @@ namespace ArtemisMissionEditor.Expressions
             Side.AddToDictionary("0",   "0 (No side)");
             Side.AddToDictionary("1",   "1 (Enemy)");
             Side.AddToDictionary("2",   "2 (Player)");
-            Side.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListPlusDialogWithFirstSepearted;
+            Side.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListPlusDialogWithFirstSeparated;
+
+            NebulaTypeOrNone = new ExpressionMemberValueEditor();
+            NebulaTypeOrNone.AddToDictionary("0", "not in a");
+            NebulaTypeOrNone.AddToDictionary("1", "in a Purple");
+            NebulaTypeOrNone.AddToDictionary("2", "in a Blue");
+            NebulaTypeOrNone.AddToDictionary("3", "in a Yellow");
+            NebulaTypeOrNone.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
+
+            NebulaType = new ExpressionMemberValueEditor();
+            NebulaType.AddToDictionary(null, "Default");
+            NebulaType.AddToDictionary("1",  "Purple");
+            NebulaType.AddToDictionary("2",  "Blue");
+            NebulaType.AddToDictionary("3",  "Yellow");
+            NebulaType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
 
 			Comparator = new ExpressionMemberValueEditor();
 			Comparator.AddToDictionary("GREATER",       ">");
