@@ -94,6 +94,7 @@ namespace ArtemisMissionEditor
                 kvp.Add("enemy", NamedObjectNames["enemy"]);
                 kvp.Add("neutral", NamedObjectNames["neutral"]);
                 kvp.Add("monster", NamedObjectNames["monster"]);
+                kvp.Add("genericMesh", NamedObjectNames["genericMesh"]);
                 return kvp;
             }
         }
