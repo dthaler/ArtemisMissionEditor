@@ -3743,22 +3743,29 @@ namespace ArtemisMissionEditor
                     }
 
                     // Create statement having wrong keys
-                    if (statement.Name == "create" && statement.GetAttribute("type") == "station")
+                    if (statement.Name == "create")
                     {
-                        if (String.IsNullOrWhiteSpace(statement.GetAttribute("hullID"))
-                            && !statement.GetAttribute("hullKeys","").Contains("base"))
-                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create station\" statement does not specify a hullID and does not specify \"base\" in its list of hull keys. When this statement is executed wierd things will happen.", node, statement));
-                    }
-                    if (statement.Name == "create" && (statement.GetAttribute("type") == "enemy" ||statement.GetAttribute("type") == "neutral" ))
-                    {
-                        if (String.IsNullOrWhiteSpace(statement.GetAttribute("hullID"))
-                            && statement.GetAttribute("hullKeys", "").Contains("base"))
-                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create " + statement.GetAttribute("type") + "\" statement does not specify a hullID and contains \"base\" in its list of hull keys. When this statement is executed wierd things will happen.", node, statement));
-                    }
-                    if (statement.Name == "create" && (statement.GetAttribute("type") == "station" || statement.GetAttribute("type") == "enemy" || statement.GetAttribute("type") == "neutral"))
-                    {
-                        if (String.IsNullOrWhiteSpace(statement.GetAttribute("hullID")) && String.IsNullOrWhiteSpace(statement.GetAttribute("hullKeys")))
-                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create " + statement.GetAttribute("type") + "\" statement does not specify a hullID and no hull keys. When this statement is executed the server will crash.", node, statement));
+                        string type = statement.GetAttribute("type");
+                        if (type == "station" || type == "enemy" || type == "neutral")
+                        {
+                            if (String.IsNullOrWhiteSpace(statement.GetAttribute("hullID")) && String.IsNullOrWhiteSpace(statement.GetAttribute("hullKeys")))
+                                result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create " + statement.GetAttribute("type") + "\" statement does not specify a hullID and no hull keys. When this statement is executed, weird things will happen such as using a TSN Light Cruiser.", node, statement));
+                            else
+                            {
+                                if (type == "station")
+                                {
+                                    if (String.IsNullOrWhiteSpace(statement.GetAttribute("hullID"))
+                                        && !statement.GetAttribute("hullKeys", "").Contains("base"))
+                                        result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create station\" statement does not specify a hullID and does not specify \"base\" in its list of hull keys. When this statement is executed, weird things will happen.", node, statement));
+                                }
+                                if (type == "enemy" || type == "neutral")
+                                {
+                                    if (String.IsNullOrWhiteSpace(statement.GetAttribute("hullID"))
+                                        && statement.GetAttribute("hullKeys", "").Contains("base"))
+                                        result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create " + type + "\" statement does not specify a hullID and contains \"base\" in its list of hull keys. When this statement is executed, weird things will happen.", node, statement));
+                                }
+                            }
+                        }
                     }
                 }
             }
