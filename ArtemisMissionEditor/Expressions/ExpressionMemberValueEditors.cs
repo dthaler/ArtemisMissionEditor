@@ -145,13 +145,13 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("set_variable", "Set variable");
             XmlNameActionCheck.NewMenuGroup("Triggers");
 
-            XmlNameActionCheck.AddToDictionary("set_object_property", "Set property");        
-            XmlNameActionCheck.AddToDictionary("addto_object_property", "Add to property");
-            XmlNameActionCheck.AddToDictionary("copy_object_property", "Copy property");
-            XmlNameActionCheck.AddToDictionary("set_ship_text", "Set AI ship text strings");
+            XmlNameActionCheck.AddToDictionary("set_object_property", "Set numeric property");        
+            XmlNameActionCheck.AddToDictionary("addto_object_property", "Add to numeric property");
+            XmlNameActionCheck.AddToDictionary("copy_object_property", "Copy numeric property");
+            XmlNameActionCheck.AddToDictionary("set_ship_text", "Set text properties");
+            XmlNameActionCheck.AddToDictionary("set_side_value", "Set side");     
             XmlNameActionCheck.AddToDictionary("set_special", "Set AI ship special");
             XmlNameActionCheck.AddToDictionary("set_named_object_tag_state", "Set AI ship tag");
-            XmlNameActionCheck.AddToDictionary("set_side_value", "Set side");     
             XmlNameActionCheck.AddToDictionary("set_fleet_property", "Set property of fleet");
             XmlNameActionCheck.AddToDictionary("set_monster_tag_data", "Set monster tag");
             XmlNameActionCheck.AddToDictionary("set_player_carried_type", "Set hanger bay contents");
@@ -172,11 +172,11 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToMenuDictionary("end_getting_keypresses_from", "End getting keypresses from consoles");
             XmlNameActionCheck.AddToMenuDictionary("set_special", "Set AI ship's special values");
             XmlNameActionCheck.AddToMenuDictionary("set_named_object_tag_state", "Set AI ship's tag");
-            XmlNameActionCheck.AddToMenuDictionary("set_ship_text", "Set AI ship's text");
             XmlNameActionCheck.AddToMenuDictionary("set_side_value", "Set object's side");
-            XmlNameActionCheck.AddToMenuDictionary("set_object_property", "Set property of object");
-            XmlNameActionCheck.AddToMenuDictionary("copy_object_property", "Copy property of object");
-            XmlNameActionCheck.AddToMenuDictionary("addto_object_property", "Add to property of object");
+            XmlNameActionCheck.AddToMenuDictionary("set_ship_text", "Set text properties of object");
+            XmlNameActionCheck.AddToMenuDictionary("set_object_property", "Set numeric property of object");
+            XmlNameActionCheck.AddToMenuDictionary("copy_object_property", "Copy numeric property of object");
+            XmlNameActionCheck.AddToMenuDictionary("addto_object_property", "Add to numeric property of object");
             XmlNameActionCheck.AddToMenuDictionary("set_fleet_property", "Set property of fleet");
             XmlNameActionCheck.AddToMenuDictionary("set_monster_tag_data", "Set monster's tag");
             XmlNameActionCheck.AddToMenuDictionary("set_relative_position", "Set position relative to object");

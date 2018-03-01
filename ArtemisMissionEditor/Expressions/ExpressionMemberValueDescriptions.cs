@@ -86,9 +86,11 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> "type" from [create]  </summary>
         public static EMVD Type =                       new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.CreateType);
         /// <summary> "name" from [create, destroy, ...] </summary>
-        public static EMVD Name =                       new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DefaultString,null,null,"\"","\" ");
+        public static EMVD NameWithPeriod =             new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DefaultString, null, null, "\"", "\". ");
+        /// <summary> "name" from [create, destroy, ...] </summary>
+        public static EMVD Name =                       new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DefaultString, null, null, "\"", "\" ");
         /// <summary> "name" from [create, destroy, ...] </summary>    
-        public static EMVD NameWithComma =              new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DefaultString,null,null,"\"","\", ");
+        public static EMVD NameWithComma =              new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DefaultString, null, null, "\"", "\", ");
         /// <summary> "angle" from [create, ...] </summary>
         public static EMVD Angle =                      new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 360);
         /// <summary> "fleetnumber" from [create, ...] </summary>

@@ -404,19 +404,36 @@ namespace ArtemisMissionEditor.Expressions
 
             eML.Add(new ExpressionMember("for "));
             eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAIShip));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll));
 
-            eML.Add(new ExpressionMember("change name to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameWithComma, "newname"));
-            eML.Add(new ExpressionMember("change race to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameWithComma, "race"));
-            eML.Add(new ExpressionMember("change class to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameWithComma, "class"));
-            eML.Add(new ExpressionMember("change desc to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameWithComma, "desc"));
-            eML.Add(new ExpressionMember("on 2nd SCI scan, show "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameWithComma, "scan_desc"));
-            eML.Add(new ExpressionMember("when hailed, reply with "));
+            eML.Add(new ExpressionMember(". Change "));
+            eML.Add(new ExpressionMember("name "));
+            eML.Add(new ExpressionMember("to "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameWithPeriod, "newname"));
+            eML.Add(new ExpressionMember("Change "));
+            eML.Add(new ExpressionMember("race "));
+            eML.Add(new ExpressionMember("to "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameWithPeriod, "race"));
+            eML.Add(new ExpressionMember("Change "));
+            eML.Add(new ExpressionMember("class "));
+            eML.Add(new ExpressionMember("to "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameWithPeriod, "class"));
+            eML.Add(new ExpressionMember("Show "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Name, "desc"));
+            eML.Add(new ExpressionMember("on "));
+            eML.Add(new ExpressionMember("1st "));
+            eML.Add(new ExpressionMember("SCI "));
+            eML.Add(new ExpressionMember("scan, "));
+            eML.Add(new ExpressionMember("and "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Name, "scan_desc"));
+            eML.Add(new ExpressionMember("on "));
+            eML.Add(new ExpressionMember("2nd "));
+            eML.Add(new ExpressionMember("SCI "));
+            eML.Add(new ExpressionMember("scan. "));
+            eML.Add(new ExpressionMember("When "));
+            eML.Add(new ExpressionMember("hailed, "));
+            eML.Add(new ExpressionMember("reply "));
+            eML.Add(new ExpressionMember("with "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Name, "hailtext"));
 
             #endregion
@@ -495,7 +512,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("consoles: "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Consoles, "consoles"));
-            eML.Add(new ExpressionMember(". On ship "));
+            eML.Add(new ExpressionMember("on ship "));
             eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll));
 
 
@@ -594,7 +611,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("team "));
             eML.Add(new ExpressionMember("number "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Teamindex, "team_index"));
-            eML.Add(new ExpressionMember(". On Ship "));
+            eML.Add(new ExpressionMember("on ship "));
             eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NamePlayer));
 
             #endregion
