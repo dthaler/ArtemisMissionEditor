@@ -106,7 +106,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD MonsterType =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.MonsterType, 0, 8, "", "");
         public static EMVD SensorRange =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.SensorRange, 0, 5, "", "");
         /// <summary> "pickupType" from [create] </summary>
-        public static EMVD AnomalyType =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.AnomalyType, 0, 8, "", "");
+        public static EMVD AnomalyType =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.AnomalyType, 0, 9, "", "");
         /// <summary> "meshFileName" from [create] </summary>
         public static EMVD MeshFileName =               new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.PathEditor,
                                                         "DeleD Mesh Files|*.dxs|All Files|*.*;Select Delgine mesh file",
