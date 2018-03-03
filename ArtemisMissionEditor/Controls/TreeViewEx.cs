@@ -38,7 +38,7 @@ namespace ArtemisMissionEditor
         private Color _selectedNodeFocusedColor;
         private Brush _selectedNodeFocusedTreeBrush;
 
-        /// <summary> Color of the selection rectangle around the node, in owner-draw mode, when this control hasnt got focus </summary>
+        /// <summary> Color of the selection rectangle around the node, in owner-draw mode, when this control hasn't got focus </summary>
         public Color SelectedNodeColorUnfocused { get { return _selectedNodeUnfocusedColor; } set { _selectedNodeUnfocusedTreeBrush = new SolidBrush(value); _selectedNodeUnfocusedColor = value; } }
         private Color _selectedNodeUnfocusedColor;
         private Brush _selectedNodeUnfocusedTreeBrush;
@@ -265,7 +265,7 @@ namespace ArtemisMissionEditor
                         lastChild.EnsureVisible();
                     }
                 }
-                //Highlight parent node if previous node doesnt exist (meaning node above this node is its parent)
+                //Highlight parent node if previous node doesn't exist (meaning node above this node is its parent)
                 else
                 {
                     if (_dropNode.Parent != null)

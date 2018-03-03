@@ -202,7 +202,7 @@ namespace ArtemisMissionEditor.Expressions
 
 			eML = this.Add("<existence>");
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name", true));
-			eML.Add(new ExpressionMemberCheck_Existance());
+			eML.Add(new ExpressionMemberCheck_Existence());
 
 			#endregion
 

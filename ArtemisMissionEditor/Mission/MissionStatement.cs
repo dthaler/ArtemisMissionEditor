@@ -203,7 +203,7 @@ namespace ArtemisMissionEditor
 
 		/// <summary> Gets the attribute value </summary>
 		/// <param name="name">Name of the value, as in XML</param>
-		/// <returns>Value if attribute exists, null if doesnt</returns>
+		/// <returns>Value if attribute exists, null if doesn't</returns>
 		public string GetAttribute(string name)
 		{
 			if (String.IsNullOrEmpty(name))
@@ -244,7 +244,7 @@ namespace ArtemisMissionEditor
 				return Attributes[name];
 			}
 
-			//Tell them it doesnt exist
+			//Tell them it doesn't exist
 			return null;
 		}
 		/// <summary> 

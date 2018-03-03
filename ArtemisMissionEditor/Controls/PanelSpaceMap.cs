@@ -148,7 +148,7 @@ namespace ArtemisMissionEditor
 
 		#region Helper functions
 
-		//Return rounded value (to nearest odd) //Doesnt fucking work
+		//Return rounded value (to nearest odd) //Doesn't work
 		public static int RoundToNearestOddInt(double value)
 		{
 			//int rv = (int)Math.Floor(value + 0.5);

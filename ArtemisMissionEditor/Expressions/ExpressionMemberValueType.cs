@@ -11,7 +11,7 @@ namespace ArtemisMissionEditor.Expressions
 	public enum ExpressionMemberValueType
 	{
 		/// <summary>
-		/// Means it doesnt have a value assigned to it
+		/// Means it doesn't have a value assigned to it
 		/// </summary>
 		Nothing,
 		VarInteger,

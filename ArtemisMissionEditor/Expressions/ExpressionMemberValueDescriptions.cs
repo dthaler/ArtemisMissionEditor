@@ -300,7 +300,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD GMTextIF = new EMVD(EMVT.VarString, EMVB.StoredWhenFilled, EMVE.DefaultString, null, null, "\"", "\" ");
 
         /// <summary> Check if_(not)_exists from [if_exists,if_not_exists] </summary>
-        public static EMVD Check_Existance =            new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DefaultCheck);
+        public static EMVD Check_Existence =            new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DefaultCheck);
 
         /// <summary> Check inside/outside from [if_inside/outside_box/sphere] </summary>
         public static EMVD Check_In_Out =               new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DefaultCheck);

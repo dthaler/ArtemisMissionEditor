@@ -117,7 +117,7 @@
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_DistanceNebula.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_Box_Sphere.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_Inside_Outside.cs" />
-    <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_Existance.cs" />
+    <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_Existence.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_Letter_ID.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_AllShips_FleetNumber.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_XmlNameCondition.cs" />

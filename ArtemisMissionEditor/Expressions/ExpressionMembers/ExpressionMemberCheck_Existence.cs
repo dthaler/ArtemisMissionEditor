@@ -11,7 +11,7 @@ namespace ArtemisMissionEditor.Expressions
     /// Represents a single member in an expression, which provides branching via checking a condition.
     /// This check is for [if_exists] vs [if_not_exists].
     /// </summary>
-    public sealed class ExpressionMemberCheck_Existance : ExpressionMemberCheck
+    public sealed class ExpressionMemberCheck_Existence : ExpressionMemberCheck
 	{
         /// <summary>
         /// This function is called when check needs to decide which list of ExpressionMembers to output. 
@@ -23,7 +23,7 @@ namespace ArtemisMissionEditor.Expressions
 			if (container.Statement.Name == "if_exists")
 				return Choices[0]; // if object exists
 			else
-				return Choices[1]; // if object doesnt exist
+				return Choices[1]; // if object doesn't exist
 		}
 
         /// <summary>
@@ -45,8 +45,8 @@ namespace ArtemisMissionEditor.Expressions
         /// Represents a single member in an expression, which provides branching via checking a condition.
         /// This check is for [if_exists] vs [if_not_exists].
         /// </summary>
-        public ExpressionMemberCheck_Existance()
-			: base("", ExpressionMemberValueDescriptions.Check_Existance)
+        public ExpressionMemberCheck_Existence()
+			: base("", ExpressionMemberValueDescriptions.Check_Existence)
 		{
 			List<ExpressionMember> eML;
 			eML = Add("exists"); //Choices[0]
