@@ -263,9 +263,11 @@ namespace ArtemisMissionEditor.Expressions
 
             eML = this.Add("if_distance");
             eML.Add(new ExpressionMember("between "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name1", true));
+            eML.Add(new ExpressionMember("object "));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll, "name1", "<none>", "player_slot1"));
             eML.Add(new ExpressionMember("and "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name2", true));
+            eML.Add(new ExpressionMember("object "));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll, "name2", "<none>", "player_slot2"));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Comparator, "comparator"));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueF, "value", true));
 
