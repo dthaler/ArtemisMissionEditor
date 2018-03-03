@@ -205,8 +205,8 @@ namespace ArtemisMissionEditor.Expressions
             {
                 string flag = container.GetAttribute("value");
                 if (flag == null || !Helper.IntTryParse(flag))
-                    container.SetAttribute("value","0");
-                else if (Helper.StringToInt(flag) == 1)
+                    container.SetAttribute("value", "0");
+                else if (Helper.StringToInt(flag) != 0)
                     container.SetAttribute("value", "1");
                 else
                     container.SetAttribute("value", "0");
