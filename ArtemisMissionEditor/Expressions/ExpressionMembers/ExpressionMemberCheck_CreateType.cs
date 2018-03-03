@@ -208,8 +208,8 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.accent_color, "accent_color"));
             ____Add_Check_HullID_HullRaceKeysP(eML);
             eML.Add(new ExpressionMember(". Ship uses "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.DriveType, "warp"));
-            eML.Add(new ExpressionMember(" Drive."));
+            eML.Add(new ExpressionMemberCheck_DriveType());
+            eML.Add(new ExpressionMember("drive."));
 
             eML = this.Add("whale");
             ____Add_Type(eML);

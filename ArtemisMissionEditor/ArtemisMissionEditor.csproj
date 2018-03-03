@@ -100,6 +100,7 @@
     <Compile Include="DependencyGraph\DependencyEvent.cs" />
     <Compile Include="DependencyGraph\DependencyGraph.cs" />
     <Compile Include="DependencyGraph\DependencyPrecursor.cs" />
+    <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_DriveType.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_Slot_GM.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_Name_GM_Slot.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_Point_Name_GM.cs" />
@@ -172,9 +173,7 @@
     <Compile Include="Controls\NormalLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\TreeViewEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Controls\TreeViewEx.cs" />
     <Compile Include="SpaceMap\Coordinates3D.cs" />
     <Compile Include="SpaceMap\FakeShields.cs" />
     <Compile Include="SpaceMap\MapColors.cs" />

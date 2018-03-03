@@ -556,9 +556,9 @@ namespace ArtemisMissionEditor.Expressions
             MonsterType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
 
             DriveType = new ExpressionMemberValueEditor();
-            DriveType.AddToDictionary("", "Any");
-            DriveType.AddToDictionary("yes", "Warp");
-            DriveType.AddToDictionary("no", "Jump");
+            DriveType.AddToDictionary("Any", "Any");
+            DriveType.AddToDictionary("Warp", "Warp");
+            DriveType.AddToDictionary("Jump", "Jump");
             DriveType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
 
             VariableType = new ExpressionMemberValueEditor();
