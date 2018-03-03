@@ -3379,6 +3379,13 @@ namespace ArtemisMissionEditor
                 "set_relative_position",
                 "if_distance",
                 };
+            string[] noticableOnEndMissionStatements = new string[]{
+                "big_message",
+                "log",
+                "play_sound_now",
+                "spawn_external_program",
+                "warning_popup_message",
+                };
 
             curNode++;
 
@@ -3403,7 +3410,7 @@ namespace ArtemisMissionEditor
                         namesDestroyedInThisNode.Add(CollapseName(attName));
                     if (statement.Name == "end_mission")
                         hasEndMission = true;
-                    else if (statement.Name != "log")
+                    else if (!noticableOnEndMissionStatements.Contains(statement.Name))
                         hasNonEndMission = true;
                 }
 
