@@ -25,19 +25,19 @@ namespace ArtemisMissionEditor.Expressions
 			switch (type)
 			{
                 //GAME
-                case "nonPlayerSpeed": return "<DEFAULT>";
-                case "nebulaIsOpaque": return "<NEBULAROP>";
-                case "sensorSetting": return "<SENSOR>";
-                case "nonPlayerShield": return "<DEFAULT>";
-                case "nonPlayerWeapon": return "<DEFAULT>";
-                case "playerWeapon": return "<DEFAULT>";
-                case "playerShields": return "<DEFAULT>";
-                case "coopAdjustmentValue": return "<DEFAULT>";
+                case "nonPlayerSpeed":          return "<DEFAULT>";
+                case "nebulaIsOpaque":          return "<NEBULAROP>";
+                case "sensorSetting":           return "<SENSOR>";
+                case "nonPlayerShield":         return "<DEFAULT>";
+                case "nonPlayerWeapon":         return "<DEFAULT>";
+                case "playerWeapon":            return "<DEFAULT>";
+                case "playerShields":           return "<DEFAULT>";
+                case "coopAdjustmentValue":     return "<DEFAULT>";
                 case "musicObjectMasterVolume": return "<DEFAULT>";
                 case "commsObjectMasterVolume": return "<DEFAULT>";
-                case "soundFXVolume": return "<DEFAULT>";
-                case "gameTimeLimit": return "<DEFAULT>";
-                case "networkTickSpeed": return "<DEFAULT>";
+                case "soundFXVolume":           return "<DEFAULT>";
+                case "gameTimeLimit":           return "<DEFAULT>";
+                case "networkTickSpeed":        return "<DEFAULT>";
                 //EVERYTHING
                 case "positionX":				return "<DEFAULT>";
 				case "positionY": 				return "<DEFAULT>";
@@ -48,7 +48,7 @@ namespace ArtemisMissionEditor.Expressions
 				case "angle": 					return "<DEFAULT>";
 				case "pitch": 					return "<DEFAULT>";
 				case "roll": 					return "<DEFAULT>";
-                case "sideValue": return "<DEFAULT>";
+                case "sideValue":               return "<DEFAULT>";
 				//VALUES FOR GENERIC MESHES		
 				case "blocksShotFlag": 			return "<DEFAULT>";
 				case "pushRadius": 				return "<DEFAULT>";

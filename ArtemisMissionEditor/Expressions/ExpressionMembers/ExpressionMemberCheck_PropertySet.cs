@@ -13,6 +13,136 @@ namespace ArtemisMissionEditor.Expressions
     /// </summary>
     public sealed class ExpressionMemberCheck_PropertySet : ExpressionMemberCheck
     {
+        private static readonly Dictionary<string, string> MappedPropertyType = new Dictionary<string, string> {
+            // Global properties.
+            { "nonPlayerSpeed",          "<ENMYSP>" },
+            { "nebulaIsOpaque",          "<NEBULAROP>" },
+            { "sensorSetting",           "<SENSOR>" },
+            { "nonPlayerShield",         "<ENMYSP>" },
+            { "nonPlayerWeapon",         "<ENMYSP>" },
+            { "playerWeapon",            "<ENMYSP>" },
+            { "playerShields",           "<ENMYSP>" },
+            { "coopAdjustmentValue",     "<DEFAULT>" },
+            { "musicObjectMasterVolume", "<DEFAULT>" },
+            { "commsObjectMasterVolume", "<DEFAULT>" },
+            { "soundFXVolume",           "<DEFAULT>" },
+            { "gameTimeLimit",           "<DEFAULT>" },
+            { "networkTickSpeed",        "<DEFAULT>" },
+
+            // Properties on all objects.
+            { "positionX",               "<FLT0...100K>" },
+            { "positionY",               "<FLT-100K...100K>" },
+            { "positionZ",               "<FLT0...100K>" },
+            { "deltaX",                  "<FLT-100K...100K>" },
+            { "deltaY",                  "<FLT-100K...100K>" },
+            { "deltaZ",                  "<FLT-100K...100K>" },
+            { "angle",                   "<DEFAULT>" },
+            { "pitch",                   "<DEFAULT>" },
+            { "roll",                    "<DEFAULT>" },
+            { "sideValue",               "<DEFAULT>" },
+
+            // GenericMesh properties.
+            { "blocksShotFlag",          "<BOOLYESNO>" },
+            { "pushRadius",              "<FLT-+INF>" },
+            { "pitchDelta",              "<DEFAULT>" },
+            { "rollDelta",               "<DEFAULT>" },
+            { "angleDelta",              "<DEFAULT>" },
+            { "artScale",                "<DEFAULT>" },
+
+            // Station properties.
+            { "shieldState",             "<FLT-+INF>" },
+            { "canBuild",                "<BOOLYESNO>" },
+            { "missileStoresHoming",     "<INT0...+INF>" },
+            { "missileStoresNuke",       "<INT0...+INF>" },
+            { "missileStoresMine",       "<INT0...+INF>" },
+            { "missileStoresECM",        "<OBSOLETE_MISSILESTORESECM>" },
+            { "missileStoresEMP",        "<INT0...+INF>" },
+            { "missileStoresPShock",     "<INT0...+INF>" },
+            { "missileStoresBeacon",     "<INT0...+INF>" },
+            { "missileStoresProbe",      "<INT0...+INF>" },
+            { "missileStoresTag",        "<INT0...+INF>" },
+
+            // Properties on shielded ships.
+            { "throttle",                "<DEFAULT>" },
+            { "steering",                "<DEFAULT>" },
+            { "topSpeed",                "<DEFAULT>" },
+            { "turnRate",                "<DEFAULT>" },
+            { "shieldStateFront",        "<INT-+INF>" },
+            { "shieldMaxStateFront",     "<INT-+INF>" },
+            { "shieldStateBack",         "<INT-+INF>" },
+            { "shieldMaxStateBack",      "<INT-+INF>" },
+            { "shieldsOn",               "<BOOLYESNO>" },
+            { "triggersMines",           "<BOOLYESNO>" },
+            { "systemDamageBeam",        "<DEFAULT>" },
+            { "systemDamageTorpedo",     "<DEFAULT>" },
+            { "systemDamageTactical",    "<DEFAULT>" },
+            { "systemDamageTurning",     "<DEFAULT>" },
+            { "systemDamageImpulse",     "<DEFAULT>" },
+            { "systemDamageWarp",        "<DEFAULT>" },
+            { "systemDamageFrontShield", "<DEFAULT>" },
+            { "systemDamageBackShield",  "<DEFAULT>" },
+            { "shieldBandStrength0",     "<DEFAULT>" },
+            { "shieldBandStrength1",     "<DEFAULT>" },
+            { "shieldBandStrength2",     "<DEFAULT>" },
+            { "shieldBandStrength3",     "<DEFAULT>" },
+            { "shieldBandStrength4",     "<DEFAULT>" },
+
+            // Properties on enemies.
+            { "targetPointX",            "<FLT0...100K>" },
+            { "targetPointY",            "<FLT-100K...100K>" },
+            { "targetPointZ",            "<FLT0...100K>" },
+            { "hasSurrendered",          "<BOOLYESNO>" },
+            { "tauntImmunityIndex",      "<tII1_3>" },
+            { "eliteAIType",             "<ELITEAITYPE>" },
+            { "eliteAbilityBits",        "<ELITEABILITYBITS>" },
+            { "eliteAbilityState",       "<DEFAULT>" },
+            { "surrenderChance",         "<INT0...100>" },
+
+            // Properties on neutrals.
+            { "exitPointX",              "<FLT0...100K>" },
+            { "exitPointY",              "<FLT-100K...100K>" },
+            { "exitPointZ",              "<FLT0...100K>" },
+
+            // Properties on players.
+            { "countHoming",                 "<INT0...+INF>" },
+            { "countNuke",                   "<INT0...+INF>" },
+            { "countMine",                   "<INT0...+INF>" },
+            { "countECM",                    "<OBSOLETE_COUNTECM>" },
+            { "countEMP",                    "<INT0...+INF>" },
+            { "countShk",                    "<INT0...+INF>" },
+            { "countBea",                    "<INT0...+INF>" },
+            { "countPro",                    "<INT0...+INF>" },
+            { "countTag",                    "<INT0...+INF>" },
+            { "energy",                      "<INT0...+INF>" },
+            { "warpState",                   "<INT0...4>" },
+            { "currentRealSpeed",            "<READ_ONLY>" },
+            { "totalCoolant",                "<INT0...+INF>" },
+            { "systemCurCoolantBeam",        "<INT0...+INF>" },
+            { "systemCurCoolantTorpedo",     "<INT0...+INF>" },
+            { "systemCurCoolantTactical",    "<INT0...+INF>" },
+            { "systemCurCoolantTurning",     "<INT0...+INF>" },
+            { "systemCurCoolantImpulse",     "<INT0...+INF>" },
+            { "systemCurCoolantWarp",        "<INT0...+INF>" },
+            { "systemCurCoolantFrontShield", "<INT0...+INF>" },
+            { "systemCurCoolantBackShield",  "<INT0...+INF>" },
+            { "systemCurHeatBeam",           "<DEFAULT>" },
+            { "systemCurHeatTorpedo",        "<DEFAULT>" },
+            { "systemCurHeatTactical",       "<DEFAULT>" },
+            { "systemCurHeatTurning",        "<DEFAULT>" },
+            { "systemCurHeatImpulse",        "<DEFAULT>" },
+            { "systemCurHeatWarp",           "<DEFAULT>" },
+            { "systemCurHeatFrontShield",    "<DEFAULT>" },
+            { "systemCurHeatBackShield",     "<DEFAULT>" },
+            { "systemCurEnergyBeam",         "<DEFAULT>" },
+            { "systemCurEnergyTorpedo",      "<DEFAULT>" },
+            { "systemCurEnergyTactical",     "<DEFAULT>" },
+            { "systemCurEnergyTurning",      "<DEFAULT>" },
+            { "systemCurEnergyImpulse",      "<DEFAULT>" },
+            { "systemCurEnergyWarp",         "<DEFAULT>" },
+            { "systemCurEnergyFrontShield",  "<DEFAULT>" },
+            { "systemCurEnergyBackShield",   "<DEFAULT>" }
+        };
+
         /// <summary>
         /// This function is called when check needs to decide which list of ExpressionMembers to output. 
         /// After it is called, SetValue will be called, to allow for error correction. 
@@ -21,132 +151,19 @@ namespace ArtemisMissionEditor.Expressions
         public override string Decide(ExpressionMemberContainer container)
         {
             string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.Property.DefaultIfNull);
-
-            switch (type)
+            foreach (var item in MappedPropertyType)
             {
-                case "nonPlayerSpeed":          return "<ENMYSP>";
-                case "nebulaIsOpaque":          return "<NEBULAROP>";
-                case "sensorSetting":           return "<SENSOR>";
-                case "nonPlayerShield":         return "<ENMYSP>";
-                case "nonPlayerWeapon":         return "<ENMYSP>";
-                case "playerWeapon":            return "<ENMYSP>";
-                case "playerShields":           return "<ENMYSP>";
-                case "coopAdjustmentValue":     return "<DEFAULT>";
-                case "musicObjectMasterVolume": return "<DEFAULT>";
-                case "commsObjectMasterVolume": return "<DEFAULT>";
-                case "soundFXVolume":           return "<DEFAULT>";
-                case "gameTimeLimit":           return "<DEFAULT>";
-                case "networkTickSpeed":        return "<DEFAULT>";
-                //EVERYTHING
-                case "positionX":                return "<FLT0...100K>";
-                case "positionY":                 return "<FLT-100K...100K>";
-                case "positionZ":                 return "<FLT0...100K>";
-                case "deltaX":                     return "<FLT-100K...100K>";
-                case "deltaY":                     return "<FLT-100K...100K>";
-                case "deltaZ":                     return "<FLT-100K...100K>";
-                case "angle":                     return "<DEFAULT>";
-                case "pitch":                     return "<DEFAULT>";
-                case "roll":                     return "<DEFAULT>";
-                case "sideValue": return "<DEFAULT>";
-                //VALUES FOR GENERIC MESHES        
-                case "blocksShotFlag":             return "<BOOLYESNO>";
-                case "pushRadius":                 return "<FLT-+INF>";
-                case "pitchDelta":                 return "<DEFAULT>";
-                case "rollDelta":                 return "<DEFAULT>";
-                case "angleDelta":                 return "<DEFAULT>";
-                case "artScale":                 return "<DEFAULT>";
-                //VALUES FOR STATIONS            
-                case "shieldState":              return "<FLT-+INF>";
-                case "canBuild":                 return "<BOOLYESNO>";
-                case "missileStoresHoming":      return "<INT0...+INF>";
-                case "missileStoresNuke":        return "<INT0...+INF>";
-                case "missileStoresMine":        return "<INT0...+INF>";
-                case "missileStoresECM":         return "<OBSOLETE_MISSILESTORESECM>";
-                case "missileStoresEMP":         return "<INT0...+INF>";
-                case "missileStoresPShock":      return "<INT0...+INF>";
-                case "missileStoresBeacon":      return "<INT0...+INF>";
-                case "missileStoresProbe":       return "<INT0...+INF>";
-                case "missileStoresTag":         return "<INT0...+INF>";
-                //VALUES FOR SHIELDED SHIPS        
-                case "throttle":                 return "<DEFAULT>";
-                case "steering":                 return "<DEFAULT>";
-                case "topSpeed":                 return "<DEFAULT>";
-                case "turnRate":                 return "<DEFAULT>";
-                case "shieldStateFront":         return "<INT-+INF>";
-                case "shieldMaxStateFront":     return "<INT-+INF>";
-                case "shieldStateBack":         return "<INT-+INF>";
-                case "shieldMaxStateBack":         return "<INT-+INF>";
-                case "shieldsOn":                 return "<BOOLYESNO>";
-                case "triggersMines":             return "<BOOLYESNO>";
-                case "systemDamageBeam":         return "<DEFAULT>";
-                case "systemDamageTorpedo":     return "<DEFAULT>";
-                case "systemDamageTactical":     return "<DEFAULT>";
-                case "systemDamageTurning":     return "<DEFAULT>";
-                case "systemDamageImpulse":     return "<DEFAULT>";
-                case "systemDamageWarp":         return "<DEFAULT>";
-                case "systemDamageFrontShield":    return "<DEFAULT>";
-                case "systemDamageBackShield":     return "<DEFAULT>";
-                case "shieldBandStrength0":     return "<DEFAULT>";
-                case "shieldBandStrength1":     return "<DEFAULT>";
-                case "shieldBandStrength2":     return "<DEFAULT>";
-                case "shieldBandStrength3":     return "<DEFAULT>";
-                case "shieldBandStrength4":     return "<DEFAULT>";
-                //VALUES FOR ENEMIES            
-                case "targetPointX":             return "<FLT0...100K>";
-                case "targetPointY":             return "<FLT-100K...100K>";
-                case "targetPointZ":             return "<FLT0...100K>";
-                case "hasSurrendered":             return "<BOOLYESNO>";
-                case "tauntImmunityIndex":      return "<tII1_3>";
-                case "eliteAIType":             return "<ELITEAITYPE>";
-                case "eliteAbilityBits":         return "<ELITEABILITYBITS>";
-                case "eliteAbilityState":         return "<DEFAULT>";
-                case "surrenderChance":            return "<INT0...100>";
-                //VALUES FOR NEUTRALS            
-                case "exitPointX":                 return "<FLT0...100K>";
-                case "exitPointY":                 return "<FLT-100K...100K>";
-                case "exitPointZ":                 return "<FLT0...100K>";
-                //VALUES FOR PLAYERS            
-                case "countHoming":                 return "<INT0...+INF>";
-                case "countNuke":                   return "<INT0...+INF>";
-                case "countMine":                   return "<INT0...+INF>";
-                case "countECM":                    return "<OBSOLETE_COUNTECM>";
-                case "countEMP":                    return "<INT0...+INF>";
-                case "countShk":                    return "<INT0...+INF>";
-                case "countBea":                    return "<INT0...+INF>";
-                case "countPro":                    return "<INT0...+INF>";
-                case "countTag":                    return "<INT0...+INF>";
-                case "energy":                      return "<INT0...+INF>";
-                case "warpState":                   return "<INT0...4>";
-                case "currentRealSpeed":            return "<READ_ONLY>";
-                case "totalCoolant":                return "<INT0...+INF>";
-                case "systemCurCoolantBeam":        return "<INT0...+INF>";
-                case "systemCurCoolantTorpedo":     return "<INT0...+INF>";
-                case "systemCurCoolantTactical":    return "<INT0...+INF>";
-                case "systemCurCoolantTurning":     return "<INT0...+INF>";
-                case "systemCurCoolantImpulse":     return "<INT0...+INF>";
-                case "systemCurCoolantWarp":        return "<INT0...+INF>";
-                case "systemCurCoolantFrontShield": return "<INT0...+INF>";
-                case "systemCurCoolantBackShield":  return "<INT0...+INF>";
-                case "systemCurHeatBeam":           return "<DEFAULT>";
-                case "systemCurHeatTorpedo":        return "<DEFAULT>";
-                case "systemCurHeatTactical":       return "<DEFAULT>";
-                case "systemCurHeatTurning":        return "<DEFAULT>";
-                case "systemCurHeatImpulse":        return "<DEFAULT>";
-                case "systemCurHeatWarp":           return "<DEFAULT>";
-                case "systemCurHeatFrontShield":    return "<DEFAULT>";
-                case "systemCurHeatBackShield":     return "<DEFAULT>";
-                case "systemCurEnergyBeam":         return "<DEFAULT>";
-                case "systemCurEnergyTorpedo":      return "<DEFAULT>";
-                case "systemCurEnergyTactical":     return "<DEFAULT>";
-                case "systemCurEnergyTurning":      return "<DEFAULT>";
-                case "systemCurEnergyImpulse":      return "<DEFAULT>";
-                case "systemCurEnergyWarp":         return "<DEFAULT>";
-                case "systemCurEnergyFrontShield":  return "<DEFAULT>";
-                case "systemCurEnergyBackShield":   return "<DEFAULT>";
-                //DEFAULT CASE
-                default:
-                    return "<UNKNOWN_PROPERTY>";
+                if (item.Key == type)
+                {
+                    return item.Value;
+                }
+                if (item.Key.ToLower() == type.ToLower())
+                {
+                    return "<WRONGCASE>";
+                }
             }
+
+            return "<UNKNOWN_PROPERTY>";
         }
 
         /// <summary>
@@ -156,6 +173,20 @@ namespace ArtemisMissionEditor.Expressions
         /// </summary>
         protected override void SetValueInternal(ExpressionMemberContainer container, string value)
         {
+            if (value == "<WRONGCASE>")
+            {
+                string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.Property.DefaultIfNull);
+                foreach (var item in MappedPropertyType)
+                {
+                    if (item.Key.ToLower() == type.ToLower())
+                    {
+                        // Convert property name to correct case.
+                        value = item.Value;
+                        container.SetAttribute("property", item.Key);
+                        break;
+                    }
+                }
+            }
             if (value == "<OBSOLETE_COUNTECM>")
             {
                 // Convert countECM to countEMP.
