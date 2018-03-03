@@ -3602,6 +3602,9 @@ namespace ArtemisMissionEditor
                             if (statement.Kind != MissionStatementKind.Condition)
                                 continue;
 
+                            if (!statement.IsGreen())
+                                result.Add(new MissionSearchResult(curNode, i + 1, "Invalid syntax for " + statement.Name + " condition.", node, statement));
+
                             // Reference to a variable that is never set
                             string attName;
                             if (statement.Name == "if_variable" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !VariableSetNames.Contains(CollapseName(attName)))
@@ -3662,6 +3665,9 @@ namespace ArtemisMissionEditor
                     MissionStatement statement = mNode.Actions[i];
                     if (statement.Kind != MissionStatementKind.Action)
                         continue;
+
+                    if (!statement.IsGreen())
+                        result.Add(new MissionSearchResult(curNode, i + 1, "Invalid syntax for " + statement.Name + " action.", node, statement));
 
                     // Reference to a variable that is never checked
                     string attName;
