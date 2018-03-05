@@ -3768,13 +3768,13 @@ namespace ArtemisMissionEditor
                                 if (type == "station")
                                 {
                                     if (String.IsNullOrWhiteSpace(statement.GetAttribute("hullID"))
-                                        && !statement.GetAttribute("hullKeys", "").Contains("base"))
+                                        && !statement.GetAttribute("hullKeys", "").ToLower().Contains("base"))
                                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create station\" statement does not specify a hullID and does not specify \"base\" in its list of hull keys. When this statement is executed, weird things will happen.", node, statement));
                                 }
                                 if (type == "enemy" || type == "neutral")
                                 {
                                     if (String.IsNullOrWhiteSpace(statement.GetAttribute("hullID"))
-                                        && statement.GetAttribute("hullKeys", "").Contains("base"))
+                                        && statement.GetAttribute("hullKeys", "").ToLower().Contains("base"))
                                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create " + type + "\" statement does not specify a hullID and contains \"base\" in its list of hull keys. When this statement is executed, weird things will happen.", node, statement));
                                 }
                             }
