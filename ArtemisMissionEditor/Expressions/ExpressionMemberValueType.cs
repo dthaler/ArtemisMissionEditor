@@ -19,7 +19,7 @@ namespace ArtemisMissionEditor.Expressions
 		VarDouble,
 		VarString,
 		/// <summary>
-		/// Means its a multiline string
+		/// Means it's a multiline string
 		/// </summary>
 		Body
 	}

@@ -14,8 +14,9 @@ namespace ArtemisMissionEditor.Expressions
 		NotStored,
 		/// <summary> The value is stored as is - even if null or missing </summary>
 		StoredAsIs,
-		/// <summary> The value is stored as is - but only if its filled (nonMin / nonempty / nonfalse) </summary>
-		StoredWhenFilled
+		/// <summary> The value is stored as is - but only if it's filled (nonempty) </summary>
+		StoredWhenFilled,
+		/// <summary> The value is stored as is - but only if it's filled and non-default </summary>
+		StoredWhenNonDefault,
 	}
-
 }

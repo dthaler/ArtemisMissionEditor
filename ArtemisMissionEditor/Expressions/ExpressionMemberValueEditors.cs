@@ -20,6 +20,7 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor DefaultDouble;
         public static ExpressionMemberValueEditor DefaultString;
         public static ExpressionMemberValueEditor DefaultBody;
+        public static ExpressionMemberValueEditor DefaultPresent;
         
         /// <summary> Root check for actions </summary>
         public static ExpressionMemberValueEditor XmlNameActionCheck;
@@ -89,6 +90,8 @@ namespace ArtemisMissionEditor.Expressions
 			DefaultBody = new ExpressionMemberValueEditor();
             DefaultBool = new ExpressionMemberValueEditor();
             DefaultBool.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultBool;
+            DefaultPresent = new ExpressionMemberValueEditor();
+            DefaultPresent.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultPresent;
 
 			CreateType = new ExpressionMemberValueEditor();
 			CreateType.AddToDictionary("Anomaly",       "Anomaly");

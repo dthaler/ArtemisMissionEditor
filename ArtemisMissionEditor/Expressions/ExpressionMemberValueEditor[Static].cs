@@ -265,6 +265,35 @@ namespace ArtemisMissionEditor.Expressions
         }
 
         /// <summary>
+        /// Default context menu strip for a value that is either absent or present.
+        /// </summary>
+        internal static ContextMenuStrip PrepareContextMenuStrip_DefaultPresent(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)
+        {
+            string value = container.GetValue();
+
+            if (editor.ValueSelectorContextMenuStrip == null || editor.LastUser != container.Member.ValueDescription || editor.ForceRecreateMenu)
+            {
+                editor.ValueSelectorContextMenuStrip = new ContextMenuStrip(); 
+                editor.InitContextMenuStrip(); 
+                editor.LastUser = container.Member.ValueDescription;
+                editor.ValueSelectorContextMenuStrip.Items.Clear();
+                editor.ValueSelectorContextMenuStrip.Tag = false;
+
+                foreach (string item in new string[2] { container.Member.ValueToDisplay("1"), container.Member.ValueToDisplay("0") })
+                {
+                    ToolStripItem tsi = editor.ValueSelectorContextMenuStrip.Items.Add(item);
+                    tsi.Tag = container;
+                    tsi.Click += ContextMenuClickChoose;
+                }
+
+                editor.ShowHideContextMenuStrip();
+            }
+
+            AssignContainerToContextMenuStrip(editor.ValueSelectorContextMenuStrip, container, value);
+            return editor.ValueSelectorContextMenuStrip;
+        }
+
+        /// <summary>
         /// Context menu strip for timer names
         /// </summary>
         internal static ContextMenuStrip PrepareContextMenuStrip_TimerNameList(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)

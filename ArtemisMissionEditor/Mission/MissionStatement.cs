@@ -444,8 +444,11 @@ namespace ArtemisMissionEditor
                             continue;
                         XmlAttribute cAtt = xDoc.CreateAttribute(container.Member.Name);
                         cAtt.Value = container.GetAttribute();
-                        if (container.Member.ValueDescription.BehaviorInXml == ExpressionMemberValueBehaviorInXml.StoredAsIs || !String.IsNullOrEmpty(cAtt.Value))
-                            result.Attributes.Append(cAtt);
+                        if (container.Member.ValueDescription.BehaviorInXml != ExpressionMemberValueBehaviorInXml.StoredAsIs && String.IsNullOrEmpty(cAtt.Value))
+                            continue;
+                        if (container.Member.ValueDescription.BehaviorInXml == ExpressionMemberValueBehaviorInXml.StoredWhenNonDefault && cAtt.Value == container.Member.ValueDescription.DefaultIfNull)
+                            continue;
+                        result.Attributes.Append(cAtt);
                     }
                 if (!String.IsNullOrEmpty(Body))
                     result.InnerText = Body;
