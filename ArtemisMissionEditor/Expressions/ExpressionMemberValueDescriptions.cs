@@ -75,6 +75,8 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD FakeShieldsF =               new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, -1, 1000,"(",", ");
         /// <summary> "fakeShieldsRear" from [create] </summary>    
         public static EMVD FakeShieldsR =               new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, -1, 1000,"",") ");
+        /// <summary> "beaconEffect" from [create] </summary>
+        public static EMVD BeaconEffect =               new EMVD(EMVT.VarBool,      EMVB.StoredWhenFilled,  EMVE.DefaultBool,  "Attract", "Repel");
         /// <summary> "hasFakeShldFreq" from [create] </summary>
         public static EMVD HasFakeShldFrequency =       new EMVD(EMVT.VarBool,      EMVB.StoredWhenFilled,  EMVE.DefaultBool, 
                                                         "no fake frequency", "fake frequency");
@@ -105,7 +107,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD bay_slot =                   new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.DefaultInteger, 0, 31);
         public static EMVD TagSlot =                    new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.DefaultInteger, 0, 3);
         /// <summary> "MonsterType" from [create] </summary>
-        public static EMVD MonsterType =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.MonsterType, 0, 8, "", "");
+        public static EMVD MonsterType =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.MonsterType, 0, 8, "", "");
         public static EMVD SensorRange =                new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.SensorRange, 0, 5, "", "");
         /// <summary> "pickupType" from [create] </summary>
         public static EMVD AnomalyType =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.AnomalyType, 0, 9, "", "");

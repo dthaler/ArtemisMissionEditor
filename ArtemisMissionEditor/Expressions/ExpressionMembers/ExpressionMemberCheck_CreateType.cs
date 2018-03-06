@@ -28,11 +28,18 @@ namespace ArtemisMissionEditor.Expressions
 
 			switch (type)
 			{
-				case "anomaly":		return "Anomaly";
+				case "anomaly":		if (container.GetAttribute("pickupType") == "8")
+                                        return "Beacon";
+                                    else
+                                        return "Anomaly";
 				case "blackhole":	return "<NAMED_MAP_OBJECT>";
 				case "player":		return "player";
 				case "whale":		return "whale";
-				case "monster":		return "monster";
+				case "monster":		if (container.GetAttribute("monsterType") == "1" || 
+                                        container.GetAttribute("monsterType") == "4")
+                                        return "PodMonster";
+                                    else
+                                        return "monster";
 				case "neutral":		return "neutral";
 				case "station":		return "station";
 				case "enemy":		return "enemy";
@@ -94,30 +101,8 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("of "));
             eML.Add(new ExpressionMember("type "));
             eML.Add(new ExpressionMember("<SELECT>", ExpressionMemberValueDescriptions.MonsterType, "monsterType"));
-           // if (ExpressionMemberValueDescriptions = 1)
-           // {
-          //      ExpressionMember = 0;
-          //PODTHINGGOESHERE
-            eML.Add(new ExpressionMember(" "));
-            eML.Add(new ExpressionMember("with "));
-            eML.Add(new ExpressionMember("pod "));
-            eML.Add(new ExpressionMember("number "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.PodNumber, "podnumber"));
-            eML.Add(new ExpressionMember(" (leave blank if not Whale or Piranha) "));
-        }
-
-        private void ____Add_Anomaly(List<ExpressionMember> eML, bool nameMandatory = true)
-        {
-            eML.Add(new ExpressionMember("of "));
-            eML.Add(new ExpressionMember("type "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.AnomalyType, "AnomalyType"));
-            //if (ExpressionMember = null)
-            //{
-            //    ExpressionMember = 0;
-            //}
             eML.Add(new ExpressionMember(" "));
         }
-
 
         private void ____Add_Angle(List<ExpressionMember> eML, bool nameMandatory = false)
 		{
@@ -165,10 +150,6 @@ namespace ArtemisMissionEditor.Expressions
 
 			eML = this.Add("<NAMED_MAP_OBJECT>");
 			____Add_Type(eML);
-            //eML.Add(new ExpressionMember("of "));
-            // eML.Add(new ExpressionMember("type "));
-            // eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.AnomalyType, "pickupType"));
-            // eML.Add(new ExpressionMember(" "));
             ____Add_Check_Point_GM(eML);
 			____Add_Name(eML);
 
@@ -183,12 +164,37 @@ namespace ArtemisMissionEditor.Expressions
             ____Add_Check_Point_GM(eML);
             ____Add_Name(eML);
 
+            eML = this.Add("Beacon");
+            ____Add_Type(eML);
+            eML.Add(new ExpressionMember("of "));
+            eML.Add(new ExpressionMember("type "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.AnomalyType, "pickupType"));
+            eML.Add(new ExpressionMember(" "));
+            eML.Add(new ExpressionMember("with "));
+            eML.Add(new ExpressionMember("effect "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.BeaconEffect, "beaconEffect"));
+            eML.Add(new ExpressionMember("<SELECT>", ExpressionMemberValueDescriptions.MonsterType, "beaconMonsterType"));
+            eML.Add(new ExpressionMember(" "));
+            ____Add_Check_Point_GM(eML);
+            ____Add_Name(eML);
+
             #region <NAMED_MAP_OBJECT_AN>		(Monster / Player / Whale)
 
             #region Monster
             eML = this.Add("monster");
 			____Add_Type(eML);
             ____Add_Monster(eML);
+            ____Add_Check_Point_GM(eML);
+			____Add_Angle(eML);
+			____Add_Name(eML);
+
+            eML = this.Add("PodMonster");
+			____Add_Type(eML);
+            ____Add_Monster(eML);
+            eML.Add(new ExpressionMember("with "));
+            eML.Add(new ExpressionMember("pod "));
+            eML.Add(new ExpressionMember("number "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.PodNumber, "podnumber"));
             ____Add_Check_Point_GM(eML);
 			____Add_Angle(eML);
 			____Add_Name(eML);
