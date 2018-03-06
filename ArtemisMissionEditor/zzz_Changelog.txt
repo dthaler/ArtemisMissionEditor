@@ -1,3 +1,19 @@
+Version 2.7.2 [2018-March-5] (Dave Thaler)
+* Added if_in_nebula
+* Added player_slot1 and player_slot2 attributes to if_distance
+* Added space junk anomaly type
+* Added jump attribute value on create player
+* Added beaconMonsterType and beaconEffect attributes on create beacon
+* Added "Potential Problems" warning if a mandatory attribute is missing
+* Fixed set_special command display
+* set_ship_text now works with generic meshes and can rename other types
+* Make property name in set_object_property case insensitive per Artemis behavior
+* More improvements to "Potential Problems" checking
+* Fixed bug where "hasSurrendered" values > 1 were treated same as "0" instead of "1"
+* Fixed display of if_fleet_count when countSurrendered is absent
+* Removed player_slot from set_player_grid_damage and warning_popup_message and made name optional
+* Don't allow configuring pod number on monsters other than whales and piranhas
+----------------------
 Version 2.7.1 [2018-February-24] (Dave Thaler)
 * Added tag commands set_monster_tag_data, set_named_object_tag_state
 * Added tag conditions if_monster_tag_matches, if_object_tag_matches
