@@ -44,7 +44,7 @@
          old version
     8.3. In left pane, right click on ArtemisMissionEditorUpdates.txt and
          select Upload
-9. Test installing it
+9. Test installing it by launching an older copy and making sure it prompts to install the new version
 10. Check in updated aip files
 11. Add a git tag for the release version (e.g., "git tag 2.6.1", "git push --tags")
 12. Update wiki page at http://artemiswiki.pbworks.com/w/page/53389687/Mission%20Editor
