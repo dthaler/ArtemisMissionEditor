@@ -80,7 +80,7 @@ namespace ArtemisMissionEditor.Expressions
 			List<ExpressionMember> eML;
 
 			eML = this.Add("<to>"); //Choices[0]
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Value, "value"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value"));
 			eML.Add(new ExpressionMember("as ")); 
 			eML.Add(new ExpressionMember("Float", ExpressionMemberValueDescriptions.VariableType, "integer"));
 			
@@ -88,9 +88,9 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("within "));
 			eML.Add(new ExpressionMember("the ")); 
 			eML.Add(new ExpressionMember("range ")); 
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.RandInt, "randomIntLow"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_NegInf_PosInf, "randomIntLow"));
 			eML.Add(new ExpressionMember("... "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.RandInt, "randomIntHigh")); 
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_NegInf_PosInf, "randomIntHigh")); 
 			eML.Add(new ExpressionMember("as ")); 
 			eML.Add(new ExpressionMember("Integer", ExpressionMemberValueDescriptions.VariableType, "integer"));
 
@@ -98,9 +98,9 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("within "));
 			eML.Add(new ExpressionMember("the ")); 
 			eML.Add(new ExpressionMember("range "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.RandFloat, "randomFloatLow"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "randomFloatLow"));
 			eML.Add(new ExpressionMember("... "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.RandFloat, "randomFloatHigh")); 
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "randomFloatHigh")); 
 		}
 	}
 }

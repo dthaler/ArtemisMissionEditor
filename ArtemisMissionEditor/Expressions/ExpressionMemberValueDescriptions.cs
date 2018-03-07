@@ -165,10 +165,6 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD Check_SetVariable =          new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.SetVariableCheck);
         /// <summary> "value" from [set_variable,if_variable] </summary>
         public static EMVD Value =                      new EMVD(EMVT.VarDouble,    EMVB.StoredWhenFilled,  EMVE.DefaultDouble,0.0);
-        /// <summary> "randIntLow/High" from [set_variable] </summary>
-        public static EMVD RandInt =                    new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger,0);
-        /// <summary> "randFloatLow/High" from [set_variable] </summary>
-        public static EMVD RandFloat =                  new EMVD(EMVT.VarDouble,    EMVB.StoredWhenFilled,  EMVE.DefaultDouble,0.0);
         /// <summary> "integer" from [set_variable] </summary>
         public static EMVD VariableType =               new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.VariableType);
 
