@@ -434,8 +434,12 @@ namespace ArtemisMissionEditor.Expressions
                     }
                     if (!nextMustBeOperator)
                     {
-                        isValid = false;
-                        AddError(i, "Unexpected operator (expected literal or variable)");
+                        // Allow the unary '-' operator.
+                        if (curChar != '-')
+                        {
+                            isValid = false;
+                            AddError(i, "Unexpected operator (expected literal or variable)");
+                        }
                     }
                     nextMustBeOperator = false;
                     while (operatorStack.Count > 0 && ValidateExpression_GetOperatorPrecedence(operatorStack.Peek().Item2[0]) > ValidateExpression_GetOperatorPrecedence(curChar))
