@@ -98,7 +98,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML = this.Add("if_variable");
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameVariable, "name", true));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Comparator, "comparator"));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueF, "value",true));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value",true));
 
 			#endregion
 
@@ -147,7 +147,7 @@ namespace ArtemisMissionEditor.Expressions
 
 			eML = this.Add("if_fleet_count");
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Comparator, "comparator"));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueF, "value", true));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_0_100k, "value", true));
 			eML.Add(new ExpressionMemberCheck_AllShips_FleetNumber());
             eML.Add(new ExpressionMember("on "));
             eML.Add(new ExpressionMember("side "));
@@ -269,7 +269,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("object "));
             eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll, "name2", "<none>", "player_slot2"));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Comparator, "comparator"));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueF, "value", true));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_0_PosInf, "value", true));
 
             #endregion
 
@@ -279,7 +279,7 @@ namespace ArtemisMissionEditor.Expressions
 
 			eML = this.Add("if_difficulty");
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Comparator, "comparator"));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueF, "value", true));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_0_100, "value", true));
 
 			#endregion
 

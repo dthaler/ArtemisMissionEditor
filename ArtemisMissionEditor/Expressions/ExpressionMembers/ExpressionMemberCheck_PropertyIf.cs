@@ -24,19 +24,20 @@ namespace ArtemisMissionEditor.Expressions
 
 			switch (type)
 			{
-				case "nonPlayerSpeed":			return "<DEFAULT>";
-				case "nebulaIsOpaque":			return "<DEFAULT>";
-				case "sensorSetting":			return "<DEFAULT>";
-				case "nonPlayerShield":			return "<DEFAULT>";
-				case "nonPlayerWeapon":			return "<DEFAULT>";
-				case "playerWeapon":			return "<DEFAULT>";
-				case "playerShields":			return "<DEFAULT>";
-				case "coopAdjustmentValue":		return "<DEFAULT>";
-				case "musicObjectMasterVolume":	return "<DEFAULT>";
-				case "commsObjectMasterVolume":	return "<DEFAULT>";
-				case "soundFXVolume":			return "<DEFAULT>";
-				case "networkTickSpeed":		return "<DEFAULT>";
-				case "gameTimeLimit":			return "<DEFAULT>";
+                // Global properties.
+				case "nonPlayerSpeed":			return "<DEFAULT_GLOBAL>";
+				case "nebulaIsOpaque":			return "<DEFAULT_GLOBAL>";
+				case "sensorSetting":			return "<DEFAULT_GLOBAL>";
+				case "nonPlayerShield":			return "<DEFAULT_GLOBAL>";
+				case "nonPlayerWeapon":			return "<DEFAULT_GLOBAL>";
+				case "playerWeapon":			return "<DEFAULT_GLOBAL>";
+				case "playerShields":			return "<DEFAULT_GLOBAL>";
+				case "coopAdjustmentValue":		return "<DEFAULT_GLOBAL>";
+				case "musicObjectMasterVolume":	return "<DEFAULT_GLOBAL>";
+				case "commsObjectMasterVolume":	return "<DEFAULT_GLOBAL>";
+				case "soundFXVolume":			return "<DEFAULT_GLOBAL>";
+				case "networkTickSpeed":		return "<DEFAULT_GLOBAL>";
+				case "gameTimeLimit":			return "<DEFAULT_GLOBAL>";
 				//EVERYTHING
 				case "positionX":				return "<DEFAULT>";
 				case "positionY": 				return "<DEFAULT>";
@@ -47,7 +48,7 @@ namespace ArtemisMissionEditor.Expressions
 				case "angle": 					return "<DEFAULT>";
 				case "pitch": 					return "<DEFAULT>";
 				case "roll": 					return "<DEFAULT>";
-                case "sideValue": return "<DEFAULT>";
+                case "sideValue":               return "<DEFAULT>";
 				//VALUES FOR GENERIC MESHES		
 				case "blocksShotFlag": 			return "<DEFAULT>";
 				case "pushRadius": 				return "<DEFAULT>";
@@ -187,7 +188,7 @@ namespace ArtemisMissionEditor.Expressions
         private void ____Add_Property_Name_Value(List<ExpressionMember> eML, ExpressionMemberValueDescription name = null, ExpressionMemberValueDescription value = null)
 		{
             name = name ?? ExpressionMemberValueDescriptions.NameAll;
-            value = value ?? ExpressionMemberValueDescriptions.ValueF;
+            value = value ?? ExpressionMemberValueDescriptions.Flt_NegInf_PosInf;
             
 			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.Property, "property"));
 			eML.Add(new ExpressionMember("of "));
@@ -210,6 +211,16 @@ namespace ArtemisMissionEditor.Expressions
 			eML = this.Add("<DEFAULT>");
 			
 			____Add_Property_Name_Value(eML);
+			
+			#endregion
+
+			#region <DEFAULT_GLOBAL>    (...)
+
+			eML = this.Add("<DEFAULT_GLOBAL>");
+            
+			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.Property, "property"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Comparator, "comparator"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value", true));
 			
 			#endregion
 

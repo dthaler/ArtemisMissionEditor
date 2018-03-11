@@ -239,8 +239,6 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> value for eliteAbilityBits </summary>
         public static EMVD EliteAbilityBits =           new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.EliteAbilityBits,0,null,""," ");
 
-        /// <summary> "value" from [set_object_property,...] </summary>
-        public static EMVD ValueF =                     new EMVD(EMVT.VarDouble,    EMVB.StoredWhenFilled,  EMVE.DefaultDouble);
         /// <summary> float value with no trailing space </summary>
         public static EMVD ValueFQ =                    new EMVD(EMVT.VarDouble,    EMVB.StoredWhenFilled,  EMVE.DefaultDouble, null, null, "", "");
 

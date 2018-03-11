@@ -152,7 +152,7 @@ namespace ArtemisMissionEditor.Expressions
             eML = this.Add("set_fleet_property");
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.PropertyF, "property"));
             eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueF, "value"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_0_100k, "value"));
             eML.Add(new ExpressionMember("for "));
             eML.Add(new ExpressionMember("fleet "));
             eML.Add(new ExpressionMember("number "));
@@ -373,7 +373,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMemberCheck_Point_TargetName());
             eML.Add(new ExpressionMember("with "));
             eML.Add(new ExpressionMember("throttle "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueF, "scriptThrottle", true));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_0_100, "scriptThrottle", true));
             eML.Add(new ExpressionMember("(THIS STATEMENT IS DEPRECATED AND ONLY WORKS FOR GENERICMESHES) "));
             eML.Add(new ExpressionMemberCheck_DirectConversion());
 

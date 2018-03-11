@@ -22,12 +22,12 @@ namespace ArtemisMissionEditor.Expressions
             { "nonPlayerWeapon",         "<ENMYSP>" },
             { "playerWeapon",            "<ENMYSP>" },
             { "playerShields",           "<ENMYSP>" },
-            { "coopAdjustmentValue",     "<DEFAULT>" },
-            { "musicObjectMasterVolume", "<DEFAULT>" },
-            { "commsObjectMasterVolume", "<DEFAULT>" },
-            { "soundFXVolume",           "<DEFAULT>" },
-            { "gameTimeLimit",           "<DEFAULT>" },
-            { "networkTickSpeed",        "<DEFAULT>" },
+            { "coopAdjustmentValue",     "<DEFAULT_GLOBAL>" },
+            { "musicObjectMasterVolume", "<DEFAULT_GLOBAL>" },
+            { "commsObjectMasterVolume", "<DEFAULT_GLOBAL>" },
+            { "soundFXVolume",           "<DEFAULT_GLOBAL>" },
+            { "gameTimeLimit",           "<DEFAULT_GLOBAL>" },
+            { "networkTickSpeed",        "<DEFAULT_GLOBAL>" },
 
             // Properties on all objects.
             { "positionX",               "<FLT0...100K>" },
@@ -423,8 +423,17 @@ namespace ArtemisMissionEditor.Expressions
             eML = this.Add("<DEFAULT>");
             ____Add_Property(eML);
             eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueF, "value"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value"));
             ____Add_Name(eML);
+
+            #endregion
+
+            #region <DEFAULT_GLOBAL>    (...)
+
+            eML = this.Add("<DEFAULT_GLOBAL>");
+            ____Add_Property(eML);
+            eML.Add(new ExpressionMember("to "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value"));
 
             #endregion
 
@@ -433,7 +442,7 @@ namespace ArtemisMissionEditor.Expressions
             eML = this.Add("<READ_ONLY>");
             ____Add_Property(eML);
             eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueF, "value"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value"));
             ____Add_Name(eML);
             eML.Add(new ExpressionMember("(WARNING! THIS PROPERTY IS READ ONLY)"));
 
@@ -444,7 +453,7 @@ namespace ArtemisMissionEditor.Expressions
             eML = this.Add("<UNKNOWN_PROPERTY>");
             ____Add_Property(eML);
             eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueF, "value"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value"));
             ____Add_Name(eML);
             eML.Add(new ExpressionMember("(WARNING! UNKNOWN PROPERTY NAME)"));
 
