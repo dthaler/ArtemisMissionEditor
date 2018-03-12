@@ -39,7 +39,9 @@ namespace ArtemisMissionEditor.Expressions
             { "angle",                   "<DEFAULT>" },
             { "pitch",                   "<DEFAULT>" },
             { "roll",                    "<DEFAULT>" },
-            { "sideValue",               "<DEFAULT>" },
+            { "sideValue",               "<SIDEVALUE>" },
+            { "isTagged",                "<BOOLYESNO>" },
+            { "tagOwnerSide",            "<SIDEVALUE>" },
 
             // GenericMesh properties.
             { "blocksShotFlag",          "<BOOLYESNO>" },
@@ -336,6 +338,16 @@ namespace ArtemisMissionEditor.Expressions
             ____Add_Property(eML);
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_0_PosInf, "value"));
+            ____Add_Name(eML);
+
+            #endregion
+
+            #region <SIDEVALUE>    (sideValue)
+
+            eML = this.Add("<SIDEVALUE>");
+            ____Add_Property(eML);
+            eML.Add(new ExpressionMember("to "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "value"));
             ____Add_Name(eML);
 
             #endregion

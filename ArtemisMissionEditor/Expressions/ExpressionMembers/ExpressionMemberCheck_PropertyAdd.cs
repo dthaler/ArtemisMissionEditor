@@ -48,7 +48,9 @@ namespace ArtemisMissionEditor.Expressions
 				case "angle": 					return "<DEFAULT>";
 				case "pitch": 					return "<DEFAULT>";
 				case "roll": 					return "<DEFAULT>";
-                case "sideValue":               return "<DEFAULT>";
+				case "sideValue":               return "<DEFAULT>";
+				case "isTagged":                return "<DEFAULT>";
+				case "tagOwnerSide":            return "<DEFAULT>";
 				//VALUES FOR GENERIC MESHES		
 				case "blocksShotFlag": 			return "<DEFAULT>";
 				case "pushRadius": 				return "<DEFAULT>";

@@ -368,7 +368,9 @@ namespace ArtemisMissionEditor.Expressions
 			PropertyObject.AddToDictionary("angle", "angle");
 			PropertyObject.AddToDictionary("pitch", "pitch");
 			PropertyObject.AddToDictionary("roll", "roll");
-            PropertyObject.AddToDictionary("sideValue", "sideValue");
+			PropertyObject.AddToDictionary("sideValue", "sideValue");
+			PropertyObject.AddToDictionary("isTagged", "isTagged");
+			PropertyObject.AddToDictionary("tagOwnerSide", "tagOwnerSide");
 			PropertyObject.NewMenuGroup("All objects");
 
 			PropertyObject.AddToDictionary("blocksShotFlag", "blocksShotFlag");
