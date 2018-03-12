@@ -129,13 +129,10 @@ namespace ArtemisMissionEditor.Expressions
 						value = tmpBool != 0 ? "true" : "false";
 					break;
 				case ExpressionMemberValueType.VarInteger:
-					break;
 				case ExpressionMemberValueType.VarDouble:
-					break;
+				case ExpressionMemberValueType.VarEnumString:
 				case ExpressionMemberValueType.VarString:
-					break;
 				case ExpressionMemberValueType.Body:
-					break;
 				default:
 					break;
 			}
@@ -168,13 +165,10 @@ namespace ArtemisMissionEditor.Expressions
 						value = "1";
 					break;
 				case ExpressionMemberValueType.VarInteger:
-					break;
 				case ExpressionMemberValueType.VarDouble:
-					break;
+				case ExpressionMemberValueType.VarEnumString:
 				case ExpressionMemberValueType.VarString:
-					break;
 				case ExpressionMemberValueType.Body:
-					break;
 				default:
 					break;
 			}

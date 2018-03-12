@@ -19,6 +19,10 @@ namespace ArtemisMissionEditor.Expressions
 		VarDouble,
 		VarString,
 		/// <summary>
+		/// Means it's a string whose value must be in its dictionary
+		/// </summary>
+		VarEnumString,
+		/// <summary>
 		/// Means it's a multiline string
 		/// </summary>
 		Body

@@ -357,8 +357,8 @@ namespace ArtemisMissionEditor.Expressions
             PropertyObject.AddToDictionary("playerWeapon", "Player Damage");
             PropertyObject.AddToDictionary("playerShields", "Player Shield");
             PropertyObject.AddToDictionary("sensorSetting", "Sensor Range");
-
             PropertyObject.NewMenuGroup("Game Properties");
+
             PropertyObject.AddToDictionary("positionX", "positionX");
 			PropertyObject.AddToDictionary("positionY", "positionY");
 			PropertyObject.AddToDictionary("positionZ", "positionZ");
@@ -370,6 +370,7 @@ namespace ArtemisMissionEditor.Expressions
 			PropertyObject.AddToDictionary("roll", "roll");
             PropertyObject.AddToDictionary("sideValue", "sideValue");
 			PropertyObject.NewMenuGroup("All objects");
+
 			PropertyObject.AddToDictionary("blocksShotFlag", "blocksShotFlag");
 			PropertyObject.AddToDictionary("pushRadius", "pushRadius");
 			PropertyObject.AddToDictionary("pitchDelta", "pitchDelta");
@@ -377,6 +378,7 @@ namespace ArtemisMissionEditor.Expressions
 			PropertyObject.AddToDictionary("angleDelta", "angleDelta");
 			PropertyObject.AddToDictionary("artScale", "artScale");
 			PropertyObject.NewMenuGroup("Generic meshes");
+
 			PropertyObject.AddToDictionary("shieldState", "shieldState");
 			PropertyObject.AddToDictionary("canBuild", "canBuild");
 			PropertyObject.AddToDictionary("missileStoresHoming", "missileStoresHoming");
@@ -388,6 +390,7 @@ namespace ArtemisMissionEditor.Expressions
             PropertyObject.AddToDictionary("missileStoresProbe", "missileStoresProbe");
             PropertyObject.AddToDictionary("missileStoresTag", "missileStoresTag");
             PropertyObject.NewMenuGroup("Stations");
+
 			PropertyObject.AddToDictionary("throttle", "throttle");
 			PropertyObject.AddToDictionary("steering", "steering");
 			PropertyObject.AddToDictionary("topSpeed", "topSpeed");
@@ -412,6 +415,7 @@ namespace ArtemisMissionEditor.Expressions
 			PropertyObject.AddToDictionary("shieldBandStrength3", "shieldBandStrength3");
 			PropertyObject.AddToDictionary("shieldBandStrength4", "shieldBandStrength4");
 			PropertyObject.NewMenuGroup("Shielded ships");
+
            // PropertyObject.AddToDictionary("setShipSide", "Set Ship Side");
             PropertyObject.AddToDictionary("targetPointX", "targetPointX");
 			PropertyObject.AddToDictionary("targetPointY", "targetPointY");
@@ -423,10 +427,12 @@ namespace ArtemisMissionEditor.Expressions
 			PropertyObject.AddToDictionary("eliteAbilityState", "eliteAbilityState");
 			PropertyObject.AddToDictionary("surrenderChance", "surrenderChance");
 			PropertyObject.NewMenuGroup("Enemies");
+
 			PropertyObject.AddToDictionary("exitPointX", "exitPointX");
 			PropertyObject.AddToDictionary("exitPointY", "exitPointY");
 			PropertyObject.AddToDictionary("exitPointZ", "exitPointZ");
 			PropertyObject.NewMenuGroup("Neutrals");
+
 			PropertyObject.AddToDictionary("countHoming", "countHoming");
 			PropertyObject.AddToDictionary("countNuke", "countNuke");
 			PropertyObject.AddToDictionary("countMine", "countMine");
@@ -467,8 +473,8 @@ namespace ArtemisMissionEditor.Expressions
 			PropertyObject.AddToDictionary("systemCurEnergyWarp", "systemCurEnergyWarp");
 			PropertyObject.AddToDictionary("systemCurEnergyFrontShield", "systemCurEnergyFrontShield");
 			PropertyObject.AddToDictionary("systemCurEnergyBackShield", "systemCurEnergyBackShield");
-
 			PropertyObject.NewMenuGroup("Players");
+
 			PropertyObject.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
 
 			PropertyFleet = new ExpressionMemberValueEditor();

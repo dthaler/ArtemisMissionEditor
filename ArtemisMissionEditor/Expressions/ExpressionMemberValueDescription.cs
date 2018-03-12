@@ -370,6 +370,9 @@ namespace ArtemisMissionEditor.Expressions
                     return new ValidateResult(valid, false, warning);
                 case ExpressionMemberValueType.VarString:
                     return ValidateResult.True;
+                case ExpressionMemberValueType.VarEnumString:
+                    valid = Editor.XmlValueToDisplay.ContainsKey(value);
+                    return new ValidateResult(valid, false, warning);
                 case ExpressionMemberValueType.Body:
                     return ValidateResult.True;
                 case ExpressionMemberValueType.Nothing:
@@ -589,8 +592,8 @@ namespace ArtemisMissionEditor.Expressions
                     double xd = Helper.StringToDouble(value1);
                     double yd = Helper.StringToDouble(value2);
                     return xd == yd;
+                case ExpressionMemberValueType.VarEnumString:
                 case ExpressionMemberValueType.VarString:
-                    return value1.Trim() == value2.Trim();
                 case ExpressionMemberValueType.Body:
                     return value1.Trim() == value2.Trim();
                 case ExpressionMemberValueType.Nothing:

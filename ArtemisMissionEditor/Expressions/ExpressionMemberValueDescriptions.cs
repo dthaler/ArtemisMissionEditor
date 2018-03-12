@@ -214,7 +214,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD Subtitle =                   new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DefaultString,null,null,"\"","\" ");
 
         /// <summary> "property" from [set_object_property] </summary>
-        public static EMVD Property =                   new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.PropertyObject,null,null,"\"","\" ","angle");
+        public static EMVD Property =                   new EMVD(EMVT.VarEnumString,EMVB.StoredWhenFilled,  EMVE.PropertyObject,null,null,"\"","\" ","angle");
         // values from [set_object_property]
 
 
