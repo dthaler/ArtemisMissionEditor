@@ -624,6 +624,7 @@ namespace ArtemisMissionEditor.Expressions
             SpecialSpecialState.AddToDictionary("Warp", "Warp");
             SpecialSpecialState.AddToDictionary("Teleport", "Teleport");
             SpecialSpecialState.AddToDictionary("Tractor", "Tractor");
+            SpecialSpecialState.AddToDictionary("Drones", "Drones");
             SpecialSpecialState.AddToDictionary("AntiMine", "AntiMine");
             SpecialSpecialState.AddToDictionary("AntiTorp", "AntiTorp");
             SpecialSpecialState.AddToDictionary("ShldDrain", "ShldDrain");
