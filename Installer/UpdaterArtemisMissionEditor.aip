@@ -15,8 +15,8 @@
     <ROW Section="Update 2.6" Key="FilePath" Value="[APPDIR]ArtemisMissionEditor.exe"/>
     <ROW Section="Update 2.6" Key="Version" Value="2.6.0.0"/>
     <ROW Section="Update 2.6" Key="Description" Value="Updated to support Artemis 2.6"/>
-    <ROW Section="Update 2.6.0.1" Key="Name" Value="Artemis Mission Editor 2.6.0.1"/>
     <ROW Section="Update 2.6.0.1" Key="ProductVersion" Value="2.6.0.1"/>
+    <ROW Section="Update 2.6.0.1" Key="Name" Value="Artemis Mission Editor 2.6.0.1"/>
     <ROW Section="Update 2.6.0.1" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.0.1.msi"/>
     <ROW Section="Update 2.6.0.1" Key="Size" Value="ArtemisMissionEditorInstaller.2.6.0.1.msi"/>
     <ROW Section="Update 2.6.0.1" Key="ReleaseDate" Value="19354"/>
@@ -28,8 +28,8 @@
     <ROW Section="Update 2.6.0.1" Key="Feature" Value="Added support for set_player_carried_type to force fighter name/type carried by a playership&#13;&#10;Added support for set_player_station_carried to force a fighter name/type that will be picked up as a replacement from a station by player ships&#13;&#10;Added support for clear_player_station_carried&#13;&#10;Added a drop down list for selecting comms types&#13;&#10;"/>
     <ROW Section="Update 2.6.0.1" Key="BugFix" Value="Changed events to use &quot;name&quot; instead of &quot;name_arme&quot; to fix F7 debug screen event display in Artemis&#13;&#10;Fixed some more typos&#13;&#10;Fixed bug in update available detection"/>
     <ROW Section="Update 2.6.0.1" Key="Replaces" Value="Update 2.6"/>
-    <ROW Section="Update 2.6.1" Key="Name" Value="Artemis Mission Editor 2.6.1"/>
     <ROW Section="Update 2.6.1" Key="ProductVersion" Value="2.6.1"/>
+    <ROW Section="Update 2.6.1" Key="Name" Value="Artemis Mission Editor 2.6.1"/>
     <ROW Section="Update 2.6.1" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.1.msi"/>
     <ROW Section="Update 2.6.1" Key="Size" Value="ArtemisMissionEditorInstaller.2.6.1.msi"/>
     <ROW Section="Update 2.6.1" Key="ReleaseDate" Value="19504"/>
@@ -69,8 +69,8 @@
     <ROW Section="Update 2.7" Key="Enhancement" Value="More improvements to &quot;Potential Problems&quot; checking"/>
     <ROW Section="Update 2.7" Key="BugFix" Value="Subtitles are now correctly marked as optional in big_message&#13;&#10;Preserve the string values of use_gm_position and use_gm_selection attributes&#13;&#10;Don&apos;t lose integer attribute when setting a variable to a random int&#13;&#10;Corrected display of DEFEND ai block arguments"/>
     <ROW Section="Update 2.7" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2"/>
-    <ROW Section="Update 2.7.1" Key="ProductVersion" Value="2.7.1"/>
     <ROW Section="Update 2.7.1" Key="Name" Value="Artemis Mission Editor 2.7.1"/>
+    <ROW Section="Update 2.7.1" Key="ProductVersion" Value="2.7.1"/>
     <ROW Section="Update 2.7.1" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.1.msi"/>
     <ROW Section="Update 2.7.1" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.1.msi"/>
     <ROW Section="Update 2.7.1" Key="ReleaseDate" Value="19544"/>
@@ -97,6 +97,19 @@
     <ROW Section="Update 2.7.2" Key="Enhancement" Value="Make property name in set_object_property case insensitive per Artemis behavior&#13;&#10;More improvements to &quot;Potential Problems&quot; checking&#13;&#10;Removed player_slot from set_player_grid_damage and warning_popup_message and made name optional&#13;&#10;Don&apos;t allow configuring pod number on monsters other than whales and piranhas"/>
     <ROW Section="Update 2.7.2" Key="BugFix" Value="Fixed set_special command display&#13;&#10;Fixed bug where &quot;hasSurrendered&quot; values &gt; 1 were treated same as &quot;0&quot; instead of &quot;1&quot;&#13;&#10;Fixed display of if_fleet_count when countSurrendered is absent&#13;&#10;"/>
     <ROW Section="Update 2.7.2" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1"/>
+    <ROW Section="Update 2.7.3" Key="ProductVersion" Value="2.7.3"/>
+    <ROW Section="Update 2.7.3" Key="Name" Value="Artemis Mission Editor 2.7.3"/>
+    <ROW Section="Update 2.7.3" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.3.msi"/>
+    <ROW Section="Update 2.7.3" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.3.msi"/>
+    <ROW Section="Update 2.7.3" Key="ReleaseDate" Value="19566"/>
+    <ROW Section="Update 2.7.3" Key="MD5" Value="ArtemisMissionEditorInstaller.2.7.3.msi"/>
+    <ROW Section="Update 2.7.3" Key="ServerFileName" Value="ArtemisMissionEditorInstaller.2.7.3.msi"/>
+    <ROW Section="Update 2.7.3" Key="Flags" Value="Critical"/>
+    <ROW Section="Update 2.7.3" Key="FilePath" Value="[APPDIR]ArtemisMissionEditor.exe"/>
+    <ROW Section="Update 2.7.3" Key="Version" Value="2.7.3.0"/>
+    <ROW Section="Update 2.7.3" Key="Feature" Value="Added Drones ability to set_special&#13;&#10;Added isTagged and tagOwnerSide object properties&#13;&#10;Added a &quot;Potential Problems&quot; warning for unknown property names "/>
+    <ROW Section="Update 2.7.3" Key="BugFix" Value="Fixed bug where set_variable showed negative values as invalid&#13;&#10;Fixed bug where addto_object_property didn&apos;t work with some global properties&#13;&#10;Fixed bug where {set,if}_object_property wanted an object name for global properties&#13;&#10;Fixed bug where &quot;Potential Problems&quot; would treat expressions with unary &quot;-&quot; operator as invalid"/>
+    <ROW Section="Update 2.7.3" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1;Update 2.7.2"/>
     <ATTRIBUTE name="OutputFileName" value="ArtemisMissionEditorUpdates.txt"/>
     <ATTRIBUTE name="OutputFolder" value="."/>
   </COMPONENT>
