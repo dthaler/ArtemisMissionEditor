@@ -1,3 +1,12 @@
+Version 2.7.3 [2018-March-14] (Dave Thaler)
+* Added Drones ability to set_special
+* Added isTagged and tagOwnerSide object properties
+* Added a "Potential Problems" warning for unknown property names 
+* Fixed bug where set_variable showed negative values as invalid
+* Fixed bug where addto_object_property didn't work with some global properties
+* Fixed bug where {set,if}_object_property wanted an object name for global properties
+* Fixed bug where "Potential Problems" would treat expressions with unary "-" operator as invalid
+----------------------
 Version 2.7.2 [2018-March-5] (Dave Thaler)
 * Added if_in_nebula
 * Added player_slot1 and player_slot2 attributes to if_distance
