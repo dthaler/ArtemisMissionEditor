@@ -45,7 +45,8 @@ namespace ArtemisMissionEditor.Forms
                 result += form.cbStation.Checked ? " STATION" : "";
                 result += form.cbEnemy.Checked ? " ENEMY" : "";
                 result += form.cbFriend.Checked ? " FRIEND" : "";
-                result = result.Substring(1);
+                if (result.Length > 0)
+                    result = result.Substring(1);
             }
             return new KeyValuePair<bool, string>(true, result);
         }
