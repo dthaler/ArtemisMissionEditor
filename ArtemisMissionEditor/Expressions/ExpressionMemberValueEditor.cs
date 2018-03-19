@@ -403,6 +403,8 @@ namespace ArtemisMissionEditor.Expressions
                 result += "Com ";
             if (value.Contains('o'))
                 result += "Obs ";
+            if (value.Contains('f'))
+                result += "Ftr ";
 
             if (result.Length > 0)
                 return result.Substring(0, result.Length - 1);
