@@ -65,6 +65,7 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor NamedStationName;
         public static ExpressionMemberValueEditor NamedMonsterName;
         public static ExpressionMemberValueEditor NamedAIShipName;
+        public static ExpressionMemberValueEditor NamedAIShipOrMonsterName;
         public static ExpressionMemberValueEditor ScannableObjectName;
         public static ExpressionMemberValueEditor ConsoleList;
         public static ExpressionMemberValueEditor EliteAIType;
@@ -108,7 +109,7 @@ namespace ArtemisMissionEditor.Expressions
             CreateType.AddToDictionary("nebulas",       "nebulas");
 			CreateType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList; 
 
-			DefaultCheck = new ExpressionMemberValueEditor();
+			DefaultCheck = new ExpressionMemberValueEditor(true, true, true);
 			DefaultCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
 
             XmlNameActionCheck = new ExpressionMemberValueEditor_XmlName();
@@ -711,6 +712,10 @@ namespace ArtemisMissionEditor.Expressions
             NamedAIShipName = new ExpressionMemberValueEditor();
             NamedAIShipName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedAIShipNameList;
             Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedAIShipName.InvalidateContextMenuStrip(); });
+
+            NamedAIShipOrMonsterName = new ExpressionMemberValueEditor();
+            NamedAIShipOrMonsterName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedAIShipOrMonsterNameList;
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedAIShipOrMonsterName.InvalidateContextMenuStrip(); });
 
             ScannableObjectName = new ExpressionMemberValueEditor();
             ScannableObjectName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_ScannableObjectNameList;

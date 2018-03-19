@@ -359,7 +359,7 @@ namespace ArtemisMissionEditor.Expressions
             eML = this.Add("clear_ai");
             eML.Add(new ExpressionMember("for "));
             eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAIShip));
+            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAIShipOrMonster));
 
             #endregion
 

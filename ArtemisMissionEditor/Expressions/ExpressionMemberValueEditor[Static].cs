@@ -358,6 +358,14 @@ namespace ArtemisMissionEditor.Expressions
         }
 
         /// <summary>
+        /// Context menu strip for AI ships or monsters
+        /// </summary>
+        internal static ContextMenuStrip PrepareContextMenuStrip_NamedAIShipOrMonsterNameList(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)
+        {
+            return PrepareContextMenuStrip_SpecifiedNestedListPlusDialog(container, editor, mode, Mission.Current.AIShipOrMonsterNamesLists);
+        }
+
+        /// <summary>
         /// Context menu strip for scannable objects
         /// </summary>
         internal static ContextMenuStrip PrepareContextMenuStrip_ScannableObjectNameList(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)

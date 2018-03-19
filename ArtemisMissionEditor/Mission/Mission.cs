@@ -84,6 +84,15 @@ namespace ArtemisMissionEditor
                 return kvp;
             }}
 
+        /// <summary> AI ship and monster names and headers for context menus</summary>
+        public Dictionary<string, List<string>> AIShipOrMonsterNamesLists { get {
+                var kvp = new Dictionary<string, List<string>>();
+                kvp.Add("enemy", NamedObjectNames["enemy"]);
+                kvp.Add("neutral", NamedObjectNames["neutral"]);
+                kvp.Add("monster", NamedObjectNames["monster"]);
+                return kvp;
+            }}
+
         /// <summary> AI ship names and headers for context menus</summary>
         public Dictionary<string, List<string>> ScannableObjectNamesLists
         {

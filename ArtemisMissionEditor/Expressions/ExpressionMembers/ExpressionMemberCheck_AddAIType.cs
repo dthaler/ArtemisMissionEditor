@@ -24,41 +24,41 @@ namespace ArtemisMissionEditor.Expressions
 
 			switch (type)
 			{
-				case "ATTACK":  				return "ATTACK";
-				case "AVOID_SIGNAL":    		return "AVOID_SIGNAL";
-				case "AVOID_BLACK_HOLE":    	return "<AVOID>";
-				case "AVOID_WHALE":  			return "<AVOID>";
-				case "CHASE_AI_SHIP":    		return "<CHASE>";
-				case "CHASE_ANGER":  			return "<NOTHING>";
-				case "CHASE_FLEET":  			return "CHASE_FLEET";
-				case "CHASE_MONSTER":    		return "<CHASE_NO_NEBULA>";
-				case "CHASE_OTHER_MONSTERS":	return "<CHASE_NO_NEBULA>";
-				case "CHASE_PLAYER":    		return "<CHASE>";
-				case "CHASE_SIGNAL":    		return "CHASE_SIGNAL";
-				case "CHASE_STATION":    		return "<CHASE_NO_NEBULA>";
-				case "CHASE_WHALE":  			return "<CHASE_NO_NEBULA>";
-				case "DEFEND":  				return "DEFEND";
-				case "DIR_THROTTLE":    		return "DIR_THROTTLE";
-				case "DRAGON_NEST":     		return "<NOTHING>";
-				case "FIGHTER_BINGO":    		return "<NOTHING>";
-				case "FOLLOW_COMMS_ORDERS":     return "<NOTHING>";
-				case "FOLLOW_LEADER":    		return "<NOTHING>";
-				case "FRENZY_ATTACK":    		return "<NOTHING>";
-				case "GO_TO_HOLE":  		    return "GO_TO_HOLE";
-				case "GUARD_STATION":           return "GUARD_STATION";
-				case "LAUNCH_FIGHTERS":  		return "LAUNCH_FIGHTERS";
-				case "LEADER_LEADS":    		return "<NOTHING>";
-				case "MOVE_WITH_GROUP":  		return "MOVE_WITH_GROUP";
-				case "PLAY_IN_ASTEROIDS":     	return "<NOTHING>";
-				case "POINT_THROTTLE":  		return "POINT_THROTTLE";
-				case "PROCEED_TO_EXIT":  		return "<NOTHING>";
-				case "RANDOM_PATROL":    	    return "RANDOM_PATROL";
-				case "RELEASE_PIRANHAS":    	return "RELEASE_PIRANHAS";
-				case "ELITE_AI":                return "<OBSOLETE_ELITE_AI>";
-				case "SPCL_AI":  			    return "<NOTHING>";
-				case "STAY_CLOSE":  			return "STAY_CLOSE";
-				case "TARGET_THROTTLE":  		return "TARGET_THROTTLE";
-				case "TRY_TO_BECOME_LEADER":    return "<NOTHING>";
+				case "ATTACK":  				return "<SHIP_ATTACK>";
+				case "AVOID_BLACK_HOLE":    	return "<SHIP_AVOID>";
+				case "AVOID_SIGNAL":    		return "<MONSTER_AVOID_SIGNAL>";
+				case "AVOID_WHALE":  			return "<SHIP_AVOID>";
+				case "CHASE_AI_SHIP":    		return "<AI_CHASE>";
+				case "CHASE_ANGER":  			return "<AI_NOTHING>";
+				case "CHASE_FLEET":  			return "<SHIP_CHASE_FLEET>";
+				case "CHASE_MONSTER":    		return "<MONSTER_CHASE_NO_NEBULA>";
+				case "CHASE_OTHER_MONSTERS":	return "<SHIP_CHASE_NO_NEBULA>";
+				case "CHASE_PLAYER":    		return "<AI_CHASE>";
+				case "CHASE_SIGNAL":    		return "<MONSTER_CHASE_SIGNAL>";
+				case "CHASE_STATION":    		return "<AI_CHASE_NO_NEBULA>";
+				case "CHASE_WHALE":  			return "<SHIP_CHASE_NO_NEBULA>";
+				case "DEFEND":  				return "<SHIP_DEFEND>";
+				case "DIR_THROTTLE":    		return "<AI_DIR_THROTTLE>";
+				case "DRAGON_NEST":     		return "<MONSTER_NOTHING>";
+				case "ELITE_AI":                return "<SHIP_ELITE_AI_OBSOLETE>";
+				case "FIGHTER_BINGO":    		return "<SHIP_NOTHING>";
+				case "FOLLOW_COMMS_ORDERS":     return "<SHIP_NOTHING>";
+				case "FOLLOW_LEADER":    		return "<SHIP_NOTHING>";
+				case "FRENZY_ATTACK":    		return "<MONSTER_NOTHING>";
+				case "GO_TO_HOLE":  		    return "<MONSTER_GO_TO_HOLE>";
+				case "GUARD_STATION":           return "<SHIP_GUARD_STATION>";
+				case "LAUNCH_FIGHTERS":  		return "<SHIP_LAUNCH_FIGHTERS>";
+				case "LEADER_LEADS":    		return "<SHIP_NOTHING>";
+				case "MOVE_WITH_GROUP":  		return "<MONSTER_MOVE_WITH_GROUP>";
+				case "PLAY_IN_ASTEROIDS":     	return "<MONSTER_NOTHING>";
+				case "POINT_THROTTLE":  		return "<AI_POINT_THROTTLE>";
+				case "PROCEED_TO_EXIT":  		return "<SHIP_NOTHING>";
+				case "RANDOM_PATROL":    	    return "<MONSTER_RANDOM_PATROL>";
+				case "RELEASE_PIRANHAS":    	return "<MONSTER_RELEASE_PIRANHAS>";
+				case "SPCL_AI":  			    return "<SHIP_NOTHING>";
+				case "STAY_CLOSE":  			return "<MONSTER_STAY_CLOSE>";
+				case "TARGET_THROTTLE":  		return "<AI_TARGET_THROTTLE>";
+				case "TRY_TO_BECOME_LEADER":    return "<SHIP_NOTHING>";
 				default:
 					return "<INVALID_TYPE>"; // This must be further converted in SetValue to some valid one, and type must be set there as well.
 			}
@@ -73,13 +73,13 @@ namespace ArtemisMissionEditor.Expressions
 		{
 			if (value == "<INVALID_TYPE>")
 			{
-				value = "<NOTHING>";
+				value = "<SHIP_NOTHING>";
 				container.SetAttribute("type", "PROCEED_TO_EXIT");
 			}
-            else if (value == "<OBSOLETE_ELITE_AI>")
+            else if (value == "<SHIP_ELITE_AI_OBSOLETE>")
             {
                 // Convert ELITE_AI to SPCL_AI.
-                value = "<NOTHING>";
+                value = "<SHIP_NOTHING>";
                 container.SetAttribute("type", "SPCL_AI");
             }
 
@@ -100,7 +100,7 @@ namespace ArtemisMissionEditor.Expressions
 		/// </summary>
 		private void ____Add_Name(List<ExpressionMember> eML, ExpressionMemberValueDescription name = null)
 		{
-            name = name ?? ExpressionMemberValueDescriptions.NameAIShip;
+            name = name ?? ExpressionMemberValueDescriptions.NameAIShipOrMonster;
 
 			eML.Add(new ExpressionMember("for "));
 			eML.Add(new ExpressionMember("object "));
@@ -116,30 +116,48 @@ namespace ArtemisMissionEditor.Expressions
 		{
 			List<ExpressionMember> eML;
 
-			#region <NOTHING>		(TRY_TO_BECOME_LEADER, CHASE_ANGER, FOLLOW_LEADER, FOLLOW_COMMS_ORDERS, FOLLOW_NEUTRAL_PATH, LEADER_LEADS, SPCL_AI, PROCEED_TO_EXIT)
+			#region <AI_NOTHING>		(CHASE_ANGER)
 
-			eML = this.Add("<NOTHING>");
+			eML = this.Add("<AI_NOTHING>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShipOrMonster);
 
 			#endregion
 
-			#region <CHASE>		(CHASE_PLAYER, CHASE_AI_SHIP)
+			#region <SHIP_NOTHING>		(FIGHTER_BINGO, FOLLOW_COMMS_ORDERS, FOLLOW_LEADER, LEADER_LEADS, PROCEED_TO_EXIT, SPCL_AI, TRY_TO_BECOME_LEADER)
 
-			eML = this.Add("<CHASE>");
+			eML = this.Add("<SHIP_NOTHING>");
+			____Add_Type(eML);
+			eML.Add(new ExpressionMember("\" "));
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShip);
+
+			#endregion
+
+			#region <MONSTER_NOTHING>		(DRAGON_NEST, FRENZY_ATTACK, PLAY_IN_ASTEROIDS)
+
+			eML = this.Add("<MONSTER_NOTHING>");
+			____Add_Type(eML);
+			eML.Add(new ExpressionMember("\" "));
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameMonster);
+
+			#endregion
+
+			#region <AI_CHASE>		(CHASE_PLAYER, CHASE_AI_SHIP)
+
+			eML = this.Add("<AI_CHASE>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("if "));
 			eML.Add(new ExpressionMember("it "));
 			eML.Add(new ExpressionMember("is "));
 			eML.Add(new ExpressionMemberCheck_DistanceNebula());
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShipOrMonster);
 
 			#endregion
 
-			#region <CHASE_NO_NEBULA>		(CHASE_STATION, CHASE_WHALE, CHASE_MONSTER)
+			#region <MONSTER_CHASE_NO_NEBULA>		(CHASE_MONSTER)
 
-			eML = this.Add("<CHASE_NO_NEBULA>");
+			eML = this.Add("<MONSTER_CHASE_NO_NEBULA>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("if "));
 			eML.Add(new ExpressionMember("it "));
@@ -148,13 +166,13 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("than "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
             eML.Add(new ExpressionMember("\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameMonster);
 
 			#endregion
 
-			#region <AVOID>
+			#region <SHIP_CHASE_NO_NEBULA>		(CHASE_OTHER_MONSTERS, CHASE_WHALE)
 
-			eML = this.Add("<AVOID>");
+			eML = this.Add("<SHIP_CHASE_NO_NEBULA>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("if "));
 			eML.Add(new ExpressionMember("it "));
@@ -163,52 +181,82 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("than "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
             eML.Add(new ExpressionMember("\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShip);
 
 			#endregion
 
-			#region AVOID_SIGNAL
+			#region <AI_CHASE_NO_NEBULA>		(CHASE_STATION)
 
-			eML = this.Add("AVOID_SIGNAL");
+			eML = this.Add("<AI_CHASE_NO_NEBULA>");
+			____Add_Type(eML);
+			eML.Add(new ExpressionMember("if "));
+			eML.Add(new ExpressionMember("it "));
+			eML.Add(new ExpressionMember("is "));
+			eML.Add(new ExpressionMember("closer "));
+			eML.Add(new ExpressionMember("than "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
+            eML.Add(new ExpressionMember("\" "));
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShipOrMonster);
+
+			#endregion
+
+			#region <SHIP_AVOID>
+
+			eML = this.Add("<SHIP_AVOID>");
+			____Add_Type(eML);
+			eML.Add(new ExpressionMember("if "));
+			eML.Add(new ExpressionMember("it "));
+			eML.Add(new ExpressionMember("is "));
+			eML.Add(new ExpressionMember("closer "));
+			eML.Add(new ExpressionMember("than "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
+            eML.Add(new ExpressionMember("\" "));
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShip);
+
+			#endregion
+
+			#region <MONSTER_AVOID_SIGNAL>
+
+			eML = this.Add("<MONSTER_AVOID_SIGNAL>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("with "));
 			eML.Add(new ExpressionMember("magic "));
 			eML.Add(new ExpressionMember("value "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value1"));
             eML.Add(new ExpressionMember("\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameMonster);
 
 			#endregion
 
-			#region CHASE_SIGNAL
+			#region <MONSTER_CHASE_SIGNAL>
 
-			eML = this.Add("CHASE_SIGNAL");
+			eML = this.Add("<MONSTER_CHASE_SIGNAL>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("with "));
 			eML.Add(new ExpressionMember("magic "));
 			eML.Add(new ExpressionMember("value "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value1"));
             eML.Add(new ExpressionMember("\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameMonster);
 
 			#endregion
 
-			#region RANDOM_PATROL
+			#region <MONSTER_RANDOM_PATROL>
 
-			eML = this.Add("RANDOM_PATROL");
+			eML = this.Add("<MONSTER_RANDOM_PATROL>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("with "));
 			eML.Add(new ExpressionMember("magic "));
 			eML.Add(new ExpressionMember("value "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value1"));
             eML.Add(new ExpressionMember("\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameMonster);
 
 			#endregion
 
-			#region CHASE_FLEET
+			#region <SHIP_CHASE_FLEET>
 
-			eML = this.Add("CHASE_FLEET");
+			eML = this.Add("<SHIP_CHASE_FLEET>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("if "));
 			eML.Add(new ExpressionMember("it "));
@@ -217,13 +265,13 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("than "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
 			eML.Add(new ExpressionMember("\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShip);
 
 			#endregion
 
-			#region DIR_THROTTLE
+			#region <AI_DIR_THROTTLE>
 
-			eML = this.Add("DIR_THROTTLE");
+			eML = this.Add("<AI_DIR_THROTTLE>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("heading "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Angle, "value1"));
@@ -233,13 +281,13 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("throttle "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Throttle, "value2"));
 			eML.Add(new ExpressionMember("\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShipOrMonster);
 
 			#endregion
 
-			#region GO_TO_HOLE
+			#region <MONSTER_GO_TO_HOLE>
 
-            eML = this.Add("GO_TO_HOLE");
+            eML = this.Add("<MONSTER_GO_TO_HOLE>");
             ____Add_Type(eML);
             eML.Add(new ExpressionMember("with "));
             eML.Add(new ExpressionMember("value1 "));
@@ -255,13 +303,13 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("value4 "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value4"));
             eML.Add(new ExpressionMember("\" "));
-            ____Add_Name(eML);
+            ____Add_Name(eML, ExpressionMemberValueDescriptions.NameMonster);
 
 			#endregion
 
-			#region MOVE_WITH_GROUP
+			#region <MONSTER_MOVE_WITH_GROUP>
 
-            eML = this.Add("MOVE_WITH_GROUP");
+            eML = this.Add("<MONSTER_MOVE_WITH_GROUP>");
             ____Add_Type(eML);
             eML.Add(new ExpressionMember("at "));
             eML.Add(new ExpressionMember("throttle "));
@@ -277,13 +325,13 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("value4 "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value4"));
             eML.Add(new ExpressionMember("\" "));
-            ____Add_Name(eML);
+            ____Add_Name(eML, ExpressionMemberValueDescriptions.NameMonster);
 
 			#endregion
 
-			#region POINT_THROTTLE
+			#region <AI_POINT_THROTTLE>
 
-			eML = this.Add("POINT_THROTTLE");
+			eML = this.Add("<AI_POINT_THROTTLE>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("heading "));
 			eML.Add(new ExpressionMember("towards "));
@@ -295,13 +343,13 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("throttle "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Throttle, "value4"));
 			eML.Add(new ExpressionMember("\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShipOrMonster);
 
 			#endregion
 
-			#region RELEASE_PIRANHAS
+			#region <MONSTER_RELEASE_PIRANHAS>
 
-            eML = this.Add("RELEASE_PIRANHAS");
+            eML = this.Add("<MONSTER_RELEASE_PIRANHAS>");
             ____Add_Type(eML);
             eML.Add(new ExpressionMember("if "));
             eML.Add(new ExpressionMember("something "));
@@ -310,13 +358,13 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("than "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
             eML.Add(new ExpressionMember("\" "));
-            ____Add_Name(eML);
+            ____Add_Name(eML, ExpressionMemberValueDescriptions.NameMonster);
 
 			#endregion
 
-			#region STAY_CLOSE
+			#region <MONSTER_STAY_CLOSE>
 
-            eML = this.Add("STAY_CLOSE");
+            eML = this.Add("<MONSTER_STAY_CLOSE>");
             ____Add_Type(eML);
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("pod "));
@@ -336,13 +384,13 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("value4 "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueFQ, "value4"));
             eML.Add(new ExpressionMember("\" "));
-            ____Add_Name(eML);
+            ____Add_Name(eML, ExpressionMemberValueDescriptions.NameMonster);
 
 			#endregion
 
-			#region TARGET_THROTTLE
+			#region <AI_TARGET_THROTTLE>
 
-			eML = this.Add("TARGET_THROTTLE");
+			eML = this.Add("<AI_TARGET_THROTTLE>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("heading "));
 			eML.Add(new ExpressionMember("at "));
@@ -358,13 +406,13 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("it "));
 			eML.Add(new ExpressionMember("as "));
 			eML.Add(new ExpressionMember("friendly\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShipOrMonster);
 
 			#endregion
 
 			#region ATTACK
 
-			eML = this.Add("ATTACK");
+			eML = this.Add("<SHIP_ATTACK>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("object "));
 			eML.Add(new ExpressionMember("named "));
@@ -374,13 +422,13 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("throttle "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Throttle, "value1"));
 			eML.Add(new ExpressionMember("\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShip);
 
 			#endregion
 
-			#region DEFEND
+			#region <SHIP_DEFEND>
 
-			eML = this.Add("DEFEND");
+			eML = this.Add("<SHIP_DEFEND>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("if "));
 			eML.Add(new ExpressionMember("ally "));
@@ -396,13 +444,13 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("of "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value2"));
 			eML.Add(new ExpressionMember("\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShip);
 
 			#endregion
 
-			#region LAUNCH_FIGHTERS
+			#region <SHIP_LAUNCH_FIGHTERS>
 
-			eML = this.Add("LAUNCH_FIGHTERS");
+			eML = this.Add("<SHIP_LAUNCH_FIGHTERS>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("if "));
 			eML.Add(new ExpressionMember("player "));
@@ -412,20 +460,20 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("than "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
             eML.Add(new ExpressionMember("\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShip);
 
 			#endregion
 
-			#region GUARD_STATION
+			#region <SHIP_GUARD_STATION>
 
-			eML = this.Add("GUARD_STATION");
+			eML = this.Add("<SHIP_GUARD_STATION>");
 			____Add_Type(eML);
 			eML.Add(new ExpressionMember("using "));
 			eML.Add(new ExpressionMember("magic "));
 			eML.Add(new ExpressionMember("number "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
 			eML.Add(new ExpressionMember("\" "));
-			____Add_Name(eML);
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShip);
 
 			#endregion
 		}
