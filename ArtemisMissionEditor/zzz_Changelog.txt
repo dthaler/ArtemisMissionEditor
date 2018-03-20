@@ -1,3 +1,7 @@
+Version 2.7.3 (bugfix) [2018-March-20] (Scott Nalley)
+* Fixed bug where named objects positions weren't up to date on space map after saving / opening mission.
+* Updated the forum link in the description.
+----------------------
 Version 2.7.3 [2018-March-14] (Dave Thaler)
 * Added Drones ability to set_special
 * Added isTagged and tagOwnerSide object properties
