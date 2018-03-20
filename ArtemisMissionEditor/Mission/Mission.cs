@@ -2666,25 +2666,31 @@ namespace ArtemisMissionEditor
                     if (type == "player")
                         AmountOfCreatePlayerStatements++;
 
-                    // Named object attributes.
-                    UpdateNamesLists_ScanExpression(statement, "x");
-                    UpdateNamesLists_ScanExpression(statement, "y");
-                    UpdateNamesLists_ScanExpression(statement, "z");
-                    UpdateNamesLists_ScanExpression(statement, "angle");
-
-                    // Unnamed object attributes.
-                    UpdateNamesLists_ScanExpression(statement, "startX");
-                    UpdateNamesLists_ScanExpression(statement, "startY");
-                    UpdateNamesLists_ScanExpression(statement, "startZ");
-                    UpdateNamesLists_ScanExpression(statement, "startAngle");
-                    UpdateNamesLists_ScanExpression(statement, "endX");
-                    UpdateNamesLists_ScanExpression(statement, "endY");
-                    UpdateNamesLists_ScanExpression(statement, "endZ");
-                    UpdateNamesLists_ScanExpression(statement, "endAngle");
-                    UpdateNamesLists_ScanExpression(statement, "count");
-                    UpdateNamesLists_ScanExpression(statement, "radius");
-                    UpdateNamesLists_ScanExpression(statement, "randomRange");
-                    UpdateNamesLists_ScanExpression(statement, "randomSeed");
+                    // Scan the expression for relevant attributes
+                    if (NamedObjectNames.ContainsKey(type))
+                    {
+                        // Named object attributes.
+                        UpdateNamesLists_ScanExpression(statement, "x");
+                        UpdateNamesLists_ScanExpression(statement, "y");
+                        UpdateNamesLists_ScanExpression(statement, "z");
+                        UpdateNamesLists_ScanExpression(statement, "angle");
+                    }
+                    else
+                    {
+                        // Unnamed object attributes.
+                        UpdateNamesLists_ScanExpression(statement, "startX");
+                        UpdateNamesLists_ScanExpression(statement, "startY");
+                        UpdateNamesLists_ScanExpression(statement, "startZ");
+                        UpdateNamesLists_ScanExpression(statement, "startAngle");
+                        UpdateNamesLists_ScanExpression(statement, "endX");
+                        UpdateNamesLists_ScanExpression(statement, "endY");
+                        UpdateNamesLists_ScanExpression(statement, "endZ");
+                        UpdateNamesLists_ScanExpression(statement, "endAngle");
+                        UpdateNamesLists_ScanExpression(statement, "count");
+                        UpdateNamesLists_ScanExpression(statement, "radius");
+                        UpdateNamesLists_ScanExpression(statement, "randomRange");
+                        UpdateNamesLists_ScanExpression(statement, "randomSeed");
+                    }
                 }
 
                 if (statement.Name == "set_monster_tag_data")
