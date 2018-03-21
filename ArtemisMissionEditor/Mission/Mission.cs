@@ -76,6 +76,24 @@ namespace ArtemisMissionEditor
         /// <summary> Monster names and headers for context menus</summary>
         public KeyValuePair<List<string>, List<string>> MonsterNamesList { get { return new KeyValuePair<List<string>, List<string>>(NamedObjectNames["monster"], new List<string>()); } }
 
+        /// <summary> Generic mesh names and headers for context menus</summary>
+        public KeyValuePair<List<string>, List<string>> GenericMeshNamesList { get { return new KeyValuePair<List<string>, List<string>>(NamedObjectNames["genericMesh"], new List<string>()); } }
+
+        /// <summary> Enemy names and headers for context menus</summary>
+        public KeyValuePair<List<string>, List<string>> EnemyNamesList { get { return new KeyValuePair<List<string>, List<string>>(NamedObjectNames["enemy"], new List<string>()); } }
+
+        /// <summary> Neutral names and headers for context menus</summary>
+        public KeyValuePair<List<string>, List<string>> NeutralNamesList { get { return new KeyValuePair<List<string>, List<string>>(NamedObjectNames["neutral"], new List<string>()); } }
+
+        /// <summary> Ship names and headers for context menus</summary>
+        public Dictionary<string, List<string>> ShipNamesLists { get {
+                var kvp = new Dictionary<string, List<string>>();
+                kvp.Add("enemy", NamedObjectNames["enemy"]);
+                kvp.Add("neutral", NamedObjectNames["neutral"]);
+                kvp.Add("player", NamedObjectNames["player"]);
+                return kvp;
+            }}
+
         /// <summary> AI ship names and headers for context menus</summary>
         public Dictionary<string, List<string>> AIShipNamesLists { get {
                 var kvp = new Dictionary<string, List<string>>();
@@ -88,8 +106,8 @@ namespace ArtemisMissionEditor
         public Dictionary<string, List<string>> AIShipOrMonsterNamesLists { get {
                 var kvp = new Dictionary<string, List<string>>();
                 kvp.Add("enemy", NamedObjectNames["enemy"]);
-                kvp.Add("neutral", NamedObjectNames["neutral"]);
                 kvp.Add("monster", NamedObjectNames["monster"]);
+                kvp.Add("neutral", NamedObjectNames["neutral"]);
                 return kvp;
             }}
 
@@ -101,9 +119,9 @@ namespace ArtemisMissionEditor
                 var kvp = new Dictionary<string, List<string>>();
                 kvp.Add("Anomaly", NamedObjectNames["Anomaly"]);
                 kvp.Add("enemy", NamedObjectNames["enemy"]);
-                kvp.Add("neutral", NamedObjectNames["neutral"]);
-                kvp.Add("monster", NamedObjectNames["monster"]);
                 kvp.Add("genericMesh", NamedObjectNames["genericMesh"]);
+                kvp.Add("monster", NamedObjectNames["monster"]);
+                kvp.Add("neutral", NamedObjectNames["neutral"]);
                 return kvp;
             }
         }
@@ -612,11 +630,11 @@ namespace ArtemisMissionEditor
             NamedObjectNames.Add("Anomaly", new List<string>());
             NamedObjectNames.Add("blackHole", new List<string>());
             NamedObjectNames.Add("enemy", new List<string>());
-            NamedObjectNames.Add("neutral", new List<string>());
             NamedObjectNames.Add("genericMesh", new List<string>());
+            NamedObjectNames.Add("monster", new List<string>());
+            NamedObjectNames.Add("neutral", new List<string>());
             NamedObjectNames.Add("player", new List<string>());
             NamedObjectNames.Add("station", new List<string>());
-            NamedObjectNames.Add("monster", new List<string>());
             NamedObjectNames.Add("whale", new List<string>());
 
             UndoStack = new Stack<MissionSavedState>();

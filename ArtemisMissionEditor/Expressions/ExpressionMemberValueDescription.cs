@@ -59,9 +59,9 @@ namespace ArtemisMissionEditor.Expressions
     /// - what editor is used for the value (like, damcon count, consoles list, generic integer input?)
     /// 
     /// We need to create another ExpressionMemberValueDescription if we need to add another different kind of value 
-    /// (like, "capitainType" which has specific preset text values to choose from), or we need to have a value 
+    /// (like, "captainType" which has specific preset text values to choose from), or we need to have a value 
     /// that works a bit differently than any other currently used value 
-    /// (for example, have a colon after it when put in the expresion, or offer dropdown menu of some kind).
+    /// (for example, have a colon after it when put in the expression, or offer dropdown menu of some kind).
     ///
     /// Otherwise, we can reuse an existing description.
     /// 

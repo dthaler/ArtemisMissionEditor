@@ -350,6 +350,38 @@ namespace ArtemisMissionEditor.Expressions
         }
 
         /// <summary>
+        /// Context menu strip for generic mesh names
+        /// </summary>
+        internal static ContextMenuStrip PrepareContextMenuStrip_NamedGenericMeshNameList(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)
+        {
+            return PrepareContextMenuStrip_SpecifiedListPlusDialog(container, editor, mode, Mission.Current.GenericMeshNamesList);
+        }
+
+        /// <summary>
+        /// Context menu strip for enemy names
+        /// </summary>
+        internal static ContextMenuStrip PrepareContextMenuStrip_NamedEnemyNameList(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)
+        {
+            return PrepareContextMenuStrip_SpecifiedListPlusDialog(container, editor, mode, Mission.Current.EnemyNamesList);
+        }
+
+        /// <summary>
+        /// Context menu strip for neutral names
+        /// </summary>
+        internal static ContextMenuStrip PrepareContextMenuStrip_NamedNeutralNameList(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)
+        {
+            return PrepareContextMenuStrip_SpecifiedListPlusDialog(container, editor, mode, Mission.Current.NeutralNamesList);
+        }
+
+        /// <summary>
+        /// Context menu strip for ships
+        /// </summary>
+        internal static ContextMenuStrip PrepareContextMenuStrip_NamedShipNameList(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)
+        {
+            return PrepareContextMenuStrip_SpecifiedNestedListPlusDialog(container, editor, mode, Mission.Current.ShipNamesLists);
+        }
+
+        /// <summary>
         /// Context menu strip for AI ships
         /// </summary>
         internal static ContextMenuStrip PrepareContextMenuStrip_NamedAIShipNameList(ExpressionMemberContainer container, ExpressionMemberValueEditor editor, ExpressionMemberValueEditorActivationMode mode)

@@ -22,138 +22,13 @@ namespace ArtemisMissionEditor.Expressions
 		{
 			string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.Property.DefaultIfNull);
 
-			switch (type)
-			{
-                case "nonPlayerSpeed":          return "<DEFAULT>";
-                case "nebulaIsOpaque":          return "<DEFAULT>";
-                case "sensorSetting":           return "<DEFAULT>";
-                case "nonPlayerShield":         return "<DEFAULT>";
-                case "nonPlayerWeapon":         return "<DEFAULT>";
-                case "playerWeapon":            return "<DEFAULT>";
-                case "playerShields":           return "<DEFAULT>";
-                case "coopAdjustmentValue":     return "<DEFAULT>";
-                case "musicObjectMasterVolume": return "<DEFAULT>";
-                case "commsObjectMasterVolume": return "<DEFAULT>";
-                case "soundFXVolume":           return "<DEFAULT>";
-                case "networkTickSpeed":        return "<DEFAULT>";
-                case "gameTimeLimit":           return "<DEFAULT>";
+            ExpressionMemberObjectProperty property = ExpressionMemberObjectProperty.Find(type);
+            if (property != null)
+            {
+                return property.Name;
+            }
 
-                //EVERYTHING
-                case "positionX":				return "<DEFAULT>";
-				case "positionY": 				return "<DEFAULT>";
-				case "positionZ": 				return "<DEFAULT>";
-				case "deltaX": 					return "<DEFAULT>";
-				case "deltaY": 					return "<DEFAULT>";
-				case "deltaZ": 					return "<DEFAULT>";
-				case "angle": 					return "<DEFAULT>";
-				case "pitch": 					return "<DEFAULT>";
-				case "roll": 					return "<DEFAULT>";
-				case "sideValue":               return "<DEFAULT>";
-				case "isTagged":                return "<DEFAULT>";
-				case "tagOwnerSide":            return "<DEFAULT>";
-
-				//VALUES FOR GENERIC MESHES		
-				case "blocksShotFlag": 			return "<DEFAULT>";
-				case "pushRadius": 				return "<DEFAULT>";
-				case "pitchDelta": 				return "<DEFAULT>";
-				case "rollDelta": 				return "<DEFAULT>";
-				case "angleDelta": 				return "<DEFAULT>";
-				case "artScale": 				return "<DEFAULT>";
-				//VALUES FOR STATIONS			
-				case "shieldState": 			return "<DEFAULT>";
-				case "canBuild": 				return "<DEFAULT>";
-				case "missileStoresHoming": 	return "<DEFAULT>";
-				case "missileStoresNuke": 		return "<DEFAULT>";
-				case "missileStoresMine": 		return "<DEFAULT>";
-                case "missileStoresECM":        return "<OBSOLETE_MISSILESTORESECM>";
-                case "missileStoresEMP": 		return "<DEFAULT>";
-                case "missileStoresPShock":     return "<DEFAULT>";
-                case "missileStoresBeacon":     return "<DEFAULT>";
-                case "missileStoresProbe":      return "<DEFAULT>";
-                case "missileStoresTag":        return "<DEFAULT>";
-                //VALUES FOR SHIELDED SHIPS		
-                case "throttle": 				return "<DEFAULT>";
-				case "steering": 				return "<DEFAULT>";
-				case "topSpeed": 				return "<DEFAULT>";
-				case "turnRate": 				return "<DEFAULT>";
-				case "shieldStateFront": 		return "<DEFAULT>";
-				case "shieldMaxStateFront": 	return "<DEFAULT>";
-				case "shieldStateBack": 		return "<DEFAULT>";
-				case "shieldMaxStateBack": 		return "<DEFAULT>";
-				case "shieldsOn": 				return "<DEFAULT>";
-				case "triggersMines": 			return "<DEFAULT>";
-				case "systemDamageBeam": 		return "<DEFAULT>";
-				case "systemDamageTorpedo": 	return "<DEFAULT>";
-				case "systemDamageTactical": 	return "<DEFAULT>";
-				case "systemDamageTurning": 	return "<DEFAULT>";
-				case "systemDamageImpulse": 	return "<DEFAULT>";
-				case "systemDamageWarp": 		return "<DEFAULT>";
-				case "systemDamageFrontShield":	return "<DEFAULT>";
-				case "systemDamageBackShield": 	return "<DEFAULT>";
-				case "shieldBandStrength0": 	return "<DEFAULT>";
-				case "shieldBandStrength1": 	return "<DEFAULT>";
-				case "shieldBandStrength2": 	return "<DEFAULT>";
-				case "shieldBandStrength3": 	return "<DEFAULT>";
-				case "shieldBandStrength4": 	return "<DEFAULT>";
-				//VALUES FOR ENEMIES			
-				case "targetPointX": 			return "<DEFAULT>";
-				case "targetPointY": 			return "<DEFAULT>";
-				case "targetPointZ": 			return "<DEFAULT>";
-				case "hasSurrendered": 			return "<DEFAULT>";
-                case "tauntImmunityIndex":      return "<DEFAULT>";
-
-                case "eliteAIType": 			return "<DEFAULT>";
-				case "eliteAbilityBits": 		return "<DEFAULT>";
-				case "eliteAbilityState": 		return "<DEFAULT>";
-				case "surrenderChance":			return "<DEFAULT>";
-				//VALUES FOR NEUTRALS			
-				case "exitPointX": 				return "<DEFAULT>";
-				case "exitPointY": 				return "<DEFAULT>";
-				case "exitPointZ": 				return "<DEFAULT>";
-				//VALUES FOR PLAYERS			
-				case "countHoming": 			return "<DEFAULT>";
-				case "countNuke": 				return "<DEFAULT>";
-				case "countMine": 				return "<DEFAULT>";
-				case "countECM":                return "<OBSOLETE_COUNTECM>";
-				case "countEMP": 				return "<DEFAULT>";
-				case "countShk": 				return "<DEFAULT>";
-				case "countBea": 				return "<DEFAULT>";
-				case "countPro": 				return "<DEFAULT>";
-				case "countTag": 				return "<DEFAULT>";
-				case "energy": 					return "<DEFAULT>";
-				case "warpState":				return "<DEFAULT>";
-				case "currentRealSpeed":		return "<READ_ONLY>";
-				case "totalCoolant":			return "<DEFAULT>";
-				case "systemCurCoolantBeam":		return "<DEFAULT>";
-				case "systemCurCoolantTorpedo":		return "<DEFAULT>";
-				case "systemCurCoolantTactical":    return "<DEFAULT>";
-				case "systemCurCoolantTurning":		return "<DEFAULT>";
-				case "systemCurCoolantImpulse":		return "<DEFAULT>";
-				case "systemCurCoolantWarp":		return "<DEFAULT>";
-				case "systemCurCoolantFrontShield":	return "<DEFAULT>";
-				case "systemCurCoolantBackShield":	return "<DEFAULT>";
-				case "systemCurHeatBeam":			return "<DEFAULT>";
-				case "systemCurHeatTorpedo":		return "<DEFAULT>";
-				case "systemCurHeatTactical":		return "<DEFAULT>";
-				case "systemCurHeatTurning":		return "<DEFAULT>";
-				case "systemCurHeatImpulse":		return "<DEFAULT>";
-				case "systemCurHeatWarp":			return "<DEFAULT>";
-				case "systemCurHeatFrontShield":	return "<DEFAULT>";
-				case "systemCurHeatBackShield":		return "<DEFAULT>";
-				case "systemCurEnergyBeam":			return "<DEFAULT>";
-				case "systemCurEnergyTorpedo":		return "<DEFAULT>";
-				case "systemCurEnergyTactical":		return "<DEFAULT>";
-				case "systemCurEnergyTurning":		return "<DEFAULT>";
-				case "systemCurEnergyImpulse":		return "<DEFAULT>";
-				case "systemCurEnergyWarp":			return "<DEFAULT>";
-				case "systemCurEnergyFrontShield":	return "<DEFAULT>";
-				case "systemCurEnergyBackShield":	return "<DEFAULT>";
-                //VALUES FOR MONSTERS
-                case "age": 				return "<DEFAULT>";
-				//DEFAULT CASE
-				default:
-					return "<UNKNOWN_PROPERTY>";
-			}
+			return "<UNKNOWN_PROPERTY>";
 		}
 
         /// <summary>
@@ -163,27 +38,30 @@ namespace ArtemisMissionEditor.Expressions
         /// </summary>
         protected override void SetValueInternal(ExpressionMemberContainer container, string value)
 		{
-            if (value == "<OBSOLETE_COUNTECM>")
+            string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.Property.DefaultIfNull);
+            ExpressionMemberObjectProperty property = ExpressionMemberObjectProperty.Find(type);
+            if (property != null)
             {
-                // Convert countECM to countEMP.
-                value = "<DEFAULT>";
-                container.SetAttribute("property", "countEMP");
+                string newType = property.ObsoletedByName;
+                if (newType != null)
+                {
+                    // Convert old name to new name.
+                    value = newType;
+                    container.SetAttribute("property", newType);
+                }
+                else if (value != type)
+                {
+                    // Convert property name to correct case.
+                    value = property.Name;
+                    container.SetAttribute("property", property.Name);
+                }
+
+                if (Mission.Current.Loading && property.IsReadOnly)
+                {
+    				Log.Add("Warning! Attempt to copy read-only property " + container.GetAttribute("property") + " detected in event: " + container.Statement.Parent.Name + "!");
+                }
             }
 
-            if (value == "<OBSOLETE_MISSILESTORESECM>")
-            {
-                // Convert missileStoresECM to missileStoresEMP.
-                value = "<DEFAULT>";
-                container.SetAttribute("property", "missileStoresEMP");
-            }
-
-            //if (value == "<INVALID_PROPERTY>")
-            //{
-            //    value = "<DEFAULT>";
-            //    container.SetAttribute("property", "positionX");
-            //}
-            if (Mission.Current.Loading && value == "<READ_ONLY>")
-				Log.Add("Warning! Attempt to copy read-only property " + container.GetAttribute("property") + " detected in event: " + container.Statement.Parent.Name + "!");
 			if (Mission.Current.Loading && value == "<UNKNOWN_PROPERTY>")
 				Log.Add("Warning! Unknown property " + container.GetAttribute("property") + " detected in event: " + container.Statement.Parent.Name + "!");
 
@@ -191,29 +69,20 @@ namespace ArtemisMissionEditor.Expressions
 		}
 
 		/// <summary>
-		/// Adds "(type) "
-		/// </summary>
-		private void ____Add_Property(List<ExpressionMember> eML)
-		{
-			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.Property, "property"));
-		}
-
-		/// <summary>
 		/// Adds "
 		/// </summary>
-		private void ____Add_Name(List<ExpressionMember> eML)
+		private void ____Add_Name(List<ExpressionMember> eML, ExpressionMemberValueDescription type)
 		{
 			eML.Add(new ExpressionMember("from "));
 			eML.Add(new ExpressionMember("object "));
 			eML.Add(new ExpressionMember("with "));
 			eML.Add(new ExpressionMember("name "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name1"));
+			eML.Add(new ExpressionMember("<>", type, "name1"));
 			eML.Add(new ExpressionMember("to "));
 			eML.Add(new ExpressionMember("object "));
 			eML.Add(new ExpressionMember("with "));
 			eML.Add(new ExpressionMember("name "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name2"));
-			//eML.Add(new ExpressionMemberCheck_Name_x_GMSel());
+			eML.Add(new ExpressionMember("<>", type, "name2"));
 		}
 
         /// <summary>
@@ -225,28 +94,24 @@ namespace ArtemisMissionEditor.Expressions
 		{
 			List<ExpressionMember> eML;
 
-			#region <DEFAULT>    (...)
+            foreach (var property in ExpressionMemberObjectProperty.ObjectProperties)
+            {
+                eML = this.Add(property.Name);
 
-			eML = this.Add("<DEFAULT>");
-			____Add_Property(eML);
-			____Add_Name(eML);
+    			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.Property, "property"));
+    			____Add_Name(eML, property.ObjectDescription);
 
-			#endregion
-
-			#region <READ_ONLY>
-
-			eML = this.Add("<READ_ONLY>");
-			____Add_Property(eML);
-			____Add_Name(eML);
-			eML.Add(new ExpressionMember("(WARNING! THIS PROPERTY IS READ ONLY!)"));
-
-			#endregion
+                if (property.IsReadOnly)
+                {
+        			eML.Add(new ExpressionMember("(WARNING! THIS PROPERTY IS READ ONLY!)"));
+                }
+            }
 
 			#region <UNKNOWN_PROPERTY>
 
 			eML = this.Add("<UNKNOWN_PROPERTY>");
-			____Add_Property(eML);
-			____Add_Name(eML);
+  			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.Property, "property"));
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAll);
 			eML.Add(new ExpressionMember("(WARNING! UNKNOWN PROPERTY NAME)"));
 
 			#endregion

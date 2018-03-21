@@ -328,11 +328,19 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD NameStation =                new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedStationName,null,null,"\"","\" ");
         /// <summary> Monster "name" from [create] </summary>
         public static EMVD NameMonster =                new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedMonsterName,null,null,"\"","\" ");
+        /// <summary> Generic mesh "name" from [create] </summary>
+        public static EMVD NameGenericMesh =            new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedGenericMeshName,null,null,"\"","\" ");
         /// <summary> Player "name" of player from [create] </summary>
         public static EMVD NamePlayer =                 new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.PlayerNames,null,null,"\"","\" ");
-        /// <summary> AI ship "name" from [create] </summary>
+        /// <summary> Enemy ship "name" from [create] </summary>
+        public static EMVD NameEnemy =                  new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedEnemyName,null,null,"\"","\" ");
+        /// <summary> Enemy ship "name" from [create] </summary>
+        public static EMVD NameNeutral =                new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedNeutralName,null,null,"\"","\" ");
+        /// <summary> AI (neutral or enemy) ship "name" from [create] </summary>
         public static EMVD NameAIShip =                 new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedAIShipName,null,null,"\"","\" ");
-        /// <summary> AI ship or monster "name" from [create] </summary>
+        /// <summary> Ship (neutral, enemy, or player) "name" from [create] </summary>
+        public static EMVD NameShip =                   new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedShipName,null,null,"\"","\" ");
+        /// <summary> AI (neutral or enemy) ship or monster "name" from [create] </summary>
         public static EMVD NameAIShipOrMonster =        new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedAIShipOrMonsterName,null,null,"\"","\" ");
         /// <summary> Scannable object "name" from [create] </summary>
         public static EMVD NameScannableObject =        new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.ScannableObjectName,null,null,"\"","\" ");

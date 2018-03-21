@@ -64,7 +64,11 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor VariableName;
         public static ExpressionMemberValueEditor NamedAllName;
         public static ExpressionMemberValueEditor NamedStationName;
+        public static ExpressionMemberValueEditor NamedGenericMeshName;
         public static ExpressionMemberValueEditor NamedMonsterName;
+        public static ExpressionMemberValueEditor NamedEnemyName;
+        public static ExpressionMemberValueEditor NamedNeutralName;
+        public static ExpressionMemberValueEditor NamedShipName;
         public static ExpressionMemberValueEditor NamedAIShipName;
         public static ExpressionMemberValueEditor NamedAIShipOrMonsterName;
         public static ExpressionMemberValueEditor ScannableObjectName;
@@ -723,9 +727,25 @@ namespace ArtemisMissionEditor.Expressions
 			NamedStationName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedStationNameList;
             Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedStationName.InvalidateContextMenuStrip(); });
 
+			NamedGenericMeshName = new ExpressionMemberValueEditor();
+			NamedGenericMeshName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedGenericMeshNameList;
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedGenericMeshName.InvalidateContextMenuStrip(); });
+
 			NamedMonsterName = new ExpressionMemberValueEditor();
 			NamedMonsterName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedMonsterNameList;
             Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedMonsterName.InvalidateContextMenuStrip(); });
+
+			NamedEnemyName = new ExpressionMemberValueEditor();
+			NamedEnemyName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedEnemyNameList;
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedEnemyName.InvalidateContextMenuStrip(); });
+
+			NamedNeutralName = new ExpressionMemberValueEditor();
+			NamedNeutralName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedNeutralNameList;
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedNeutralName.InvalidateContextMenuStrip(); });
+
+            NamedShipName = new ExpressionMemberValueEditor();
+            NamedShipName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedShipNameList;
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedShipName.InvalidateContextMenuStrip(); });
 
             NamedAIShipName = new ExpressionMemberValueEditor();
             NamedAIShipName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedAIShipNameList;

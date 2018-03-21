@@ -13,141 +13,6 @@ namespace ArtemisMissionEditor.Expressions
     /// </summary>
     public sealed class ExpressionMemberCheck_PropertySet : ExpressionMemberCheck
     {
-        private static readonly Dictionary<string, string> MappedPropertyType = new Dictionary<string, string> {
-            // Global properties.
-            { "nonPlayerSpeed",          "<ENMYSP>" },
-            { "nebulaIsOpaque",          "<NEBULAROP>" },
-            { "sensorSetting",           "<SENSOR>" },
-            { "nonPlayerShield",         "<ENMYSP>" },
-            { "nonPlayerWeapon",         "<ENMYSP>" },
-            { "playerWeapon",            "<ENMYSP>" },
-            { "playerShields",           "<ENMYSP>" },
-            { "coopAdjustmentValue",     "<GLOBAL_DEFAULT>" },
-            { "musicObjectMasterVolume", "<GLOBAL_DEFAULT>" },
-            { "commsObjectMasterVolume", "<GLOBAL_DEFAULT>" },
-            { "soundFXVolume",           "<GLOBAL_DEFAULT>" },
-            { "gameTimeLimit",           "<GLOBAL_DEFAULT>" },
-            { "networkTickSpeed",        "<GLOBAL_DEFAULT>" },
-
-            // Properties on all objects.
-            { "positionX",               "<FLT0...100K>" },
-            { "positionY",               "<FLT-100K...100K>" },
-            { "positionZ",               "<FLT0...100K>" },
-            { "deltaX",                  "<FLT-100K...100K>" },
-            { "deltaY",                  "<FLT-100K...100K>" },
-            { "deltaZ",                  "<FLT-100K...100K>" },
-            { "angle",                   "<DEFAULT>" },
-            { "pitch",                   "<DEFAULT>" },
-            { "roll",                    "<DEFAULT>" },
-            { "sideValue",               "<SIDEVALUE>" },
-            { "isTagged",                "<BOOLYESNO>" },
-            { "tagOwnerSide",            "<SIDEVALUE>" },
-
-            // GenericMesh properties.
-            { "blocksShotFlag",          "<NONPLAYER_BOOLYESNO>" },
-            { "pushRadius",              "<NONPLAYER_FLT-+INF>" },
-            { "pitchDelta",              "<DEFAULT>" },
-            { "rollDelta",               "<DEFAULT>" },
-            { "angleDelta",              "<DEFAULT>" },
-            { "artScale",                "<DEFAULT>" },
-
-            // Station properties.
-            { "shieldState",             "<NONPLAYER_FLT-+INF>" },
-            { "canBuild",                "<NONPLAYER_BOOLYESNO>" },
-            { "missileStoresHoming",     "<NONPLAYER_INT0...+INF>" },
-            { "missileStoresNuke",       "<NONPLAYER_INT0...+INF>" },
-            { "missileStoresMine",       "<NONPLAYER_INT0...+INF>" },
-            { "missileStoresECM",        "<OBSOLETE_MISSILESTORESECM>" },
-            { "missileStoresEMP",        "<NONPLAYER_INT0...+INF>" },
-            { "missileStoresPShock",     "<NONPLAYER_INT0...+INF>" },
-            { "missileStoresBeacon",     "<NONPLAYER_INT0...+INF>" },
-            { "missileStoresProbe",      "<NONPLAYER_INT0...+INF>" },
-            { "missileStoresTag",        "<NONPLAYER_INT0...+INF>" },
-
-            // Properties on shielded ships.
-            { "throttle",                "<DEFAULT>" },
-            { "steering",                "<DEFAULT>" },
-            { "topSpeed",                "<DEFAULT>" },
-            { "turnRate",                "<DEFAULT>" },
-            { "shieldStateFront",        "<INT-+INF>" },
-            { "shieldMaxStateFront",     "<INT-+INF>" },
-            { "shieldStateBack",         "<INT-+INF>" },
-            { "shieldMaxStateBack",      "<INT-+INF>" },
-            { "shieldsOn",               "<BOOLYESNO>" },
-            { "triggersMines",           "<BOOLYESNO>" },
-            { "systemDamageBeam",        "<DEFAULT>" },
-            { "systemDamageTorpedo",     "<DEFAULT>" },
-            { "systemDamageTactical",    "<DEFAULT>" },
-            { "systemDamageTurning",     "<DEFAULT>" },
-            { "systemDamageImpulse",     "<DEFAULT>" },
-            { "systemDamageWarp",        "<DEFAULT>" },
-            { "systemDamageFrontShield", "<DEFAULT>" },
-            { "systemDamageBackShield",  "<DEFAULT>" },
-            { "shieldBandStrength0",     "<DEFAULT>" },
-            { "shieldBandStrength1",     "<DEFAULT>" },
-            { "shieldBandStrength2",     "<DEFAULT>" },
-            { "shieldBandStrength3",     "<DEFAULT>" },
-            { "shieldBandStrength4",     "<DEFAULT>" },
-
-            // Properties on enemies.
-            { "targetPointX",            "<FLT0...100K>" },
-            { "targetPointY",            "<FLT-100K...100K>" },
-            { "targetPointZ",            "<FLT0...100K>" },
-            { "hasSurrendered",          "<NONPLAYER_BOOLYESNO>" },
-            { "tauntImmunityIndex",      "<tII1_3>" },
-            { "eliteAIType",             "<ELITEAITYPE>" },
-            { "eliteAbilityBits",        "<ELITEABILITYBITS>" },
-            { "eliteAbilityState",       "<DEFAULT>" },
-            { "surrenderChance",         "<NONPLAYER_INT0...100>" },
-
-            // Properties on neutrals.
-            { "exitPointX",              "<FLT0...100K>" },
-            { "exitPointY",              "<FLT-100K...100K>" },
-            { "exitPointZ",              "<FLT0...100K>" },
-
-            // Properties on players.
-            { "countHoming",                 "<INT0...+INF>" },
-            { "countNuke",                   "<INT0...+INF>" },
-            { "countMine",                   "<INT0...+INF>" },
-            { "countECM",                    "<OBSOLETE_COUNTECM>" },
-            { "countEMP",                    "<INT0...+INF>" },
-            { "countShk",                    "<INT0...+INF>" },
-            { "countBea",                    "<INT0...+INF>" },
-            { "countPro",                    "<INT0...+INF>" },
-            { "countTag",                    "<INT0...+INF>" },
-            { "energy",                      "<INT0...+INF>" },
-            { "warpState",                   "<INT0...4>" },
-            { "currentRealSpeed",            "<READ_ONLY>" },
-            { "totalCoolant",                "<INT0...+INF>" },
-            { "systemCurCoolantBeam",        "<INT0...+INF>" },
-            { "systemCurCoolantTorpedo",     "<INT0...+INF>" },
-            { "systemCurCoolantTactical",    "<INT0...+INF>" },
-            { "systemCurCoolantTurning",     "<INT0...+INF>" },
-            { "systemCurCoolantImpulse",     "<INT0...+INF>" },
-            { "systemCurCoolantWarp",        "<INT0...+INF>" },
-            { "systemCurCoolantFrontShield", "<INT0...+INF>" },
-            { "systemCurCoolantBackShield",  "<INT0...+INF>" },
-            { "systemCurHeatBeam",           "<DEFAULT>" },
-            { "systemCurHeatTorpedo",        "<DEFAULT>" },
-            { "systemCurHeatTactical",       "<DEFAULT>" },
-            { "systemCurHeatTurning",        "<DEFAULT>" },
-            { "systemCurHeatImpulse",        "<DEFAULT>" },
-            { "systemCurHeatWarp",           "<DEFAULT>" },
-            { "systemCurHeatFrontShield",    "<DEFAULT>" },
-            { "systemCurHeatBackShield",     "<DEFAULT>" },
-            { "systemCurEnergyBeam",         "<DEFAULT>" },
-            { "systemCurEnergyTorpedo",      "<DEFAULT>" },
-            { "systemCurEnergyTactical",     "<DEFAULT>" },
-            { "systemCurEnergyTurning",      "<DEFAULT>" },
-            { "systemCurEnergyImpulse",      "<DEFAULT>" },
-            { "systemCurEnergyWarp",         "<DEFAULT>" },
-            { "systemCurEnergyFrontShield",  "<DEFAULT>" },
-            { "systemCurEnergyBackShield",   "<DEFAULT>" },
-
-            // Properties on monsters.
-            { "age",                         "<MONSTER_AGE>" }
-        };
-
         /// <summary>
         /// This function is called when check needs to decide which list of ExpressionMembers to output. 
         /// After it is called, SetValue will be called, to allow for error correction. 
@@ -156,16 +21,11 @@ namespace ArtemisMissionEditor.Expressions
         public override string Decide(ExpressionMemberContainer container)
         {
             string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.Property.DefaultIfNull);
-            foreach (var item in MappedPropertyType)
+
+            ExpressionMemberObjectProperty property = ExpressionMemberObjectProperty.Find(type);
+            if (property != null)
             {
-                if (item.Key == type)
-                {
-                    return item.Value;
-                }
-                if (item.Key.ToLower() == type.ToLower())
-                {
-                    return "<WRONGCASE>";
-                }
+                return property.Name;
             }
 
             return "<UNKNOWN_PROPERTY>";
@@ -178,51 +38,31 @@ namespace ArtemisMissionEditor.Expressions
         /// </summary>
         protected override void SetValueInternal(ExpressionMemberContainer container, string value)
         {
-            if (value == "<WRONGCASE>")
+            string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.Property.DefaultIfNull);
+            ExpressionMemberObjectProperty property = ExpressionMemberObjectProperty.Find(type);
+
+            if (property != null)
             {
-                string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.Property.DefaultIfNull);
-                foreach (var item in MappedPropertyType)
+                string newType = property.ObsoletedByName;
+                if (newType != null)
                 {
-                    if (item.Key.ToLower() == type.ToLower())
-                    {
-                        // Convert property name to correct case.
-                        value = item.Value;
-                        container.SetAttribute("property", item.Key);
-                        break;
-                    }
+                    // Convert old name to new name.
+                    value = newType;
+                    container.SetAttribute("property", newType);
+                }
+                else if (value != type)
+                {
+                    // Convert property name to correct case.
+                    value = property.Name;
+                    container.SetAttribute("property", property.Name);
+                }
+
+                if (Mission.Current.Loading && property.IsReadOnly)
+                {
+                    Log.Add("Warning! Attempt to set read-only property " + container.GetAttribute("property") + " detected in event: " + container.Statement.Parent.Name + "!");
                 }
             }
-            if (value == "<OBSOLETE_COUNTECM>")
-            {
-                // Convert countECM to countEMP.
-                value = "<INT0...+INF>";
-                container.SetAttribute("property", "countEMP");
-            }
 
-            if (value == "<OBSOLETE_MISSILESTORESECM>")
-            {
-                // Convert missileStoresECM to missileStoresEMP.
-                value = "<NONPLAYER_INT0...+INF>";
-                container.SetAttribute("property", "missileStoresEMP");
-            }
-
-            if (value == "<BOOLYESNO>" || value == "<NONPLAYER_BOOLYESNO>")
-            {
-                string flag = container.GetAttribute("value");
-                if (flag == null || !Helper.IntTryParse(flag))
-                    container.SetAttribute("value", "0");
-                else if (Helper.StringToInt(flag) != 0)
-                    container.SetAttribute("value", "1");
-                else
-                    container.SetAttribute("value", "0");
-            }
-            //if (value == "<INVALID_PROPERTY>")
-            //{
-            //    value = "<DEFAULT>";
-            //    container.SetAttribute("property", "positionX");
-            //}
-            if (Mission.Current.Loading && value == "<READ_ONLY>")
-                Log.Add("Warning! Attempt to set read-only property " + container.GetAttribute("property") + " detected in event: " + container.Statement.Parent.Name + "!");
             if (Mission.Current.Loading && value == "<UNKNOWN_PROPERTY>")
                 Log.Add("Warning! Unknown property " + container.GetAttribute("property") + " detected in event: "+container.Statement.Parent.Name+"!");
 
@@ -244,24 +84,18 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary>
         /// Adds "for object [selected by gm or named]"
         /// </summary>
-        private void ____Add_Name(List<ExpressionMember> eML, ExpressionMemberValueDescription name = null)
+        private void ____Add_Name(List<ExpressionMember> eML, ExpressionMemberValueDescription type)
         {
-            name = name ?? ExpressionMemberValueDescriptions.NameAll;
-
             eML.Add(new ExpressionMember("for "));
             eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(name));
-        }
-        //private void ____Add_Name(List<ExpressionMember> eML)
-        //{
-        //    name = name ?? ExpressionMemberValueDescriptions.NameAll;
 
-        //    eML.Add(new ExpressionMember("for "));
-        //    eML.Add(new ExpressionMember("object "));
-        //    eML.Add(new ExpressionMemberCheck_Name_GM(name));
-        //    eML.Add(new ExpressionMember("name "));
-        //    eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name"));
-        //}
+            if ((type == ExpressionMemberValueDescriptions.NameAll) ||
+                (type == ExpressionMemberValueDescriptions.NamePlayer) ||
+                (type == ExpressionMemberValueDescriptions.NameShip))
+                eML.Add(new ExpressionMemberCheck_Name_GM_Slot(type));
+            else
+                eML.Add(new ExpressionMemberCheck_Name_GM(type));
+        }
 
         /// <summary>
         /// Represents a single member in an expression, which provides branching via checking a condition.
@@ -272,237 +106,34 @@ namespace ArtemisMissionEditor.Expressions
         {
             List<ExpressionMember> eML;
 
-            eML = this.Add("<SENSOR>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SensorRange, "value"));
+            foreach (var property in ExpressionMemberObjectProperty.ObjectProperties)
+            {
+                eML = this.Add(property.Name);
 
-            eML = this.Add("<NEBULAROP>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Yes_No, "value"));
+                ____Add_Property(eML);
+                eML.Add(new ExpressionMember("to "));
+                eML.Add(new ExpressionMember("<>", property.ValueDescription, "value"));
+                if (property.Units != null)
+                {
+                    eML.Add(new ExpressionMember(property.Units));
+                }
+                if (property.ObjectDescription != null)
+                {
+                    ____Add_Name(eML, property.ObjectDescription);
+                }
+                if (property.IsReadOnly)
+                {
+                    eML.Add(new ExpressionMember("(WARNING! THIS PROPERTY IS READ ONLY!)"));
+                }
+            }
 
-            eML = this.Add("<ENMYSP>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_0_PosInf, "value"));
-            eML.Add(new ExpressionMember("%.  (valid appears to be 40% - 300%)"));
-
-            eML = this.Add("<ENMYSH>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_0_PosInf, "value"));
-
-            eML = this.Add("<ENMYWP>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_0_PosInf, "value"));
-
-            #region <INT-+INF>    (push radius)
-
-            eML = this.Add("<INT-+INF>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_NegInf_PosInf, "value"));
-            ____Add_Name(eML);
-
-            #endregion
-
-            #region <NONPLAYER_FLT-+INF>    (push radius)
-
-            eML = this.Add("<NONPLAYER_FLT-+INF>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value"));
-            eML.Add(new ExpressionMember("for "));
-            eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAll));
-
-            #endregion
-
-            #region <INT0...+INF>    (amount of missiles)
-
-            eML = this.Add("<INT0...+INF>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>",ExpressionMemberValueDescriptions.Int_0_PosInf, "value"));
-            ____Add_Name(eML);
-
-            #endregion
-
-            #region <NONPLAYER_INT0...+INF>    (amount of missiles)
-
-            eML = this.Add("<NONPLAYER_INT0...+INF>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>",ExpressionMemberValueDescriptions.Int_0_PosInf, "value"));
-            eML.Add(new ExpressionMember("for "));
-            eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAll));
-
-            #endregion
-
-            #region <FLT0...+INF>    (coordinate x-z)
-
-            eML = this.Add("<FLT0...+INF>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_0_PosInf, "value"));
-            ____Add_Name(eML);
-
-            #endregion
-
-            #region <SIDEVALUE>    (sideValue)
-
-            eML = this.Add("<SIDEVALUE>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "value"));
-            ____Add_Name(eML);
-
-            #endregion
-
-            #region <NONPLAYER_INT0...100>    (surrenderChance)
-
-            eML = this.Add("<NONPLAYER_INT0...100>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_0_100, "value"));
-            eML.Add(new ExpressionMember("for "));
-            eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAll));
-
-            #endregion
-
-            #region <INT0...4>    (warpState)
-
-            eML = this.Add("<INT0...4>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_0_4, "value"));
-            ____Add_Name(eML);
-
-            #endregion
-
-            #region <MONSTER_AGE>    (age)
-
-            eML = this.Add("<MONSTER_AGE>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.MonsterAge, "value"));
-            eML.Add(new ExpressionMember("for "));
-            eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameMonster));
-
-            #endregion
-            
-            #region <FLT0...100K>    (coordinate x-z)
-
-            eML = this.Add("<FLT0...100K>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_0_100k, "value"));
-            ____Add_Name(eML);
-
-            #endregion
-            eML = this.Add("<tII1_3>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.tII1_3, "value"));
-            ____Add_Name(eML);
-
-//#endregion
-           
-
-            #region <FLT-100K...100K>    (coordinate y, delta)
-
-            eML = this.Add("<FLT-100K...100K>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_Minus100k_100k, "value"));
-            ____Add_Name(eML);
-
-            #endregion
-
-            #region <BOOLYESNO>    (coordinate y, delta)
-
-            eML = this.Add("<BOOLYESNO>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Yes_No, "value"));
-            ____Add_Name(eML);
-
-            #endregion
-
-            #region <NONPLAYER_BOOLYESNO>    (coordinate y, delta)
-
-            eML = this.Add("<NONPLAYER_BOOLYESNO>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Yes_No, "value"));
-            eML.Add(new ExpressionMember("for "));
-            eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAll));
-
-            #endregion
-
-            #region <ELITEAITYPE> (eliteAIType)
-
-            eML = this.Add("<ELITEAITYPE>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.EliteAIType, "value"));
-            ____Add_Name(eML);
-
-            #endregion
-
-            #region <ELITEABILITYBITS> (eliteAbilityBits)
-
-            eML = this.Add("<ELITEABILITYBITS>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.EliteAbilityBits, "value"));
-            ____Add_Name(eML);
-
-            #endregion
-
-            #region <DEFAULT>    (...)
-
-            eML = this.Add("<DEFAULT>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value"));
-            ____Add_Name(eML);
-
-            #endregion
-
-            #region <GLOBAL_DEFAULT>    (...)
-
-            eML = this.Add("<GLOBAL_DEFAULT>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value"));
-
-            #endregion
-
-            #region <READ_ONLY>
-
-            eML = this.Add("<READ_ONLY>");
-            ____Add_Property(eML);
-            eML.Add(new ExpressionMember("to "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value"));
-            ____Add_Name(eML);
-            eML.Add(new ExpressionMember("(WARNING! THIS PROPERTY IS READ ONLY)"));
-
-            #endregion
-            
             #region <UNKNOWN_PROPERTY>  
 
             eML = this.Add("<UNKNOWN_PROPERTY>");
             ____Add_Property(eML);
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value"));
-            ____Add_Name(eML);
+            ____Add_Name(eML, ExpressionMemberValueDescriptions.NameAll);
             eML.Add(new ExpressionMember("(WARNING! UNKNOWN PROPERTY NAME)"));
 
             #endregion
