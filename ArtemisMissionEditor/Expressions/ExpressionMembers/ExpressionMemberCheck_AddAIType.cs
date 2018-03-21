@@ -60,7 +60,7 @@ namespace ArtemisMissionEditor.Expressions
 				case "TARGET_THROTTLE":  		return "<AI_TARGET_THROTTLE>";
 				case "TRY_TO_BECOME_LEADER":    return "<SHIP_NOTHING>";
 				default:
-					return "<INVALID_TYPE>"; // This must be further converted in SetValue to some valid one, and type must be set there as well.
+					return "<UNKNOWN_TYPE>";
 			}
 		}
 
@@ -71,11 +71,8 @@ namespace ArtemisMissionEditor.Expressions
         /// </summary>
         protected override void SetValueInternal(ExpressionMemberContainer container, string value)
 		{
-			if (value == "<INVALID_TYPE>")
-			{
-				value = "<SHIP_NOTHING>";
-				container.SetAttribute("type", "PROCEED_TO_EXIT");
-			}
+			if (value == "<UNKNOWN_TYPE>")
+                Log.Add("Warning! Unknown AI command " + container.GetAttribute("type") + " detected in event: " + container.Statement.Parent.Name + "!");                   
             else if (value == "<SHIP_ELITE_AI_OBSOLETE>")
             {
                 // Convert ELITE_AI to SPCL_AI.
@@ -474,6 +471,16 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
 			eML.Add(new ExpressionMember("\" "));
 			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShip);
+
+			#endregion
+
+			#region <UNKNOWN_TYPE>
+
+			eML = this.Add("<UNKNOWN_TYPE>");
+			____Add_Type(eML);
+			eML.Add(new ExpressionMember("\" "));
+			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShipOrMonster);
+			eML.Add(new ExpressionMember("(WARNING! UNKNOWN AI COMMAND NAME)"));
 
 			#endregion
 		}

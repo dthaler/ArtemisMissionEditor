@@ -169,7 +169,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD VariableType =               new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.VariableType);
 
         /// <summary> "type" from [add_ai] </summary>
-        public static EMVD TypeAI =                     new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.AIType,null,null,"","");
+        public static EMVD TypeAI =                     new EMVD(EMVT.VarEnumString,EMVB.StoredWhenFilled,  EMVE.AIType,null,null,"","");
         /// <summary> Check distance in/out nebula from [add_ai] </summary>
         public static EMVD Check_DistanceNebula =       new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DistanceNebulaCheck,null,null,""," ");
         /// <summary> "value" radius from [add_ai] </summary>
