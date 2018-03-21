@@ -308,41 +308,48 @@ namespace ArtemisMissionEditor.Expressions
 
             // Add brain stack blocks.  There should be a trailing space if and only if the block uses arguments.
 			AIType = new ExpressionMemberValueEditor();
+
 			AIType.AddToDictionary("ATTACK", "ATTACK ");
 			AIType.AddToDictionary("AVOID_BLACK_HOLE", "AVOID BLACK HOLE ");
-			AIType.AddToDictionary("AVOID_SIGNAL", "AVOID SIGNAL ");
 			AIType.AddToDictionary("AVOID_WHALE", "AVOID WHALE ");
-			AIType.AddToDictionary("CHASE_AI_SHIP", "CHASE AI SHIP ");
-			AIType.AddToDictionary("CHASE_ANGER", "CHASE ANGER");
 			AIType.AddToDictionary("CHASE_FLEET", "CHASE FLEET ");
-			AIType.AddToDictionary("CHASE_MONSTER", "CHASE MONSTER ");
 			AIType.AddToDictionary("CHASE_OTHER_MONSTERS", "CHASE OTHER MONSTERS ");
-			AIType.AddToDictionary("CHASE_PLAYER", "CHASE PLAYER ");
-			AIType.AddToDictionary("CHASE_SIGNAL", "CHASE SIGNAL ");
-			AIType.AddToDictionary("CHASE_STATION", "CHASE STATION ");
 			AIType.AddToDictionary("CHASE_WHALE", "CHASE WHALE ");
 			AIType.AddToDictionary("DEFEND", "DEFEND ");
-			AIType.AddToDictionary("DIR_THROTTLE", "DIR THROTTLE ");
-			AIType.AddToDictionary("DRAGON_NEST", "DRAGON NEST");
 			AIType.AddToDictionary("FIGHTER_BINGO", "FIGHTER BINGO");
 			AIType.AddToDictionary("FOLLOW_COMMS_ORDERS", "FOLLOW COMMS ORDERS");
 			AIType.AddToDictionary("FOLLOW_LEADER", "FOLLOW LEADER");
-			AIType.AddToDictionary("FRENZY_ATTACK", "FRENZY_ATTACK");
-			AIType.AddToDictionary("GO_TO_HOLE", "GO TO HOLE ");
 			AIType.AddToDictionary("GUARD_STATION", "GUARD STATION ");
 			AIType.AddToDictionary("LAUNCH_FIGHTERS", "LAUNCH FIGHTERS ");
 			AIType.AddToDictionary("LEADER_LEADS", "LEADER LEADS");
+			AIType.AddToDictionary("PROCEED_TO_EXIT", "PROCEED TO EXIT");
+			AIType.AddToDictionary("SPCL_AI", "SPCL AI");
+			AIType.AddToDictionary("TRY_TO_BECOME_LEADER", "TRY TO BECOME LEADER");
+			AIType.NewMenuGroup("Ship command");
+
+			AIType.AddToDictionary("AVOID_SIGNAL", "AVOID SIGNAL ");
+			AIType.AddToDictionary("CHASE_MONSTER", "CHASE MONSTER ");
+			AIType.AddToDictionary("CHASE_SIGNAL", "CHASE SIGNAL ");
+			AIType.AddToDictionary("DRAGON_NEST", "DRAGON NEST");
+			AIType.AddToDictionary("FRENZY_ATTACK", "FRENZY_ATTACK");
+			AIType.AddToDictionary("GO_TO_HOLE", "GO TO HOLE ");
 			AIType.AddToDictionary("MOVE_WITH_GROUP", "MOVE WITH GROUP ");
 			AIType.AddToDictionary("PLAY_IN_ASTEROIDS", "PLAY IN ASTEROIDS");
-			AIType.AddToDictionary("POINT_THROTTLE", "POINT THROTTLE ");
-			AIType.AddToDictionary("PROCEED_TO_EXIT", "PROCEED TO EXIT");
 			AIType.AddToDictionary("RANDOM_PATROL", "RANDOM PATROL ");
 			AIType.AddToDictionary("RELEASE_PIRANHAS", "RELEASE PIRANHAS ");
-			AIType.AddToDictionary("SPCL_AI", "SPCL AI");
 			AIType.AddToDictionary("STAY_CLOSE", "STAY CLOSE ");
+			AIType.NewMenuGroup("Monster command");
+
+			AIType.AddToDictionary("CHASE_AI_SHIP", "CHASE AI SHIP ");
+			AIType.AddToDictionary("CHASE_ANGER", "CHASE ANGER");
+			AIType.AddToDictionary("CHASE_PLAYER", "CHASE PLAYER ");
+			AIType.AddToDictionary("CHASE_STATION", "CHASE STATION ");
+			AIType.AddToDictionary("DIR_THROTTLE", "DIR THROTTLE ");
+			AIType.AddToDictionary("POINT_THROTTLE", "POINT THROTTLE ");
 			AIType.AddToDictionary("TARGET_THROTTLE", "TARGET THROTTLE ");
-			AIType.AddToDictionary("TRY_TO_BECOME_LEADER", "TRY TO BECOME LEADER");
-			AIType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList;
+			AIType.NewMenuGroup("Generic command");
+
+			AIType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
 
 			PropertyObject = new ExpressionMemberValueEditor();
             PropertyObject.AddToDictionary("coopAdjustmentValue", "Co-op Adjustment Value");
