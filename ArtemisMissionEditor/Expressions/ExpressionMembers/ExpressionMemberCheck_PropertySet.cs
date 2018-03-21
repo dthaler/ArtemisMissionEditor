@@ -22,12 +22,12 @@ namespace ArtemisMissionEditor.Expressions
             { "nonPlayerWeapon",         "<ENMYSP>" },
             { "playerWeapon",            "<ENMYSP>" },
             { "playerShields",           "<ENMYSP>" },
-            { "coopAdjustmentValue",     "<DEFAULT_GLOBAL>" },
-            { "musicObjectMasterVolume", "<DEFAULT_GLOBAL>" },
-            { "commsObjectMasterVolume", "<DEFAULT_GLOBAL>" },
-            { "soundFXVolume",           "<DEFAULT_GLOBAL>" },
-            { "gameTimeLimit",           "<DEFAULT_GLOBAL>" },
-            { "networkTickSpeed",        "<DEFAULT_GLOBAL>" },
+            { "coopAdjustmentValue",     "<GLOBAL_DEFAULT>" },
+            { "musicObjectMasterVolume", "<GLOBAL_DEFAULT>" },
+            { "commsObjectMasterVolume", "<GLOBAL_DEFAULT>" },
+            { "soundFXVolume",           "<GLOBAL_DEFAULT>" },
+            { "gameTimeLimit",           "<GLOBAL_DEFAULT>" },
+            { "networkTickSpeed",        "<GLOBAL_DEFAULT>" },
 
             // Properties on all objects.
             { "positionX",               "<FLT0...100K>" },
@@ -44,25 +44,25 @@ namespace ArtemisMissionEditor.Expressions
             { "tagOwnerSide",            "<SIDEVALUE>" },
 
             // GenericMesh properties.
-            { "blocksShotFlag",          "<BOOLYESNO>" },
-            { "pushRadius",              "<FLT-+INF>" },
+            { "blocksShotFlag",          "<NONPLAYER_BOOLYESNO>" },
+            { "pushRadius",              "<NONPLAYER_FLT-+INF>" },
             { "pitchDelta",              "<DEFAULT>" },
             { "rollDelta",               "<DEFAULT>" },
             { "angleDelta",              "<DEFAULT>" },
             { "artScale",                "<DEFAULT>" },
 
             // Station properties.
-            { "shieldState",             "<FLT-+INF>" },
-            { "canBuild",                "<BOOLYESNO>" },
-            { "missileStoresHoming",     "<INT0...+INF>" },
-            { "missileStoresNuke",       "<INT0...+INF>" },
-            { "missileStoresMine",       "<INT0...+INF>" },
+            { "shieldState",             "<NONPLAYER_FLT-+INF>" },
+            { "canBuild",                "<NONPLAYER_BOOLYESNO>" },
+            { "missileStoresHoming",     "<NONPLAYER_INT0...+INF>" },
+            { "missileStoresNuke",       "<NONPLAYER_INT0...+INF>" },
+            { "missileStoresMine",       "<NONPLAYER_INT0...+INF>" },
             { "missileStoresECM",        "<OBSOLETE_MISSILESTORESECM>" },
-            { "missileStoresEMP",        "<INT0...+INF>" },
-            { "missileStoresPShock",     "<INT0...+INF>" },
-            { "missileStoresBeacon",     "<INT0...+INF>" },
-            { "missileStoresProbe",      "<INT0...+INF>" },
-            { "missileStoresTag",        "<INT0...+INF>" },
+            { "missileStoresEMP",        "<NONPLAYER_INT0...+INF>" },
+            { "missileStoresPShock",     "<NONPLAYER_INT0...+INF>" },
+            { "missileStoresBeacon",     "<NONPLAYER_INT0...+INF>" },
+            { "missileStoresProbe",      "<NONPLAYER_INT0...+INF>" },
+            { "missileStoresTag",        "<NONPLAYER_INT0...+INF>" },
 
             // Properties on shielded ships.
             { "throttle",                "<DEFAULT>" },
@@ -93,12 +93,12 @@ namespace ArtemisMissionEditor.Expressions
             { "targetPointX",            "<FLT0...100K>" },
             { "targetPointY",            "<FLT-100K...100K>" },
             { "targetPointZ",            "<FLT0...100K>" },
-            { "hasSurrendered",          "<BOOLYESNO>" },
+            { "hasSurrendered",          "<NONPLAYER_BOOLYESNO>" },
             { "tauntImmunityIndex",      "<tII1_3>" },
             { "eliteAIType",             "<ELITEAITYPE>" },
             { "eliteAbilityBits",        "<ELITEABILITYBITS>" },
             { "eliteAbilityState",       "<DEFAULT>" },
-            { "surrenderChance",         "<INT0...100>" },
+            { "surrenderChance",         "<NONPLAYER_INT0...100>" },
 
             // Properties on neutrals.
             { "exitPointX",              "<FLT0...100K>" },
@@ -142,7 +142,10 @@ namespace ArtemisMissionEditor.Expressions
             { "systemCurEnergyImpulse",      "<DEFAULT>" },
             { "systemCurEnergyWarp",         "<DEFAULT>" },
             { "systemCurEnergyFrontShield",  "<DEFAULT>" },
-            { "systemCurEnergyBackShield",   "<DEFAULT>" }
+            { "systemCurEnergyBackShield",   "<DEFAULT>" },
+
+            // Properties on monsters.
+            { "age",                         "<MONSTER_AGE>" }
         };
 
         /// <summary>
@@ -199,11 +202,11 @@ namespace ArtemisMissionEditor.Expressions
             if (value == "<OBSOLETE_MISSILESTORESECM>")
             {
                 // Convert missileStoresECM to missileStoresEMP.
-                value = "<INT0...+INF>";
+                value = "<NONPLAYER_INT0...+INF>";
                 container.SetAttribute("property", "missileStoresEMP");
             }
 
-            if (value == "<BOOLYESNO>")
+            if (value == "<BOOLYESNO>" || value == "<NONPLAYER_BOOLYESNO>")
             {
                 string flag = container.GetAttribute("value");
                 if (flag == null || !Helper.IntTryParse(flag))
@@ -273,34 +276,27 @@ namespace ArtemisMissionEditor.Expressions
             ____Add_Property(eML);
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SensorRange, "value"));
-            //____Add_Name(eML);
 
             eML = this.Add("<NEBULAROP>");
             ____Add_Property(eML);
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Yes_No, "value"));
-            //____Add_Name(eML);
 
             eML = this.Add("<ENMYSP>");
             ____Add_Property(eML);
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_0_PosInf, "value"));
             eML.Add(new ExpressionMember("%.  (valid appears to be 40% - 300%)"));
-            //____Add_Name(eML);
 
             eML = this.Add("<ENMYSH>");
             ____Add_Property(eML);
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_0_PosInf, "value"));
-            //____Add_Name(eML);
 
             eML = this.Add("<ENMYWP>");
             ____Add_Property(eML);
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_0_PosInf, "value"));
-            //____Add_Name(eML);
-
-
 
             #region <INT-+INF>    (push radius)
 
@@ -312,13 +308,15 @@ namespace ArtemisMissionEditor.Expressions
 
             #endregion
 
-            #region <FLT-+INF>    (push radius)
+            #region <NONPLAYER_FLT-+INF>    (push radius)
 
-            eML = this.Add("<FLT-+INF>");
+            eML = this.Add("<NONPLAYER_FLT-+INF>");
             ____Add_Property(eML);
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value"));
-            ____Add_Name(eML);
+            eML.Add(new ExpressionMember("for "));
+            eML.Add(new ExpressionMember("object "));
+            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAll));
 
             #endregion
 
@@ -329,6 +327,18 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>",ExpressionMemberValueDescriptions.Int_0_PosInf, "value"));
             ____Add_Name(eML);
+
+            #endregion
+
+            #region <NONPLAYER_INT0...+INF>    (amount of missiles)
+
+            eML = this.Add("<NONPLAYER_INT0...+INF>");
+            ____Add_Property(eML);
+            eML.Add(new ExpressionMember("to "));
+            eML.Add(new ExpressionMember("<>",ExpressionMemberValueDescriptions.Int_0_PosInf, "value"));
+            eML.Add(new ExpressionMember("for "));
+            eML.Add(new ExpressionMember("object "));
+            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAll));
 
             #endregion
 
@@ -352,13 +362,15 @@ namespace ArtemisMissionEditor.Expressions
 
             #endregion
 
-            #region <INT0...100>    (surrenderChance)
+            #region <NONPLAYER_INT0...100>    (surrenderChance)
 
-            eML = this.Add("<INT0...100>");
+            eML = this.Add("<NONPLAYER_INT0...100>");
             ____Add_Property(eML);
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_0_100, "value"));
-            ____Add_Name(eML);
+            eML.Add(new ExpressionMember("for "));
+            eML.Add(new ExpressionMember("object "));
+            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAll));
 
             #endregion
 
@@ -369,6 +381,18 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Int_0_4, "value"));
             ____Add_Name(eML);
+
+            #endregion
+
+            #region <MONSTER_AGE>    (age)
+
+            eML = this.Add("<MONSTER_AGE>");
+            ____Add_Property(eML);
+            eML.Add(new ExpressionMember("to "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.MonsterAge, "value"));
+            eML.Add(new ExpressionMember("for "));
+            eML.Add(new ExpressionMember("object "));
+            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameMonster));
 
             #endregion
             
@@ -410,6 +434,18 @@ namespace ArtemisMissionEditor.Expressions
 
             #endregion
 
+            #region <NONPLAYER_BOOLYESNO>    (coordinate y, delta)
+
+            eML = this.Add("<NONPLAYER_BOOLYESNO>");
+            ____Add_Property(eML);
+            eML.Add(new ExpressionMember("to "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Yes_No, "value"));
+            eML.Add(new ExpressionMember("for "));
+            eML.Add(new ExpressionMember("object "));
+            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAll));
+
+            #endregion
+
             #region <ELITEAITYPE> (eliteAIType)
 
             eML = this.Add("<ELITEAITYPE>");
@@ -440,9 +476,9 @@ namespace ArtemisMissionEditor.Expressions
 
             #endregion
 
-            #region <DEFAULT_GLOBAL>    (...)
+            #region <GLOBAL_DEFAULT>    (...)
 
-            eML = this.Add("<DEFAULT_GLOBAL>");
+            eML = this.Add("<GLOBAL_DEFAULT>");
             ____Add_Property(eML);
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value"));

@@ -148,6 +148,8 @@ namespace ArtemisMissionEditor.Expressions
                 case "systemCurEnergyWarp":          return "<DEFAULT>";
                 case "systemCurEnergyFrontShield":   return "<DEFAULT>";
                 case "systemCurEnergyBackShield":    return "<DEFAULT>";
+				//VALUES FOR MONSTERS
+				case "age": 			return "<MONSTER_AGE>";
 				//DEFAULT CASE
 				default:
 					return "<UNKNOWN_PROPERTY>";
@@ -225,6 +227,18 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.Property, "property"));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Comparator, "comparator"));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value", true));
+			
+			#endregion
+
+			#region <MONSTER_AGE>    (...)
+
+			eML = this.Add("<MONSTER_AGE>");
+			
+			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.Property, "property"));
+			eML.Add(new ExpressionMember("of "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameMonster, "name", true));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Comparator, "comparator"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.MonsterAge, "value", true));
 			
 			#endregion
 

@@ -290,6 +290,8 @@ namespace ArtemisMissionEditor.Expressions
 
         /// <summary> "value" from [if_scan_level] </summary>
         public static EMVD ScanLevel =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 2, "","");
+        /// <summary> Value of monster "age" property </summary>
+        public static EMVD MonsterAge =                 new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.MonsterAge, 1, 3, ""," ");
 
         /// <summary> "value" from [if_gm_key] </summary>
         public static EMVD KeyID =                      new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 128,""," ");

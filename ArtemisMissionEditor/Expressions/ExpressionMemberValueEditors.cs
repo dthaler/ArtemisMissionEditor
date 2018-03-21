@@ -49,6 +49,7 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor SpecialSpecialState;
         public static ExpressionMemberValueEditor SpecialSpecialSwitchState;
 
+        public static ExpressionMemberValueEditor MonsterAge;
         public static ExpressionMemberValueEditor NebulaType;
         public static ExpressionMemberValueEditor NebulaTypeOrNone;
         public static ExpressionMemberValueEditor Side;
@@ -485,6 +486,9 @@ namespace ArtemisMissionEditor.Expressions
 			PropertyObject.AddToDictionary("systemCurEnergyBackShield", "systemCurEnergyBackShield");
 			PropertyObject.NewMenuGroup("Players");
 
+			PropertyObject.AddToDictionary("age", "age");
+			PropertyObject.NewMenuGroup("Monsters");
+
 			PropertyObject.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
 
 			PropertyFleet = new ExpressionMemberValueEditor();
@@ -659,6 +663,13 @@ namespace ArtemisMissionEditor.Expressions
             NebulaType.AddToDictionary("2",  "Blue");
             NebulaType.AddToDictionary("3",  "Yellow");
             NebulaType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
+
+            MonsterAge = new ExpressionMemberValueEditor();
+            MonsterAge.AddToDictionary(null, "Default");
+            MonsterAge.AddToDictionary("1",  "1 (Young)");
+            MonsterAge.AddToDictionary("2",  "2 (Mature)");
+            MonsterAge.AddToDictionary("3",  "3 (Ancient)");
+            MonsterAge.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
 
 			Comparator = new ExpressionMemberValueEditor();
 			Comparator.AddToDictionary("GREATER",       ">");

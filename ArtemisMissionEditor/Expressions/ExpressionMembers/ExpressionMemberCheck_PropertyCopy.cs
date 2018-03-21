@@ -148,6 +148,8 @@ namespace ArtemisMissionEditor.Expressions
 				case "systemCurEnergyWarp":			return "<DEFAULT>";
 				case "systemCurEnergyFrontShield":	return "<DEFAULT>";
 				case "systemCurEnergyBackShield":	return "<DEFAULT>";
+                //VALUES FOR MONSTERS
+                case "age": 				return "<DEFAULT>";
 				//DEFAULT CASE
 				default:
 					return "<UNKNOWN_PROPERTY>";
