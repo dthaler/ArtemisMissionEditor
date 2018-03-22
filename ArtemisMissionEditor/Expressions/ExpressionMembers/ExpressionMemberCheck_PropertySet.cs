@@ -115,7 +115,7 @@ namespace ArtemisMissionEditor.Expressions
                 eML.Add(new ExpressionMember("<>", property.ValueDescription, "value"));
                 if (property.Units != null)
                 {
-                    eML.Add(new ExpressionMember(property.Units));
+                    eML.Add(new ExpressionMember(property.Units + " "));
                 }
                 if (property.ObjectDescription != null)
                 {

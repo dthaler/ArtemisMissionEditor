@@ -108,6 +108,10 @@ namespace ArtemisMissionEditor.Expressions
                 eML = this.Add(property.Name);
 
     			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_NegInf_PosInf, "value"));
+                if (property.Units != null)
+                {
+                    eML.Add(new ExpressionMember(property.Units + " "));
+                }
 	    		eML.Add(new ExpressionMember("to "));
 		    	____Add_Property(eML);
                 if (property.ObjectDescription != null)

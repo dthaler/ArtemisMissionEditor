@@ -61,28 +61,28 @@ namespace ArtemisMissionEditor.Expressions
             new EMOP(null, "commsObjectMasterVolume", EMVDS.Flt_NegInf_PosInf),
             new EMOP(null, "soundFXVolume",           EMVDS.Flt_NegInf_PosInf),
             new EMOP(null, "gameTimeLimit",           EMVDS.Flt_NegInf_PosInf),
-            new EMOP(null, "networkTickSpeed",        EMVDS.Flt_NegInf_PosInf),
+            new EMOP(null, "networkTickSpeed",        EMVDS.Flt_NegInf_PosInf, "ms"),
 
             // Properties on all named objects.
-            new EMOP(EMVDS.NameAll, "positionX",      EMVDS.Flt_0_100k),
-            new EMOP(EMVDS.NameAll, "positionY",      EMVDS.Flt_Minus100k_100k),
-            new EMOP(EMVDS.NameAll, "positionZ",      EMVDS.Flt_0_100k),
+            new EMOP(EMVDS.NameAll, "positionX",      EMVDS.Flt_0_100k, "m west of right edge"),
+            new EMOP(EMVDS.NameAll, "positionY",      EMVDS.Flt_Minus100k_100k, "m"),
+            new EMOP(EMVDS.NameAll, "positionZ",      EMVDS.Flt_0_100k, "m south of top edge"),
             new EMOP(EMVDS.NameAll, "deltaX",         EMVDS.Flt_Minus100k_100k),
             new EMOP(EMVDS.NameAll, "deltaY",         EMVDS.Flt_Minus100k_100k),
             new EMOP(EMVDS.NameAll, "deltaZ",         EMVDS.Flt_Minus100k_100k),
-            new EMOP(EMVDS.NameAll, "angle",          EMVDS.Flt_NegInf_PosInf),
-            new EMOP(EMVDS.NameAll, "pitch",          EMVDS.Flt_NegInf_PosInf),
-            new EMOP(EMVDS.NameAll, "roll",           EMVDS.Flt_NegInf_PosInf),
+            new EMOP(EMVDS.NameAll, "angle",          EMVDS.Flt_NegInf_PosInf, "radians clockwise from south"),
+            new EMOP(EMVDS.NameAll, "pitch",          EMVDS.Flt_NegInf_PosInf, "radians"),
+            new EMOP(EMVDS.NameAll, "roll",           EMVDS.Flt_NegInf_PosInf, "radians"),
             new EMOP(EMVDS.NameAll, "sideValue",      EMVDS.SideValue),
             new EMOP(EMVDS.NameAll, "isTagged",       EMVDS.Bool_Yes_No),
             new EMOP(EMVDS.NameAll, "tagOwnerSide",   EMVDS.SideValue),
 
             // GenericMesh properties.
             new EMOP(EMVDS.NameGenericMesh, "blocksShotFlag", EMVDS.Bool_Yes_No),
-            new EMOP(EMVDS.NameGenericMesh, "pushRadius",     EMVDS.Flt_NegInf_PosInf),
-            new EMOP(EMVDS.NameGenericMesh, "pitchDelta",     EMVDS.Flt_NegInf_PosInf),
-            new EMOP(EMVDS.NameGenericMesh, "rollDelta",      EMVDS.Flt_NegInf_PosInf),
-            new EMOP(EMVDS.NameGenericMesh, "angleDelta",     EMVDS.Flt_NegInf_PosInf),
+            new EMOP(EMVDS.NameGenericMesh, "pushRadius",     EMVDS.Flt_NegInf_PosInf, "m"),
+            new EMOP(EMVDS.NameGenericMesh, "pitchDelta",     EMVDS.Flt_NegInf_PosInf, "radians"),
+            new EMOP(EMVDS.NameGenericMesh, "rollDelta",      EMVDS.Flt_NegInf_PosInf, "radians"),
+            new EMOP(EMVDS.NameGenericMesh, "angleDelta",     EMVDS.Flt_NegInf_PosInf, "radians"),
             new EMOP(EMVDS.NameGenericMesh, "artScale",       EMVDS.Flt_NegInf_PosInf),
 
             // Station properties.
@@ -101,8 +101,8 @@ namespace ArtemisMissionEditor.Expressions
             // Shielded ship (player, enemy, neutral) properties.
             new EMOP(EMVDS.NameShip, "throttle",                EMVDS.Flt_NegInf_PosInf),
             new EMOP(EMVDS.NameShip, "steering",                EMVDS.Flt_NegInf_PosInf),
-            new EMOP(EMVDS.NameShip, "topSpeed",                EMVDS.Flt_NegInf_PosInf),
-            new EMOP(EMVDS.NameShip, "turnRate",                EMVDS.Flt_NegInf_PosInf),
+            new EMOP(EMVDS.NameShip, "topSpeed",                EMVDS.Flt_NegInf_PosInf, "hm/s"),
+            new EMOP(EMVDS.NameShip, "turnRate",                EMVDS.Flt_NegInf_PosInf, "radians/cycle"),
             new EMOP(EMVDS.NameShip, "shieldStateFront",        EMVDS.Int_NegInf_PosInf),
             new EMOP(EMVDS.NameShip, "shieldMaxStateFront",     EMVDS.Int_NegInf_PosInf),
             new EMOP(EMVDS.NameShip, "shieldStateBack",         EMVDS.Int_NegInf_PosInf),
@@ -124,20 +124,20 @@ namespace ArtemisMissionEditor.Expressions
             new EMOP(EMVDS.NameShip, "shieldBandStrength4",     EMVDS.Flt_NegInf_PosInf),
 
             // Enemy properties.
-            new EMOP(EMVDS.NameEnemy, "targetPointX",       EMVDS.Flt_0_100k),
-            new EMOP(EMVDS.NameEnemy, "targetPointY",       EMVDS.Flt_Minus100k_100k),
-            new EMOP(EMVDS.NameEnemy, "targetPointZ",       EMVDS.Flt_0_100k),
+            new EMOP(EMVDS.NameEnemy, "targetPointX",       EMVDS.Flt_0_100k, "m west of right edge"),
+            new EMOP(EMVDS.NameEnemy, "targetPointY",       EMVDS.Flt_Minus100k_100k, "m"),
+            new EMOP(EMVDS.NameEnemy, "targetPointZ",       EMVDS.Flt_0_100k, "m south of top edge"),
             new EMOP(EMVDS.NameEnemy, "hasSurrendered",     EMVDS.Bool_Yes_No),
             new EMOP(EMVDS.NameEnemy, "tauntImmunityIndex", EMVDS.tII1_3),
             new EMOP(EMVDS.NameEnemy, "eliteAIType",        EMVDS.EliteAIType),
             new EMOP(EMVDS.NameEnemy, "eliteAbilityBits",   EMVDS.EliteAbilityBits),
             new EMOP(EMVDS.NameEnemy, "eliteAbilityState",  EMVDS.Flt_NegInf_PosInf),
-            new EMOP(EMVDS.NameEnemy, "surrenderChance",    EMVDS.Int_0_100),
+            new EMOP(EMVDS.NameEnemy, "surrenderChance",    EMVDS.Int_0_100, "%"),
 
             // Neutral properties.
-            new EMOP(EMVDS.NameNeutral, "exitPointX",       EMVDS.Flt_0_100k),
-            new EMOP(EMVDS.NameNeutral, "exitPointY",       EMVDS.Flt_Minus100k_100k),
-            new EMOP(EMVDS.NameNeutral, "exitPointZ",       EMVDS.Flt_0_100k),
+            new EMOP(EMVDS.NameNeutral, "exitPointX",       EMVDS.Flt_0_100k, "m west of right edge"),
+            new EMOP(EMVDS.NameNeutral, "exitPointY",       EMVDS.Flt_Minus100k_100k, "m"),
+            new EMOP(EMVDS.NameNeutral, "exitPointZ",       EMVDS.Flt_0_100k, "m south of top edge"),
 
             // Player properties.
             new EMOP(EMVDS.NamePlayer, "countHoming",                 EMVDS.Int_0_PosInf),
