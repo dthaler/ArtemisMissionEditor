@@ -101,7 +101,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD PodNumber =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 9);
         public static EMVD accent_color =               new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 99);
         /// <summary> "warp/jump" from [create] </summary>
-        public static EMVD Check_DriveType =            new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DriveType, null, null, "\"", "\" ");
+        public static EMVD Check_DriveType =            new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DriveType, null, null, "", " ");
         public static EMVD DriveType =                  new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.Nothing);
         public static EMVD player_slot =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 7);
         public static EMVD bay_slot =                   new EMVD(EMVT.VarInteger,   EMVB.StoredAsIs,        EMVE.DefaultInteger, 0, 31);
@@ -222,6 +222,7 @@ namespace ArtemisMissionEditor.Expressions
         
         public static EMVD Int_NegInf_PosInf =          new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger,null,null,""," ");
         public static EMVD Int_0_PosInf =               new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger,0,null,""," ");
+        public static EMVD Int_40_300 =                 new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger,40,300,""," ");
         public static EMVD Int_0_100k =                 new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger,0,100000,""," ");
         public static EMVD Int_0_100 =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger,0,100,""," ");
         public static EMVD Int_0_4 =                    new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.WarpState,0,4,""," ");
@@ -350,7 +351,7 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> "captain" from set_special </summary>
         public static EMVD CaptainState =               new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.SpecialCaptainType, -1, 5, "\"", "\" ");
         public static EMVD SpecialState = new EMVD(EMVT.VarString, EMVB.StoredWhenFilled, EMVE.SpecialSpecialState, null, null, "\"", "\" ");
-        public static EMVD SpecialSwitchState = new EMVD(EMVT.VarString, EMVB.StoredWhenFilled, EMVE.SpecialSpecialSwitchState, null, null, "\"", "\" ");
+        public static EMVD SpecialSwitchState = new EMVD(EMVT.VarString, EMVB.StoredWhenFilled, EMVE.SpecialSpecialSwitchState, null, null, "", " ");
 
         /// <summary> "sideValue" from set_side_value </summary>
         public static EMVD SideValue =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.Side, 0, 31);

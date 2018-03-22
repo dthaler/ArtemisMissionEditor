@@ -126,8 +126,8 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("spawn_external_program", "Spawn external program");
             XmlNameActionCheck.NewMenuGroup("Game Options");
 
-            XmlNameActionCheck.AddToDictionary("create", "Create");
-            XmlNameActionCheck.AddToDictionary("<destroy>", "Destroy");
+            XmlNameActionCheck.AddToDictionary("create", "Create", "Create object(s)");
+            XmlNameActionCheck.AddToDictionary("<destroy>", "Destroy", "Destroy object(s)");
             XmlNameActionCheck.NewMenuGroup("Create/Destroy");
             
             XmlNameActionCheck.AddToDictionary("set_comms_button", "Set comms button");
@@ -135,8 +135,8 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("set_gm_button", "Set GM button");
             XmlNameActionCheck.AddToDictionary("clear_gm_button", "Clear GM button");
             XmlNameActionCheck.AddToDictionary("gm_instructions", "GM instructions button");
-            XmlNameActionCheck.AddToDictionary("start_getting_keypresses_from", "Start getting keypresses from consoles: ");
-            XmlNameActionCheck.AddToDictionary("end_getting_keypresses_from", "End getting keypresses from consoles: ");
+            XmlNameActionCheck.AddToDictionary("start_getting_keypresses_from", "Start getting keypresses from consoles: ", "Start getting keypresses from consoles");
+            XmlNameActionCheck.AddToDictionary("end_getting_keypresses_from", "End getting keypresses from consoles: ", "End getting keypresses from consoles");
             XmlNameActionCheck.NewMenuGroup("Buttons");
 
             XmlNameActionCheck.AddToDictionary("incoming_comms_text", "Show incoming text message");
@@ -154,161 +154,57 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("set_variable", "Set variable");
             XmlNameActionCheck.NewMenuGroup("Triggers");
 
-            XmlNameActionCheck.AddToDictionary("set_object_property", "Set numeric property");        
-            XmlNameActionCheck.AddToDictionary("addto_object_property", "Add to numeric property");
+            XmlNameActionCheck.AddToDictionary("set_object_property", "Set numeric property");
+            XmlNameActionCheck.AddToDictionary("addto_object_property", "Add", "Add to numeric property");
             XmlNameActionCheck.AddToDictionary("copy_object_property", "Copy numeric property");
-            XmlNameActionCheck.AddToDictionary("set_ship_text", "Set text properties");
-            XmlNameActionCheck.AddToDictionary("set_side_value", "Set side");     
-            XmlNameActionCheck.AddToDictionary("set_special", "Set AI ship special");
-            XmlNameActionCheck.AddToDictionary("set_named_object_tag_state", "Set AI ship tag");
+            XmlNameActionCheck.AddToDictionary("set_ship_text", "Set text properties", "Set text properties of object");
+            XmlNameActionCheck.AddToDictionary("set_side_value", "Set side", "Set object's side");
+            XmlNameActionCheck.AddToDictionary("set_special", "Set AI ship special", "Set AI ship's special values");
+            XmlNameActionCheck.AddToDictionary("set_named_object_tag_state", "Set AI ship tag", "Set AI ship's tag");
             XmlNameActionCheck.AddToDictionary("set_fleet_property", "Set property of fleet");
-            XmlNameActionCheck.AddToDictionary("set_monster_tag_data", "Set monster tag");
+            XmlNameActionCheck.AddToDictionary("set_monster_tag_data", "Set monster tag", "Set monster's tag");
             XmlNameActionCheck.AddToDictionary("set_player_carried_type", "Set hanger bay contents");
             XmlNameActionCheck.AddToDictionary("set_player_station_carried", "Add replacement fighter to station");
             XmlNameActionCheck.AddToDictionary("clear_player_station_carried", "Remove all replacement fighters from station");
             XmlNameActionCheck.NewMenuGroup("Properties");
 
-            XmlNameActionCheck.AddToDictionary("set_relative_position", "Set relative position");
-            XmlNameActionCheck.AddToDictionary("set_to_gm_position", "Set relative to GM position");
+            XmlNameActionCheck.AddToDictionary("set_relative_position", "Set relative position", "Set position relative to object");
+            XmlNameActionCheck.AddToDictionary("set_to_gm_position", "Set relative to GM position", "Set position relative to GM position");
             XmlNameActionCheck.NewMenuGroup("Position");
 
-            XmlNameActionCheck.AddToDictionary("clear_ai", "Clear AI command stack");
-            XmlNameActionCheck.AddToDictionary("add_ai", "Add an AI command");
-            XmlNameActionCheck.AddToDictionary("direct", "Direct generic mesh");
+            XmlNameActionCheck.AddToDictionary("clear_ai", "Clear AI command stack", "Clear AI commands");
+            XmlNameActionCheck.AddToDictionary("add_ai", "Add an AI command", "Add AI command");
+            XmlNameActionCheck.AddToDictionary("direct", "Direct generic mesh", "Direct generic mesh to object / position");
             XmlNameActionCheck.NewMenuGroup("AI");
 
-            XmlNameActionCheck.AddToMenuDictionary("start_getting_keypresses_from", "Start getting keypresses from consoles");
-            XmlNameActionCheck.AddToMenuDictionary("end_getting_keypresses_from", "End getting keypresses from consoles");
-            XmlNameActionCheck.AddToMenuDictionary("set_special", "Set AI ship's special values");
-            XmlNameActionCheck.AddToMenuDictionary("set_named_object_tag_state", "Set AI ship's tag");
-            XmlNameActionCheck.AddToMenuDictionary("set_side_value", "Set object's side");
-            XmlNameActionCheck.AddToMenuDictionary("set_ship_text", "Set text properties of object");
-            XmlNameActionCheck.AddToMenuDictionary("set_object_property", "Set numeric property of object");
-            XmlNameActionCheck.AddToMenuDictionary("copy_object_property", "Copy numeric property of object");
-            XmlNameActionCheck.AddToMenuDictionary("addto_object_property", "Add to numeric property of object");
-            XmlNameActionCheck.AddToMenuDictionary("set_fleet_property", "Set property of fleet");
-            XmlNameActionCheck.AddToMenuDictionary("set_monster_tag_data", "Set monster's tag");
-            XmlNameActionCheck.AddToMenuDictionary("set_relative_position", "Set position relative to object");
-            XmlNameActionCheck.AddToMenuDictionary("add_ai", "Add AI command");
-            XmlNameActionCheck.AddToMenuDictionary("clear_ai", "Clear AI commands");
-            XmlNameActionCheck.AddToMenuDictionary("set_to_gm_position", "Set position relative to GM position");
-            XmlNameActionCheck.AddToMenuDictionary("create", "Create object(s)");
-            XmlNameActionCheck.AddToMenuDictionary("<destroy>", "Destroy object(s)");
-            XmlNameActionCheck.AddToMenuDictionary("direct", "Direct object to object / position");
-           // XmlNameActionCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
-
-            //XmlNameActionCheck = new ExpressionMemberValueEditor_XmlName();
-            //// XmlNameActionCheck.NewMenuGroup("Interaction1");
-            // XmlNameActionCheck.NewMenuGroup("Interaction");
-            //XmlNameActionCheck.AddToDictionary("set_gm_button", "Set GM button");
-            //XmlNameActionCheck.AddToDictionary("clear_gm_button", "clear GM button");
-            //XmlNameActionCheck.AddToDictionary("start_getting_keypresses_from", "Start getting keypresses from consoles: ");
-            //XmlNameActionCheck.AddToDictionary("end_getting_keypresses_from", "End getting keypresses from consoles: ");
-            //XmlNameActionCheck.NewMenuGroup("Ship Atributes");
-            //XmlNameActionCheck.AddToDictionary("set_special", "Set");
-            //XmlNameActionCheck.AddToDictionary("set_side_value", "Set side");
-            //XmlNameActionCheck.AddToDictionary("set_ship_text", "Set text strings");
-            //XmlNameActionCheck.AddToDictionary("clear_ai", "Clear AI command stack");
-            //XmlNameActionCheck.AddToDictionary("add_ai", "Add an AI command");
-            //XmlNameActionCheck.AddToDictionary("set_player_grid_damage", "Set player ship's damage");
-            //XmlNameActionCheck.AddToDictionary("<destroy>", "Destroy");
-            //XmlNameActionCheck.AddToDictionary("set_object_property", "Set property");
-            //XmlNameActionCheck.AddToDictionary("set_fleet_property", "Set property");
-            //XmlNameActionCheck.AddToDictionary("set_damcon_members", "Set DamCon members");
-            //XmlNameActionCheck.NewMenuGroup("Object Properties");
-            //XmlNameActionCheck.AddToDictionary("addto_object_property", "Add");
-            //XmlNameActionCheck.AddToDictionary("copy_object_property", "Copy property");
-            //XmlNameActionCheck.AddToDictionary("set_relative_position", "Set position");
-            //XmlNameActionCheck.AddToDictionary("set_to_gm_position", "Set position");
-            //XmlNameActionCheck.NewMenuGroup("Messages");
-            //XmlNameActionCheck.AddToDictionary("incoming_comms_text", "Show incoming text message");
-            //XmlNameActionCheck.AddToDictionary("incoming_message", "Show incoming audio message");
-            //XmlNameActionCheck.AddToDictionary("warning_popup_message", "Show warning popup message");
-            //XmlNameActionCheck.AddToDictionary("big_message", "Show big message on main screen");
-            //XmlNameActionCheck.AddToDictionary("play_sound_now", "Play sound on main screen");
-            //XmlNameActionCheck.AddToDictionary("log", "Log new entry");
-
-
-            //XmlNameActionCheck.AddToMenuDictionary("set_gm_button", "Set GM button");
-            //XmlNameActionCheck.AddToMenuDictionary("clear_gm_button", "clear GM button");
-            //XmlNameActionCheck.AddToMenuDictionary("start_getting_keypresses_from", "Start getting keypresses from consoles: ");
-            //XmlNameActionCheck.AddToMenuDictionary("end_getting_keypresses_from", "End getting keypresses from consoles: ");
-            ////  XmlNameActionCheck.NewMenuGroup("Ship Atributes");
-            //XmlNameActionCheck.AddToMenuDictionary("set_special", "Set");
-            //XmlNameActionCheck.AddToMenuDictionary("set_side_value", "Set side");
-            //XmlNameActionCheck.AddToMenuDictionary("set_ship_text", "Set text strings");
-            //XmlNameActionCheck.AddToMenuDictionary("clear_ai", "Clear AI command stack");
-            //XmlNameActionCheck.AddToMenuDictionary("add_ai", "Add an AI command");
-            //XmlNameActionCheck.AddToMenuDictionary("set_player_grid_damage", "Set player ship's damage");
-            //XmlNameActionCheck.AddToMenuDictionary("<destroy>", "Destroy");
-            //XmlNameActionCheck.AddToMenuDictionary("set_object_property", "Set property");
-            //XmlNameActionCheck.AddToMenuDictionary("set_fleet_property", "Set property");
-            //XmlNameActionCheck.AddToMenuDictionary("set_damcon_members", "Set DamCon members");
-            ////  XmlNameActionCheck.NewMenuGroup("Object Properties");
-            //XmlNameActionCheck.AddToMenuDictionary("addto_object_property", "Add");
-            //XmlNameActionCheck.AddToMenuDictionary("copy_object_property", "Copy property");
-            //XmlNameActionCheck.AddToMenuDictionary("set_relative_position", "Set position");
-            //XmlNameActionCheck.AddToMenuDictionary("set_to_gm_position", "Set position");
-            //// XmlNameActionCheck.NewMenuGroup("Messages");
-            //XmlNameActionCheck.AddToMenuDictionary("incoming_comms_text", "Show incoming text message");
-            //XmlNameActionCheck.AddToMenuDictionary("incoming_message", "Show incoming audio message");
-            //XmlNameActionCheck.AddToMenuDictionary("warning_popup_message", "Show warning popup message");
-            //XmlNameActionCheck.AddToMenuDictionary("big_message", "Show big message on main screen");
-            //XmlNameActionCheck.AddToMenuDictionary("play_sound_now", "Play sound on main screen");
-            //XmlNameActionCheck.AddToMenuDictionary("log", "Log new entry");
-
-
-
             XmlNameActionCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
-           // XmlNameActionCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
-
 
             XmlNameConditionCheck = new ExpressionMemberValueEditor_XmlName();
 			XmlNameConditionCheck.AddToDictionary("if_variable", "Variable");
-			XmlNameConditionCheck.AddToDictionary("if_timer_finished", "Timer");
+			XmlNameConditionCheck.AddToDictionary("if_timer_finished", "Timer", "Timer has finished");
 			XmlNameConditionCheck.AddToDictionary("if_damcon_members", "Amount of DamCon members");
-			XmlNameConditionCheck.AddToDictionary("if_fleet_count", "Ship count");
-			XmlNameConditionCheck.AddToDictionary("if_docked", "Player ship");
-			XmlNameConditionCheck.AddToDictionary("if_in_nebula", "Player ship");
-			XmlNameConditionCheck.AddToDictionary("if_player_is_targeting", "Player ship");
-			XmlNameConditionCheck.AddToDictionary("if_monster_tag_matches", "Monster");
-			XmlNameConditionCheck.AddToDictionary("if_object_tag_matches", "AI ship");
-			XmlNameConditionCheck.AddToDictionary("if_external_program_active", "External program");
-			XmlNameConditionCheck.AddToDictionary("if_external_program_finished", "External program");
-			XmlNameConditionCheck.AddToDictionary("<existence>", "Object");
-            XmlNameConditionCheck.AddToDictionary("<location>", "Object");
-            XmlNameConditionCheck.AddToDictionary("if_object_property", "Property");
-			XmlNameConditionCheck.AddToDictionary("if_distance", "Distance");
+			XmlNameConditionCheck.AddToDictionary("if_fleet_count", "Ship count", "Ship count (in a fleet)");
+			XmlNameConditionCheck.AddToDictionary("if_docked", "Player ship", "Player ship is docked");
+			XmlNameConditionCheck.AddToDictionary("if_in_nebula", "Player ship", "Player ship is in nebula");
+			XmlNameConditionCheck.AddToDictionary("if_player_is_targeting", "Player ship", "Player ship is targeting");
+			XmlNameConditionCheck.AddToDictionary("if_monster_tag_matches", "Monster", "Monster has tag");
+			XmlNameConditionCheck.AddToDictionary("if_object_tag_matches", "AI ship", "AI ship has tag");
+			XmlNameConditionCheck.AddToDictionary("if_external_program_active", "External program", "External program is running");
+			XmlNameConditionCheck.AddToDictionary("if_external_program_finished", "External program", "External program has finished");
+			XmlNameConditionCheck.AddToDictionary("<existence>", "Object", "Object exists / doesn't");
+            XmlNameConditionCheck.AddToDictionary("<location>", "Object", "Object is located");
+            XmlNameConditionCheck.AddToDictionary("if_object_property", "Property", "Object property");
+			XmlNameConditionCheck.AddToDictionary("if_distance", "Distance", "Distance between objects");
 			XmlNameConditionCheck.AddToDictionary("if_difficulty", "Difficulty level");
-			XmlNameConditionCheck.AddToDictionary("if_scan_level", "Scan level of object");
-            XmlNameConditionCheck.AddToDictionary("if_comms_button", "Comms Button pressed");
-			XmlNameConditionCheck.AddToDictionary("if_gm_key", "GM key pressed");
+			XmlNameConditionCheck.AddToDictionary("if_scan_level", "Scan level of object", "Object scan level");
+            XmlNameConditionCheck.AddToDictionary("if_comms_button", "Comms button pressed");
+			XmlNameConditionCheck.AddToDictionary("if_gm_key", "GM key pressed", "GM pressed a key");
             XmlNameConditionCheck.AddToDictionary("if_gm_button", "GM Button pressed");
-            XmlNameConditionCheck.AddToDictionary("if_client_key", "Client pressed");
-            XmlNameConditionCheck.AddToMenuDictionary("if_docked", "Player ship is docked");
-            XmlNameConditionCheck.AddToMenuDictionary("if_in_nebula", "Player ship is in nebula");
-            XmlNameConditionCheck.AddToMenuDictionary("if_player_is_targeting", "Player ship is targeting");
-            XmlNameConditionCheck.AddToMenuDictionary("if_external_program_active", "External program is running");
-            XmlNameConditionCheck.AddToMenuDictionary("if_external_program_finished", "External program has finished");
-            XmlNameConditionCheck.AddToMenuDictionary("if_timer_finished", "Timer has finished");
-			XmlNameConditionCheck.AddToMenuDictionary("if_damcon_members", "Amount of DamCon members");
-			XmlNameConditionCheck.AddToMenuDictionary("if_fleet_count", "Ship count (in a fleet)");
-			XmlNameConditionCheck.AddToMenuDictionary("<existence>", "Object exists / doesn't");
-			XmlNameConditionCheck.AddToMenuDictionary("if_object_property", "Object property");
-			XmlNameConditionCheck.AddToMenuDictionary("if_monster_tag_matches", "Monster has tag");
-			XmlNameConditionCheck.AddToMenuDictionary("if_object_tag_matches", "AI ship has tag");
-			XmlNameConditionCheck.AddToMenuDictionary("<location>", "Object is located");
-			XmlNameConditionCheck.AddToMenuDictionary("if_distance", "Distance between objects");
-			XmlNameConditionCheck.AddToMenuDictionary("if_scan_level", "Object scan level");
-            XmlNameConditionCheck.AddToMenuDictionary("if_comms_button", "Comms button pressed");
-			XmlNameConditionCheck.AddToMenuDictionary("if_gm_key", "GM pressed a key");
-            XmlNameConditionCheck.AddToMenuDictionary("if_gm_button", "GM button pressed");
-            XmlNameConditionCheck.AddToMenuDictionary("if_client_key", "Client pressed a key");
+            XmlNameConditionCheck.AddToDictionary("if_client_key", "Client pressed", "Client pressed a key");
 			XmlNameConditionCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
 
 			SetVariableCheck = new ExpressionMemberValueEditor();
-			SetVariableCheck.AddToDictionary("<to>", "to");
-			SetVariableCheck.AddToMenuDictionary("<to>", "to an exact value");
+			SetVariableCheck.AddToDictionary("<to>", "to", "to an exact value");
 			SetVariableCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
 
             // Add brain stack blocks.  There should be a trailing space if and only if the block uses arguments.
@@ -685,17 +581,14 @@ namespace ArtemisMissionEditor.Expressions
 			Comparator.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList;
 
 			DistanceNebulaCheck = new ExpressionMemberValueEditor();
-			DistanceNebulaCheck.AddToDictionary("anywhere2", "anywhere");
-			DistanceNebulaCheck.AddToMenuDictionary("anywhere", "anywhere on the map");
-			DistanceNebulaCheck.AddToMenuDictionary("anywhere2", "anywhere outside a nebula or up to ... if inside");
-			DistanceNebulaCheck.AddToMenuDictionary("closer than", "closer than ... if outside a nebula or up to ... if inside");
+			DistanceNebulaCheck.AddToDictionary("anywhere", "anywhere", "anywhere on the map");
+			DistanceNebulaCheck.AddToDictionary("anywhere2", "anywhere", "anywhere outside a nebula or up to ... if inside");
+			DistanceNebulaCheck.AddToDictionary("closer than", "closer than", "closer than ... if outside a nebula or up to ... if inside");
 			DistanceNebulaCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
 
 			ConvertDirectCheck = new ExpressionMemberValueEditor();
-			ConvertDirectCheck.AddToDictionary("Do nothing", "(Click here to convert)");
-			ConvertDirectCheck.AddToDictionary("Convert to add_ai", "YOU SHOULD NEVER SEE THIS");
-			ConvertDirectCheck.AddToMenuDictionary("Do nothing", "Do nothing");
-			ConvertDirectCheck.AddToMenuDictionary("Convert to add_ai", "Convert to add_ai");
+			ConvertDirectCheck.AddToDictionary("Do nothing", "(Click here to convert)", "Do nothing");
+			ConvertDirectCheck.AddToDictionary("Convert to add_ai", "YOU SHOULD NEVER SEE THIS", "Convert to add_ai");
 			ConvertDirectCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
 
 			TimerName = new ExpressionMemberValueEditor();

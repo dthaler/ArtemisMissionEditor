@@ -176,6 +176,7 @@ namespace ArtemisMissionEditor.Expressions
                 editor.ValueSelectorContextMenuStrip.Tag = false;
 
                 int i = 0;
+                string[] choices = editor.XmlValueToMenu.Keys.ToArray();
                 foreach (KeyValuePair<int, string> kvp in editor.MenuGroups.OrderBy((KeyValuePair<int, string> x) => x.Key))
                 {
                     ToolStripMenuItem tsm = new ToolStripMenuItem(kvp.Value);
@@ -183,7 +184,10 @@ namespace ArtemisMissionEditor.Expressions
 
                     while (i < kvp.Key)
                     {
-                        string item = editor.MenuItems[i++];
+                        string choice = choices[i++];
+                        string item = (editor.XmlValueToMenu.ContainsKey(choice)) ? editor.XmlValueToMenu[choice] : container.Member.ValueToDisplay(choice);
+                        if (item == null)
+                            continue;
 
                         ToolStripItem tsi = tsm.DropDownItems.Add(item);
 
@@ -675,7 +679,6 @@ namespace ArtemisMissionEditor.Expressions
             {
                 editor.XmlValueToDisplay.Clear();
                 editor.DisplayValueToXml.Clear();
-                editor.MenuItems.Clear();
                 foreach (string playerShipName in Mission.Current.PlayerShipNames)
                     editor.AddToDictionary(playerShipName, playerShipName);
 

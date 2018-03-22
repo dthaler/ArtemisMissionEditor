@@ -44,18 +44,19 @@ namespace ArtemisMissionEditor.Expressions
             ObsoletedByName = obsoletedByName;
         }
 
-        private static readonly string GlobalPercentUnits = "%.  (valid appears to be 40% - 300%)";
+        private static readonly string PercentUnits = "%";
+        private static readonly string RadiansUnits = "radians";
 
         public static readonly List<EMOP> ObjectProperties = new List<EMOP>()
         {
             // Global properties.
-            new EMOP(null, "nonPlayerSpeed",          EMVDS.Int_0_PosInf, GlobalPercentUnits),
+            new EMOP(null, "nonPlayerSpeed",          EMVDS.Int_40_300, PercentUnits),
             new EMOP(null, "nebulaIsOpaque",          EMVDS.Bool_Yes_No),
             new EMOP(null, "sensorSetting",           EMVDS.SensorRange),
-            new EMOP(null, "nonPlayerShield",         EMVDS.Int_0_PosInf, GlobalPercentUnits),
-            new EMOP(null, "nonPlayerWeapon",         EMVDS.Int_0_PosInf, GlobalPercentUnits),
-            new EMOP(null, "playerWeapon",            EMVDS.Int_0_PosInf, GlobalPercentUnits),
-            new EMOP(null, "playerShields",           EMVDS.Int_0_PosInf, GlobalPercentUnits),
+            new EMOP(null, "nonPlayerShield",         EMVDS.Int_40_300, PercentUnits),
+            new EMOP(null, "nonPlayerWeapon",         EMVDS.Int_40_300, PercentUnits),
+            new EMOP(null, "playerWeapon",            EMVDS.Int_40_300, PercentUnits),
+            new EMOP(null, "playerShields",           EMVDS.Int_40_300, PercentUnits),
             new EMOP(null, "coopAdjustmentValue",     EMVDS.Flt_NegInf_PosInf),
             new EMOP(null, "musicObjectMasterVolume", EMVDS.Flt_NegInf_PosInf),
             new EMOP(null, "commsObjectMasterVolume", EMVDS.Flt_NegInf_PosInf),
@@ -71,8 +72,8 @@ namespace ArtemisMissionEditor.Expressions
             new EMOP(EMVDS.NameAll, "deltaY",         EMVDS.Flt_Minus100k_100k),
             new EMOP(EMVDS.NameAll, "deltaZ",         EMVDS.Flt_Minus100k_100k),
             new EMOP(EMVDS.NameAll, "angle",          EMVDS.Flt_NegInf_PosInf, "radians clockwise from south"),
-            new EMOP(EMVDS.NameAll, "pitch",          EMVDS.Flt_NegInf_PosInf, "radians"),
-            new EMOP(EMVDS.NameAll, "roll",           EMVDS.Flt_NegInf_PosInf, "radians"),
+            new EMOP(EMVDS.NameAll, "pitch",          EMVDS.Flt_NegInf_PosInf, RadiansUnits),
+            new EMOP(EMVDS.NameAll, "roll",           EMVDS.Flt_NegInf_PosInf, RadiansUnits),
             new EMOP(EMVDS.NameAll, "sideValue",      EMVDS.SideValue),
             new EMOP(EMVDS.NameAll, "isTagged",       EMVDS.Bool_Yes_No),
             new EMOP(EMVDS.NameAll, "tagOwnerSide",   EMVDS.SideValue),
@@ -80,9 +81,9 @@ namespace ArtemisMissionEditor.Expressions
             // GenericMesh properties.
             new EMOP(EMVDS.NameGenericMesh, "blocksShotFlag", EMVDS.Bool_Yes_No),
             new EMOP(EMVDS.NameGenericMesh, "pushRadius",     EMVDS.Flt_NegInf_PosInf, "m"),
-            new EMOP(EMVDS.NameGenericMesh, "pitchDelta",     EMVDS.Flt_NegInf_PosInf, "radians"),
-            new EMOP(EMVDS.NameGenericMesh, "rollDelta",      EMVDS.Flt_NegInf_PosInf, "radians"),
-            new EMOP(EMVDS.NameGenericMesh, "angleDelta",     EMVDS.Flt_NegInf_PosInf, "radians"),
+            new EMOP(EMVDS.NameGenericMesh, "pitchDelta",     EMVDS.Flt_NegInf_PosInf, RadiansUnits),
+            new EMOP(EMVDS.NameGenericMesh, "rollDelta",      EMVDS.Flt_NegInf_PosInf, RadiansUnits),
+            new EMOP(EMVDS.NameGenericMesh, "angleDelta",     EMVDS.Flt_NegInf_PosInf, RadiansUnits),
             new EMOP(EMVDS.NameGenericMesh, "artScale",       EMVDS.Flt_NegInf_PosInf),
 
             // Station properties.
