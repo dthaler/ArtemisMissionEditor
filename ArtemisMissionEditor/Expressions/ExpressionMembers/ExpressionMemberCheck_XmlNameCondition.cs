@@ -74,8 +74,8 @@ namespace ArtemisMissionEditor.Expressions
 				//}
 				//For all many-to-one
 				if (value == "<existence>")
-				    if (container.Statement.Name != "if_exists" && container.Statement.Name != "if_not_exists")
-				        container.Statement.Name = "if_exists";
+					if (container.Statement.Name != "if_exists" && container.Statement.Name != "if_not_exists")
+						container.Statement.Name = "if_exists";
 				if (value == "<location>")
 					if (container.Statement.Name != "if_inside_sphere" && container.Statement.Name != "if_outside_sphere" && container.Statement.Name != "if_inside_box" && container.Statement.Name != "if_outside_box")
 						container.Statement.Name = "if_inside_sphere";
@@ -201,7 +201,6 @@ namespace ArtemisMissionEditor.Expressions
 			#region if_exists / if_not_exists
 
 			eML = this.Add("<existence>");
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name", true));
 			eML.Add(new ExpressionMemberCheck_Existence());
 
 			#endregion
