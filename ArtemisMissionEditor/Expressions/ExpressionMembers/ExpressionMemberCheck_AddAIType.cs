@@ -13,6 +13,45 @@ namespace ArtemisMissionEditor.Expressions
 	/// </summary>
 	public sealed class ExpressionMemberCheck_AddAIType : ExpressionMemberCheck
 	{
+        public static readonly Dictionary<string,string> AITypeDictionary = new Dictionary<string,string>()
+        {
+            { "ATTACK",  				"<SHIP_ATTACK>" },
+            { "AVOID_BLACK_HOLE",    	"<SHIP_AVOID>" },
+            { "AVOID_SIGNAL",           "<MONSTER_AVOID_SIGNAL>" },
+            { "AVOID_WHALE",  			"<SHIP_AVOID>" },
+            { "CHASE_AI_SHIP",    		"<AI_CHASE>" },
+            { "CHASE_ANGER",  			"<AI_NOTHING>" },
+            { "CHASE_FLEET",            "<SHIP_CHASE_FLEET>" },
+            { "CHASE_MONSTER",          "<MONSTER_CHASE_NO_NEBULA>" },
+            { "CHASE_OTHER_MONSTERS",   "<SHIP_CHASE_NO_NEBULA>" },
+            { "CHASE_PLAYER",    		"<AI_CHASE>" },
+            { "CHASE_SIGNAL",    		"<MONSTER_CHASE_SIGNAL>" },
+            { "CHASE_STATION",    		"<AI_CHASE_NO_NEBULA>" },
+            { "CHASE_WHALE",  			"<SHIP_CHASE_NO_NEBULA>" },
+            { "DEFEND",  				"<SHIP_DEFEND>" },
+            { "DIR_THROTTLE",    		"<AI_DIR_THROTTLE>" },
+            { "DRAGON_NEST",     		"<MONSTER_NOTHING>" },
+            { "ELITE_AI",               "<SHIP_ELITE_AI_OBSOLETE>" },
+            { "FIGHTER_BINGO",    		"<SHIP_NOTHING>" },
+            { "FOLLOW_COMMS_ORDERS",    "<SHIP_NOTHING>" },
+            { "FOLLOW_LEADER",    		"<SHIP_NOTHING>" },
+            { "FRENZY_ATTACK",    		"<MONSTER_NOTHING>" },
+            { "GO_TO_HOLE",  		    "<MONSTER_GO_TO_HOLE>" },
+            { "GUARD_STATION",          "<SHIP_GUARD_STATION>" },
+            { "LAUNCH_FIGHTERS",  		"<SHIP_LAUNCH_FIGHTERS>" },
+            { "LEADER_LEADS",    		"<SHIP_NOTHING>" },
+            { "MOVE_WITH_GROUP",  		"<MONSTER_MOVE_WITH_GROUP>" },
+            { "PLAY_IN_ASTEROIDS",     	"<MONSTER_NOTHING>" },
+            { "POINT_THROTTLE",  		"<AI_POINT_THROTTLE>" },
+            { "PROCEED_TO_EXIT",  		"<SHIP_NOTHING>" },
+            { "RANDOM_PATROL",    	    "<MONSTER_RANDOM_PATROL>" },
+            { "RELEASE_PIRANHAS",    	"<MONSTER_RELEASE_PIRANHAS>" },
+            { "SPCL_AI",  			    "<SHIP_NOTHING>" },
+            { "STAY_CLOSE",  			"<MONSTER_STAY_CLOSE>" },
+            { "TARGET_THROTTLE",  		"<AI_TARGET_THROTTLE>" },
+            { "TRY_TO_BECOME_LEADER",   "<SHIP_NOTHING>" }
+        };
+
         /// <summary>
         /// This function is called when check needs to decide which list of ExpressionMembers to output. 
         /// After it is called, SetValue will be called, to allow for error correction. 
@@ -22,46 +61,10 @@ namespace ArtemisMissionEditor.Expressions
 		{
 			string type = container.GetAttribute("type");
 
-			switch (type)
-			{
-				case "ATTACK":  				return "<SHIP_ATTACK>";
-				case "AVOID_BLACK_HOLE":    	return "<SHIP_AVOID>";
-				case "AVOID_SIGNAL":    		return "<MONSTER_AVOID_SIGNAL>";
-				case "AVOID_WHALE":  			return "<SHIP_AVOID>";
-				case "CHASE_AI_SHIP":    		return "<AI_CHASE>";
-				case "CHASE_ANGER":  			return "<AI_NOTHING>";
-				case "CHASE_FLEET":  			return "<SHIP_CHASE_FLEET>";
-				case "CHASE_MONSTER":    		return "<MONSTER_CHASE_NO_NEBULA>";
-				case "CHASE_OTHER_MONSTERS":	return "<SHIP_CHASE_NO_NEBULA>";
-				case "CHASE_PLAYER":    		return "<AI_CHASE>";
-				case "CHASE_SIGNAL":    		return "<MONSTER_CHASE_SIGNAL>";
-				case "CHASE_STATION":    		return "<AI_CHASE_NO_NEBULA>";
-				case "CHASE_WHALE":  			return "<SHIP_CHASE_NO_NEBULA>";
-				case "DEFEND":  				return "<SHIP_DEFEND>";
-				case "DIR_THROTTLE":    		return "<AI_DIR_THROTTLE>";
-				case "DRAGON_NEST":     		return "<MONSTER_NOTHING>";
-				case "ELITE_AI":                return "<SHIP_ELITE_AI_OBSOLETE>";
-				case "FIGHTER_BINGO":    		return "<SHIP_NOTHING>";
-				case "FOLLOW_COMMS_ORDERS":     return "<SHIP_NOTHING>";
-				case "FOLLOW_LEADER":    		return "<SHIP_NOTHING>";
-				case "FRENZY_ATTACK":    		return "<MONSTER_NOTHING>";
-				case "GO_TO_HOLE":  		    return "<MONSTER_GO_TO_HOLE>";
-				case "GUARD_STATION":           return "<SHIP_GUARD_STATION>";
-				case "LAUNCH_FIGHTERS":  		return "<SHIP_LAUNCH_FIGHTERS>";
-				case "LEADER_LEADS":    		return "<SHIP_NOTHING>";
-				case "MOVE_WITH_GROUP":  		return "<MONSTER_MOVE_WITH_GROUP>";
-				case "PLAY_IN_ASTEROIDS":     	return "<MONSTER_NOTHING>";
-				case "POINT_THROTTLE":  		return "<AI_POINT_THROTTLE>";
-				case "PROCEED_TO_EXIT":  		return "<SHIP_NOTHING>";
-				case "RANDOM_PATROL":    	    return "<MONSTER_RANDOM_PATROL>";
-				case "RELEASE_PIRANHAS":    	return "<MONSTER_RELEASE_PIRANHAS>";
-				case "SPCL_AI":  			    return "<SHIP_NOTHING>";
-				case "STAY_CLOSE":  			return "<MONSTER_STAY_CLOSE>";
-				case "TARGET_THROTTLE":  		return "<AI_TARGET_THROTTLE>";
-				case "TRY_TO_BECOME_LEADER":    return "<SHIP_NOTHING>";
-				default:
-					return "<UNKNOWN_TYPE>";
-			}
+            if (!String.IsNullOrEmpty(type) && AITypeDictionary.ContainsKey(type))
+                return AITypeDictionary[type];
+
+			return "<UNKNOWN_TYPE>";
 		}
 
         /// <summary>

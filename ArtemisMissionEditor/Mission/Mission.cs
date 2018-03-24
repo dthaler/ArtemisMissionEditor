@@ -3727,6 +3727,31 @@ namespace ArtemisMissionEditor
                     if (statement.Name == "clear_comms_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !CommsButtonSetNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Comms button named \"" + attName + "\" is cleared, but never set.", node, statement));
 
+                    // Adding a monster AI block to a ship
+                    string attType;
+                    if (statement.Name == "add_ai" && 
+                        !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) &&
+                        !String.IsNullOrEmpty(attType = statement.GetAttribute("type")))
+                    {
+                        string type = "<UNKNOWN_TYPE>";
+                        if (ExpressionMemberCheck_AddAIType.AITypeDictionary.ContainsKey(attType))
+                            type = ExpressionMemberCheck_AddAIType.AITypeDictionary[attType];
+                        if (NamedObjectNames["monster"].Contains(attName))
+                        {
+                            if (type.StartsWith("<SHIP_"))
+                            {
+                                result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Ship AI block \"" + attType + "\" is added to monster \"" + attName + "\".", node, statement));
+                            }
+                        }
+                        else
+                        {
+                            if (type.StartsWith("<MONSTER_"))
+                            {
+                                result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Monster AI block \"" + attType + "\" is added to ship \"" + attName + "\".", node, statement));
+                            }
+                        }
+                    }
+
                     // Add/set_property for object which name figures in the list of objects created in the same statement
                     //TODO: Confirm or deny that this problem exists and fix this statement (also maybe copy_object_property?)
                     //if ((statement.Name == "addto_object_property" || statement.Name == "set_object_property" || statement.Name == "add_ai"|| statement.Name == "clear_ai") && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && listCreatedInThisNode.Contains(CollapseName(attName)))
