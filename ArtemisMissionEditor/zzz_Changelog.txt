@@ -1,6 +1,18 @@
-Version 2.7.3 (bugfix) [2018-March-20] (Scott Nalley)
-* Fixed bug where named objects positions weren't up to date on space map after saving / opening mission.
-* Updated the forum link in the description.
+Version 2.7.4 [2018-March-24] (Dave Thaler, Scott Nalley)
+* Added Fighter console for popups and keypresses
+* Added ability to select monster names from a list when configuring AI commands
+* Added monster "age" property
+* Added player_slot attribute to if_exists (but not if_not_exists, which doesn't work)
+* Added Potential Problems check for monster AI commands added to ships, and vice versa
+* Made addto/copy/if_object_property commands correct property name casing if needed
+* Improved the display wording of several commands, including displaying units on some properties
+* Don't lose bad AI command names, just flag them as invalid
+* Updated object property commands to only allow choosing object types that the property applies to
+* Only allow selecting "with player slot" on properties that can affect players
+* Reorganized brain stack block selection by type for easier navigation
+* Fixed crash if configure incoming_comms_text without a type
+* Fixed bug where named objects positions weren't up to date on space map after saving / opening mission
+* Updated the forum link in the About dialog
 ----------------------
 Version 2.7.3 [2018-March-14] (Dave Thaler)
 * Added Drones ability to set_special
@@ -65,13 +77,12 @@ Version 2.6.1 [2018-January-16] (Dave Thaler)
 * Added support for multiple message types in the same comms message
 * Fixed some more typos 
 ----------------------
-Version 2.6.0.1 [2017-December-26] (Dave Thaler)
+Version 2.6.0.1 [2017-December-26] (Dave Thaler, Fish Evans)
 * Changed events to use "name" instead of "name_arme" to fix F7 debug screen event display
-* Incorporated changes from Fish Evans:
-  - Added support for set_player_carried_type to force fighter name/type carried by a playership
-  - Added support for set_player_station_carried to force a fighter name/type 
-    that will be picked up as a replacement from a station by player ships
-  - Added a drop down list for selecting comms types
+* Added support for set_player_carried_type to force fighter name/type carried by a playership
+* Added support for set_player_station_carried to force a fighter name/type 
+  that will be picked up as a replacement from a station by player ships
+* Added a drop down list for selecting comms types
 * Added support for clear_player_station_carried
 * Fixed some more typos
 * Fixed bug in update available detection
