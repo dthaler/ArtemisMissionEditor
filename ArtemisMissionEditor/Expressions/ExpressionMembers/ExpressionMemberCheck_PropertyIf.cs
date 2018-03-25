@@ -20,7 +20,7 @@ namespace ArtemisMissionEditor.Expressions
         /// <example>If input is wrong, decide will choose something, and then the input will be corrected in the SetValue function</example>
         public override string Decide(ExpressionMemberContainer container)
 		{
-			string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.Property.DefaultIfNull);
+			string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.ReadableProperty.DefaultIfNull);
 
             ExpressionMemberObjectProperty property = ExpressionMemberObjectProperty.Find(type);
             if (property != null)
@@ -38,7 +38,7 @@ namespace ArtemisMissionEditor.Expressions
         /// </summary>
         protected override void SetValueInternal(ExpressionMemberContainer container, string value)
 		{
-			string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.Property.DefaultIfNull);
+			string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.ReadableProperty.DefaultIfNull);
             ExpressionMemberObjectProperty property = ExpressionMemberObjectProperty.Find(type);
             if (property != null)
             {
@@ -76,7 +76,7 @@ namespace ArtemisMissionEditor.Expressions
             {
     			eML = this.Add(property.Name);
 
-    			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.Property, "property"));
+    			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.ReadableProperty, "property"));
                 if (property.ObjectDescription != null)
                 {
     			    eML.Add(new ExpressionMember("of "));
@@ -90,7 +90,7 @@ namespace ArtemisMissionEditor.Expressions
 
 			eML = this.Add("<UNKNOWN_PROPERTY>");
             
-			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.Property, "property"));
+			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.ReadableProperty, "property"));
 			eML.Add(new ExpressionMember("of "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name", true));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Comparator, "comparator"));

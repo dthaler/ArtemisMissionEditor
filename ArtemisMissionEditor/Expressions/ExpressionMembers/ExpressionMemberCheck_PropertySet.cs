@@ -20,7 +20,7 @@ namespace ArtemisMissionEditor.Expressions
         /// <example>If input is wrong, decide will choose something, and then the input will be corrected in the SetValue function</example>
         public override string Decide(ExpressionMemberContainer container)
         {
-            string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.Property.DefaultIfNull);
+            string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.WritableProperty.DefaultIfNull);
 
             ExpressionMemberObjectProperty property = ExpressionMemberObjectProperty.Find(type);
             if (property != null)
@@ -38,7 +38,7 @@ namespace ArtemisMissionEditor.Expressions
         /// </summary>
         protected override void SetValueInternal(ExpressionMemberContainer container, string value)
         {
-            string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.Property.DefaultIfNull);
+            string type = container.GetAttribute("property", ExpressionMemberValueDescriptions.WritableProperty.DefaultIfNull);
             ExpressionMemberObjectProperty property = ExpressionMemberObjectProperty.Find(type);
 
             if (property != null)
@@ -74,7 +74,7 @@ namespace ArtemisMissionEditor.Expressions
         /// </summary>
         private void ____Add_Property(List<ExpressionMember> eML)
         {
-            eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.Property, "property"));
+            eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.WritableProperty, "property"));
         }
 
         /// <summary>

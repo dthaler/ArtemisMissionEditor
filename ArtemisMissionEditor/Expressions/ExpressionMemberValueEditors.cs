@@ -29,7 +29,8 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor CreateType;
         public static ExpressionMemberValueEditor SetVariableCheck;
         public static ExpressionMemberValueEditor AIType;
-        public static ExpressionMemberValueEditor PropertyObject;
+        public static ExpressionMemberValueEditor ReadablePropertyObject;
+        public static ExpressionMemberValueEditor WritablePropertyObject;
         public static ExpressionMemberValueEditor PropertyFleet;
         public static ExpressionMemberValueEditor SkyboxIndex;
         public static ExpressionMemberValueEditor Difficulty;
@@ -83,6 +84,25 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor RaceKeys;
         public static ExpressionMemberValueEditor HullKeys;
         public static ExpressionMemberValueEditor VariableType;
+
+        private static void AddToPropertyDictionary(string xmlName, string menuItem, bool isReadOnly = false)
+        {
+            // We can't simply find the xmlName in the ExpressionMemberObjectProperty list since we need to initialize
+            // this before we initialize that list, which depends on getting the ExpressionMemberValueDescription instances
+            // from this class here.  So for now we require the caller to duplicate the information about which properties
+            // are read-only.
+            ReadablePropertyObject.AddToDictionary(xmlName, menuItem);
+            if (!isReadOnly)
+            {
+                WritablePropertyObject.AddToDictionary(xmlName, menuItem);
+            }
+        }
+
+        private static void AddPropertyMenuGroup(string menuGroup)
+        {
+            ReadablePropertyObject.NewMenuGroup(menuGroup);
+            WritablePropertyObject.NewMenuGroup(menuGroup);
+        }
 
         static ExpressionMemberValueEditors()
 		{
@@ -252,144 +272,146 @@ namespace ArtemisMissionEditor.Expressions
 
 			AIType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
 
-			PropertyObject = new ExpressionMemberValueEditor();
-            PropertyObject.AddToDictionary("coopAdjustmentValue", "Co-op Adjustment Value");
-            PropertyObject.AddToDictionary("nonPlayerWeapon", "Enemy Damage");
-            PropertyObject.AddToDictionary("nonPlayerShield", "Enemy Shield");
-            PropertyObject.AddToDictionary("nonPlayerSpeed", "Enemy Speed");
-            PropertyObject.AddToDictionary("commsObjectMasterVolume", "Game Comms Volume");
-            PropertyObject.AddToDictionary("musicObjectMasterVolume", "Game Music Volume");
-            PropertyObject.AddToDictionary("soundFXVolume", "Game Sound Volume");
-            PropertyObject.AddToDictionary("gameTimeLimit", "Game Time Limit");
-            PropertyObject.AddToDictionary("nebulaIsOpaque", "Nebula Hides From Sensors");
-            PropertyObject.AddToDictionary("networkTickSpeed", "Network Tick Speed");
-            PropertyObject.AddToDictionary("playerWeapon", "Player Damage");
-            PropertyObject.AddToDictionary("playerShields", "Player Shield");
-            PropertyObject.AddToDictionary("sensorSetting", "Sensor Range");
-            PropertyObject.NewMenuGroup("Game Properties");
+            ReadablePropertyObject = new ExpressionMemberValueEditor();
+            WritablePropertyObject = new ExpressionMemberValueEditor();
+            AddToPropertyDictionary("coopAdjustmentValue", "Co-op Adjustment Value");
+            AddToPropertyDictionary("nonPlayerWeapon", "Enemy Damage");
+            AddToPropertyDictionary("nonPlayerShield", "Enemy Shield");
+            AddToPropertyDictionary("nonPlayerSpeed", "Enemy Speed");
+            AddToPropertyDictionary("commsObjectMasterVolume", "Game Comms Volume");
+            AddToPropertyDictionary("musicObjectMasterVolume", "Game Music Volume");
+            AddToPropertyDictionary("soundFXVolume", "Game Sound Volume");
+            AddToPropertyDictionary("gameTimeLimit", "Game Time Limit");
+            AddToPropertyDictionary("nebulaIsOpaque", "Nebula Hides From Sensors");
+            AddToPropertyDictionary("networkTickSpeed", "Network Tick Speed");
+            AddToPropertyDictionary("playerWeapon", "Player Damage");
+            AddToPropertyDictionary("playerShields", "Player Shield");
+            AddToPropertyDictionary("sensorSetting", "Sensor Range");
+            AddPropertyMenuGroup("Game Properties");
 
-            PropertyObject.AddToDictionary("positionX", "positionX");
-			PropertyObject.AddToDictionary("positionY", "positionY");
-			PropertyObject.AddToDictionary("positionZ", "positionZ");
-			PropertyObject.AddToDictionary("deltaX", "deltaX");
-			PropertyObject.AddToDictionary("deltaY", "deltaY");
-			PropertyObject.AddToDictionary("deltaZ", "deltaZ");
-			PropertyObject.AddToDictionary("angle", "angle");
-			PropertyObject.AddToDictionary("pitch", "pitch");
-			PropertyObject.AddToDictionary("roll", "roll");
-			PropertyObject.AddToDictionary("sideValue", "sideValue");
-			PropertyObject.AddToDictionary("isTagged", "isTagged");
-			PropertyObject.AddToDictionary("tagOwnerSide", "tagOwnerSide");
-			PropertyObject.NewMenuGroup("All objects");
+            AddToPropertyDictionary("positionX", "positionX");
+            AddToPropertyDictionary("positionY", "positionY");
+            AddToPropertyDictionary("positionZ", "positionZ");
+            AddToPropertyDictionary("deltaX", "deltaX");
+            AddToPropertyDictionary("deltaY", "deltaY");
+            AddToPropertyDictionary("deltaZ", "deltaZ");
+            AddToPropertyDictionary("angle", "angle");
+            AddToPropertyDictionary("pitch", "pitch");
+            AddToPropertyDictionary("roll", "roll");
+            AddToPropertyDictionary("sideValue", "sideValue");
+            AddToPropertyDictionary("isTagged", "isTagged");
+            AddToPropertyDictionary("tagOwnerSide", "tagOwnerSide");
+            AddPropertyMenuGroup("All objects");
 
-			PropertyObject.AddToDictionary("blocksShotFlag", "blocksShotFlag");
-			PropertyObject.AddToDictionary("pushRadius", "pushRadius");
-			PropertyObject.AddToDictionary("pitchDelta", "pitchDelta");
-			PropertyObject.AddToDictionary("rollDelta", "rollDelta");
-			PropertyObject.AddToDictionary("angleDelta", "angleDelta");
-			PropertyObject.AddToDictionary("artScale", "artScale");
-			PropertyObject.NewMenuGroup("Generic meshes");
+            AddToPropertyDictionary("blocksShotFlag", "blocksShotFlag");
+            AddToPropertyDictionary("pushRadius", "pushRadius");
+            AddToPropertyDictionary("pitchDelta", "pitchDelta");
+            AddToPropertyDictionary("rollDelta", "rollDelta");
+            AddToPropertyDictionary("angleDelta", "angleDelta");
+            AddToPropertyDictionary("artScale", "artScale");
+            AddPropertyMenuGroup("Generic meshes");
 
-			PropertyObject.AddToDictionary("shieldState", "shieldState");
-			PropertyObject.AddToDictionary("canBuild", "canBuild");
-			PropertyObject.AddToDictionary("missileStoresHoming", "missileStoresHoming");
-			PropertyObject.AddToDictionary("missileStoresNuke", "missileStoresNuke");
-			PropertyObject.AddToDictionary("missileStoresMine", "missileStoresMine");
-			PropertyObject.AddToDictionary("missileStoresEMP", "missileStoresEMP");
-            PropertyObject.AddToDictionary("missileStoresPShock", "missileStoresPShock");
-            PropertyObject.AddToDictionary("missileStoresBeacon", "missileStoresBeacon");
-            PropertyObject.AddToDictionary("missileStoresProbe", "missileStoresProbe");
-            PropertyObject.AddToDictionary("missileStoresTag", "missileStoresTag");
-            PropertyObject.NewMenuGroup("Stations");
+            AddToPropertyDictionary("shieldState", "shieldState");
+            AddToPropertyDictionary("canBuild", "canBuild");
+            AddToPropertyDictionary("missileStoresHoming", "missileStoresHoming");
+            AddToPropertyDictionary("missileStoresNuke", "missileStoresNuke");
+            AddToPropertyDictionary("missileStoresMine", "missileStoresMine");
+            AddToPropertyDictionary("missileStoresEMP", "missileStoresEMP");
+            AddToPropertyDictionary("missileStoresPShock", "missileStoresPShock");
+            AddToPropertyDictionary("missileStoresBeacon", "missileStoresBeacon");
+            AddToPropertyDictionary("missileStoresProbe", "missileStoresProbe");
+            AddToPropertyDictionary("missileStoresTag", "missileStoresTag");
+            AddPropertyMenuGroup("Stations");
 
-			PropertyObject.AddToDictionary("throttle", "throttle");
-			PropertyObject.AddToDictionary("steering", "steering");
-			PropertyObject.AddToDictionary("topSpeed", "topSpeed");
-			PropertyObject.AddToDictionary("turnRate", "turnRate");
-			PropertyObject.AddToDictionary("shieldStateFront", "shieldStateFront");
-			PropertyObject.AddToDictionary("shieldMaxStateFront", "shieldMaxStateFront");
-			PropertyObject.AddToDictionary("shieldStateBack", "shieldStateBack");
-			PropertyObject.AddToDictionary("shieldMaxStateBack", "shieldMaxStateBack");
-			PropertyObject.AddToDictionary("shieldsOn", "shieldsOn");
-			PropertyObject.AddToDictionary("triggersMines", "triggersMines");
-			PropertyObject.AddToDictionary("systemDamageBeam", "systemDamageBeam");
-			PropertyObject.AddToDictionary("systemDamageTorpedo", "systemDamageTorpedo");
-			PropertyObject.AddToDictionary("systemDamageTactical", "systemDamageTactical");
-			PropertyObject.AddToDictionary("systemDamageTurning", "systemDamageTurning");
-			PropertyObject.AddToDictionary("systemDamageImpulse", "systemDamageImpulse");
-			PropertyObject.AddToDictionary("systemDamageWarp", "systemDamageWarp");
-			PropertyObject.AddToDictionary("systemDamageFrontShield", "systemDamageFrontShield");
-			PropertyObject.AddToDictionary("systemDamageBackShield", "systemDamageBackShield");
-			PropertyObject.AddToDictionary("shieldBandStrength0", "shieldBandStrength0");
-			PropertyObject.AddToDictionary("shieldBandStrength1", "shieldBandStrength1");
-			PropertyObject.AddToDictionary("shieldBandStrength2", "shieldBandStrength2");
-			PropertyObject.AddToDictionary("shieldBandStrength3", "shieldBandStrength3");
-			PropertyObject.AddToDictionary("shieldBandStrength4", "shieldBandStrength4");
-			PropertyObject.NewMenuGroup("Shielded ships");
+            AddToPropertyDictionary("throttle", "throttle");
+            AddToPropertyDictionary("steering", "steering");
+            AddToPropertyDictionary("topSpeed", "topSpeed");
+            AddToPropertyDictionary("turnRate", "turnRate");
+            AddToPropertyDictionary("shieldStateFront", "shieldStateFront");
+            AddToPropertyDictionary("shieldMaxStateFront", "shieldMaxStateFront");
+            AddToPropertyDictionary("shieldStateBack", "shieldStateBack");
+            AddToPropertyDictionary("shieldMaxStateBack", "shieldMaxStateBack");
+            AddToPropertyDictionary("shieldsOn", "shieldsOn");
+            AddToPropertyDictionary("triggersMines", "triggersMines");
+            AddToPropertyDictionary("systemDamageBeam", "systemDamageBeam");
+            AddToPropertyDictionary("systemDamageTorpedo", "systemDamageTorpedo");
+            AddToPropertyDictionary("systemDamageTactical", "systemDamageTactical");
+            AddToPropertyDictionary("systemDamageTurning", "systemDamageTurning");
+            AddToPropertyDictionary("systemDamageImpulse", "systemDamageImpulse");
+            AddToPropertyDictionary("systemDamageWarp", "systemDamageWarp");
+            AddToPropertyDictionary("systemDamageFrontShield", "systemDamageFrontShield");
+            AddToPropertyDictionary("systemDamageBackShield", "systemDamageBackShield");
+            AddToPropertyDictionary("shieldBandStrength0", "shieldBandStrength0");
+            AddToPropertyDictionary("shieldBandStrength1", "shieldBandStrength1");
+            AddToPropertyDictionary("shieldBandStrength2", "shieldBandStrength2");
+            AddToPropertyDictionary("shieldBandStrength3", "shieldBandStrength3");
+            AddToPropertyDictionary("shieldBandStrength4", "shieldBandStrength4");
+            AddPropertyMenuGroup("Shielded ships");
 
-           // PropertyObject.AddToDictionary("setShipSide", "Set Ship Side");
-            PropertyObject.AddToDictionary("targetPointX", "targetPointX");
-			PropertyObject.AddToDictionary("targetPointY", "targetPointY");
-			PropertyObject.AddToDictionary("targetPointZ", "targetPointZ");
-			PropertyObject.AddToDictionary("hasSurrendered", "hasSurrendered");
-            PropertyObject.AddToDictionary("tauntImmunityIndex", "tauntImmunityIndex");
-            PropertyObject.AddToDictionary("eliteAIType", "eliteAIType");
-			PropertyObject.AddToDictionary("specialAbilityBits", "specialAbilityBits");
-			PropertyObject.AddToDictionary("specialAbilityState", "specialAbilityState");
-			PropertyObject.AddToDictionary("surrenderChance", "surrenderChance");
-			PropertyObject.NewMenuGroup("Enemies");
+            // AddToPropertyDictionary("setShipSide", "Set Ship Side");
+            AddToPropertyDictionary("targetPointX", "targetPointX");
+            AddToPropertyDictionary("targetPointY", "targetPointY");
+            AddToPropertyDictionary("targetPointZ", "targetPointZ");
+            AddToPropertyDictionary("hasSurrendered", "hasSurrendered");
+            AddToPropertyDictionary("tauntImmunityIndex", "tauntImmunityIndex");
+            AddToPropertyDictionary("eliteAIType", "eliteAIType");
+            AddToPropertyDictionary("specialAbilityBits", "specialAbilityBits", true);
+            AddToPropertyDictionary("specialAbilityState", "specialAbilityState", true);
+            AddToPropertyDictionary("surrenderChance", "surrenderChance");
+            AddPropertyMenuGroup("Enemies");
 
-			PropertyObject.AddToDictionary("exitPointX", "exitPointX");
-			PropertyObject.AddToDictionary("exitPointY", "exitPointY");
-			PropertyObject.AddToDictionary("exitPointZ", "exitPointZ");
-			PropertyObject.NewMenuGroup("Neutrals");
+            AddToPropertyDictionary("exitPointX", "exitPointX");
+            AddToPropertyDictionary("exitPointY", "exitPointY");
+            AddToPropertyDictionary("exitPointZ", "exitPointZ");
+            AddPropertyMenuGroup("Neutrals");
 
-			PropertyObject.AddToDictionary("countHoming", "countHoming");
-			PropertyObject.AddToDictionary("countNuke", "countNuke");
-			PropertyObject.AddToDictionary("countMine", "countMine");
-			PropertyObject.AddToDictionary("countEMP", "countEMP");
-			PropertyObject.AddToDictionary("countShk", "countShk");
-			PropertyObject.AddToDictionary("countBea", "countBea");
-			PropertyObject.AddToDictionary("countPro", "countPro");
-			PropertyObject.AddToDictionary("countTag", "countTag");
-			PropertyObject.AddToDictionary("energy", "energy");
-			PropertyObject.AddToDictionary("warpState", "warpState");
-			PropertyObject.AddToDictionary("currentRealSpeed", "currentRealSpeed");
-			PropertyObject.AddToDictionary("totalCoolant", "totalCoolant");
+            AddToPropertyDictionary("countHoming", "countHoming");
+            AddToPropertyDictionary("countNuke", "countNuke");
+            AddToPropertyDictionary("countMine", "countMine");
+            AddToPropertyDictionary("countEMP", "countEMP");
+            AddToPropertyDictionary("countShk", "countShk");
+            AddToPropertyDictionary("countBea", "countBea");
+            AddToPropertyDictionary("countPro", "countPro");
+            AddToPropertyDictionary("countTag", "countTag");
+            AddToPropertyDictionary("energy", "energy");
+            AddToPropertyDictionary("warpState", "warpState");
+            AddToPropertyDictionary("currentRealSpeed", "currentRealSpeed", true);
+            AddToPropertyDictionary("totalCoolant", "totalCoolant");
 
             // Player properties added in Artemis v2.6.3.
-			PropertyObject.AddToDictionary("systemCurCoolantBeam", "systemCurCoolantBeam");
-			PropertyObject.AddToDictionary("systemCurCoolantTorpedo", "systemCurCoolantTorpedo");
-			PropertyObject.AddToDictionary("systemCurCoolantTactical", "systemCurCoolantTactical");
-			PropertyObject.AddToDictionary("systemCurCoolantTurning", "systemCurCoolantTurning");
-			PropertyObject.AddToDictionary("systemCurCoolantImpulse", "systemCurCoolantImpulse");
-			PropertyObject.AddToDictionary("systemCurCoolantWarp", "systemCurCoolantWarp");
-			PropertyObject.AddToDictionary("systemCurCoolantFrontShield", "systemCurCoolantFrontShield");
-			PropertyObject.AddToDictionary("systemCurCoolantBackShield", "systemCurCoolantBackShield");
+            AddToPropertyDictionary("systemCurCoolantBeam", "systemCurCoolantBeam");
+            AddToPropertyDictionary("systemCurCoolantTorpedo", "systemCurCoolantTorpedo");
+            AddToPropertyDictionary("systemCurCoolantTactical", "systemCurCoolantTactical");
+            AddToPropertyDictionary("systemCurCoolantTurning", "systemCurCoolantTurning");
+            AddToPropertyDictionary("systemCurCoolantImpulse", "systemCurCoolantImpulse");
+            AddToPropertyDictionary("systemCurCoolantWarp", "systemCurCoolantWarp");
+            AddToPropertyDictionary("systemCurCoolantFrontShield", "systemCurCoolantFrontShield");
+            AddToPropertyDictionary("systemCurCoolantBackShield", "systemCurCoolantBackShield");
 
-			PropertyObject.AddToDictionary("systemCurHeatBeam", "systemCurHeatBeam");
-			PropertyObject.AddToDictionary("systemCurHeatTorpedo", "systemCurHeatTorpedo");
-			PropertyObject.AddToDictionary("systemCurHeatTactical", "systemCurHeatTactical");
-			PropertyObject.AddToDictionary("systemCurHeatTurning", "systemCurHeatTurning");
-			PropertyObject.AddToDictionary("systemCurHeatImpulse", "systemCurHeatImpulse");
-			PropertyObject.AddToDictionary("systemCurHeatWarp", "systemCurHeatWarp");
-			PropertyObject.AddToDictionary("systemCurHeatFrontShield", "systemCurHeatFrontShield");
-			PropertyObject.AddToDictionary("systemCurHeatBackShield", "systemCurHeatBackShield");
+            AddToPropertyDictionary("systemCurHeatBeam", "systemCurHeatBeam");
+            AddToPropertyDictionary("systemCurHeatTorpedo", "systemCurHeatTorpedo");
+            AddToPropertyDictionary("systemCurHeatTactical", "systemCurHeatTactical");
+            AddToPropertyDictionary("systemCurHeatTurning", "systemCurHeatTurning");
+            AddToPropertyDictionary("systemCurHeatImpulse", "systemCurHeatImpulse");
+            AddToPropertyDictionary("systemCurHeatWarp", "systemCurHeatWarp");
+            AddToPropertyDictionary("systemCurHeatFrontShield", "systemCurHeatFrontShield");
+            AddToPropertyDictionary("systemCurHeatBackShield", "systemCurHeatBackShield");
 
-			PropertyObject.AddToDictionary("systemCurEnergyBeam", "systemCurEnergyBeam");
-			PropertyObject.AddToDictionary("systemCurEnergyTorpedo", "systemCurEnergyTorpedo");
-			PropertyObject.AddToDictionary("systemCurEnergyTactical", "systemCurEnergyTactical");
-			PropertyObject.AddToDictionary("systemCurEnergyTurning", "systemCurEnergyTurning");
-			PropertyObject.AddToDictionary("systemCurEnergyImpulse", "systemCurEnergyImpulse");
-			PropertyObject.AddToDictionary("systemCurEnergyWarp", "systemCurEnergyWarp");
-			PropertyObject.AddToDictionary("systemCurEnergyFrontShield", "systemCurEnergyFrontShield");
-			PropertyObject.AddToDictionary("systemCurEnergyBackShield", "systemCurEnergyBackShield");
-			PropertyObject.NewMenuGroup("Players");
+            AddToPropertyDictionary("systemCurEnergyBeam", "systemCurEnergyBeam");
+            AddToPropertyDictionary("systemCurEnergyTorpedo", "systemCurEnergyTorpedo");
+            AddToPropertyDictionary("systemCurEnergyTactical", "systemCurEnergyTactical");
+            AddToPropertyDictionary("systemCurEnergyTurning", "systemCurEnergyTurning");
+            AddToPropertyDictionary("systemCurEnergyImpulse", "systemCurEnergyImpulse");
+            AddToPropertyDictionary("systemCurEnergyWarp", "systemCurEnergyWarp");
+            AddToPropertyDictionary("systemCurEnergyFrontShield", "systemCurEnergyFrontShield");
+            AddToPropertyDictionary("systemCurEnergyBackShield", "systemCurEnergyBackShield");
+            AddPropertyMenuGroup("Players");
 
-			PropertyObject.AddToDictionary("age", "age");
-			PropertyObject.NewMenuGroup("Monsters");
+            AddToPropertyDictionary("age", "age");
+            AddPropertyMenuGroup("Monsters");
 
-			PropertyObject.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
+            ReadablePropertyObject.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
+            WritablePropertyObject.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
 
 			PropertyFleet = new ExpressionMemberValueEditor();
 			PropertyFleet.AddToDictionary("fleetSpacing",   "spacing");
