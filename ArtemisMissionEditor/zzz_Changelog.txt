@@ -4,6 +4,8 @@ Version 2.7.4 [2018-March-24] (Dave Thaler, Scott Nalley)
 * Added monster "age" property
 * Added player_slot attribute to if_exists (but not if_not_exists, which doesn't work)
 * Added Potential Problems check for monster AI commands added to ships, and vice versa
+* Added specialAbility{Bits,State} properties which were renamed from eliteAbility{Bits,State}
+* Added ShldVamp to special ability bit choices
 * Made addto/copy/if_object_property commands correct property name casing if needed
 * Improved the display wording of several commands, including displaying units on some properties
 * Don't lose bad AI command names, just flag them as invalid
