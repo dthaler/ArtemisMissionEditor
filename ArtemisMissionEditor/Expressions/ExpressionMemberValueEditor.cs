@@ -285,26 +285,28 @@ namespace ArtemisMissionEditor.Expressions
             string result = "";
 
             if (value == null || !Helper.IntTryParse(value))
-                return "[NO]";
+                return "(None)";
 
             int bits = Helper.StringToInt(value);
 
-            if ((bits & 1) == 1) result += "[INV-MS] ";
-            if ((bits & 2) == 2) result += "[INV-LRS/TAC] ";
-            if ((bits & 4) == 4) result += "[CLOAK] ";
-            if ((bits & 8) == 8) result += "[HET] ";
-            if ((bits & 16) == 16) result += "[WARP] ";
-            if ((bits & 32) == 32) result += "[TELEPORT] ";
-            if ((bits & 64) == 64) result += "[TRACTOR] ";
-            if ((bits & 128) == 128) result += "[DRONE] ";
-            if ((bits & 256) == 256) result += "[ANTI-MINE] ";
-            if ((bits & 512) == 512) result += "[ANTI-TORP] ";
-            if ((bits & 1024) == 1024) result += "[ANTI-SHLD] ";
+            if ((bits & 1) == 1) result += "Stealth ";
+            if ((bits & 2) == 2) result += "LowVis ";
+            if ((bits & 4) == 4) result += "Cloak ";
+            if ((bits & 8) == 8) result += "HET ";
+            if ((bits & 16) == 16) result += "Warp ";
+            if ((bits & 32) == 32) result += "Teleport ";
+            if ((bits & 64) == 64) result += "Tractor ";
+            if ((bits & 128) == 128) result += "Drones ";
+            if ((bits & 256) == 256) result += "AntiMine ";
+            if ((bits & 512) == 512) result += "AntiTorp ";
+            if ((bits & 1024) == 1024) result += "ShldDrain ";
+            if ((bits & 2048) == 2048) result += "ShldVamp ";
 
             if (result.Length > 0)
-                return result.Substring(0, result.Length - 1);
+                return "(" + result.Substring(0, result.Length - 1) + ")";
             else
-                return "[NO]";
+                return "(None)";
+            
         }
 
         /// <summary>

@@ -237,7 +237,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD Bool_Yes_No =                new EMVD(EMVT.VarBool,      EMVB.StoredWhenFilled,  EMVE.DefaultBool,"no","yes",""," ");
         /// <summary> value for eliteAIType </summary>
         public static EMVD EliteAIType =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.EliteAIType,0,2,"\"","\" ");
-        /// <summary> value for eliteAbilityBits </summary>
+        /// <summary> value for specialAbilityBits </summary>
         public static EMVD EliteAbilityBits =           new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.EliteAbilityBits,0,null,""," ");
 
         /// <summary> float value with no trailing space </summary>

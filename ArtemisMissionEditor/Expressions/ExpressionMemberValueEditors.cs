@@ -334,8 +334,8 @@ namespace ArtemisMissionEditor.Expressions
 			PropertyObject.AddToDictionary("hasSurrendered", "hasSurrendered");
             PropertyObject.AddToDictionary("tauntImmunityIndex", "tauntImmunityIndex");
             PropertyObject.AddToDictionary("eliteAIType", "eliteAIType");
-			PropertyObject.AddToDictionary("eliteAbilityBits", "eliteAbilityBits");
-			PropertyObject.AddToDictionary("eliteAbilityState", "eliteAbilityState");
+			PropertyObject.AddToDictionary("specialAbilityBits", "specialAbilityBits");
+			PropertyObject.AddToDictionary("specialAbilityState", "specialAbilityState");
 			PropertyObject.AddToDictionary("surrenderChance", "surrenderChance");
 			PropertyObject.NewMenuGroup("Enemies");
 

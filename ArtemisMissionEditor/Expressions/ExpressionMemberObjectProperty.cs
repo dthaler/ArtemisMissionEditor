@@ -131,8 +131,10 @@ namespace ArtemisMissionEditor.Expressions
             new EMOP(EMVDS.NameEnemy, "hasSurrendered",     EMVDS.Bool_Yes_No),
             new EMOP(EMVDS.NameEnemy, "tauntImmunityIndex", EMVDS.tII1_3),
             new EMOP(EMVDS.NameEnemy, "eliteAIType",        EMVDS.EliteAIType),
-            new EMOP(EMVDS.NameEnemy, "eliteAbilityBits",   EMVDS.EliteAbilityBits),
-            new EMOP(EMVDS.NameEnemy, "eliteAbilityState",  EMVDS.Flt_NegInf_PosInf),
+            new EMOP(EMVDS.NameEnemy, "eliteAbilityBits",   EMVDS.EliteAbilityBits, null, "specialAbilityBits", true),
+            new EMOP(EMVDS.NameEnemy, "specialAbilityBits", EMVDS.EliteAbilityBits, null, null, true),
+            new EMOP(EMVDS.NameEnemy, "eliteAbilityState",  EMVDS.EliteAbilityBits, null, "specialAbilityState", true),
+            new EMOP(EMVDS.NameEnemy, "specialAbilityState",EMVDS.EliteAbilityBits, null, null, true),
             new EMOP(EMVDS.NameEnemy, "surrenderChance",    EMVDS.Int_0_100, "%"),
 
             // Neutral properties.
