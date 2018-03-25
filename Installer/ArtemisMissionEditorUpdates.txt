@@ -1,5 +1,36 @@
 ;aiu;
 
+[Update 2.7.4]
+Name=Artemis Mission Editor 2.7.4
+ProductVersion=2.7.4
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.4.msi
+Size=1592320
+ReleaseDate=24/03/2018
+MD5=9aa7b76b320df5f3d4387e7602203130
+ServerFileName=ArtemisMissionEditorInstaller.2.7.4.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.4.0
+Feature=Added Fighter console for popups and keypresses
+Feature1=Added ability to select monster names from a list when configuring AI commands
+Feature2=Added monster "age" property
+Feature3=Added player_slot attribute to if_exists (but not if_not_exists, which doesn't work)
+Feature4=Added specialAbility{Bits,State} properties which were renamed from eliteAbility{Bits,State}
+Feature5=Added ShldVamp to special ability bit choices
+Enhancement=Made Potential Problems check for writing to a read-only object property
+Enhancement1=Made Potential Problems check for monster AI commands added to ships, and vice versa
+Enhancement2=* Made addto/copy/if_object_property commands correct property name casing if needed
+Enhancement3=Improved the display wording of several commands, including displaying units on some properties
+Enhancement4=Don't lose bad AI command names, just flag them as invalid
+Enhancement5=Updated object property commands to only allow choosing object types that the property applies to
+Enhancement6=Only allow selecting "with player slot" on properties that can affect players
+Enhancement7=Reorganized brain stack block selection by type for easier navigation
+BugFix=Fixed crash if configure incoming_comms_text without a type
+BugFix1=Fixed bug where named objects positions weren't up to date on space map after saving / opening mission
+BugFix2=Updated the forum link in the About dialog
+BugFix3=Fixed some typos in the Help dialog
+Replaces=All
+
 [Update 2.7.3]
 ProductVersion=2.7.3
 Name=Artemis Mission Editor 2.7.3
@@ -21,8 +52,8 @@ BugFix3=Fixed bug where "Potential Problems" would treat expressions with unary 
 Replaces=All
 
 [Update 2.7.2]
-ProductVersion=2.7.2
 Name=Artemis Mission Editor 2.7.2
+ProductVersion=2.7.2
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.2.msi
 Size=1591808
 ReleaseDate=05/03/2018
@@ -48,8 +79,8 @@ BugFix2=Fixed display of if_fleet_count when countSurrendered is absent
 Replaces=All
 
 [Update 2.7.1]
-ProductVersion=2.7.1
 Name=Artemis Mission Editor 2.7.1
+ProductVersion=2.7.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.1.msi
 Size=1590272
 ReleaseDate=24/02/2018
@@ -69,8 +100,8 @@ BugFix1=Remove player_slot from set_damcon_members since it doesn't work
 Replaces=All
 
 [Update 2.7]
-Name=Artemis Mission Editor 2.7
 ProductVersion=2.7
+Name=Artemis Mission Editor 2.7
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.msi
 Size=1589248
 ReleaseDate=19/02/2018
@@ -113,8 +144,8 @@ BugFix1=Cleaned up code so it builds without any compiler warnings
 Replaces=All
 
 [Update 2.6.1]
-Name=Artemis Mission Editor 2.6.1
 ProductVersion=2.6.1
+Name=Artemis Mission Editor 2.6.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.1.msi
 Size=1585664
 ReleaseDate=16/01/2018
@@ -130,8 +161,8 @@ BugFix= Fixed some more typos
 Replaces=All
 
 [Update 2.6.0.1]
-Name=Artemis Mission Editor 2.6.0.1
 ProductVersion=2.6.0.1
+Name=Artemis Mission Editor 2.6.0.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.0.1.msi
 Size=1583616
 ReleaseDate=26/12/2017
@@ -150,8 +181,8 @@ BugFix2=Fixed bug in update available detection
 Replaces=All
 
 [Update 2.6]
-ProductVersion=2.6.0.0
 Name=Artemis Mission Editor 2.6
+ProductVersion=2.6.0.0
 URL=http://www.example.com/downloads/ArtemisMissionEditorInstaller.2.6.msi
 Size=1583616
 MD5=72deef9dc1ae805094af04d469c065f4

@@ -3,9 +3,10 @@ Version 2.7.4 [2018-March-24] (Dave Thaler, Scott Nalley)
 * Added ability to select monster names from a list when configuring AI commands
 * Added monster "age" property
 * Added player_slot attribute to if_exists (but not if_not_exists, which doesn't work)
-* Added Potential Problems check for monster AI commands added to ships, and vice versa
 * Added specialAbility{Bits,State} properties which were renamed from eliteAbility{Bits,State}
 * Added ShldVamp to special ability bit choices
+* Added Potential Problems check for writing to a read-only object property
+* Added Potential Problems check for monster AI commands added to ships, and vice versa
 * Made addto/copy/if_object_property commands correct property name casing if needed
 * Improved the display wording of several commands, including displaying units on some properties
 * Don't lose bad AI command names, just flag them as invalid
@@ -15,6 +16,7 @@ Version 2.7.4 [2018-March-24] (Dave Thaler, Scott Nalley)
 * Fixed crash if configure incoming_comms_text without a type
 * Fixed bug where named objects positions weren't up to date on space map after saving / opening mission
 * Updated the forum link in the About dialog
+* Fixed some typos in the Help dialog
 ----------------------
 Version 2.7.3 [2018-March-14] (Dave Thaler)
 * Added Drones ability to set_special
