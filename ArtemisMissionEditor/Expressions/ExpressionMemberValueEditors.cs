@@ -204,14 +204,14 @@ namespace ArtemisMissionEditor.Expressions
 			XmlNameConditionCheck.AddToDictionary("if_timer_finished", "Timer", "Timer has finished");
 			XmlNameConditionCheck.AddToDictionary("if_damcon_members", "Amount of DamCon members");
 			XmlNameConditionCheck.AddToDictionary("if_fleet_count", "Ship count", "Ship count (in a fleet)");
-			XmlNameConditionCheck.AddToDictionary("if_docked", "Player ship", "Player ship is docked");
+			XmlNameConditionCheck.AddToDictionary("if_docked", "Player ship", "Player ship is/isn't docked");
 			XmlNameConditionCheck.AddToDictionary("if_in_nebula", "Player ship", "Player ship is in nebula");
 			XmlNameConditionCheck.AddToDictionary("if_player_is_targeting", "Player ship", "Player ship is targeting");
 			XmlNameConditionCheck.AddToDictionary("if_monster_tag_matches", "Monster", "Monster has tag");
 			XmlNameConditionCheck.AddToDictionary("if_object_tag_matches", "AI ship", "AI ship has tag");
 			XmlNameConditionCheck.AddToDictionary("if_external_program_active", "External program", "External program is running");
 			XmlNameConditionCheck.AddToDictionary("if_external_program_finished", "External program", "External program has finished");
-			XmlNameConditionCheck.AddToDictionary("<existence>", "Object", "Object exists / doesn't");
+			XmlNameConditionCheck.AddToDictionary("<existence>", "Object", "Object exists/doesn't");
             XmlNameConditionCheck.AddToDictionary("<location>", "Object", "Object is located");
             XmlNameConditionCheck.AddToDictionary("if_object_property", "Property", "Object property");
 			XmlNameConditionCheck.AddToDictionary("if_distance", "Distance", "Distance between objects");

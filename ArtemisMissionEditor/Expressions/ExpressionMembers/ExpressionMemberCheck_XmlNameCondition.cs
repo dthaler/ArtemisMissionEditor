@@ -167,7 +167,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML = this.Add("if_docked");
 			eML.Add(new ExpressionMember("named "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NamePlayer, "player_name", false));
-			eML.Add(new ExpressionMember("is "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Is_Isnt, "not"));
 			eML.Add(new ExpressionMember("docked "));
 			eML.Add(new ExpressionMember("with "));
 			eML.Add(new ExpressionMember("station "));
