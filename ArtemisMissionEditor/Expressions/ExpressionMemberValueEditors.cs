@@ -408,9 +408,6 @@ namespace ArtemisMissionEditor.Expressions
             AddToPropertyDictionary("systemCurEnergyBackShield", "systemCurEnergyBackShield");
             AddPropertyMenuGroup("Players");
 
-            AddToPropertyDictionary("age", "age");
-            AddPropertyMenuGroup("Monsters");
-
             ReadablePropertyObject.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
             WritablePropertyObject.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
 

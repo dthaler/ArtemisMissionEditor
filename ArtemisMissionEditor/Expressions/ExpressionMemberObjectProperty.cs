@@ -181,11 +181,7 @@ namespace ArtemisMissionEditor.Expressions
             new EMOP(EMVDS.NamePlayer, "systemCurEnergyWarp",         EMVDS.Flt_NegInf_PosInf),
             new EMOP(EMVDS.NamePlayer, "systemCurEnergyFrontShield",  EMVDS.Flt_NegInf_PosInf),
             new EMOP(EMVDS.NamePlayer, "systemCurEnergyBackShield",   EMVDS.Flt_NegInf_PosInf),
-
-            // Monster properties.
-            new EMOP(EMVDS.NameMonster, "age", EMVDS.MonsterAge),
-        }
-        ;
+        };
 
         public static ExpressionMemberObjectProperty Find(string name)
         {

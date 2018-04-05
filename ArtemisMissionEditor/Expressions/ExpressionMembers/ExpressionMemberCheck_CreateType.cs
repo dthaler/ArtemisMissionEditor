@@ -102,6 +102,9 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("type "));
             eML.Add(new ExpressionMember("<SELECT>", ExpressionMemberValueDescriptions.MonsterType, "monsterType"));
             eML.Add(new ExpressionMember(" "));
+            eML.Add(new ExpressionMember("and "));
+            eML.Add(new ExpressionMember("age "));
+            eML.Add(new ExpressionMember("<SELECT>", ExpressionMemberValueDescriptions.MonsterAge, "age"));
         }
 
         private void ____Add_Angle(List<ExpressionMember> eML, bool nameMandatory = false)
