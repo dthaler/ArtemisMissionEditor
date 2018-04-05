@@ -155,6 +155,7 @@ namespace ArtemisMissionEditor.Expressions
             new EMOP(EMVDS.NamePlayer, "energy",                      EMVDS.Int_0_PosInf),
             new EMOP(EMVDS.NamePlayer, "warpState",                   EMVDS.Int_0_4),
             new EMOP(EMVDS.NamePlayer, "currentRealSpeed",            EMVDS.Flt_NegInf_PosInf, null, null, true),
+            new EMOP(EMVDS.NamePlayer, "pirateRepWithStations",       EMVDS.Int_NegInf_PosInf),
             new EMOP(EMVDS.NamePlayer, "totalCoolant",                EMVDS.Int_0_PosInf),
             new EMOP(EMVDS.NamePlayer, "systemCurCoolantBeam",        EMVDS.Int_0_PosInf),
             new EMOP(EMVDS.NamePlayer, "systemCurCoolantTorpedo",     EMVDS.Int_0_PosInf),

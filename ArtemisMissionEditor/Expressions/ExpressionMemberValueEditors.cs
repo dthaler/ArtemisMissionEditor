@@ -376,6 +376,7 @@ namespace ArtemisMissionEditor.Expressions
             AddToPropertyDictionary("energy", "energy");
             AddToPropertyDictionary("warpState", "warpState");
             AddToPropertyDictionary("currentRealSpeed", "currentRealSpeed", true);
+            AddToPropertyDictionary("pirateRepWithStations", "pirateRepWithStations");
             AddToPropertyDictionary("totalCoolant", "totalCoolant");
 
             // Player properties added in Artemis v2.6.3.
