@@ -351,12 +351,22 @@ namespace ArtemisMissionEditor.Expressions
 
             eML = this.Add("<MONSTER_RELEASE_PIRANHAS>");
             ____Add_Type(eML);
+            eML.Add(new ExpressionMember("with "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Count, "value3"));
+            eML.Add(new ExpressionMember("piranhas "));
+            eML.Add(new ExpressionMember("in "));
+            eML.Add(new ExpressionMember("pod "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.PodNumber, "value4"));
             eML.Add(new ExpressionMember("if "));
             eML.Add(new ExpressionMember("something "));
+            eML.Add(new ExpressionMember("not "));
+            eML.Add(new ExpressionMember("on "));
+            eML.Add(new ExpressionMember("side "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "value1"));
             eML.Add(new ExpressionMember("comes "));
             eML.Add(new ExpressionMember("closer "));
             eML.Add(new ExpressionMember("than "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value2", true));
             eML.Add(new ExpressionMember("\" "));
             ____Add_Name(eML, ExpressionMemberValueDescriptions.NameMonster);
 
