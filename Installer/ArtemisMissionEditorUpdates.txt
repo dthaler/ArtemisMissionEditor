@@ -1,5 +1,24 @@
 ;aiu;
 
+[Update 2.7.5]
+Name=Artemis Mission Editor 2.7.5
+ProductVersion=2.7.5
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.5.msi
+Size=1592320
+ReleaseDate=05/04/2018
+MD5=ef3daa2e25d9f5ce336ddb2be831c644
+ServerFileName=ArtemisMissionEditorInstaller.2.7.5.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.5.0
+Feature=Added pirateRepWithStations player object property
+Feature1=Added monster "age" as a create attribute (not an object property)
+Feature2=Added "not" attribute on if_docked
+Feature3=Added RELEASE_PIRANHAS parameters
+Enhancement=Made play_sound_now file path be relative to Artemis directory now
+Enhancement1=List numeric properties in alphabetical order in menus
+Replaces=All
+
 [Update 2.7.4]
 Name=Artemis Mission Editor 2.7.4
 ProductVersion=2.7.4
@@ -144,8 +163,8 @@ BugFix1=Cleaned up code so it builds without any compiler warnings
 Replaces=All
 
 [Update 2.6.1]
-ProductVersion=2.6.1
 Name=Artemis Mission Editor 2.6.1
+ProductVersion=2.6.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.1.msi
 Size=1585664
 ReleaseDate=16/01/2018

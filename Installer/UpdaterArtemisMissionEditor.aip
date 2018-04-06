@@ -55,8 +55,8 @@
     <ROW Section="Update 2.6.2" Key="Enhancement" Value="Many improvements to &quot;Potential Problems&quot; checking"/>
     <ROW Section="Update 2.6.2" Key="BugFix" Value="Fixed some more typos&#13;&#10;Cleaned up code so it builds without any compiler warnings"/>
     <ROW Section="Update 2.6.2" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1"/>
-    <ROW Section="Update 2.7" Key="Name" Value="Artemis Mission Editor 2.7"/>
     <ROW Section="Update 2.7" Key="ProductVersion" Value="2.7"/>
+    <ROW Section="Update 2.7" Key="Name" Value="Artemis Mission Editor 2.7"/>
     <ROW Section="Update 2.7" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.msi"/>
     <ROW Section="Update 2.7" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.msi"/>
     <ROW Section="Update 2.7" Key="ReleaseDate" Value="19539"/>
@@ -69,8 +69,8 @@
     <ROW Section="Update 2.7" Key="Enhancement" Value="More improvements to &quot;Potential Problems&quot; checking"/>
     <ROW Section="Update 2.7" Key="BugFix" Value="Subtitles are now correctly marked as optional in big_message&#13;&#10;Preserve the string values of use_gm_position and use_gm_selection attributes&#13;&#10;Don&apos;t lose integer attribute when setting a variable to a random int&#13;&#10;Corrected display of DEFEND ai block arguments"/>
     <ROW Section="Update 2.7" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2"/>
-    <ROW Section="Update 2.7.1" Key="ProductVersion" Value="2.7.1"/>
     <ROW Section="Update 2.7.1" Key="Name" Value="Artemis Mission Editor 2.7.1"/>
+    <ROW Section="Update 2.7.1" Key="ProductVersion" Value="2.7.1"/>
     <ROW Section="Update 2.7.1" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.1.msi"/>
     <ROW Section="Update 2.7.1" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.1.msi"/>
     <ROW Section="Update 2.7.1" Key="ReleaseDate" Value="19544"/>
@@ -83,8 +83,8 @@
     <ROW Section="Update 2.7.1" Key="Enhancement" Value="Convert obsolete values: ELITE_AI to SPCL_AI, countECM to countEMP, missileStoresECM to missileStoresEMP&#13;&#10;Convert incoming_comms_text &quot;side&quot; to &quot;sideValue&quot;&#13;&#10;More improvements to &quot;Potential Problems&quot; checking"/>
     <ROW Section="Update 2.7.1" Key="BugFix" Value="For actions/conditions that affect AI ships or scannable objects, only show the object types that are allowed&#13;&#10;Remove player_slot from set_damcon_members since it doesn&apos;t work"/>
     <ROW Section="Update 2.7.1" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7"/>
-    <ROW Section="Update 2.7.2" Key="ProductVersion" Value="2.7.2"/>
     <ROW Section="Update 2.7.2" Key="Name" Value="Artemis Mission Editor 2.7.2"/>
+    <ROW Section="Update 2.7.2" Key="ProductVersion" Value="2.7.2"/>
     <ROW Section="Update 2.7.2" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.2.msi"/>
     <ROW Section="Update 2.7.2" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.2.msi"/>
     <ROW Section="Update 2.7.2" Key="ReleaseDate" Value="19557"/>
@@ -124,6 +124,19 @@
     <ROW Section="Update 2.7.4" Key="Enhancement" Value="Made Potential Problems check for writing to a read-only object property&#13;&#10;Made Potential Problems check for monster AI commands added to ships, and vice versa&#13;&#10;* Made addto/copy/if_object_property commands correct property name casing if needed&#13;&#10;Improved the display wording of several commands, including displaying units on some properties&#13;&#10;Don&apos;t lose bad AI command names, just flag them as invalid&#13;&#10;Updated object property commands to only allow choosing object types that the property applies to&#13;&#10;Only allow selecting &quot;with player slot&quot; on properties that can affect players&#13;&#10;Reorganized brain stack block selection by type for easier navigation&#13;&#10;"/>
     <ROW Section="Update 2.7.4" Key="BugFix" Value="Fixed crash if configure incoming_comms_text without a type&#13;&#10;Fixed bug where named objects positions weren&apos;t up to date on space map after saving / opening mission&#13;&#10;Updated the forum link in the About dialog&#13;&#10;Fixed some typos in the Help dialog"/>
     <ROW Section="Update 2.7.4" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1;Update 2.7.2;Update 2.7.3"/>
+    <ROW Section="Update 2.7.5" Key="Name" Value="Artemis Mission Editor 2.7.5"/>
+    <ROW Section="Update 2.7.5" Key="ProductVersion" Value="2.7.5"/>
+    <ROW Section="Update 2.7.5" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.5.msi"/>
+    <ROW Section="Update 2.7.5" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.5.msi"/>
+    <ROW Section="Update 2.7.5" Key="ReleaseDate" Value="19589"/>
+    <ROW Section="Update 2.7.5" Key="MD5" Value="ArtemisMissionEditorInstaller.2.7.5.msi"/>
+    <ROW Section="Update 2.7.5" Key="ServerFileName" Value="ArtemisMissionEditorInstaller.2.7.5.msi"/>
+    <ROW Section="Update 2.7.5" Key="Flags" Value="Critical"/>
+    <ROW Section="Update 2.7.5" Key="FilePath" Value="[APPDIR]ArtemisMissionEditor.exe"/>
+    <ROW Section="Update 2.7.5" Key="Version" Value="2.7.5.0"/>
+    <ROW Section="Update 2.7.5" Key="Feature" Value="Added pirateRepWithStations player object property&#13;&#10;Added monster &quot;age&quot; as a create attribute (not an object property)&#13;&#10;Added &quot;not&quot; attribute on if_docked&#13;&#10;Added RELEASE_PIRANHAS parameters"/>
+    <ROW Section="Update 2.7.5" Key="Enhancement" Value="Made play_sound_now file path be relative to Artemis directory now&#13;&#10;List numeric properties in alphabetical order in menus"/>
+    <ROW Section="Update 2.7.5" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1;Update 2.7.2;Update 2.7.3;Update 2.7.4"/>
     <ATTRIBUTE name="OutputFileName" value="ArtemisMissionEditorUpdates.txt"/>
     <ATTRIBUTE name="OutputFolder" value="."/>
   </COMPONENT>
