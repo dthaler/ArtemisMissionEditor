@@ -194,7 +194,7 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> "fileName" from [play_sound_now] </summary>
         public static EMVD SoundFileName =              new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.PathEditor,
                                                         "WAVE Audio Files|*.wav|All Files|*.*;Select sound file",
-                                                        Forms.PathRelativityMode.RelativeToMissionFolder, "\"", "\" ");
+                                                        Forms.PathRelativityMode.RelativeToArtemisFolder, "\"", "\" ");
         /// <summary> "from" from [incoming_message] </summary>
         public static EMVD MessageFrom =                new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DefaultString,null,null,"\"","\" ");
         /// <summary> "mediaType" from [incoming_message] </summary>
