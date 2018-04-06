@@ -1,3 +1,11 @@
+Version 2.7.5 [2018-April-5] (Dave Thaler)
+* Added pirateRepWithStations player object property
+* Added monster "age" as a create attribute (not an object property)
+* Added "not" attribute on if_docked
+* Added RELEASE_PIRANHAS parameters
+* Made play_sound_now file path be relative to Artemis directory now
+* List numeric properties in alphabetical order in menus
+----------------------
 Version 2.7.4 [2018-March-24] (Dave Thaler, Scott Nalley)
 * Added Fighter console for popups and keypresses
 * Added ability to select monster names from a list when configuring AI commands
