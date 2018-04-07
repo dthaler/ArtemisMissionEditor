@@ -3786,8 +3786,7 @@ namespace ArtemisMissionEditor
 
                     // Check path to sound.
                     string soundPath;
-                    if ((statement.Name == "incoming_message" && !String.IsNullOrWhiteSpace(soundPath = statement.GetAttribute("fileName")))
-                     || (statement.Name == "play_sound_now" && !String.IsNullOrWhiteSpace(soundPath = statement.GetAttribute("filemame"))))
+                    if (statement.Name == "incoming_message" && !String.IsNullOrWhiteSpace(soundPath = statement.GetAttribute("fileName")))
                     {
                         string path = soundPath;
                         if (String.IsNullOrWhiteSpace(path))
@@ -3796,6 +3795,16 @@ namespace ArtemisMissionEditor
                             result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified an absolute path. You should avoid using absolute paths, as they will almost never be the same on the other people's computers.", node, statement));
                         else if (path.Contains("dat"))
                             result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified a path relative to the Artemis folder. Paths to sound assets should be relative to the mission folder.", node, statement));
+                    }
+                    if (statement.Name == "play_sound_now" && !String.IsNullOrWhiteSpace(soundPath = statement.GetAttribute("fileName")))
+                    {
+                        string path = soundPath;
+                        if (String.IsNullOrWhiteSpace(path))
+                            continue;
+                        if (path.Contains(":\\"))
+                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified an absolute path. You should avoid using absolute paths, as they will almost never be the same on the other people's computers.", node, statement));
+                        else if (!path.Contains("dat"))
+                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified a path relative to the mission folder. Paths to sound assets should be relative to the Artemis folder.", node, statement));
                     }
 
                     // Reference to a name never created.
@@ -3850,6 +3859,12 @@ namespace ArtemisMissionEditor
                     // Use of obsolete command.
                     if (statement.Name == "incoming_message")
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "The incoming_message statement no longer works.  Convert the OGG file to a WAV file, and use the set_comms_button statement with play_sound_now instead.", node, statement));
+                    if (statement.Name == "direct")
+                    {
+                        attName = statement.GetAttribute("name");
+                        if (String.IsNullOrEmpty(attName) || !NamedObjectNames["genericMesh"].Contains(attName))
+                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "The \"Direct\" statement only works with a named generic mesh.", node, statement));
+                    }
                 }
             }
 
