@@ -100,6 +100,7 @@ namespace ArtemisMissionEditor
 
     public sealed class VesselData
     {
+        public static string Path { get; private set; }
         private static List<string> ParserLog;
 
         private static VesselData _current = new VesselData();
@@ -754,6 +755,7 @@ namespace ArtemisMissionEditor
             try
             {
                 xDoc.Load(path);
+                Path = path;
             }
             catch (Exception ex)
             {

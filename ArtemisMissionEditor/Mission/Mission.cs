@@ -7,6 +7,7 @@ using System.Xml;
 using System.IO;
 using System.Drawing;
 using ArtemisMissionEditor.Expressions;
+using ArtemisMissionEditor.Forms;
 
 namespace ArtemisMissionEditor
 {
@@ -3364,6 +3365,66 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
+        /// Finds problems with a file path.
+        /// </summary>
+        private void FindProblems_CheckFilePath(PathRelativityMode pathRelativityMode, string attName, string fileDescription, int curNode, int curStatement, TreeNode node, MissionStatement statement, List<MissionSearchResult> result)
+        {
+            string path = statement.GetAttribute(attName);
+            if (String.IsNullOrWhiteSpace(path))
+                return;
+            if (Path.IsPathRooted(path))
+            {
+                result.Add(new MissionSearchResult(curNode, curStatement, "It looks like you have specified an absolute path. You should avoid using absolute paths, as they will almost never be the same on the other people's computers.", node, statement));
+                return;
+            }
+
+            // Compose mission path.
+            string missionPath = ".";
+            if (!String.IsNullOrEmpty(Mission.Current.FilePath))
+                missionPath = Path.GetDirectoryName(Mission.Current.FilePath);
+
+            // Compose Artemis path.
+            string artemisPath = Path.Combine(missionPath, "..\\..\\..");
+            if (!String.IsNullOrEmpty(VesselData.Path))
+                artemisPath = Path.Combine(Path.GetDirectoryName(VesselData.Path), "..");
+
+            string absolutePathFromArtemis = Path.GetFullPath(Path.Combine(artemisPath, path));
+            string absolutePathFromMission = Path.GetFullPath(Path.Combine(missionPath, path));
+            if (pathRelativityMode == PathRelativityMode.RelativeToArtemisFolder)
+            {
+                if (File.Exists(absolutePathFromArtemis))
+                    return;
+                if (File.Exists(absolutePathFromMission))
+                {
+                    System.Uri uri1 = new Uri(artemisPath);
+                    System.Uri uri2 = new Uri(absolutePathFromMission);
+                    Uri relativeUri = uri1.MakeRelativeUri(uri2);
+                    statement.SetAttribute(attName, relativeUri.ToString());
+
+                    result.Add(new MissionSearchResult(curNode, curStatement, "It looks like you specified a path relative to the mission folder. Paths to " + fileDescription + "s should be relative to the Artemis folder.  This has been automatically corrected.", node, statement));
+                }
+                else
+                    result.Add(new MissionSearchResult(curNode, curStatement, fileDescription + " \"" + path + "\" not found.", node, statement));
+            }
+            if (pathRelativityMode == PathRelativityMode.RelativeToMissionFolder)
+            {
+                if (File.Exists(absolutePathFromMission))
+                    return;
+                if (File.Exists(absolutePathFromArtemis))
+                {
+                    System.Uri uri1 = new Uri(missionPath);
+                    System.Uri uri2 = new Uri(absolutePathFromArtemis);
+                    Uri relativeUri = uri1.MakeRelativeUri(uri2);
+                    statement.SetAttribute(attName, relativeUri.ToString());
+
+                    result.Add(new MissionSearchResult(curNode, curStatement, "It looks like you have specified a path relative to the Artemis folder. Paths to " + fileDescription + "s should be relative to the mission folder.  This has been automatically corrected.", node, statement));
+                }
+                else
+                    result.Add(new MissionSearchResult(curNode, curStatement, fileDescription + " file \"" + path + "\" not found.", node, statement));
+            }
+        }
+
+        /// <summary>
         /// Finds problematic places in the child nodes of the current node.
         /// Called from FindProblems and recursively calls itself.
         /// </summary>
@@ -3772,39 +3833,18 @@ namespace ArtemisMissionEditor
                     // Check path to art.
                     if ((statement.Name == "create") && (statement.GetAttribute("type") == "genericMesh"))
                     {
-                        string[] pathsToCheck = new string[] { statement.GetAttribute("meshFileName"), statement.GetAttribute("textureFileName") };
-                        foreach (string path in pathsToCheck)
-                        {
-                            if (String.IsNullOrWhiteSpace(path))
-                                continue;
-                            if (path.Contains(":\\"))
-                                result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified an absolute path. You should avoid using absolute paths, as they will almost never be the same on the other people's computers.", node, statement));
-                            else if (!path.Contains("dat"))
-                                result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified a path relative to the mission folder. Paths to art assets should be relative to the Artemis folder.", node, statement));
-                        }
+                        FindProblems_CheckFilePath(PathRelativityMode.RelativeToArtemisFolder, "meshFileName", "art asset", curNode, mNode.Conditions.Count + i + 1, node, statement, result);
+                        FindProblems_CheckFilePath(PathRelativityMode.RelativeToArtemisFolder, "textureFileName", "art asset", curNode, mNode.Conditions.Count + i + 1, node, statement, result);
                     }
 
                     // Check path to sound.
-                    string soundPath;
-                    if (statement.Name == "incoming_message" && !String.IsNullOrWhiteSpace(soundPath = statement.GetAttribute("fileName")))
+                    if (statement.Name == "incoming_message")
                     {
-                        string path = soundPath;
-                        if (String.IsNullOrWhiteSpace(path))
-                            continue;
-                        if (path.Contains(":\\"))
-                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified an absolute path. You should avoid using absolute paths, as they will almost never be the same on the other people's computers.", node, statement));
-                        else if (path.Contains("dat"))
-                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified a path relative to the Artemis folder. Paths to sound assets should be relative to the mission folder.", node, statement));
+                        FindProblems_CheckFilePath(PathRelativityMode.RelativeToMissionFolder, "fileName", "OGG file", curNode, mNode.Conditions.Count + i + 1, node, statement, result);
                     }
-                    if (statement.Name == "play_sound_now" && !String.IsNullOrWhiteSpace(soundPath = statement.GetAttribute("fileName")))
+                    if (statement.Name == "play_sound_now")
                     {
-                        string path = soundPath;
-                        if (String.IsNullOrWhiteSpace(path))
-                            continue;
-                        if (path.Contains(":\\"))
-                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified an absolute path. You should avoid using absolute paths, as they will almost never be the same on the other people's computers.", node, statement));
-                        else if (!path.Contains("dat"))
-                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified a path relative to the mission folder. Paths to sound assets should be relative to the Artemis folder.", node, statement));
+                        FindProblems_CheckFilePath(PathRelativityMode.RelativeToArtemisFolder, "fileName", "WAV file", curNode, mNode.Conditions.Count + i + 1, node, statement, result);
                     }
 
                     // Reference to a name never created.
