@@ -486,6 +486,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("media "));
             eML.Add(new ExpressionMember("type "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.MessageMediaType, "mediaType"));
+            eML.Add(new ExpressionMember("(THIS STATEMENT IS OBSOLETE AND NO LONGER WORKS) "));
 
             #endregion
 

@@ -2540,7 +2540,7 @@ namespace ArtemisMissionEditor
             if (!(node.Tag is MissionNode_Start || node.Tag is MissionNode_Event))
                 return;
 
-            //Fill lists based on Conditions
+            // Fill lists based on Conditions.
             foreach (MissionStatement statement in ((MissionNode)node.Tag).Conditions)
             {
                 if (statement.Kind != MissionStatementKind.Condition)
@@ -2638,7 +2638,7 @@ namespace ArtemisMissionEditor
                 }
             }
 
-            //Fill lists based on Actions
+            // Fill lists based on Actions.
             foreach (MissionStatement statement in ((MissionNode)node.Tag).Actions)
             {
                 if (statement.Kind != MissionStatementKind.Action)
@@ -2684,7 +2684,7 @@ namespace ArtemisMissionEditor
                     if (type == "player")
                         AmountOfCreatePlayerStatements++;
 
-                    // Scan the expression for relevant attributes
+                    // Scan the expression for relevant attributes.
                     if (NamedObjectNames.ContainsKey(type))
                     {
                         // Named object attributes.
@@ -2904,29 +2904,29 @@ namespace ArtemisMissionEditor
                     //If more than one matches the description, but none match the name - pick first from description
                     if (listMatchesValueName.Count == 0)
                         listMatchesValueDescription[0].Focus();
-                    //If at least one matches in name ...
+                    // If at least one matches in name ...
                     else
                     {
-                        //We need to narrow down...
+                        // We need to narrow down...
                         for (int i = listMatchesValueName.Count - 1; i >= 0; i--)
                         {
-                            //Remove all that match in name that do not match in description
+                            // Remove all that match in name that do not match in description.
                             if (!listMatchesValueDescription.Contains(listMatchesValueName[i]))
                                 listMatchesValueName.RemoveAt(i);
                         }
-                        //If none of those matching in name match in description -  pick first from description
+                        // If none of those matching in name match in description -  pick first from description
                         if (listMatchesValueName.Count == 0)
                             listMatchesValueDescription[0].Focus();
-                        //If only one matches in name and in description - pick it
+                        // If only one matches in name and in description - pick it
                         if (listMatchesValueName.Count == 1)
                             listMatchesValueName[0].Focus();
-                        //If more than one matches in name and in description...
+                        // If more than one matches in name and in description...
                         if (listMatchesValueName.Count > 1)
                         {
-                            //We need to narrow down again
+                            // We need to narrow down again.
                             for (int i = listMatchesValueDescription.Count - 1; i >= 0; i--)
                             {
-                                //Remove all that match in description but do not match in name
+                                // Remove all that match in description but do not match in name.
                                 if (!listMatchesValueName.Contains(listMatchesValueDescription[i]))
                                     listMatchesValueDescription.RemoveAt(i);
                             }
@@ -3369,7 +3369,7 @@ namespace ArtemisMissionEditor
         /// </summary>
         private void FindProblems_RecursivelyCheckNodes(TreeNode node, ref int curNode, List<MissionSearchResult> result)
         {
-            //Preset list of statements that take names (under different, khm, names) of named objects
+            // Preset list of statements that take names (under different, khm, names) of named objects.
             string[] statementsThatTakeName = new string[]{
                 "destroy",
                 "destroy_near",
@@ -3422,12 +3422,12 @@ namespace ArtemisMissionEditor
 
             curNode++;
 
-            if (node.Tag as MissionNode_Start != null || node.Tag as MissionNode_Event != null)
+            if ((node.Tag as MissionNode_Start != null) || (node.Tag as MissionNode_Event != null))
             {
                 MissionNode mNode = (MissionNode)node.Tag;
                 bool isStartNode = node.Tag as MissionNode_Start != null;
 
-                // Find all objects created in this node
+                // Find all objects created in this node.
                 List<string> namesCreatedInThisNode = new List<string>();
                 List<string> namesDestroyedInThisNode = new List<string>();
                 bool hasEndMission = false;
@@ -3450,9 +3450,10 @@ namespace ArtemisMissionEditor
                 if (hasEndMission && hasNonEndMission)
                     result.Add(new MissionSearchResult(curNode, -1, "Other actions in the same node with the \"End Mission\" action make little sense, as the mission will end immediately and their effects will most likely go unnoticed by the players.", node, null));
 
+                // Check for problems on conditions.
                 if (!isStartNode)
                 {
-                    // Event has no conditions
+                    // Event has no conditions.
                     if (mNode.Conditions.Count == 0)
                     {
                         result.Add(new MissionSearchResult(curNode, 0, "An event contains no conditions. It will keep executing on every tick, potentially introducing performance issues or even crashes.", node, null));
@@ -3503,7 +3504,7 @@ namespace ArtemisMissionEditor
                             }
                         }
 
-                        // Event has no set_variable mirroring if_variable
+                        // Event has no set_variable mirroring if_variable.
                         if (timersCheckedHere.Count > 0 || variablesCheckedHere.Count > 0)
                         {
                             List<string> variablesSetHere = new List<string>();
@@ -3693,6 +3694,7 @@ namespace ArtemisMissionEditor
                     }
                 }
 
+                // Check for problems on actions.
                 for (int i = 0; i < mNode.Actions.Count; i++)
                 {
                     MissionStatement statement = mNode.Actions[i];
@@ -3702,20 +3704,20 @@ namespace ArtemisMissionEditor
                     if (!statement.IsGreen())
                         result.Add(new MissionSearchResult(curNode, i + 1, "Invalid syntax for " + statement.Name + " action.", node, statement));
 
-                    // Reference to a variable that is never checked
+                    // Reference to a variable that is never checked.
                     string attName;
                     if (statement.Name == "set_variable" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !VariableCheckNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Variable named \"" + attName + "\" is set, but never checked.", node, statement));
 
-                    // Reference to a timer that is never checked
+                    // Reference to a timer that is never checked.
                     if (statement.Name == "set_timer" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !TimerCheckNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Timer named \"" + attName + "\" is set, but never checked.", node, statement));
 
-                    // Reference to a GM button that is never checked
+                    // Reference to a GM button that is never checked.
                     if (statement.Name == "set_gm_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !GMButtonCheckNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "GM button named \"" + attName + "\" is set, but never checked.", node, statement));
 
-                    // Reference to clearing a GM button that is never set
+                    // Reference to clearing a GM button that is never set.
                     if (statement.Name == "clear_gm_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !GMButtonSetNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "GM button named \"" + attName + "\" is cleared, but never set.", node, statement));
 
@@ -3725,15 +3727,15 @@ namespace ArtemisMissionEditor
                         (statement.GetAttribute("property") == "specialAbilityBits"))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "The specialAbilityBits property cannot be modified, use set_special instead.", node, statement));
 
-                    // Reference to a Comms button that is never checked
+                    // Reference to a Comms button that is never checked.
                     if (statement.Name == "set_comms_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !CommsButtonCheckNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Comms button named \"" + attName + "\" is set, but never checked.", node, statement));
 
-                    // Reference to clearing a Comms button that is never set
+                    // Reference to clearing a Comms button that is never set.
                     if (statement.Name == "clear_comms_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !CommsButtonSetNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Comms button named \"" + attName + "\" is cleared, but never set.", node, statement));
 
-                    // Adding a monster AI block to a ship
+                    // Adding a monster AI block to a ship or vice versa.
                     string attType;
                     if (statement.Name == "add_ai" && 
                         !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) &&
@@ -3758,17 +3760,17 @@ namespace ArtemisMissionEditor
                         }
                     }
 
-                    // Add/set_property for object which name figures in the list of objects created in the same statement
+                    // Add/set_property for object which name figures in the list of objects created in the same statement.
                     //TODO: Confirm or deny that this problem exists and fix this statement (also maybe copy_object_property?)
                     //if ((statement.Name == "addto_object_property" || statement.Name == "set_object_property" || statement.Name == "add_ai"|| statement.Name == "clear_ai") && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && listCreatedInThisNode.Contains(CollapseName(attName)))
                     //    result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Changing properties of an object \"" + attName + "\" in the event where it was just created will not work correctly.", node, statement));
 
-                    // Setting side of an object that was just created
+                    // Setting side of an object that was just created.
                     if (statement.Name == "set_side_value" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && namesCreatedInThisNode.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "You can set the side value of an object \"" + attName + "\" in its create statement without utilising a second statement.", node, statement));
 
-                    // Check path to art
-                    if (statement.Name == "create" && statement.GetAttribute("type") == "genericMesh")
+                    // Check path to art.
+                    if ((statement.Name == "create") && (statement.GetAttribute("type") == "genericMesh"))
                     {
                         string[] pathsToCheck = new string[] { statement.GetAttribute("meshFileName"), statement.GetAttribute("textureFileName") };
                         foreach (string path in pathsToCheck)
@@ -3782,7 +3784,7 @@ namespace ArtemisMissionEditor
                         }
                     }
 
-                    // Check path to sound
+                    // Check path to sound.
                     string soundPath;
                     if ((statement.Name == "incoming_message" && !String.IsNullOrWhiteSpace(soundPath = statement.GetAttribute("fileName")))
                      || (statement.Name == "play_sound_now" && !String.IsNullOrWhiteSpace(soundPath = statement.GetAttribute("filemame"))))
@@ -3796,7 +3798,7 @@ namespace ArtemisMissionEditor
                             result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "It looks like you have specified a path relative to the Artemis folder. Paths to sound assets should be relative to the mission folder.", node, statement));
                     }
 
-                    // Reference to a name never created
+                    // Reference to a name never created.
                     List<string> namesToCheck = new List<string>();
                     if (statementsThatTakeName.Contains(statement.Name) && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")))
                         namesToCheck.Add(CollapseName(attName));
@@ -3819,7 +3821,7 @@ namespace ArtemisMissionEditor
                             result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Object named \"" + name + "\" is referenced in a statement, but never created.", node, statement));
                     }
 
-                    // Create statement having wrong keys
+                    // Create statement having wrong keys.
                     if (statement.Name == "create")
                     {
                         string type = statement.GetAttribute("type");
@@ -3844,6 +3846,10 @@ namespace ArtemisMissionEditor
                             }
                         }
                     }
+
+                    // Use of obsolete command.
+                    if (statement.Name == "incoming_message")
+                        result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "The incoming_message statement no longer works.  Convert the OGG file to a WAV file, and use the set_comms_button statement with play_sound_now instead.", node, statement));
                 }
             }
 
