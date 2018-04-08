@@ -343,13 +343,16 @@ namespace ArtemisMissionEditor
         /// Contains arrays of attribute names that share the same value, like, x/startX/centerX/... 
         /// </summary>
         private static readonly string[][] LinkedAttributes = new string[][]{
-            new string[]{ "x", "startX", "centerX", "pointX" },
-            new string[]{ "y", "startY", "centerY", "pointY" },
-            new string[]{ "z", "startZ", "centerZ", "pointZ" },
+            new string[]{ "x", "startX", "centerX", "pointX", "targetpointX" /* obsolete */ },
+            new string[]{ "y", "startY", "centerY", "pointY", "targetpointY" /* obsolete */ },
+            new string[]{ "z", "startZ", "centerZ", "pointZ", "targetpointZ" /* obsolete */ },
             new string[]{ "use_gm_position", "use_gm_selection" },
             new string[]{ "name", "name1" },
             new string[]{ "name2", "targetName" },
+
+            // New names for obsolete attribute names.
             new string[]{ "scan_desc", "scandesc" },
+            new string[]{ "hullID", "hulltype" },
         };
 
 		/// <summary> 
