@@ -21,8 +21,10 @@ namespace ArtemisMissionEditor.Expressions
             { "AVOID_WHALE",  			"<SHIP_AVOID>" },
             { "CHASE_AI_SHIP",    		"<AI_CHASE>" },
             { "CHASE_ANGER",  			"<AI_NOTHING>" },
+            { "CHASE_ENEMY",            "<SHIP_CHASE_ENEMY_OBSOLETE>" },
             { "CHASE_FLEET",            "<SHIP_CHASE_FLEET>" },
             { "CHASE_MONSTER",          "<MONSTER_CHASE_NO_NEBULA>" },
+            { "CHASE_NEUTRAL",          "<SHIP_CHASE_NEUTRAL_OBSOLETE>" },
             { "CHASE_OTHER_MONSTERS",   "<SHIP_CHASE_NO_NEBULA>" },
             { "CHASE_PLAYER",    		"<AI_CHASE>" },
             { "CHASE_SIGNAL",    		"<MONSTER_CHASE_SIGNAL>" },
@@ -81,6 +83,12 @@ namespace ArtemisMissionEditor.Expressions
                 // Convert ELITE_AI to SPCL_AI.
                 value = "<SHIP_NOTHING>";
                 container.SetAttribute("type", "SPCL_AI");
+            }
+            else if (value == "<SHIP_CHASE_ENEMY_OBSOLETE>" || value == "<SHIP_CHASE_NEUTRAL_OBSOLETE>")
+            {
+                // Convert to CHASE_AI_SHIP.
+                value = "<AI_CHASE>";
+                container.SetAttribute("type", "CHASE_AI_SHIP");
             }
 
 			base.SetValueInternal(container, value);
