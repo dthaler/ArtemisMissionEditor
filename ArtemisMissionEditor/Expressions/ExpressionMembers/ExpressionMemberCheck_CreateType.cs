@@ -272,7 +272,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("with "    ));
 			eML.Add(new ExpressionMember("fleet "   ));
 			eML.Add(new ExpressionMember("number "  ));
-			eML.Add(new ExpressionMember("<>",      ExpressionMemberValueDescriptions.FleetNumber, "fleetnumber"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.FleetNumberOrNone, "fleetnumber"));
             
 			#endregion
 

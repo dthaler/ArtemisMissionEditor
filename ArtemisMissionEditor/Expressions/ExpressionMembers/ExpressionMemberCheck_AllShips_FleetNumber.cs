@@ -36,7 +36,7 @@ namespace ArtemisMissionEditor.Expressions
 			if (value == Choices[0]) //point
 				container.SetAttribute("fleetnumber", null);
 			else
-				container.SetAttributeIfNull("fleetnumber", "0.0");
+				container.SetAttributeIfNull("fleetnumber", "0");
 
 			base.SetValueInternal(container, value);
 		}

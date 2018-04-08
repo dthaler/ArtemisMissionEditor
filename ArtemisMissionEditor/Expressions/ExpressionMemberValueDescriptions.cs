@@ -96,7 +96,7 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> "angle" from [create, ...] </summary>
         public static EMVD Angle =                      new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 360);
         /// <summary> "fleetnumber" from [create, ...] </summary>
-        public static EMVD FleetNumber =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 99);
+        public static EMVD FleetNumberOrNone =          new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, -1, 99);
         /// <summary> "podnumber" from [create] </summary>
         public static EMVD PodNumber =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 9);
         public static EMVD accent_color =               new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 99);
