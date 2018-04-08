@@ -241,8 +241,12 @@ namespace ArtemisMissionEditor.Expressions
 			____Add_Angle(eML);
 			____Add_Name(eML);
 			____Add_Check_HullID_HullRaceKeys(eML);
-            eML.Add(new ExpressionMember("on "));
-            eML.Add(new ExpressionMemberCheck_Side());
+			eML.Add(new ExpressionMember("on "));
+			eML.Add(new ExpressionMemberCheck_Side());
+			eML.Add(new ExpressionMember("with "    ));
+			eML.Add(new ExpressionMember("fleet "   ));
+			eML.Add(new ExpressionMember("number "  ));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.FleetNumberOrNone, "fleetnumber"));
 
 			#endregion
 
