@@ -349,6 +349,7 @@ namespace ArtemisMissionEditor
             new string[]{ "use_gm_position", "use_gm_selection" },
             new string[]{ "name", "name1" },
             new string[]{ "name2", "targetName" },
+            new string[]{ "scan_desc", "scandesc" },
         };
 
 		/// <summary> 
@@ -398,7 +399,6 @@ namespace ArtemisMissionEditor
 			if (expressionChanged)
 				Expression = newExpr;
 
-			//TODO: Correctly update string representation [Forgot what this means, maybe already done?] <-- WTF does it mean?
 			_text = "";
 
 			foreach (ExpressionMemberContainer item in Expression)
