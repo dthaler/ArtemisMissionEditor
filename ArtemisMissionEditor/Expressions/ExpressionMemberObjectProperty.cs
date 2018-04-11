@@ -148,6 +148,7 @@ namespace ArtemisMissionEditor.Expressions
             new EMOP(EMVDS.NamePlayer, "countMine",                   EMVDS.Int_0_PosInf),
             new EMOP(EMVDS.NamePlayer, "countECM",                    EMVDS.Int_0_PosInf, null, "countEMP"),
             new EMOP(EMVDS.NamePlayer, "countEMP",                    EMVDS.Int_0_PosInf),
+            new EMOP(EMVDS.NamePlayer, "countPshock",                 EMVDS.Int_0_PosInf, null, "countShk"),
             new EMOP(EMVDS.NamePlayer, "countShk",                    EMVDS.Int_0_PosInf),
             new EMOP(EMVDS.NamePlayer, "countBea",                    EMVDS.Int_0_PosInf),
             new EMOP(EMVDS.NamePlayer, "countPro",                    EMVDS.Int_0_PosInf),
