@@ -3762,7 +3762,12 @@ namespace ArtemisMissionEditor
                     if (statement.Kind != MissionStatementKind.Action)
                         continue;
 
-                    if (!statement.IsGreen())
+                    // Trying to set specialAbilityBits.
+                    if (((statement.Name == "set_object_property") || (statement.Name == "addto_object_property") ||
+                         (statement.Name == "copy_object_property")) &&
+                        (statement.GetAttribute("property") == "specialAbilityBits"))
+                        result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "The specialAbilityBits property cannot be modified, use set_special instead.", node, statement));
+                    else if (!statement.IsGreen())
                         result.Add(new MissionSearchResult(curNode, i + 1, "Invalid syntax for " + statement.Name + " action.", node, statement));
 
                     // Reference to a variable that is never checked.
@@ -3781,12 +3786,6 @@ namespace ArtemisMissionEditor
                     // Reference to clearing a GM button that is never set.
                     if (statement.Name == "clear_gm_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !GMButtonSetNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "GM button named \"" + attName + "\" is cleared, but never set.", node, statement));
-
-                    // Trying to set specialAbilityBits.
-                    if (((statement.Name == "set_object_property") || (statement.Name == "addto_object_property") ||
-                         (statement.Name == "copy_object_property")) &&
-                        (statement.GetAttribute("property") == "specialAbilityBits"))
-                        result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "The specialAbilityBits property cannot be modified, use set_special instead.", node, statement));
 
                     // Reference to a Comms button that is never checked.
                     if (statement.Name == "set_comms_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !CommsButtonCheckNames.Contains(CollapseName(attName)))
