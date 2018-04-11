@@ -72,7 +72,7 @@ namespace ArtemisMissionEditor
 		public int _curPointY;
 
 		//For foolish handle behavior and for stupid C# not allowing statics in methods
-		bool ___STATIC_E_FSM_SuppressSelectionEvents;//flag to supress selection events while processing one!                         
+		bool ___STATIC_E_FSM_SuppressSelectionEvents;//flag to suppress selection events while processing one!                         
 
 		//Created controls
 		private Form _form;

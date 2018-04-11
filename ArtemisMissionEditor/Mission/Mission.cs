@@ -24,13 +24,13 @@ namespace ArtemisMissionEditor
         public static Mission Current { get { return _current; } set { _current = value; } }
         private static Mission _current;
 
-        /// <summary> Flag to supress selection events while pasting </summary>
+        /// <summary> Flag to suppress selection events while pasting </summary>
         private bool SuppressSelectionEvents;
 
-        /// <summary> Flag to supress selection events while pasting </summary>
+        /// <summary> Flag to suppress selection events while pasting </summary>
         private bool SupressSelectionEvents;
 
-        /// <summary> Flag to supress afterexpand and aftercollapse events while mass-operating</summary>
+        /// <summary> Flag to suppress afterexpand and aftercollapse events while mass-operating</summary>
         private bool SupressExpandCollapseEvents;
 
         /// <summary> Semaphore for begin/end update </summary>
@@ -914,10 +914,10 @@ namespace ArtemisMissionEditor
         /// Read mission contents from Xml string
         /// </summary>
         /// <param name="text">String containing Xml with the mission</param>
-        /// <param name="supressLoadingSignal">Add no loading warnings to the log</param>
+        /// <param name="suppressLoadingSignal">Add no loading warnings to the log</param>
         /// <param name="fromState">True if clearing in order to restore from state, in this case we do not clear file path</param>
         /// <returns>Success or failure flag</returns>
-        public bool FromXml(string text, bool supressLoadingSignal = false, bool fromState = false)
+        public bool FromXml(string text, bool suppressLoadingSignal = false, bool fromState = false)
         {
             XmlDocument xDoc = new XmlDocument();
 
@@ -935,7 +935,7 @@ namespace ArtemisMissionEditor
             }
 
             Clear(fromState);
-            Loading = !supressLoadingSignal;
+            Loading = !suppressLoadingSignal;
             BeginUpdate();
 
             List<TreeNode> NodesToExpand = new List<TreeNode>();

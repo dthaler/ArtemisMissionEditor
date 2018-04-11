@@ -57,6 +57,7 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor Comparator;
         public static ExpressionMemberValueEditor DistanceNebulaCheck;
         public static ExpressionMemberValueEditor ConvertDirectCheck;
+        public static ExpressionMemberValueEditor ConvertSpecialAbilityBitsCheck;
         public static ExpressionMemberValueEditor TimerName;
         public static ExpressionMemberValueEditor GMButtonText;
         public static ExpressionMemberValueEditor CommsButtonText;
@@ -544,8 +545,8 @@ namespace ArtemisMissionEditor.Expressions
 
             SpecialSpecialSwitchState = new ExpressionMemberValueEditor();
             SpecialSpecialSwitchState.AddToDictionary(null, "add");
-            SpecialSpecialSwitchState.AddToDictionary("clear", "Clear");
-            SpecialSpecialSwitchState.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
+            SpecialSpecialSwitchState.AddToDictionary("yes", "clear");
+            SpecialSpecialSwitchState.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList;
 
             SpecialSpecialState = new ExpressionMemberValueEditor();
             SpecialSpecialState.AddToDictionary(null, "Unspecified");
@@ -610,6 +611,11 @@ namespace ArtemisMissionEditor.Expressions
 			ConvertDirectCheck.AddToDictionary("Do nothing", "(Click here to convert)", "Do nothing");
 			ConvertDirectCheck.AddToDictionary("Convert to add_ai", "YOU SHOULD NEVER SEE THIS", "Convert to add_ai");
 			ConvertDirectCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
+
+			ConvertSpecialAbilityBitsCheck = new ExpressionMemberValueEditor();
+			ConvertSpecialAbilityBitsCheck.AddToDictionary("Do nothing", "(Click here to convert to set_special)", "Do nothing");
+			ConvertSpecialAbilityBitsCheck.AddToDictionary("Convert to set_special", "YOU SHOULD NEVER SEE THIS", "Convert to set_special");
+			ConvertSpecialAbilityBitsCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
 
 			TimerName = new ExpressionMemberValueEditor();
 			TimerName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_TimerNameList;

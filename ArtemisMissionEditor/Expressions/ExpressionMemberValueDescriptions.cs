@@ -183,6 +183,7 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD Check_Point_TargetName =     new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DefaultCheck,null,null,""," ");
         /// <summary> Check convert direct    from [direct]  </summary>
         public static EMVD Check_ConvertDirect =        new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.ConvertDirectCheck,null,null,""," ");
+        public static EMVD Check_ConvertSpecialAbilityBits = new EMVD(EMVT.VarString, EMVB.NotStored,       EMVE.ConvertSpecialAbilityBitsCheck,null,null,""," ");
 
         /// <summary> "seconds" from [set_timer] </summary>
         public static EMVD Seconds =                    new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger,0,null,""," ","0");

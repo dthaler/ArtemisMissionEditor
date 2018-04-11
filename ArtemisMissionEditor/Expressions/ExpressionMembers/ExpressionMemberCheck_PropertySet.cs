@@ -114,17 +114,19 @@ namespace ArtemisMissionEditor.Expressions
                 eML.Add(new ExpressionMember("to "));
                 eML.Add(new ExpressionMember("<>", property.ValueDescription, "value"));
                 if (property.Units != null)
-                {
                     eML.Add(new ExpressionMember(property.Units + " "));
-                }
                 if (property.ObjectDescription != null)
-                {
                     ____Add_Name(eML, property.ObjectDescription);
-                }
-                if (property.IsReadOnly)
+                if (property.Name == "specialAbilityBits")
                 {
-                    eML.Add(new ExpressionMember("(WARNING! THIS PROPERTY IS READ ONLY!)"));
+                    eML.Add(new ExpressionMember("(THIS STATEMENT IS OBSOLETE) "));
+
+                    // We require the user to click to convert since we can't cover cases where
+                    // the value is an expression with a variable.
+                    eML.Add(new ExpressionMemberCheck_SpecialAbilityBitsConversion());
                 }
+                else if (property.IsReadOnly)
+                    eML.Add(new ExpressionMember("(WARNING! THIS PROPERTY IS READ ONLY!)"));
             }
 
             #region <UNKNOWN_PROPERTY>  
