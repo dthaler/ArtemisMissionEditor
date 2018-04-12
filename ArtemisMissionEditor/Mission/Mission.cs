@@ -3756,6 +3756,10 @@ namespace ArtemisMissionEditor
                 }
 
                 // Check for problems on actions.
+                if (mNode.Actions.Count == 0)
+                {
+                    result.Add(new MissionSearchResult(curNode, 0, "An event contains no actions, and so will not do anything.", node, null));
+                }
                 for (int i = 0; i < mNode.Actions.Count; i++)
                 {
                     MissionStatement statement = mNode.Actions[i];
