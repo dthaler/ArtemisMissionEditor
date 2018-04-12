@@ -3528,6 +3528,7 @@ namespace ArtemisMissionEditor
                         List<string> gmButtonsCheckedHere = new List<string>();
                         List<string> commsButtonsCheckedHere = new List<string>();
                         List<string> propertiesCheckedHere = new List<string>();
+                        int gmKeysCheckedHere = 0;
                         foreach (MissionStatement statement in mNode.Conditions)
                         {
                             if (statement.Kind != MissionStatementKind.Condition)
@@ -3538,6 +3539,8 @@ namespace ArtemisMissionEditor
                                 variablesCheckedHere.Add(CollapseName(statement.GetAttribute("name")));
                             if (statement.Name == "if_timer_finished")
                                 timersCheckedHere.Add(CollapseName(statement.GetAttribute("name")));
+                            if (statement.Name == "if_gm_key")
+                                gmKeysCheckedHere++;
                             if (statement.Name == "if_gm_button")
                                 gmButtonsCheckedHere.Add(CollapseName(statement.GetAttribute("text")));
                             if (statement.Name == "if_comms_button")
@@ -3590,6 +3593,11 @@ namespace ArtemisMissionEditor
                                 }
                             }
                             bool noCorrespondingSet = true;
+                            if (gmKeysCheckedHere > 0)
+                            {
+                                // Keypress only fires once per press.
+                                noCorrespondingSet = false;
+                            }
                             foreach (string checkedVar in variablesCheckedHere)
                             {
                                 if (String.IsNullOrEmpty(checkedVar))
@@ -3696,6 +3704,10 @@ namespace ArtemisMissionEditor
                             // Reference to a timer that is never set
                             if (statement.Name == "if_timer_finished" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !TimerSetNames.Contains(CollapseName(attName)))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "Timer named \"" + attName + "\" is checked for, but never set.", node, statement));
+
+                            // Reference to a GM key.
+                            if (statement.Name == "if_gm_key")
+                                result.Add(new MissionSearchResult(curNode, i + 1, "GM key is checked for, but keypresses are unreliable. Use GM buttons instead.", node, statement));
 
                             // Reference to a GM button that is never set
                             if (statement.Name == "if_gm_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !GMButtonSetNames.Contains(CollapseName(attName)))
