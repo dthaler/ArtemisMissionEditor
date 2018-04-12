@@ -3571,18 +3571,12 @@ namespace ArtemisMissionEditor
                             List<string> variablesSetHere = new List<string>();
                             List<string> propertiesSetHere = new List<string>();
                             List<string> timersSetHere = new List<string>();
-                            List<string> gmButtonsSetHere = new List<string>();
-                            List<string> commsButtonsSetHere = new List<string>();
                             for (int i = 0; i < mNode.Actions.Count; i++)
                             {
                                 if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "set_variable")
                                     variablesSetHere.Add(CollapseName(mNode.Actions[i].GetAttribute("name")));
                                 if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "set_timer")
                                     timersSetHere.Add(CollapseName(mNode.Actions[i].GetAttribute("name")));
-                                if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "set_gm_button")
-                                    gmButtonsSetHere.Add(CollapseName(mNode.Actions[i].GetAttribute("text")));
-                                if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "set_comms_button")
-                                    commsButtonsSetHere.Add(CollapseName(mNode.Actions[i].GetAttribute("text")));
                                 if (mNode.Actions[i].Kind == MissionStatementKind.Action &&
                                     (mNode.Actions[i].Name == "set_object_property" || mNode.Actions[i].Name == "addto_object_property"))
                                 {
@@ -3624,25 +3618,15 @@ namespace ArtemisMissionEditor
                             {
                                 if (String.IsNullOrEmpty(checkedGMButton))
                                     continue;
-                                foreach (string setGMButton in gmButtonsSetHere)
-                                {
-                                    if (String.IsNullOrEmpty(setGMButton))
-                                        continue;
-                                    if (setGMButton == checkedGMButton)
-                                        noCorrespondingSet = false;
-                                }
+                                // Button press only fires once per press.
+                                noCorrespondingSet = false;
                             }
                             foreach (string checkedCommsButton in commsButtonsCheckedHere)
                             {
                                 if (String.IsNullOrEmpty(checkedCommsButton))
                                     continue;
-                                foreach (string setCommsButton in commsButtonsSetHere)
-                                {
-                                    if (String.IsNullOrEmpty(setCommsButton))
-                                        continue;
-                                    if (setCommsButton == checkedCommsButton)
-                                        noCorrespondingSet = false;
-                                }
+                                // Button press only fires once per press.
+                                noCorrespondingSet = false;
                             }
                             foreach (string checkedTimer in timersCheckedHere)
                             {
