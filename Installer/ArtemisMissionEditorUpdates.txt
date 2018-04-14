@@ -1,8 +1,35 @@
 ;aiu;
 
+[Update 2.7.6]
+Name=Artemis Mission Editor 2.7.6
+ProductVersion=2.7.6
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.6.msi
+Size=1593344
+ReleaseDate=14/04/2018
+MD5=412309a1dabf85a4cd4f8ec50ca6639a
+ServerFileName=ArtemisMissionEditorInstaller.2.7.6.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.6.0
+Feature=Added ability to automatically convert set specialAbilityBits to set_special statements in one click
+Enhancement=Automatically fix play_sound_now paths when checking for Potential Problems
+Enhancement1=Automatically convert obsolete CHASE_NEUTRAL and CHASE_ENEMY to CHASE_AI_SHIP
+Enhancement2=Automatically convert scandesc property to scan_desc on set_ship_text since various missions have it wrong
+Enhancement3=Automatically convert targetPointX/Y/Z attributes on direct command to pointX/Y/Z since at least one mission had it wrong
+Enhancement4=Added warning if obsolete incoming_message statement is used
+Enhancement5=Added warning if obsolete eliteAIType property is used
+Enhancement6=Added warning if obsolete willAcceptCommsOrders property is used
+Enhancement7=Added potential problems check for references to missing files
+Enhancement8=Added warning if obsolete direct statement is used on anything other than a generic mesh
+Enhancement9=Added warning for an event with no actions
+Enhancement10=Added Potential Problems recommendation to convert if_gm_key to if_gm_button
+BugFix=Fixed bug where fleetnumber of -1 wasn't allowed
+BugFix1=Fixed bug where a Potential Problems warning was incorrectly shown when if_comms_button and if_variable conditions were used without a set_variable
+Replaces=All
+
 [Update 2.7.5]
-Name=Artemis Mission Editor 2.7.5
 ProductVersion=2.7.5
+Name=Artemis Mission Editor 2.7.5
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.5.msi
 Size=1592320
 ReleaseDate=05/04/2018
@@ -71,8 +98,8 @@ BugFix3=Fixed bug where "Potential Problems" would treat expressions with unary 
 Replaces=All
 
 [Update 2.7.2]
-Name=Artemis Mission Editor 2.7.2
 ProductVersion=2.7.2
+Name=Artemis Mission Editor 2.7.2
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.2.msi
 Size=1591808
 ReleaseDate=05/03/2018
@@ -98,8 +125,8 @@ BugFix2=Fixed display of if_fleet_count when countSurrendered is absent
 Replaces=All
 
 [Update 2.7.1]
-Name=Artemis Mission Editor 2.7.1
 ProductVersion=2.7.1
+Name=Artemis Mission Editor 2.7.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.1.msi
 Size=1590272
 ReleaseDate=24/02/2018
@@ -146,8 +173,8 @@ BugFix3=Corrected display of DEFEND ai block arguments
 Replaces=All
 
 [Update 2.6.2]
-Name=Artemis Mission Editor 2.6.2
 ProductVersion=2.6.2
+Name=Artemis Mission Editor 2.6.2
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.2.msi
 Size=1586176
 ReleaseDate=06/02/2018
@@ -180,8 +207,8 @@ BugFix= Fixed some more typos
 Replaces=All
 
 [Update 2.6.0.1]
-ProductVersion=2.6.0.1
 Name=Artemis Mission Editor 2.6.0.1
+ProductVersion=2.6.0.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.0.1.msi
 Size=1583616
 ReleaseDate=26/12/2017
@@ -200,8 +227,8 @@ BugFix2=Fixed bug in update available detection
 Replaces=All
 
 [Update 2.6]
-Name=Artemis Mission Editor 2.6
 ProductVersion=2.6.0.0
+Name=Artemis Mission Editor 2.6
 URL=http://www.example.com/downloads/ArtemisMissionEditorInstaller.2.6.msi
 Size=1583616
 MD5=72deef9dc1ae805094af04d469c065f4

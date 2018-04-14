@@ -97,8 +97,8 @@
     <ROW Section="Update 2.7.2" Key="Enhancement" Value="Make property name in set_object_property case insensitive per Artemis behavior&#13;&#10;More improvements to &quot;Potential Problems&quot; checking&#13;&#10;Removed player_slot from set_player_grid_damage and warning_popup_message and made name optional&#13;&#10;Don&apos;t allow configuring pod number on monsters other than whales and piranhas"/>
     <ROW Section="Update 2.7.2" Key="BugFix" Value="Fixed set_special command display&#13;&#10;Fixed bug where &quot;hasSurrendered&quot; values &gt; 1 were treated same as &quot;0&quot; instead of &quot;1&quot;&#13;&#10;Fixed display of if_fleet_count when countSurrendered is absent&#13;&#10;"/>
     <ROW Section="Update 2.7.2" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1"/>
-    <ROW Section="Update 2.7.3" Key="ProductVersion" Value="2.7.3"/>
     <ROW Section="Update 2.7.3" Key="Name" Value="Artemis Mission Editor 2.7.3"/>
+    <ROW Section="Update 2.7.3" Key="ProductVersion" Value="2.7.3"/>
     <ROW Section="Update 2.7.3" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.3.msi"/>
     <ROW Section="Update 2.7.3" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.3.msi"/>
     <ROW Section="Update 2.7.3" Key="ReleaseDate" Value="19566"/>
@@ -137,6 +137,20 @@
     <ROW Section="Update 2.7.5" Key="Feature" Value="Added pirateRepWithStations player object property&#13;&#10;Added monster &quot;age&quot; as a create attribute (not an object property)&#13;&#10;Added &quot;not&quot; attribute on if_docked&#13;&#10;Added RELEASE_PIRANHAS parameters"/>
     <ROW Section="Update 2.7.5" Key="Enhancement" Value="Made play_sound_now file path be relative to Artemis directory now&#13;&#10;List numeric properties in alphabetical order in menus"/>
     <ROW Section="Update 2.7.5" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1;Update 2.7.2;Update 2.7.3;Update 2.7.4"/>
+    <ROW Section="Update 2.7.6" Key="Name" Value="Artemis Mission Editor 2.7.6"/>
+    <ROW Section="Update 2.7.6" Key="ProductVersion" Value="2.7.6"/>
+    <ROW Section="Update 2.7.6" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.6.msi"/>
+    <ROW Section="Update 2.7.6" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.6.msi"/>
+    <ROW Section="Update 2.7.6" Key="ReleaseDate" Value="19598"/>
+    <ROW Section="Update 2.7.6" Key="MD5" Value="ArtemisMissionEditorInstaller.2.7.6.msi"/>
+    <ROW Section="Update 2.7.6" Key="ServerFileName" Value="ArtemisMissionEditorInstaller.2.7.6.msi"/>
+    <ROW Section="Update 2.7.6" Key="Flags" Value="Critical"/>
+    <ROW Section="Update 2.7.6" Key="FilePath" Value="[APPDIR]ArtemisMissionEditor.exe"/>
+    <ROW Section="Update 2.7.6" Key="Version" Value="2.7.6.0"/>
+    <ROW Section="Update 2.7.6" Key="Feature" Value="Added ability to automatically convert set specialAbilityBits to set_special statements in one click"/>
+    <ROW Section="Update 2.7.6" Key="Enhancement" Value="Automatically fix play_sound_now paths when checking for Potential Problems&#13;&#10;Automatically convert obsolete CHASE_NEUTRAL and CHASE_ENEMY to CHASE_AI_SHIP&#13;&#10;Automatically convert scandesc property to scan_desc on set_ship_text since various missions have it wrong&#13;&#10;Automatically convert targetPointX/Y/Z attributes on direct command to pointX/Y/Z since at least one mission had it wrong&#13;&#10;Added warning if obsolete incoming_message statement is used&#13;&#10;Added warning if obsolete eliteAIType property is used&#13;&#10;Added warning if obsolete willAcceptCommsOrders property is used&#13;&#10;Added potential problems check for references to missing files&#13;&#10;Added warning if obsolete direct statement is used on anything other than a generic mesh&#13;&#10;Added warning for an event with no actions&#13;&#10;Added Potential Problems recommendation to convert if_gm_key to if_gm_button"/>
+    <ROW Section="Update 2.7.6" Key="BugFix" Value="Fixed bug where fleetnumber of -1 wasn&apos;t allowed&#13;&#10;Fixed bug where a Potential Problems warning was incorrectly shown when if_comms_button and if_variable conditions were used without a set_variable"/>
+    <ROW Section="Update 2.7.6" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1;Update 2.7.2;Update 2.7.3;Update 2.7.4;Update 2.7.5"/>
     <ATTRIBUTE name="OutputFileName" value="ArtemisMissionEditorUpdates.txt"/>
     <ATTRIBUTE name="OutputFolder" value="."/>
   </COMPONENT>
