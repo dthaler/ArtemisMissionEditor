@@ -3904,6 +3904,12 @@ namespace ArtemisMissionEditor
                         if (String.IsNullOrEmpty(attName) || !NamedObjectNames["genericMesh"].Contains(attName))
                             result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "The \"Direct\" statement only works with a named generic mesh.", node, statement));
                     }
+                    if (statement.Name == "set_object_property")
+                    {
+                        string attProperty = statement.GetAttribute("property");
+                        if (attProperty == "eliteAIType")
+                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "The \"eliteAIType\" property no longer works. Use add_ai with TARGET_THROTTLE or CHASE_PLAYER instead.", node, statement));
+                    }
                 }
             }
 

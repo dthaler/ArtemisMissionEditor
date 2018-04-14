@@ -26,7 +26,7 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary>
         /// Add a set_special statement for a single bit in a set_object_property specialAbilityBits statement.
         /// </summary>
-        protected void ConvertSpecialAbility(ref string xml, ExpressionMemberContainer container, int bit, string ability)
+        private void ConvertSpecialAbility(ref string xml, ExpressionMemberContainer container, int bit, string ability)
         {
             string attName = container.GetAttribute("name") ?? "<null>";
             string attValue = container.GetAttribute("value") ?? "";

@@ -117,7 +117,11 @@ namespace ArtemisMissionEditor.Expressions
                     eML.Add(new ExpressionMember(property.Units + " "));
                 if (property.ObjectDescription != null)
                     ____Add_Name(eML, property.ObjectDescription);
-                if (property.Name == "specialAbilityBits")
+                if (property.Name == "eliteAIType")
+                {
+                    eML.Add(new ExpressionMember("(THIS STATEMENT IS OBSOLETE, USE ADD_AI WITH TARGET_THROTTLE OR CHASE_PLAYER INSTEAD) "));
+                }
+                else if (property.Name == "specialAbilityBits")
                 {
                     eML.Add(new ExpressionMember("(THIS STATEMENT IS OBSOLETE) "));
 
