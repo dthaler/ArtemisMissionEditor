@@ -1,3 +1,24 @@
+Version 2.7.6 [2018-April-14] (Dave Thaler)
+* Automatically fix play_sound_now paths when checking for Potential Problems
+* Automatically convert obsolete CHASE_NEUTRAL and CHASE_ENEMY to CHASE_AI_SHIP
+* Automatically convert scandesc property to scan_desc on set_ship_text since
+  various missions have it wrong
+* Automatically convert targetPointX/Y/Z attributes on direct command to
+  pointX/Y/Z since at least one mission had it wrong
+* Added ability to automatically convert set specialAbilityBits to set_special
+  in one click
+* Added warning if obsolete incoming_message statement is used
+* Added warning if obsolete eliteAIType property is used
+* Added warning if obsolete willAcceptCommsOrders property is used
+* Added potential problems check for references to missing files
+* Added warning if obsolete direct statement is used on anything other than a
+  generic mesh
+* Added warning for an event with no actions
+* Added Potential Problems recommendation to convert if_gm_key to if_gm_button
+* Fixed bug where fleetnumber of -1 wasn't allowed
+* Fixed bug where a Potential Problems warning was incorrectly shown when
+  if_comms_button and if_variable conditions were used without a set_variable
+----------------------
 Version 2.7.5 [2018-April-5] (Dave Thaler)
 * Added pirateRepWithStations player object property
 * Added monster "age" as a create attribute (not an object property)
