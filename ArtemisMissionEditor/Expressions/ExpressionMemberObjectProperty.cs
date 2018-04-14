@@ -141,6 +141,7 @@ namespace ArtemisMissionEditor.Expressions
             new EMOP(EMVDS.NameNeutral, "exitPointX",       EMVDS.Flt_0_100k, "m west of right edge"),
             new EMOP(EMVDS.NameNeutral, "exitPointY",       EMVDS.Flt_Minus100k_100k, "m"),
             new EMOP(EMVDS.NameNeutral, "exitPointZ",       EMVDS.Flt_0_100k, "m south of top edge"),
+            new EMOP(EMVDS.NameNeutral, "willAcceptCommsOrders", EMVDS.Bool_Yes_No),
 
             // Player properties.
             new EMOP(EMVDS.NamePlayer, "countHoming",                 EMVDS.Int_0_PosInf),

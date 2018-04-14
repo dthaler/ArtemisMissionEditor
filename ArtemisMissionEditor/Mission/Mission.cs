@@ -3909,6 +3909,8 @@ namespace ArtemisMissionEditor
                         string attProperty = statement.GetAttribute("property");
                         if (attProperty == "eliteAIType")
                             result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "The \"eliteAIType\" property no longer works. Use add_ai with TARGET_THROTTLE or CHASE_PLAYER instead.", node, statement));
+                        else if (attProperty == "willAcceptCommsOrders")
+                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "The \"willAcceptCommsOrders\" property no longer works. Use add_ai with FOLLOW_COMMS_ORDERS instead of setting this to 1.", node, statement));
                     }
                 }
             }
