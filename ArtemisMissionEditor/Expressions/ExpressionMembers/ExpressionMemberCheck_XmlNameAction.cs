@@ -164,9 +164,11 @@ namespace ArtemisMissionEditor.Expressions
             #region set_comms_button
 
             eML = this.Add("set_comms_button");
-            eML.Add(new ExpressionMember("with text "));
+            eML.Add(new ExpressionMember("with "));
+            eML.Add(new ExpressionMember("text "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.TextCommsButton, "text"));
-            eML.Add(new ExpressionMember(". Optional Bits: Side:"));
+            eML.Add(new ExpressionMember("on "));
+            eML.Add(new ExpressionMember("side "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "sideValue"));
 
             #endregion
@@ -174,8 +176,12 @@ namespace ArtemisMissionEditor.Expressions
             #region clear_comms_button
 
             eML = this.Add("clear_comms_button");
-            eML.Add(new ExpressionMember("with text "));
+            eML.Add(new ExpressionMember("with "));
+            eML.Add(new ExpressionMember("text "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.TextCommsButton, "text"));
+            eML.Add(new ExpressionMember("on "));
+            eML.Add(new ExpressionMember("side "));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "sideValue"));
 
             #endregion
 
