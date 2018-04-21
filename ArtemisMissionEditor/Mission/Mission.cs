@@ -3721,6 +3721,9 @@ namespace ArtemisMissionEditor
                             if (statement.Name == "if_distance" && (statement.GetAttribute("comparator") == "EQUALS" || statement.GetAttribute("comparator") == "NOT"))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "Distance is checked for equality. In practice, distance will almost never be equal to an exact value. You should use \"lesser\" and \"greater\" comparisons instead.", node, statement));
 
+                            if (statement.Name == "if_client_key")
+                                result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Keypresses are unreliable. Consider using \"if_comms_button\" instead of \"if_client_key\".", node, statement));
+
                             // Check with a player name that is not checked for existence
                             if ((statement.Name == "if_docked" || statement.Name == "if_player_is_targeting") && !String.IsNullOrEmpty(attName = statement.GetAttribute("player_name")) && !namesCheckedHere.Contains(CollapseName(attName)))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "Ship named \"" + attName + "\" is checked with " + statement.Name + ", but not tested for existence so ship 0 might be tested instead.", node, statement));
@@ -3912,6 +3915,10 @@ namespace ArtemisMissionEditor
                         else if (attProperty == "willAcceptCommsOrders")
                             result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "The \"willAcceptCommsOrders\" property no longer works. Use add_ai with FOLLOW_COMMS_ORDERS instead of setting this to 1.", node, statement));
                     }
+                    if (statement.Name == "start_getting_keypresses_from")
+                        result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Keypresses are unreliable. Consider using \"set_comms_button\" instead of \"start_getting_keypresses_from\".", node, statement));
+                    if (statement.Name == "end_getting_keypresses_from")
+                        result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Keypresses are unreliable. Consider using \"clear_comms_button\" instead of \"end_getting_keypresses_from\".", node, statement));
                 }
             }
 
