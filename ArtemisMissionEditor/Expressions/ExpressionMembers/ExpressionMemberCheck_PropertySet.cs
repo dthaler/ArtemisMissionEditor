@@ -89,11 +89,13 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("for "));
             eML.Add(new ExpressionMember("object "));
 
+#if SET_SUPPORTS_SLOT
             if ((type == ExpressionMemberValueDescriptions.NameAll) ||
                 (type == ExpressionMemberValueDescriptions.NamePlayer) ||
                 (type == ExpressionMemberValueDescriptions.NameShip))
                 eML.Add(new ExpressionMemberCheck_Name_GM_Slot(type));
             else
+#endif
                 eML.Add(new ExpressionMemberCheck_Name_GM(type));
         }
 

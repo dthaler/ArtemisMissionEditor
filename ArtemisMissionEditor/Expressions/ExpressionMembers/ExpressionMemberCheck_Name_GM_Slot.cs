@@ -87,7 +87,6 @@ namespace ArtemisMissionEditor.Expressions
 			: base("", ExpressionMemberValueDescriptions.Check_Name_GMSelection)
 		{
             name = name ?? ExpressionMemberValueDescriptions.Name;
-            //player_slot = name ?? ExpressionMemberValueDescriptions.Name;
 
             NameAttributeName = nameAttributeName;
             PlayerSlotAttributeName = playerSlotAttributeName;

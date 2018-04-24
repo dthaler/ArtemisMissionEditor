@@ -165,8 +165,7 @@ namespace ArtemisMissionEditor.Expressions
 			#region if_docked
 
 			eML = this.Add("if_docked");
-			eML.Add(new ExpressionMember("named "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NamePlayer, "player_name", false));
+			eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer, "player_name"));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Is_Isnt, "not"));
 			eML.Add(new ExpressionMember("docked "));
 			eML.Add(new ExpressionMember("with "));
