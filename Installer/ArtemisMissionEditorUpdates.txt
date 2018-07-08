@@ -1,5 +1,22 @@
 ;aiu;
 
+[Update 2.7.7]
+Name=Artemis Mission Editor 2.7.7
+ProductVersion=2.7.7
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.7.msi
+Size=1593344
+ReleaseDate=07/07/2018
+MD5=5f79a3d72a73eefd950ef28fa3ef5bd4
+ServerFileName=ArtemisMissionEditorInstaller.2.7.7.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.7.0
+Feature=Added ability to get to the wiki page Help for a command via the right  click context menu on a mission statement by hitting F1
+Feature1=Added "sideValue" attribute on clear_comms_button
+Enhancement=Added warning if keypress commands are used to recommend convertiong to comms buttons
+BugFix=Removed "player_slot" option from set/addto numeric property, since those commands don't support player slot
+Replaces=All
+
 [Update 2.7.6]
 Name=Artemis Mission Editor 2.7.6
 ProductVersion=2.7.6
@@ -125,8 +142,8 @@ BugFix2=Fixed display of if_fleet_count when countSurrendered is absent
 Replaces=All
 
 [Update 2.7.1]
-ProductVersion=2.7.1
 Name=Artemis Mission Editor 2.7.1
+ProductVersion=2.7.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.1.msi
 Size=1590272
 ReleaseDate=24/02/2018
