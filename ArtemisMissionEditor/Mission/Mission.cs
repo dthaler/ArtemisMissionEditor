@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -1394,6 +1395,58 @@ namespace ArtemisMissionEditor
 
             if (count > 0)
                 RegisterChange((enabled ? "Enabled" : "Disabled") + " " + count + " statement(s)");
+        }
+
+        /// <summary>
+        /// Get help on currently selected statement
+        /// </summary>
+        public void StatementHelp()
+        {
+            if (TreeViewStatements.SelectedNode == null)
+                return;
+
+            foreach(TreeNode node in TreeViewStatements.SelectedNodes.ToList())
+                if (node.Tag is MissionStatement)
+                {
+                    MissionStatement statement = node.Tag as MissionStatement;
+                    string name = statement.Name;
+                    string page;
+
+                    switch (name)
+                    {
+                        // Some pages are prefixed with "command_"
+                        case "clear_gm_button":
+                        case "create":
+                        case "destroy":
+                        case "destroy_near":
+                        case "direct":
+                        case "end_mission":
+                        case "incoming_comms_text":
+                        case "log":
+                        case "set_comms_button":
+                        case "set_timer":
+                        case "set_variable":
+                        case "if_distance":
+                        case "if_docked":
+                        case "if_fleet_count":
+                        case "if_inside_box":
+                            page = "command_" + name;
+                            break;
+
+                        // Other pages are just the statement name.
+                        default:
+                            page = name;
+                            break;
+                    }
+
+                    var url = "http://artemiswiki.pbworks.com/" + page;
+                    var psi = new ProcessStartInfo();
+                    psi.UseShellExecute = true;
+                    psi.FileName = url;
+                    Process.Start(psi);
+
+                    return;
+                }
         }
 
         /// <summary>
@@ -5452,6 +5505,11 @@ namespace ArtemisMissionEditor
                 e.SuppressKeyPress = true;
                 StatementPaste();
                 TreeViewStatements.Focus();
+            }
+            if (e.KeyData == Keys.F1)
+            {
+                e.SuppressKeyPress = true;
+                StatementHelp();
             }
             //EDIT keys
             if (e.KeyData == Keys.F2)

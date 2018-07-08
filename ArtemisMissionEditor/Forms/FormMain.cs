@@ -527,6 +527,11 @@ namespace ArtemisMissionEditor.Forms
             Mission.Current.StatementPaste();
         }
 
+        private void _E_FM_cms_MissionStatementTree_Help_Click(object sender, EventArgs e)
+        {
+            Mission.Current.StatementHelp();
+        }
+
         private void _E_FM_cms_MissionStatementTree_ShowSourceXML_Click(object sender, EventArgs e)
         {
             Mission.Current.StatementShowXml(true);

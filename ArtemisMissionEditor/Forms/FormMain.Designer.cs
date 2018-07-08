@@ -114,6 +114,7 @@
             this._FM_cms_MissionStatementTree_XML = new System.Windows.Forms.ToolStripMenuItem();
             this._FM_cms_MissionStatementTree_CopyXML = new System.Windows.Forms.ToolStripMenuItem();
             this._FM_cms_MissionStatementTree_XML_s_1 = new System.Windows.Forms.ToolStripSeparator();
+            this._FM_cms_MissionStatementTree_Help = new System.Windows.Forms.ToolStripMenuItem();
             this._FM_il_Right = new System.Windows.Forms.ImageList(this.components);
             this._FM_flp_Bottom_Right = new System.Windows.Forms.FlowLayoutPanel();
             this._FM_cms_VesselData = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -997,7 +998,8 @@
             this._FM_cms_MissionStatementTree_EditOnSpaceMap,
             this._FM_cms_MissionStatementTree_StatementEditOnSpaceMap,
             this._FM_cms_MissionStatementTree_s_4,
-            this._FM_cms_MissionStatementTree_XML});
+            this._FM_cms_MissionStatementTree_XML,
+            this._FM_cms_MissionStatementTree_Help});
             this._FM_cms_MissionStatementTree.Name = "_FM_cms_MissionStatementTree";
             this._FM_cms_MissionStatementTree.Size = new System.Drawing.Size(283, 364);
             this._FM_cms_MissionStatementTree.Opening += new System.ComponentModel.CancelEventHandler(this._E_FM_cms_MissionStatementTree_Opening);
@@ -1090,6 +1092,14 @@
             // 
             this._FM_cms_MissionStatementTree_s_4.Name = "_FM_cms_MissionStatementTree_s_4";
             this._FM_cms_MissionStatementTree_s_4.Size = new System.Drawing.Size(279, 6);
+            // 
+            // _FM_cms_MissionStatementTree_Help
+            // 
+            this._FM_cms_MissionStatementTree_Help.Name = "_FM_cms_MissionStatementTree_Help";
+            this._FM_cms_MissionStatementTree_Help.ShortcutKeyDisplayString = "F1";
+            this._FM_cms_MissionStatementTree_Help.Size = new System.Drawing.Size(282, 22);
+            this._FM_cms_MissionStatementTree_Help.Text = "Help";
+            this._FM_cms_MissionStatementTree_Help.Click += new System.EventHandler(this._E_FM_cms_MissionStatementTree_Help_Click);
             // 
             // _FM_cms_MissionStatementTree_XML
             // 
@@ -1806,6 +1816,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem showHelpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findPotentialProblemsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem _FM_cms_MissionStatementTree_Help;
         private DoubleBufferedPanel doubleBufferedPanel1;
         private System.Windows.Forms.Label _FM_lbl_Main;
 
