@@ -1,8 +1,8 @@
 Version 2.7.7 [2018-July-7] (Dave Thaler)
 * Added ability to get to the wiki page Help for a command via the right 
-  click context menu on a mission statement by hitting F1
+  click context menu on a mission statement, or by hitting F1
 * Added "sideValue" attribute on clear_comms_button
-* Added warning if keypress commands are used to recommend convertiong to
+* Added warning if keypress commands are used to recommend converting to
   comms buttons
 * Removed "player_slot" option from set/addto numeric property, since those
   commands don't support player slot
