@@ -81,8 +81,8 @@ the editor and showing how to use it:
 You can read basic information about the Artemis Mission Editor's
 interface and hotkeys [on a stand-alone page here](http://artemiswiki.pbworks.com/w/page/53390043/Mission%20Editor%20-%20Interface%20Overview).
 
-![Main Form](http://artemiswiki.pbworks.com/w/file/53389784/MissionEditor_MainForm.png "Main Form")
-![Space Map Form](http://artemiswiki.pbworks.com/w/file/53389921/MissionEditor_SpaceMapForm.png "Space Map Form")
+![Main Form](http://artemiswiki.pbworks.com/w/file/fetch/53389784/MissionEditor_MainForm.png "Main Form")
+![Space Map Form](http://artemiswiki.pbworks.com/w/file/fetch/53389921/MissionEditor_SpaceMapForm.png "Space Map Form")
 
 ## Other Documentation
 
