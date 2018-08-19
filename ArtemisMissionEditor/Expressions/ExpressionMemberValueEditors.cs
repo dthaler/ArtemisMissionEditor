@@ -29,8 +29,9 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor CreateType;
         public static ExpressionMemberValueEditor SetVariableCheck;
         public static ExpressionMemberValueEditor AIType;
-        public static ExpressionMemberValueEditor ReadablePropertyObject;
-        public static ExpressionMemberValueEditor WritablePropertyObject;
+        public static ExpressionMemberValueEditor ReadableProperty;
+        public static ExpressionMemberValueEditor WritableProperty;
+        public static ExpressionMemberValueEditor WritableObjectProperty;
         public static ExpressionMemberValueEditor PropertyFleet;
         public static ExpressionMemberValueEditor SkyboxIndex;
         public static ExpressionMemberValueEditor Difficulty;
@@ -86,23 +87,32 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor HullKeys;
         public static ExpressionMemberValueEditor VariableType;
 
-        private static void AddToPropertyDictionary(string xmlName, string menuItem, bool isReadOnly = false)
+        private static void AddToPropertyDictionary(string xmlName, string menuItem, bool isReadOnly = false, bool isGlobal = false)
         {
             // We can't simply find the xmlName in the ExpressionMemberObjectProperty list since we need to initialize
             // this before we initialize that list, which depends on getting the ExpressionMemberValueDescription instances
             // from this class here.  So for now we require the caller to duplicate the information about which properties
             // are read-only.
-            ReadablePropertyObject.AddToDictionary(xmlName, menuItem);
+            ReadableProperty.AddToDictionary(xmlName, menuItem);
             if (!isReadOnly)
             {
-                WritablePropertyObject.AddToDictionary(xmlName, menuItem);
+                WritableProperty.AddToDictionary(xmlName, menuItem);
+
+                if (!isGlobal)
+                {
+                    WritableObjectProperty.AddToDictionary(xmlName, menuItem);
+                }
             }
         }
 
-        private static void AddPropertyMenuGroup(string menuGroup)
+        private static void AddPropertyMenuGroup(string menuGroup, bool isGlobal = false)
         {
-            ReadablePropertyObject.NewMenuGroup(menuGroup);
-            WritablePropertyObject.NewMenuGroup(menuGroup);
+            ReadableProperty.NewMenuGroup(menuGroup);
+            WritableProperty.NewMenuGroup(menuGroup);
+            if (!isGlobal)
+            {
+                WritableObjectProperty.NewMenuGroup(menuGroup);
+            }
         }
 
         static ExpressionMemberValueEditors()
@@ -273,22 +283,23 @@ namespace ArtemisMissionEditor.Expressions
 
 			AIType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
 
-            ReadablePropertyObject = new ExpressionMemberValueEditor();
-            WritablePropertyObject = new ExpressionMemberValueEditor();
-            AddToPropertyDictionary("coopAdjustmentValue", "Co-op Adjustment Value");
-            AddToPropertyDictionary("nonPlayerWeapon", "Enemy Damage");
-            AddToPropertyDictionary("nonPlayerShield", "Enemy Shield");
-            AddToPropertyDictionary("nonPlayerSpeed", "Enemy Speed");
-            AddToPropertyDictionary("commsObjectMasterVolume", "Game Comms Volume");
-            AddToPropertyDictionary("musicObjectMasterVolume", "Game Music Volume");
-            AddToPropertyDictionary("soundFXVolume", "Game Sound Volume");
-            AddToPropertyDictionary("gameTimeLimit", "Game Time Limit");
-            AddToPropertyDictionary("nebulaIsOpaque", "Nebula Hides From Sensors");
-            AddToPropertyDictionary("networkTickSpeed", "Network Tick Speed");
-            AddToPropertyDictionary("playerWeapon", "Player Damage");
-            AddToPropertyDictionary("playerShields", "Player Shield");
-            AddToPropertyDictionary("sensorSetting", "Sensor Range");
-            AddPropertyMenuGroup("Game Properties");
+            ReadableProperty = new ExpressionMemberValueEditor();
+            WritableProperty = new ExpressionMemberValueEditor();
+            WritableObjectProperty = new ExpressionMemberValueEditor();
+            AddToPropertyDictionary("coopAdjustmentValue", "Co-op Adjustment Value", false, true);
+            AddToPropertyDictionary("nonPlayerWeapon", "Enemy Damage", false, true);
+            AddToPropertyDictionary("nonPlayerShield", "Enemy Shield", false, true);
+            AddToPropertyDictionary("nonPlayerSpeed", "Enemy Speed", false, true);
+            AddToPropertyDictionary("commsObjectMasterVolume", "Game Comms Volume", false, true);
+            AddToPropertyDictionary("musicObjectMasterVolume", "Game Music Volume", false, true);
+            AddToPropertyDictionary("soundFXVolume", "Game Sound Volume", false, true);
+            AddToPropertyDictionary("gameTimeLimit", "Game Time Limit", false, true);
+            AddToPropertyDictionary("nebulaIsOpaque", "Nebula Hides From Sensors", false, true);
+            AddToPropertyDictionary("networkTickSpeed", "Network Tick Speed", false, true);
+            AddToPropertyDictionary("playerWeapon", "Player Damage", false, true);
+            AddToPropertyDictionary("playerShields", "Player Shield", false, true);
+            AddToPropertyDictionary("sensorSetting", "Sensor Range", false, true);
+            AddPropertyMenuGroup("Game Properties", true);
 
             AddToPropertyDictionary("angle", "angle");
             AddToPropertyDictionary("deltaX", "deltaX");
@@ -409,8 +420,9 @@ namespace ArtemisMissionEditor.Expressions
             AddToPropertyDictionary("warpState", "warpState");
             AddPropertyMenuGroup("Players");
 
-            ReadablePropertyObject.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
-            WritablePropertyObject.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
+            ReadableProperty.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
+            WritableProperty.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
+            WritableObjectProperty.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
 
 			PropertyFleet = new ExpressionMemberValueEditor();
 			PropertyFleet.AddToDictionary("fleetSpacing",   "spacing");

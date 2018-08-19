@@ -215,9 +215,11 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD Subtitle =                   new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DefaultString,null,null,"\"","\" ");
 
         /// <summary> "property" from [if_object_property] </summary>
-        public static EMVD ReadableProperty =           new EMVD(EMVT.VarEnumString,EMVB.StoredWhenFilled,  EMVE.ReadablePropertyObject,null,null,"\"","\" ","angle");
+        public static EMVD ReadableProperty =           new EMVD(EMVT.VarEnumString,EMVB.StoredWhenFilled,  EMVE.ReadableProperty,null,null,"\"","\" ","angle");
+        /// <summary> "property" from [copy_object_property] </summary>
+        public static EMVD WritableObjectProperty =     new EMVD(EMVT.VarEnumString,EMVB.StoredWhenFilled,  EMVE.WritableObjectProperty,null,null,"\"","\" ","angle");
         /// <summary> "property" from [set_object_property] </summary>
-        public static EMVD WritableProperty =           new EMVD(EMVT.VarEnumString,EMVB.StoredWhenFilled,  EMVE.WritablePropertyObject,null,null,"\"","\" ","angle");
+        public static EMVD WritableProperty =           new EMVD(EMVT.VarEnumString,EMVB.StoredWhenFilled,  EMVE.WritableProperty,null,null,"\"","\" ","angle");
         // values from [set_object_property]
 
 

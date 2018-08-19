@@ -98,9 +98,15 @@ namespace ArtemisMissionEditor.Expressions
             {
                 eML = this.Add(property.Name);
 
-    			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.WritableProperty, "property"));
-    			____Add_Name(eML, property.ObjectDescription);
-
+    			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.WritableObjectProperty, "property"));
+                if (property.ObjectDescription != null)
+                {
+                    ____Add_Name(eML, property.ObjectDescription);
+                }
+                else
+                {
+                    eML.Add(new ExpressionMember("(WARNING! THIS PROPERTY IS GLOBAL!)"));
+                }
                 if (property.IsReadOnly)
                 {
         			eML.Add(new ExpressionMember("(WARNING! THIS PROPERTY IS READ ONLY!)"));
