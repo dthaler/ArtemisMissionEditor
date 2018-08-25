@@ -164,6 +164,9 @@ namespace ArtemisMissionEditor
         /// <summary> All variables set or checked in the mission</summary>
         private List<string> VariableNames;
 
+        /// <summary> All ships that ever follow comms orders.
+        private List<string> CommandableShipNames;
+
         /// <summary> Variable headers for variable names context menus</summary>
         private List<string> VariableNameHeaders;
 
@@ -615,6 +618,7 @@ namespace ArtemisMissionEditor
             CommsButtonSetNames = new List<string>();
             CommsButtonCheckNames = new List<string>();
             AllCreatedObjectNames = new List<string>();
+            CommandableShipNames = new List<string>();
             VariableNames = new List<string>();
             VariableNameHeaders = new List<string>();
             TimerNames = new List<string>();
@@ -2420,6 +2424,7 @@ namespace ArtemisMissionEditor
             CommsButtonCheckNames.Clear();
             AllCreatedObjectNames.Clear();
             AllCreatedObjectNames.AddRange(PlayerShipNames);
+            CommandableShipNames.Clear();
             VariableNameHeaders.Clear();
             TimerNames.Clear();
             TimerNameHeaders.Clear();
@@ -2705,6 +2710,18 @@ namespace ArtemisMissionEditor
                     UpdateNamesLists_ScanExpression(statement, "value2");
                     UpdateNamesLists_ScanExpression(statement, "value3");
                     UpdateNamesLists_ScanExpression(statement, "value4");
+
+                    string type = statement.GetAttribute("type");
+                    if (type == "FOLLOW_COMMS_ORDERS")
+                    {
+                        string named_name = statement.GetAttribute("name");
+                        if (named_name != null)
+                        {
+                            named_name = CollapseName(named_name);
+                        }
+                        if (!CommandableShipNames.Contains(named_name))
+                            CommandableShipNames.Add(named_name);
+                    }
                 }
 
                 if ((statement.Name == "addto_object_property") ||
@@ -3570,7 +3587,7 @@ namespace ArtemisMissionEditor
                     // Event has no conditions.
                     if (mNode.Conditions.Count == 0)
                     {
-                        result.Add(new MissionSearchResult(curNode, 0, "An event contains no conditions. It will keep executing on every tick, potentially introducing performance issues or even crashes.", node, null));
+                        result.Add(new MissionSearchResult(curNode, 0, "An event contains no conditions. It will keep executing on every tick, potentially introducing performance issues.", node, null));
                     }
                     if (mNode.Conditions.Count > 0)
                     {
@@ -3947,6 +3964,19 @@ namespace ArtemisMissionEditor
                                         && statement.GetAttribute("hullKeys", "").ToLower().Contains("base"))
                                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create " + type + "\" statement does not specify a hullID and contains \"base\" in its list of hull keys. When this statement is executed, weird things will happen.", node, statement));
                                 }
+                            }
+                        }
+
+                        if (type == "neutral")
+                        {
+                            string named_name = statement.GetAttribute("name");
+                            if (!String.IsNullOrEmpty(named_name))
+                            {
+                                named_name = CollapseName(named_name);
+                            }
+                            if (!CommandableShipNames.Contains(named_name))
+                            {
+                                result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Created neutral ship " + named_name + " that will never FOLLOW_COMMS_ORDERS.  Consider adding an add_ai statement for it.", node, statement));
                             }
                         }
                     }
