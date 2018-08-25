@@ -1,3 +1,11 @@
+Version 2.7.8 [2018-August-25] (Dave Thaler)
+* Don't allow selecting global properties with "copy_object_property"
+* Add a Potential Problems warning if a neutral ship is created and 
+  FOLLOW_COMMS_ORDERS is never added to it
+* Require either a non-empty object name or use_gm_selection when object
+  properties are used with copy/set/addto_object_property
+* Fixed bug where if_docked incorrectly required a ship name
+----------------------
 Version 2.7.7 [2018-July-7] (Dave Thaler)
 * Added ability to get to the wiki page Help for a command via the right 
   click context menu on a mission statement, or by hitting F1
