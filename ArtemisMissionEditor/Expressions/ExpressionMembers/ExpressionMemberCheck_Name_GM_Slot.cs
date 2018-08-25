@@ -81,6 +81,7 @@ namespace ArtemisMissionEditor.Expressions
         /// </summary>
         public ExpressionMemberCheck_Name_GM_Slot(
             ExpressionMemberValueDescription name = null, 
+            bool mandatory = true,
             string nameAttributeName = "name",
             string useGMSelectionAttributeName = "use_gm_selection",
             string playerSlotAttributeName = "player_slot")
@@ -97,7 +98,7 @@ namespace ArtemisMissionEditor.Expressions
             if (NameAttributeName != "<none>")
             {
                 eML = this.Add(NameChoice);
-                eML.Add(new ExpressionMember("<>", name, NameAttributeName, true));
+                eML.Add(new ExpressionMember("<>", name, NameAttributeName, mandatory));
             }
            
             if (UseGMSelectionAttributeName != "<none>")

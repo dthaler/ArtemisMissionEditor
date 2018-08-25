@@ -50,7 +50,7 @@ namespace ArtemisMissionEditor.Expressions
 		{
 			List<ExpressionMember> eML;
 			eML = Add("exists"); //Choices[0]
-			eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll, "name", "<none>"));
+			eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll, true, "name", "<none>"));
 
 			eML = Add("does not exist"); //Choices[1]
 			eML.Add(new ExpressionMember("with "));

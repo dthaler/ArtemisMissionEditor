@@ -165,7 +165,7 @@ namespace ArtemisMissionEditor.Expressions
 			#region if_docked
 
 			eML = this.Add("if_docked");
-			eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer, "player_name"));
+			eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer, false, "player_name"));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Bool_Is_Isnt, "not"));
 			eML.Add(new ExpressionMember("docked "));
 			eML.Add(new ExpressionMember("with "));
@@ -262,10 +262,10 @@ namespace ArtemisMissionEditor.Expressions
             eML = this.Add("if_distance");
             eML.Add(new ExpressionMember("between "));
             eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll, "name1", "<none>", "player_slot1"));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll, true, "name1", "<none>", "player_slot1"));
             eML.Add(new ExpressionMember("and "));
             eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll, "name2", "<none>", "player_slot2"));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll, true, "name2", "<none>", "player_slot2"));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Comparator, "comparator"));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Flt_0_PosInf, "value", true));
 
