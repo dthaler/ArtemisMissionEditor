@@ -77,12 +77,12 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("object "));
 			eML.Add(new ExpressionMember("with "));
 			eML.Add(new ExpressionMember("name "));
-			eML.Add(new ExpressionMember("<>", type, "name1"));
+			eML.Add(new ExpressionMember("<>", type, "name1", true));
 			eML.Add(new ExpressionMember("to "));
 			eML.Add(new ExpressionMember("object "));
 			eML.Add(new ExpressionMember("with "));
 			eML.Add(new ExpressionMember("name "));
-			eML.Add(new ExpressionMember("<>", type, "name2"));
+			eML.Add(new ExpressionMember("<>", type, "name2", true));
 		}
 
         /// <summary>

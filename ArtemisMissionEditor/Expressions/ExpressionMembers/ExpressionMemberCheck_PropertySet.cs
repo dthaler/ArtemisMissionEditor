@@ -96,7 +96,7 @@ namespace ArtemisMissionEditor.Expressions
                 eML.Add(new ExpressionMemberCheck_Name_GM_Slot(type));
             else
 #endif
-                eML.Add(new ExpressionMemberCheck_Name_GM(type));
+                eML.Add(new ExpressionMemberCheck_Name_GM(type, true));
         }
 
         /// <summary>
