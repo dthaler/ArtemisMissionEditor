@@ -1,5 +1,22 @@
 ;aiu;
 
+[Update 2.7.8]
+ProductVersion=2.7.8
+Name=Artemis Mission Editor 2.7.8
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.8.msi
+Size=1593344
+ReleaseDate=25/08/2018
+MD5=327c70880cadd59f797aa059c27a14d0
+ServerFileName=ArtemisMissionEditorInstaller.2.7.8.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.8.0
+Feature=Added a Potential Problems warning if a neutral ship is created and FOLLOW_COMMS_ORDERS is never added to it
+Enhancement=When object properties are used with copy/set/addto_object_property, it now requires specifying either a non-empty object name or use_gm_selection
+BugFix=Fixed bug where if_docked complained if no ship name was given
+BugFix1=Fixed bug where copy_object_property incorrectly allowed selecting global properties
+Replaces=All
+
 [Update 2.7.7]
 Name=Artemis Mission Editor 2.7.7
 ProductVersion=2.7.7
@@ -18,8 +35,8 @@ BugFix=Removed "player_slot" option from set/addto numeric property, since those
 Replaces=All
 
 [Update 2.7.6]
-Name=Artemis Mission Editor 2.7.6
 ProductVersion=2.7.6
+Name=Artemis Mission Editor 2.7.6
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.6.msi
 Size=1593344
 ReleaseDate=14/04/2018
@@ -163,8 +180,8 @@ BugFix1=Remove player_slot from set_damcon_members since it doesn't work
 Replaces=All
 
 [Update 2.7]
-ProductVersion=2.7
 Name=Artemis Mission Editor 2.7
+ProductVersion=2.7
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.msi
 Size=1589248
 ReleaseDate=19/02/2018
@@ -190,8 +207,8 @@ BugFix3=Corrected display of DEFEND ai block arguments
 Replaces=All
 
 [Update 2.6.2]
-ProductVersion=2.6.2
 Name=Artemis Mission Editor 2.6.2
+ProductVersion=2.6.2
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.2.msi
 Size=1586176
 ReleaseDate=06/02/2018
@@ -224,8 +241,8 @@ BugFix= Fixed some more typos
 Replaces=All
 
 [Update 2.6.0.1]
-Name=Artemis Mission Editor 2.6.0.1
 ProductVersion=2.6.0.1
+Name=Artemis Mission Editor 2.6.0.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.0.1.msi
 Size=1583616
 ReleaseDate=26/12/2017
@@ -244,8 +261,8 @@ BugFix2=Fixed bug in update available detection
 Replaces=All
 
 [Update 2.6]
-ProductVersion=2.6.0.0
 Name=Artemis Mission Editor 2.6
+ProductVersion=2.6.0.0
 URL=http://www.example.com/downloads/ArtemisMissionEditorInstaller.2.6.msi
 Size=1583616
 MD5=72deef9dc1ae805094af04d469c065f4
