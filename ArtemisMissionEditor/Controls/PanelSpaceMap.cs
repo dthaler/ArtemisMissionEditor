@@ -566,15 +566,29 @@ namespace ArtemisMissionEditor
 			sizeNamelessMineDark = 3.0;
             
             // nebulas
-			Brush brushNebula = Settings.Current.GetBrush(MapColors.Nebula);
-            ListObjectsToDispose.Add(brushNebula);
-            Brush brushNebulaBG = Settings.Current.GetBrush(MapColors.NebulaBG);
-            ListObjectsToDispose.Add(brushNebulaBG); 
-			Pen penNebula = new Pen(brushNebula, 1);
-            ListObjectsToDispose.Add(penNebula);
-			
-            // astreoids
-			Brush brushAsteroid = (sizeNamelessAsteroid > 12.5) ? Settings.Current.GetBrush(MapColors.AsteroidBright) : Settings.Current.GetBrush(MapColors.Asteroid);
+			Brush brushPurpleNebula = Settings.Current.GetBrush(MapColors.PurpleNebula);
+            ListObjectsToDispose.Add(brushPurpleNebula);
+            Brush brushPurpleNebulaBG = Settings.Current.GetBrush(MapColors.PurpleNebulaBG);
+            ListObjectsToDispose.Add(brushPurpleNebulaBG); 
+			Pen penPurpleNebula = new Pen(brushPurpleNebula, 1);
+            ListObjectsToDispose.Add(penPurpleNebula);
+
+            Brush brushBlueNebula = Settings.Current.GetBrush(MapColors.BlueNebula);
+            ListObjectsToDispose.Add(brushBlueNebula);
+            Brush brushBlueNebulaBG = Settings.Current.GetBrush(MapColors.BlueNebulaBG);
+            ListObjectsToDispose.Add(brushBlueNebulaBG);
+            Pen penBlueNebula = new Pen(brushBlueNebula, 1);
+            ListObjectsToDispose.Add(penBlueNebula);
+
+            Brush brushYellowNebula = Settings.Current.GetBrush(MapColors.YellowNebula);
+            ListObjectsToDispose.Add(brushYellowNebula);
+            Brush brushYellowNebulaBG = Settings.Current.GetBrush(MapColors.YellowNebulaBG);
+            ListObjectsToDispose.Add(brushYellowNebulaBG);
+            Pen penYellowNebula = new Pen(brushYellowNebula, 1);
+            ListObjectsToDispose.Add(penYellowNebula);
+
+            // asteroids
+            Brush brushAsteroid = (sizeNamelessAsteroid > 12.5) ? Settings.Current.GetBrush(MapColors.AsteroidBright) : Settings.Current.GetBrush(MapColors.Asteroid);
             ListObjectsToDispose.Add(brushAsteroid);
             Brush brushAsteroidBG = Settings.Current.GetBrush(MapColors.AsteroidBG);
             ListObjectsToDispose.Add(brushAsteroidBG);
@@ -631,8 +645,22 @@ namespace ArtemisMissionEditor
                             g.DrawCircle(penAsteroidBG, x, zy, sizeNamelessAsteroid);
                             break;
                         case MapObjectNamelessType.nebulas:
-                            g.DrawCircle(penNebula, x, zy, sizeNamelessNebula);
-                            g.FillCircle(brushNebulaBG, x, zy, sizeNamelessNebula);
+                            switch (item.NebulaTypeToString)
+                            {
+                                case "blue":
+                                    g.DrawCircle(penBlueNebula, x, zy, sizeNamelessNebula);
+                                    g.FillCircle(brushBlueNebulaBG, x, zy, sizeNamelessNebula);
+                                    break;
+                                case "yellow":
+                                    g.DrawCircle(penYellowNebula, x, zy, sizeNamelessNebula);
+                                    g.FillCircle(brushYellowNebulaBG, x, zy, sizeNamelessNebula);
+                                    break;
+                                case "purple":
+                                default:
+                                    g.DrawCircle(penPurpleNebula, x, zy, sizeNamelessNebula);
+                                    g.FillCircle(brushPurpleNebulaBG, x, zy, sizeNamelessNebula);
+                                    break;
+                            }
                             break;
 						case MapObjectNamelessType.mines:
                             g.DrawCircle(penMineBG, x, zy, sizeNamelessMineBright);
@@ -664,14 +692,26 @@ namespace ArtemisMissionEditor
 
                     if (zy < z - randomThreshold)
                         DrawSpaceMap_DrawHeightLine(g, penDarkHeight, brushDarkHeight, x, zy, z);
-                    
-					switch (item._type)
-					{
-						case MapObjectNamelessType.asteroids:
+
+                    switch (item._type)
+                    {
+                        case MapObjectNamelessType.asteroids:
                             g.DrawCircle(penAsteroid, x, zy, sizeNamelessAsteroid);
-							break;
-						case MapObjectNamelessType.nebulas:
-                            g.FillCircle(brushNebula, x, zy, sizeNamelessNebula);
+                            break;
+                        case MapObjectNamelessType.nebulas:
+                            switch (item.NebulaTypeToString)
+                            {
+                                case "blue":
+                                    g.FillCircle(brushBlueNebula, x, zy, sizeNamelessNebula);
+                                    break;
+                                case "yellow":
+                                    g.FillCircle(brushYellowNebula, x, zy, sizeNamelessNebula);
+                                    break;
+                                case "purple":
+                                default:
+                                    g.FillCircle(brushPurpleNebula, x, zy, sizeNamelessNebula);
+                                    break;
+                            }
 							break;
 						case MapObjectNamelessType.mines:
                             g.DrawCircle(penMine, x, zy, sizeNamelessMineBright);
@@ -1541,7 +1581,6 @@ namespace ArtemisMissionEditor
 				UpdatePossibleLists();
 			}
 			UpdateObjectsText();
-
 		}
 
 		/// <summary>

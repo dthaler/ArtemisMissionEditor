@@ -153,7 +153,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SpaceMap\GrahpicsExtention.cs" />
+    <Compile Include="SpaceMap\GraphicsExtension.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMember_Unknown.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMember.cs" />
     <Compile Include="Expressions\ExpressionMemberContainer.cs" />

@@ -9,7 +9,7 @@ namespace ArtemisMissionEditor.SpaceMap
     /// <summary>
     /// Provides extension methods for Graphics in order to simplify drawing of the Space Map
     /// </summary>
-    public static class GrahpicsExtention
+    public static class GraphicsExtension
     {
         /// <summary>
         /// Draw Ellipse defined with doubles, with same width and height, centered around point x, y
