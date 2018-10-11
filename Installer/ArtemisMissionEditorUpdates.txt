@@ -1,8 +1,24 @@
 ;aiu;
 
+[Update 2.7.9]
+Name=Artemis Mission Editor 2.7.9
+ProductVersion=2.7.9
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.9.msi
+Size=1594880
+ReleaseDate=10/10/2018
+MD5=f289416d14b3fe508baa3bf88f65d1d5
+ServerFileName=ArtemisMissionEditorInstaller.2.7.9.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.9.0
+Feature=Nebula color (nebType) property is now editable in the space map
+Feature1=Nebula display colors used by space map are now configurable in Settings
+BugFix=Fixed bug where nebula colors were lost by the space map
+Replaces=All
+
 [Update 2.7.8]
-ProductVersion=2.7.8
 Name=Artemis Mission Editor 2.7.8
+ProductVersion=2.7.8
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.8.msi
 Size=1593344
 ReleaseDate=25/08/2018
@@ -62,8 +78,8 @@ BugFix1=Fixed bug where a Potential Problems warning was incorrectly shown when 
 Replaces=All
 
 [Update 2.7.5]
-ProductVersion=2.7.5
 Name=Artemis Mission Editor 2.7.5
+ProductVersion=2.7.5
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.5.msi
 Size=1592320
 ReleaseDate=05/04/2018
@@ -81,8 +97,8 @@ Enhancement1=List numeric properties in alphabetical order in menus
 Replaces=All
 
 [Update 2.7.4]
-Name=Artemis Mission Editor 2.7.4
 ProductVersion=2.7.4
+Name=Artemis Mission Editor 2.7.4
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.4.msi
 Size=1592320
 ReleaseDate=24/03/2018
@@ -112,8 +128,8 @@ BugFix3=Fixed some typos in the Help dialog
 Replaces=All
 
 [Update 2.7.3]
-ProductVersion=2.7.3
 Name=Artemis Mission Editor 2.7.3
+ProductVersion=2.7.3
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.3.msi
 Size=1592320
 ReleaseDate=14/03/2018
@@ -159,8 +175,8 @@ BugFix2=Fixed display of if_fleet_count when countSurrendered is absent
 Replaces=All
 
 [Update 2.7.1]
-Name=Artemis Mission Editor 2.7.1
 ProductVersion=2.7.1
+Name=Artemis Mission Editor 2.7.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.1.msi
 Size=1590272
 ReleaseDate=24/02/2018

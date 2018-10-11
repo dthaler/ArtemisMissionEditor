@@ -1,3 +1,8 @@
+Version 2.7.9 [2018-October-10] (Dave Thaler)
+* Fixed bug where nebula colors were lost by the space map
+* Made nebula color (nebType) property be editable in the space map
+* Made nebula display colors used by space map be editable in Settings
+----------------------
 Version 2.7.8 [2018-August-25] (Dave Thaler)
 * Don't allow selecting global properties with "copy_object_property"
 * Add a Potential Problems warning if a neutral ship is created and 
