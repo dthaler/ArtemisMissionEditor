@@ -244,7 +244,7 @@ namespace ArtemisMissionEditor.SpaceMap
         }
         /// <summary>
         /// Set the Browsable property.
-        /// NOTE: Be sure to decorate the property with [Browsable(true)]
+        /// NOTE: Be sure to decorate the property with [Browsable(true)] or [Browsable(false)]
         /// </summary>
         /// <param name="PropertyName">Name of the variable</param>
         /// <param name="bIsBrowsable">Browsable Value</param>
