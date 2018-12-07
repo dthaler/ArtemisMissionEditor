@@ -189,6 +189,7 @@
     <Compile Include="Controls\PanelSpaceMap.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Utility Classes\MRUManager.cs" />
     <Compile Include="Utility Classes\Settings.cs" />
     <Compile Include="SpaceMap\Space.cs" />
     <Compile Include="SpaceMap\MapObjectNamed_UIEditors.cs" />

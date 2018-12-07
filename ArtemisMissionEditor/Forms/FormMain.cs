@@ -15,10 +15,15 @@ namespace ArtemisMissionEditor.Forms
 	/// <summary>
 	///  Main window of the application
 	/// </summary>
-	public partial class FormMain : FormSerializeableToRegistry
+	public partial class FormMain : FormSerializeableToRegistry, IMRUClient
     {
-		private static string MainFormName = AboutBox.AssemblyTitle + " v" + AboutBox.AssemblyVersion;
-        
+        private static string MainFormName = AboutBox.AssemblyTitle + " v" + AboutBox.AssemblyVersion;
+
+        public void OpenMRUFile(string missionFileName)
+        {
+            Mission.Current.FromFile(missionFileName);
+        }
+
         public void UpdateFormText()
 		{
             string missionVersionDashed;
@@ -65,7 +70,7 @@ namespace ArtemisMissionEditor.Forms
 			Mission.Current.AssignContextMenuStripForLabels(_FM_cms_Label);
             
             Mission.Current.New(true);
-		}
+        }
 
         private void _E_Log_NewLogEntry(object sender, NewLogEntryEventArgs e)
         {
@@ -112,6 +117,8 @@ namespace ArtemisMissionEditor.Forms
 			
             UpdateVesselDataText(sender, null);
             UpdateAutosaveTimer(sender, null);
+
+            MRUManager.Current.Initialize(this, _FM_ms_Main_File, recentFilesToolStripMenuItem);
         }
 
         private void UpdateVesselDataText(object sender, VesselDataChangedEventArgs e)

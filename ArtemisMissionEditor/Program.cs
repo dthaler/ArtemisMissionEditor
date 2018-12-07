@@ -108,9 +108,8 @@ namespace ArtemisMissionEditor
         /// Shows Main form if it is the last form remaining (called upon hiding another form)
         /// </summary>
         /// <remarks>
-        /// WTF MICROSOFT, WHY DOES IT GO OUT OF FOCUS!?
-        /// EDIT: Apparently, if you show a form from a form, it will happen, so all forms that open forms should have this line
-        /// Stupid Miscrosoft...
+        /// Apparently, if you show a form from a form, it will go out of focus, so all forms that
+        /// open forms should have this line.
         /// </remarks>
         public static void ShowMainFormIfRequired()
         {

@@ -872,9 +872,15 @@ namespace ArtemisMissionEditor
                 FilePath = fileName;
                 TreeViewNodes.SelectedNode = _startNode;
                 TruncateUndoStack(0);
+
+                // Add successfully opened file to MRU list.
+                MRUManager.Current.Add(fileName);
             }
             else
             {
+                // Remove file from MRU list.
+                MRUManager.Current.Remove(fileName);
+
                 New(true);
             }
         }
@@ -1333,6 +1339,9 @@ namespace ArtemisMissionEditor
                 {
                     FilePath = fileName;
                     TruncateUndoStack(Settings.Current.AmountOfUndoEntriesToKeep);
+
+                    // Add successfully opened file to MRU list.
+                    MRUManager.Current.Add(fileName);
                 }
             }
             catch (Exception ex)
