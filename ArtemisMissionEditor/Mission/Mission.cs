@@ -3599,6 +3599,7 @@ namespace ArtemisMissionEditor
                         List<string> commsButtonsCheckedHere = new List<string>();
                         List<string> propertiesCheckedHere = new List<string>();
                         int gmKeysCheckedHere = 0;
+                        int clientKeysCheckedHere = 0;
                         foreach (MissionStatement statement in mNode.Conditions)
                         {
                             if (statement.Kind != MissionStatementKind.Condition)
@@ -3609,6 +3610,8 @@ namespace ArtemisMissionEditor
                                 variablesCheckedHere.Add(CollapseName(statement.GetAttribute("name")));
                             if (statement.Name == "if_timer_finished")
                                 timersCheckedHere.Add(CollapseName(statement.GetAttribute("name")));
+                            if (statement.Name == "if_client_key")
+                                clientKeysCheckedHere++;
                             if (statement.Name == "if_gm_key")
                                 gmKeysCheckedHere++;
                             if (statement.Name == "if_gm_button")
@@ -3663,7 +3666,7 @@ namespace ArtemisMissionEditor
                                 }
                             }
                             bool noCorrespondingSet = true;
-                            if (gmKeysCheckedHere > 0)
+                            if (gmKeysCheckedHere > 0 || clientKeysCheckedHere > 0)
                             {
                                 // Keypress only fires once per press.
                                 noCorrespondingSet = false;
