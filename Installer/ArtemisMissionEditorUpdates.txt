@@ -1,5 +1,23 @@
 ;aiu;
 
+[Update 2.7.10]
+Name=Artemis Mission Editor 2.7.10
+ProductVersion=2.7.10
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.10.msi
+Size=1597440
+ReleaseDate=07/12/2018
+MD5=3b93cf7e26c4124e72e048efc8c84218
+ServerFileName=ArtemisMissionEditorInstaller.2.7.10.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.10.0
+Feature=Added ability to easily find recent files, from File menu
+Feature1=Added ability to easily find recent autosaved versions, from File menu
+Feature2=When an autosaved version is newer than the most recent file, starting the editor will now ask you if you want to resume from where it autosaved
+BugFix=Fixed bug where the potential problems check would incorrectly complain about missing a set_variable command when using if_client_key
+BugFix1=Fixed bug where autosaving would happen when nothing was actually changed
+Replaces=All
+
 [Update 2.7.9]
 Name=Artemis Mission Editor 2.7.9
 ProductVersion=2.7.9
@@ -17,8 +35,8 @@ BugFix=Fixed bug where nebula colors were lost by the space map
 Replaces=All
 
 [Update 2.7.8]
-Name=Artemis Mission Editor 2.7.8
 ProductVersion=2.7.8
+Name=Artemis Mission Editor 2.7.8
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.8.msi
 Size=1593344
 ReleaseDate=25/08/2018
@@ -34,8 +52,8 @@ BugFix1=Fixed bug where copy_object_property incorrectly allowed selecting globa
 Replaces=All
 
 [Update 2.7.7]
-Name=Artemis Mission Editor 2.7.7
 ProductVersion=2.7.7
+Name=Artemis Mission Editor 2.7.7
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.7.msi
 Size=1593344
 ReleaseDate=07/07/2018
@@ -97,8 +115,8 @@ Enhancement1=List numeric properties in alphabetical order in menus
 Replaces=All
 
 [Update 2.7.4]
-ProductVersion=2.7.4
 Name=Artemis Mission Editor 2.7.4
+ProductVersion=2.7.4
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.4.msi
 Size=1592320
 ReleaseDate=24/03/2018
@@ -128,8 +146,8 @@ BugFix3=Fixed some typos in the Help dialog
 Replaces=All
 
 [Update 2.7.3]
-Name=Artemis Mission Editor 2.7.3
 ProductVersion=2.7.3
+Name=Artemis Mission Editor 2.7.3
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.3.msi
 Size=1592320
 ReleaseDate=14/03/2018
@@ -175,8 +193,8 @@ BugFix2=Fixed display of if_fleet_count when countSurrendered is absent
 Replaces=All
 
 [Update 2.7.1]
-ProductVersion=2.7.1
 Name=Artemis Mission Editor 2.7.1
+ProductVersion=2.7.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.1.msi
 Size=1590272
 ReleaseDate=24/02/2018
@@ -196,8 +214,8 @@ BugFix1=Remove player_slot from set_damcon_members since it doesn't work
 Replaces=All
 
 [Update 2.7]
-Name=Artemis Mission Editor 2.7
 ProductVersion=2.7
+Name=Artemis Mission Editor 2.7
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.msi
 Size=1589248
 ReleaseDate=19/02/2018
@@ -223,8 +241,8 @@ BugFix3=Corrected display of DEFEND ai block arguments
 Replaces=All
 
 [Update 2.6.2]
-Name=Artemis Mission Editor 2.6.2
 ProductVersion=2.6.2
+Name=Artemis Mission Editor 2.6.2
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.2.msi
 Size=1586176
 ReleaseDate=06/02/2018
@@ -240,8 +258,8 @@ BugFix1=Cleaned up code so it builds without any compiler warnings
 Replaces=All
 
 [Update 2.6.1]
-Name=Artemis Mission Editor 2.6.1
 ProductVersion=2.6.1
+Name=Artemis Mission Editor 2.6.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.1.msi
 Size=1585664
 ReleaseDate=16/01/2018

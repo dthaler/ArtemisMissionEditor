@@ -5,6 +5,7 @@ Version 2.7.10 [2018-December-7] (Dave Thaler)
   the editor will now ask you if you want to resume from where it saved
 * Fixed bug where the potential problems check would incorrectly complain
   about missing a set_variable command when using if_client_key
+* Fixed bug where autosaving would happen when nothing was actually changed
 ----------------------
 Version 2.7.9 [2018-October-10] (Dave Thaler)
 * Fixed bug where nebula colors were lost by the space map
