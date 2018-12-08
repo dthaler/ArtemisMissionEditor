@@ -1,3 +1,11 @@
+Version 2.7.10 [2018-December-7] (Dave Thaler)
+* Added ability to easily find recent files, from File menu
+* Added ability to easily find recent autosaved versions, from File menu
+* When an autosaved version is newer than the most recent file, starting
+  the editor will now ask you if you want to resume from where it saved
+* Fixed bug where the potential problems check would incorrectly complain
+  about missing a set_variable command when using if_client_key
+----------------------
 Version 2.7.9 [2018-October-10] (Dave Thaler)
 * Fixed bug where nebula colors were lost by the space map
 * Made nebula color (nebType) property be editable in the space map
