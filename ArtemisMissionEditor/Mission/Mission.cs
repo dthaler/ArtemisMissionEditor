@@ -874,12 +874,12 @@ namespace ArtemisMissionEditor
                 TruncateUndoStack(0);
 
                 // Add successfully opened file to MRU list.
-                MRUManager.Current.Add(fileName);
+                MRUManager.Current.AddRecentFile(fileName);
             }
             else
             {
                 // Remove file from MRU list.
-                MRUManager.Current.Remove(fileName);
+                MRUManager.Current.RemoveRecentFile(fileName);
 
                 New(true);
             }
@@ -1341,7 +1341,7 @@ namespace ArtemisMissionEditor
                     TruncateUndoStack(Settings.Current.AmountOfUndoEntriesToKeep);
 
                     // Add successfully opened file to MRU list.
-                    MRUManager.Current.Add(fileName);
+                    MRUManager.Current.AddRecentFile(fileName);
                 }
             }
             catch (Exception ex)

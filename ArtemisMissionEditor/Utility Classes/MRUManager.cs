@@ -20,28 +20,73 @@ namespace ArtemisMissionEditor
         public static MRUManager Current => _current;
 
         public ToolStripMenuItem MRUMenu;
+        public ToolStripMenuItem AutosavesMenu;
 
         private Form _ownerForm;
         private ToolStripMenuItem _menuItemParent; // Recent Files menu item parent
 
-        public void Add(string missionFileName, bool latest = true)
+        private ToolStripMenuItem AddMenuItem(ToolStripMenuItem menu, string text, bool latest)
         {
-            Remove(missionFileName);
+            RemoveMenuItem(menu, text);
 
-            var item = new ToolStripMenuItem(missionFileName);
+            var item = new ToolStripMenuItem(text);
             if (latest)
             {
-                MRUMenu.DropDownItems.Insert(0, item);
-            } else
-            {
-                MRUMenu.DropDownItems.Add(item);
+                menu.DropDownItems.Insert(0, item);
             }
-            item.Click += Item_Click;
+            else
+            {
+                menu.DropDownItems.Add(item);
+            }
+            return item;
+        }
+
+        public void AddRecentFile(string missionFileName, bool latest = true)
+        {
+            // Don't add an autosave filename.
+            if (missionFileName.Contains("autosave"))
+            {
+                return;
+            }
+
+            ToolStripMenuItem item = AddMenuItem(MRUMenu, missionFileName, latest);
+
+            item.Click += RecentFile_Click;
 
             SaveMRU();
         }
 
-        private void Item_Click(object sender, EventArgs e)
+        public ToolStripMenuItem AddAutosaveFile(string timestamp, bool latest = true)
+        {
+            ToolStripMenuItem item = AddMenuItem(AutosavesMenu, timestamp, latest);
+
+            item.Click += AutosaveFile_Click;
+
+            return item;
+        }
+
+        private void AutosaveFile_Click(object sender, EventArgs e)
+        {
+            var item = sender as ToolStripMenuItem;
+            string timestamp = item.Text;
+
+            // Find file with the specified timestamp.
+            string path = Environment.ExpandEnvironmentVariables("%APPDATA%\\ArtemisMissionEditor");
+            DirectoryInfo dirInfo = new DirectoryInfo(path);
+            var fileInfos = dirInfo.EnumerateFiles("autosave*.xml").Where(i => i.LastWriteTime.ToString() == timestamp);
+            FileInfo info = fileInfos.FirstOrDefault();
+            if (info != null)
+            {
+                ((IMRUClient)_ownerForm).OpenMRUFile(info.FullName);
+            }
+            else
+            {
+                MessageBox.Show("File no longer exists, removing it from recent files...");
+                RemoveAutosaveFile(timestamp);
+            }
+        }
+
+        private void RecentFile_Click(object sender, EventArgs e)
         {
             var item = sender as ToolStripMenuItem;
             string missionFileName = item.Text;
@@ -51,26 +96,36 @@ namespace ArtemisMissionEditor
             } else
             {
                 MessageBox.Show("File no longer exists, removing it from recent files...");
-                Remove(missionFileName);
+                RemoveRecentFile(missionFileName);
             }
         }
 
-        public void Remove(string missionFileName)
+        private void RemoveMenuItem(ToolStripMenuItem menu, string text)
         {
-            foreach (var item in MRUMenu.DropDownItems)
+            foreach (var item in menu.DropDownItems)
             {
-                var mruItem = item as ToolStripMenuItem;
-                if (mruItem == null)
+                var menuItem = item as ToolStripMenuItem;
+                if (menuItem == null)
                     continue;
-                if (mruItem.Text == missionFileName)
+                if (menuItem.Text == text)
                 {
-                    MRUMenu.DropDownItems.Remove(mruItem);
+                    menu.DropDownItems.Remove(menuItem);
                     return;
                 }
             }
         }
 
-        public void Initialize(Form owner, ToolStripMenuItem parent, ToolStripMenuItem mruMenuItem)
+        public void RemoveRecentFile(string missionFileName)
+        {
+            RemoveMenuItem(MRUMenu, missionFileName);
+        }
+
+        public void RemoveAutosaveFile(string timestamp)
+        {
+            RemoveMenuItem(AutosavesMenu, timestamp);
+        }
+
+        public void Initialize(Form owner, ToolStripMenuItem parent, ToolStripMenuItem mruMenuItem, ToolStripMenuItem autosavesMenuItem)
         {
             _ownerForm = owner;
 
@@ -81,6 +136,7 @@ namespace ArtemisMissionEditor
             }
 
             MRUMenu = mruMenuItem;
+            AutosavesMenu = autosavesMenuItem;
 
             // keep reference to MRU menu item parent
             _menuItemParent = parent;
@@ -96,6 +152,19 @@ namespace ArtemisMissionEditor
             _ownerForm.Closing += new System.ComponentModel.CancelEventHandler(OnFormClosing);
 
             LoadMRU();
+            ToolStripMenuItem autosaveMenuItem = LoadAutosavesList();
+            if (autosaveMenuItem != null)
+            {
+                // Looks like the autosave timestamp is newer than the most recent file, so as the user if they want to recover it.
+                DialogResult result = MessageBox.Show(
+                    "Do you want to recover where you left off at " + autosaveMenuItem.Text + "?",
+                    "Recover using autosaved copy",
+                    MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    AutosaveFile_Click(autosaveMenuItem, null);
+                }
+            }
         }
 
         private static RegistryKey GetRegistryKey()
@@ -105,6 +174,45 @@ namespace ArtemisMissionEditor
             if (mru == null)
                 mru = key.CreateSubKey("Recent Files List");
             return mru;
+        }
+
+        /// <summary>
+        /// Read the autosaves list from disk. 
+        /// </summary>
+        private ToolStripMenuItem LoadAutosavesList()
+        {
+            var itemToRecoverTimestamp = new DateTime();
+            ToolStripMenuItem itemToRecover = null;
+
+            AutosavesMenu.DropDownItems.Clear();
+
+            string path = Environment.ExpandEnvironmentVariables("%APPDATA%\\ArtemisMissionEditor");
+            DirectoryInfo dirInfo = new DirectoryInfo(path);
+            var fileInfos = dirInfo.EnumerateFiles("autosave*.xml");
+            var sortedFileInfos = fileInfos.OrderBy(i => i.LastWriteTime).ToList();
+            foreach (FileInfo info in sortedFileInfos)
+            {
+                itemToRecoverTimestamp = info.LastWriteTime;
+                itemToRecover = AddAutosaveFile(itemToRecoverTimestamp.ToString());
+            }
+
+            // See if itemToRecover is newer than most recent file timestamp.
+            if (itemToRecover != null && MRUMenu.DropDownItems.Count > 0)
+            {
+                var mostRecentFileItem = MRUMenu.DropDownItems[0] as ToolStripMenuItem;
+                string missionFileName = mostRecentFileItem.Text;
+                if (File.Exists(missionFileName))
+                {
+                    FileInfo info = new FileInfo(missionFileName);
+                    if (info.LastWriteTime > itemToRecoverTimestamp)
+                    {
+                        // Looks like we saved successfully.
+                        return null;
+                    }
+                }
+            }
+
+            return itemToRecover;
         }
 
         /// <summary>
@@ -118,7 +226,7 @@ namespace ArtemisMissionEditor
             foreach (string valueName in key.GetValueNames())
             {
                 string missionFileName = key.GetValue(valueName) as string;
-                Add(missionFileName, false);
+                AddRecentFile(missionFileName, false);
             }
         }
 
@@ -149,6 +257,7 @@ namespace ArtemisMissionEditor
         private void OnFileMenuOpening(object sender, EventArgs e)
         {
             MRUMenu.Enabled = (MRUMenu.DropDownItems.Count > 0);
+            AutosavesMenu.Enabled = (AutosavesMenu.DropDownItems.Count > 0);
         }
     }
 }

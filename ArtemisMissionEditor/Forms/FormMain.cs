@@ -118,7 +118,7 @@ namespace ArtemisMissionEditor.Forms
             UpdateVesselDataText(sender, null);
             UpdateAutosaveTimer(sender, null);
 
-            MRUManager.Current.Initialize(this, _FM_ms_Main_File, recentFilesToolStripMenuItem);
+            MRUManager.Current.Initialize(this, _FM_ms_Main_File, recentFilesToolStripMenuItem, autosavedVersionsToolStripMenuItem);
         }
 
         private void UpdateVesselDataText(object sender, VesselDataChangedEventArgs e)

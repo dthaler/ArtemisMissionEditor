@@ -43,6 +43,7 @@
             this._FM_ms_Main_File_SaveAsMission = new System.Windows.Forms.ToolStripMenuItem();
             this._FM_ms_Main_File_s_1 = new System.Windows.Forms.ToolStripSeparator();
             this.recentFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dummyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this._FM_ms_Main_File_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this._FM_ms_Main_Edit = new System.Windows.Forms.ToolStripMenuItem();
@@ -173,7 +174,8 @@
             this.toolStrip_FM_cms_Label_EditPlusMinus_P100 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip_FM_cms_Label_EditPlusMinus_P1000 = new System.Windows.Forms.ToolStripMenuItem();
             this._FM_t_AutoUpdateTimer = new System.Windows.Forms.Timer(this.components);
-            this.dummyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autosavedVersionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dummyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this._FM_ss_Main.SuspendLayout();
             this._FM_ms_Main.SuspendLayout();
             this._FM_tsc_Main.BottomToolStripPanel.SuspendLayout();
@@ -270,6 +272,7 @@
             this._FM_ms_Main_File_SaveAsMission,
             this._FM_ms_Main_File_s_1,
             this.recentFilesToolStripMenuItem,
+            this.autosavedVersionsToolStripMenuItem,
             this.toolStripSeparator2,
             this._FM_ms_Main_File_Exit});
             this._FM_ms_Main_File.Name = "_FM_ms_Main_File";
@@ -321,6 +324,12 @@
             this.recentFilesToolStripMenuItem.Name = "recentFilesToolStripMenuItem";
             this.recentFilesToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.recentFilesToolStripMenuItem.Text = "Recent Files";
+            // 
+            // dummyToolStripMenuItem
+            // 
+            this.dummyToolStripMenuItem.Name = "dummyToolStripMenuItem";
+            this.dummyToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.dummyToolStripMenuItem.Text = "Dummy";
             // 
             // toolStripSeparator2
             // 
@@ -1167,7 +1176,7 @@
             // 
             this._FM_sc_Main_Right.Panel2.Controls.Add(this._FM_flp_Bottom_Right);
             this._FM_sc_Main_Right.Size = new System.Drawing.Size(1135, 732);
-            this._FM_sc_Main_Right.SplitterDistance = 545;
+            this._FM_sc_Main_Right.SplitterDistance = 544;
             this._FM_sc_Main_Right.SplitterWidth = 5;
             this._FM_sc_Main_Right.TabIndex = 1;
             this._FM_sc_Main_Right.TabStop = false;
@@ -1198,7 +1207,7 @@
             this.doubleBufferedPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.doubleBufferedPanel1.Name = "doubleBufferedPanel1";
             this.doubleBufferedPanel1.Padding = new System.Windows.Forms.Padding(5);
-            this.doubleBufferedPanel1.Size = new System.Drawing.Size(1129, 515);
+            this.doubleBufferedPanel1.Size = new System.Drawing.Size(1129, 514);
             this.doubleBufferedPanel1.TabIndex = 2;
             // 
             // _FM_tve_MissionStatement
@@ -1219,7 +1228,7 @@
             this._FM_tve_MissionStatement.SelectedListNodeUnfocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this._FM_tve_MissionStatement.SelectedNodeColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(150)))), ((int)(((byte)(250)))));
             this._FM_tve_MissionStatement.SelectedNodeColorUnfocused = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            this._FM_tve_MissionStatement.Size = new System.Drawing.Size(1117, 503);
+            this._FM_tve_MissionStatement.Size = new System.Drawing.Size(1117, 502);
             this._FM_tve_MissionStatement.TabIndex = 0;
             // 
             // _FM_cms_MissionStatementTree
@@ -1483,7 +1492,7 @@
             this._FM_flp_Bottom_Right.Margin = new System.Windows.Forms.Padding(0);
             this._FM_flp_Bottom_Right.Name = "_FM_flp_Bottom_Right";
             this._FM_flp_Bottom_Right.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this._FM_flp_Bottom_Right.Size = new System.Drawing.Size(1135, 182);
+            this._FM_flp_Bottom_Right.Size = new System.Drawing.Size(1135, 183);
             this._FM_flp_Bottom_Right.TabIndex = 0;
             // 
             // _FM_cms_VesselData
@@ -1667,11 +1676,19 @@
             this._FM_t_AutoUpdateTimer.Interval = 1000;
             this._FM_t_AutoUpdateTimer.Tick += new System.EventHandler(this._E_FM_t_AutoUpdateTimer_Tick);
             // 
-            // dummyToolStripMenuItem
+            // autosavedVersionsToolStripMenuItem
             // 
-            this.dummyToolStripMenuItem.Name = "dummyToolStripMenuItem";
-            this.dummyToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.dummyToolStripMenuItem.Text = "Dummy";
+            this.autosavedVersionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dummyToolStripMenuItem1});
+            this.autosavedVersionsToolStripMenuItem.Name = "autosavedVersionsToolStripMenuItem";
+            this.autosavedVersionsToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
+            this.autosavedVersionsToolStripMenuItem.Text = "Autosaved Versions";
+            // 
+            // dummyToolStripMenuItem1
+            // 
+            this.dummyToolStripMenuItem1.Name = "dummyToolStripMenuItem1";
+            this.dummyToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.dummyToolStripMenuItem1.Text = "Dummy";
             // 
             // FormMain
             // 
@@ -1863,5 +1880,7 @@
         private System.Windows.Forms.ToolStripMenuItem recentFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem dummyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem autosavedVersionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dummyToolStripMenuItem1;
     }
 }
