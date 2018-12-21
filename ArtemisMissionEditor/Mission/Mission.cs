@@ -3889,7 +3889,7 @@ namespace ArtemisMissionEditor
                         string type = "<UNKNOWN_TYPE>";
                         if (ExpressionMemberCheck_AddAIType.AITypeDictionary.ContainsKey(attType))
                             type = ExpressionMemberCheck_AddAIType.AITypeDictionary[attType];
-                        if (NamedObjectNames["monster"].Contains(attName))
+                        if (NamedObjectNames["monster"].Contains(CollapseName(attName)))
                         {
                             if (type.StartsWith("<SHIP_"))
                             {
@@ -3999,7 +3999,7 @@ namespace ArtemisMissionEditor
                     if (statement.Name == "direct")
                     {
                         attName = statement.GetAttribute("name");
-                        if (String.IsNullOrEmpty(attName) || !NamedObjectNames["genericMesh"].Contains(attName))
+                        if (String.IsNullOrEmpty(attName) || !NamedObjectNames["genericMesh"].Contains(CollapseName(attName)))
                             result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "The \"Direct\" statement only works with a named generic mesh.", node, statement));
                     }
                     if (statement.Name == "set_object_property")
