@@ -53,7 +53,10 @@ namespace ArtemisMissionEditor
 
             item.Click += RecentFile_Click;
 
-            SaveMRU();
+            if (latest)
+            {
+                SaveMRU();
+            }
         }
 
         public ToolStripMenuItem AddAutosaveFile(string timestamp, bool latest = true)
