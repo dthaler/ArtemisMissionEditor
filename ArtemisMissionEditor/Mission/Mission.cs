@@ -2861,6 +2861,17 @@ namespace ArtemisMissionEditor
                     UpdateNamesLists_ScanExpression(statement, "seconds");
                 }
 
+                if (statement.Name == "clear_gm_button")
+                {
+                    string var_text = statement.GetAttribute("text");
+                    if (var_text != null)
+                    {
+                        var_text = CollapseName(var_text);
+                        if (!GMButtonNames.Contains(var_text))
+                            GMButtonNames.Add(var_text);
+                    }
+                }
+
                 if (statement.Name == "set_gm_button")
                 {
                     string var_text = statement.GetAttribute("text");
@@ -2871,6 +2882,17 @@ namespace ArtemisMissionEditor
                             GMButtonNames.Add(var_text);
                         if (!GMButtonSetNames.Contains(var_text))
                             GMButtonSetNames.Add(var_text);
+                    }
+                }
+
+                if (statement.Name == "clear_comms_button")
+                {
+                    string var_text = statement.GetAttribute("text");
+                    if (var_text != null)
+                    {
+                        var_text = CollapseName(var_text);
+                        if (!CommsButtonNames.Contains(var_text))
+                            CommsButtonNames.Add(var_text);
                     }
                 }
 
