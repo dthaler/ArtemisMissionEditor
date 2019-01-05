@@ -172,6 +172,8 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD TypeAI =                     new EMVD(EMVT.VarEnumString,EMVB.StoredWhenFilled,  EMVE.AIType,null,null,"","");
         /// <summary> Check distance in/out nebula from [add_ai] </summary>
         public static EMVD Check_DistanceNebula =       new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DistanceNebulaCheck,null,null,""," ");
+        /// <summary> Check distance from [add_ai] </summary>
+        public static EMVD Check_DistanceNoNebula =     new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DistanceNoNebulaCheck,null,null,""," ");
         /// <summary> "value" radius from [add_ai] </summary>
         public static EMVD ValueRadius =                new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger,0,100000,""," ");
         /// <summary> "value" radius (without trailing space) from [add_ai] </summary>

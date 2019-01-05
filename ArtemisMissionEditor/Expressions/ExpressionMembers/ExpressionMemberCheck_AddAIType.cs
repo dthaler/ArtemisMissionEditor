@@ -170,10 +170,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("if "));
 			eML.Add(new ExpressionMember("it "));
 			eML.Add(new ExpressionMember("is "));
-			eML.Add(new ExpressionMember("closer "));
-			eML.Add(new ExpressionMember("than "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
-            eML.Add(new ExpressionMember("\" "));
+			eML.Add(new ExpressionMemberCheck_DistanceNoNebula());
 			____Add_Name(eML, ExpressionMemberValueDescriptions.NameMonster);
 
 			#endregion
@@ -185,10 +182,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("if "));
 			eML.Add(new ExpressionMember("it "));
 			eML.Add(new ExpressionMember("is "));
-			eML.Add(new ExpressionMember("closer "));
-			eML.Add(new ExpressionMember("than "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
-            eML.Add(new ExpressionMember("\" "));
+			eML.Add(new ExpressionMemberCheck_DistanceNoNebula());
 			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShip);
 
 			#endregion
@@ -200,10 +194,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("if "));
 			eML.Add(new ExpressionMember("it "));
 			eML.Add(new ExpressionMember("is "));
-			eML.Add(new ExpressionMember("closer "));
-			eML.Add(new ExpressionMember("than "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
-            eML.Add(new ExpressionMember("\" "));
+			eML.Add(new ExpressionMemberCheck_DistanceNoNebula());
 			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShipOrMonster);
 
 			#endregion
@@ -269,10 +260,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("if "));
 			eML.Add(new ExpressionMember("it "));
 			eML.Add(new ExpressionMember("is "));
-			eML.Add(new ExpressionMember("closer "));
-			eML.Add(new ExpressionMember("than "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ValueRadiusQ, "value1"));
-			eML.Add(new ExpressionMember("\" "));
+			eML.Add(new ExpressionMemberCheck_DistanceNoNebula());
 			____Add_Name(eML, ExpressionMemberValueDescriptions.NameAIShip);
 
 			#endregion
