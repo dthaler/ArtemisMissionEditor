@@ -1,3 +1,11 @@
+Version 2.7.11 [2019-January-5] (Dave Thaler)
+* Fixed bug where scrollbar wasn't visible in statement editor
+* Fixed bogus warning when using AI blocks on an object with variables in its name
+* Fixed bug in "recent files" list where the latest file might not be listed
+* Fixed bug where button list wasn't listing buttons only seen in a clear command
+* Updated CHASE_{STATION,FLEET,OTHER_MONSTERS,WHALE,MONSTER} text to say "anywhere"
+  instead of "closer than 0", for consistency with CHASE_{AI_SHIP,PLAYER}
+----------------------
 Version 2.7.10 [2018-December-7] (Dave Thaler)
 * Added ability to easily find recent files, from File menu
 * Added ability to easily find recent autosaved versions, from File menu
