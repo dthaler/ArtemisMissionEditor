@@ -1,5 +1,23 @@
 ;aiu;
 
+[Update 2.7.11]
+ProductVersion=2.7.11
+Name=Artemis Mission Editor 2.7.11
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.11.msi
+Size=1597952
+ReleaseDate=05/01/2019
+MD5=23a778c98b1bf54811b57eeb49a3ef5c
+ServerFileName=ArtemisMissionEditorInstaller.2.7.11.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.11.0
+Enhancement=Updated CHASE_{STATION,FLEET,OTHER_MONSTERS,WHALE,MONSTER} text to say "anywhere" instead of "closer than 0", for consistency with CHASE_{AI_SHIP,PLAYER}
+BugFix=Fixed bug where scrollbar wasn't visible in statement editor
+BugFix1=Fixed bogus warning when using AI blocks on an object with variables in its name
+BugFix2=Fixed bug in "recent files" list where the latest file might not be listed
+BugFix3=Fixed bug where button list wasn't listing buttons only seen in a clear command
+Replaces=All
+
 [Update 2.7.10]
 Name=Artemis Mission Editor 2.7.10
 ProductVersion=2.7.10
@@ -19,8 +37,8 @@ BugFix1=Fixed bug where autosaving would happen when nothing was actually change
 Replaces=All
 
 [Update 2.7.9]
-Name=Artemis Mission Editor 2.7.9
 ProductVersion=2.7.9
+Name=Artemis Mission Editor 2.7.9
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.9.msi
 Size=1594880
 ReleaseDate=10/10/2018
@@ -35,8 +53,8 @@ BugFix=Fixed bug where nebula colors were lost by the space map
 Replaces=All
 
 [Update 2.7.8]
-ProductVersion=2.7.8
 Name=Artemis Mission Editor 2.7.8
+ProductVersion=2.7.8
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.8.msi
 Size=1593344
 ReleaseDate=25/08/2018
@@ -52,8 +70,8 @@ BugFix1=Fixed bug where copy_object_property incorrectly allowed selecting globa
 Replaces=All
 
 [Update 2.7.7]
-ProductVersion=2.7.7
 Name=Artemis Mission Editor 2.7.7
+ProductVersion=2.7.7
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.7.msi
 Size=1593344
 ReleaseDate=07/07/2018
@@ -96,8 +114,8 @@ BugFix1=Fixed bug where a Potential Problems warning was incorrectly shown when 
 Replaces=All
 
 [Update 2.7.5]
-Name=Artemis Mission Editor 2.7.5
 ProductVersion=2.7.5
+Name=Artemis Mission Editor 2.7.5
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.5.msi
 Size=1592320
 ReleaseDate=05/04/2018
@@ -193,8 +211,8 @@ BugFix2=Fixed display of if_fleet_count when countSurrendered is absent
 Replaces=All
 
 [Update 2.7.1]
-Name=Artemis Mission Editor 2.7.1
 ProductVersion=2.7.1
+Name=Artemis Mission Editor 2.7.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.1.msi
 Size=1590272
 ReleaseDate=24/02/2018
@@ -241,8 +259,8 @@ BugFix3=Corrected display of DEFEND ai block arguments
 Replaces=All
 
 [Update 2.6.2]
-ProductVersion=2.6.2
 Name=Artemis Mission Editor 2.6.2
+ProductVersion=2.6.2
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.2.msi
 Size=1586176
 ReleaseDate=06/02/2018
@@ -258,8 +276,8 @@ BugFix1=Cleaned up code so it builds without any compiler warnings
 Replaces=All
 
 [Update 2.6.1]
-ProductVersion=2.6.1
 Name=Artemis Mission Editor 2.6.1
+ProductVersion=2.6.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.1.msi
 Size=1585664
 ReleaseDate=16/01/2018
@@ -295,8 +313,8 @@ BugFix2=Fixed bug in update available detection
 Replaces=All
 
 [Update 2.6]
-Name=Artemis Mission Editor 2.6
 ProductVersion=2.6.0.0
+Name=Artemis Mission Editor 2.6
 URL=http://www.example.com/downloads/ArtemisMissionEditorInstaller.2.6.msi
 Size=1583616
 MD5=72deef9dc1ae805094af04d469c065f4
