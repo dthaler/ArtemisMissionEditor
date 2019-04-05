@@ -3985,6 +3985,16 @@ namespace ArtemisMissionEditor
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "use_gm_position will not work in a statement under an if_gm_button condition", node, statement));
                     }
 
+                    // warning_popup_message with a ship name other than Artemis.
+                    if (statement.Name == "warning_popup_message")
+                    {
+                        string name = statement.GetAttribute("name");
+                        if (name != null && name != "Artemis")
+                        {
+                            result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "warning_popup_message does not support ship names other than Artemis", node, statement));
+                        }
+                    }
+
                     // Create statement having wrong keys.
                     if (statement.Name == "create")
                     {
