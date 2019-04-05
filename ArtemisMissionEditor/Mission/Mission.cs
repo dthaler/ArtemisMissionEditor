@@ -3612,6 +3612,8 @@ namespace ArtemisMissionEditor
                 if (hasEndMission && hasNonEndMission)
                     result.Add(new MissionSearchResult(curNode, -1, "Other actions in the same node with the \"End Mission\" action make little sense, as the mission will end immediately and their effects will most likely go unnoticed by the players.", node, null));
 
+                List<string> gmButtonsCheckedHere = new List<string>();
+
                 // Check for problems on conditions.
                 if (!isStartNode)
                 {
@@ -3626,7 +3628,6 @@ namespace ArtemisMissionEditor
                         List<string> namesCheckedForNonExistenceHere = new List<string>();
                         List<string> variablesCheckedHere = new List<string>();
                         List<string> timersCheckedHere = new List<string>();
-                        List<string> gmButtonsCheckedHere = new List<string>();
                         List<string> commsButtonsCheckedHere = new List<string>();
                         List<string> propertiesCheckedHere = new List<string>();
                         int gmKeysCheckedHere = 0;
@@ -3974,6 +3975,14 @@ namespace ArtemisMissionEditor
                             continue;
                         if (!AllCreatedObjectNames.Contains(name))
                             result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Object named \"" + name + "\" is referenced in a statement, but never created.", node, statement));
+                    }
+
+                    // Using GM buttons with a GM position command.
+                    if ((statement.Name == "create" || statement.Name == "destroy_near") &&
+                        (gmButtonsCheckedHere.Count > 0) &&
+                        (statement.GetAttribute("use_gm_position") != null))
+                    {
+                        result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "use_gm_position will not work in a statement under an if_gm_button condition", node, statement));
                     }
 
                     // Create statement having wrong keys.
