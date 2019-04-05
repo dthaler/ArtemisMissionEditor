@@ -3681,17 +3681,23 @@ namespace ArtemisMissionEditor
                             List<string> timersSetHere = new List<string>();
                             for (int i = 0; i < mNode.Actions.Count; i++)
                             {
-                                if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "set_variable")
+                                if (mNode.Actions[i].Kind != MissionStatementKind.Action)
+                                    continue;
+                                if (mNode.Actions[i].Name == "set_variable")
                                     variablesSetHere.Add(CollapseName(mNode.Actions[i].GetAttribute("name")));
-                                if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "set_timer")
+                                if (mNode.Actions[i].Name == "set_timer")
                                     timersSetHere.Add(CollapseName(mNode.Actions[i].GetAttribute("name")));
-                                if (mNode.Actions[i].Kind == MissionStatementKind.Action &&
-                                    (mNode.Actions[i].Name == "set_object_property" || mNode.Actions[i].Name == "addto_object_property"))
+                                if (mNode.Actions[i].Name == "set_side_value")
+                                {
+                                    string name = mNode.Actions[i].GetAttribute("name") + ".sideValue";
+                                    propertiesSetHere.Add(CollapseName(name));
+                                }
+                                if (mNode.Actions[i].Name == "set_object_property" || mNode.Actions[i].Name == "addto_object_property")
                                 {
                                     string name = mNode.Actions[i].GetAttribute("name") + "." + mNode.Actions[i].GetAttribute("property");
                                     propertiesSetHere.Add(CollapseName(name));
                                 }
-                                if (mNode.Actions[i].Kind == MissionStatementKind.Action && mNode.Actions[i].Name == "copy_object_property")
+                                if (mNode.Actions[i].Name == "copy_object_property")
                                 {
                                     string name = mNode.Actions[i].GetAttribute("name2") + "." + mNode.Actions[i].GetAttribute("property");
                                     propertiesSetHere.Add(CollapseName(name));
