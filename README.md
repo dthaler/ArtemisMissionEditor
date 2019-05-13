@@ -70,11 +70,11 @@ You can download a ready-to-install version from the links at
 There are videos available at YouTube, describing the functionality of 
 the editor and showing how to use it:
  
-* [www.youtube.com/watch?v=lX69QaoZyRA](www.youtube.com/watch?v=lX69QaoZyRA) - Introduction
-* [www.youtube.com/watch?v=M14GG6WI5m8](www.youtube.com/watch?v=M14GG6WI5m8) - 01 - Interface and basic editing
-* [www.youtube.com/watch?v=4nL6tBnoISY](www.youtube.com/watch?v=4nL6tBnoISY) - 02 - Space map
-* [www.youtube.com/watch?v=RaW-gu0H33Q](www.youtube.com/watch?v=RaW-gu0H33Q) - 03 - Advanced editing
-* [www.youtube.com/watch?v=wVcHsntVdk4](www.youtube.com/watch?v=wVcHsntVdk4) - 04 - Dependencies
+* [www.youtube.com/watch?v=lX69QaoZyRA](https://www.youtube.com/watch?v=lX69QaoZyRA) - Introduction
+* [www.youtube.com/watch?v=M14GG6WI5m8](https://www.youtube.com/watch?v=M14GG6WI5m8) - 01 - Interface and basic editing
+* [www.youtube.com/watch?v=4nL6tBnoISY](https://www.youtube.com/watch?v=4nL6tBnoISY) - 02 - Space map
+* [www.youtube.com/watch?v=RaW-gu0H33Q](https://www.youtube.com/watch?v=RaW-gu0H33Q) - 03 - Advanced editing
+* [www.youtube.com/watch?v=wVcHsntVdk4](https://www.youtube.com/watch?v=wVcHsntVdk4) - 04 - Dependencies
 
 ## Interface Overview and Hotkeys
 
