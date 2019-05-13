@@ -373,6 +373,13 @@ namespace ArtemisMissionEditor.Expressions
             AddToPropertyDictionary("tauntImmunityIndex", "tauntImmunityIndex");
             AddPropertyMenuGroup("Enemies");
 
+            AddToPropertyDictionary("speed", "speed");
+            AddToPropertyDictionary("health", "health");
+            AddToPropertyDictionary("maxHealth", "maxHealth");
+            AddToPropertyDictionary("age", "age");
+            AddToPropertyDictionary("size", "size");
+            AddPropertyMenuGroup("Monsters");
+
             AddToPropertyDictionary("exitPointX", "exitPointX");
             AddToPropertyDictionary("exitPointY", "exitPointY");
             AddToPropertyDictionary("exitPointZ", "exitPointZ");

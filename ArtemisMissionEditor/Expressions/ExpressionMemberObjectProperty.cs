@@ -137,6 +137,13 @@ namespace ArtemisMissionEditor.Expressions
             new EMOP(EMVDS.NameEnemy, "specialAbilityState",EMVDS.EliteAbilityBits, null, null, true),
             new EMOP(EMVDS.NameEnemy, "surrenderChance",    EMVDS.Int_0_100, "%"),
 
+            // Monster properties.
+            new EMOP(EMVDS.NameMonster, "age",              EMVDS.MonsterAge),
+            new EMOP(EMVDS.NameMonster, "health",           EMVDS.Flt_NegInf_PosInf),
+            new EMOP(EMVDS.NameMonster, "maxHealth",        EMVDS.Flt_NegInf_PosInf),
+            new EMOP(EMVDS.NameMonster, "size",             EMVDS.Flt_NegInf_PosInf),
+            new EMOP(EMVDS.NameMonster, "speed",            EMVDS.Flt_NegInf_PosInf, "hm/s"),
+
             // Neutral properties.
             new EMOP(EMVDS.NameNeutral, "exitPointX",       EMVDS.Flt_0_100k, "m west of right edge"),
             new EMOP(EMVDS.NameNeutral, "exitPointY",       EMVDS.Flt_Minus100k_100k, "m"),
