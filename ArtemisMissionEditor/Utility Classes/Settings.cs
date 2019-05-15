@@ -30,7 +30,7 @@ namespace ArtemisMissionEditor
     public sealed partial class Settings
     {
         private static readonly string FileName = "settings.binary";
-        private static readonly int LastVersion = 9;
+        private static readonly int LastVersion = 10;
         
         public static readonly string ProgramDataFolder = @"%appdata%\ArtemisMissionEditor\";
         
@@ -620,7 +620,7 @@ namespace ArtemisMissionEditor
                         _labelFont = (Font)TypeDescriptor.GetConverter(typeof(Font)).ConvertFromInvariantString(DefaultLabelFont);
                         break;
                     case 7:
-                        NewMissionStartBlock = "<create type=\"player\" player_slot=\"\" x=\"50000\" y=\"0\" z=\"50000\" name=\"Artemis\" />\r\n<set_difficulty_level value=\"5\" />\r\n<set_skybox_index index=\"10\" />\r\n<set_object_property property=\"nebulaIsOpaque\" value=\"0\" />\r\n<set_object_property property=\"sensorSetting\" value=\"1\" />\r\n<set_object_property property=\"nonPlayerSpeed\" value=\"100\" />\r\n<set_object_property property=\"nonPlayerShield\" value=\"100\" />\r\n<set_object_property property=\"nonPlayerWeapon\" value=\"100\" />\r\n<set_object_property property=\"playerWeapon\" value=\"100\" />\r\n<set_object_property property=\"playerShields\" value=\"100\" />\r\n<big_message title=\"Unnamed mission\" subtitle1=\"by Unknown Author\" subtitle2=\"adventure for Artemis 2.7\" /><set_timer name=\"start_mission_timer_1\" seconds=\"10\" />\r\n<set_variable name=\"chapter_1\" value=\"1\" />";
+                        // NewMissionStartBlock changed again in version 10 below.
                         break;
                     case 8:
                         // Transition from old format
@@ -639,6 +639,9 @@ namespace ArtemisMissionEditor
                             _bindsBrushColor.Add(MapColors.YellowNebulaBG, Color.FromArgb(16, 255, 255, 0));
                             _bindsBrushStyle.Add(MapColors.YellowNebulaBG, HatchStyle.Percent10);
                         }
+                        break;
+                    case 10:
+                        NewMissionStartBlock = "<create type=\"player\" player_slot=\"\" x=\"50000\" y=\"0\" z=\"50000\" name=\"Artemis\" />\r\n<set_difficulty_level value=\"5\" />\r\n<set_skybox_index index=\"10\" />\r\n<set_object_property property=\"nebulaIsOpaque\" value=\"0\" />\r\n<set_object_property property=\"sensorSetting\" value=\"1\" />\r\n<set_object_property property=\"nonPlayerSpeed\" value=\"100\" />\r\n<set_object_property property=\"nonPlayerShield\" value=\"100\" />\r\n<set_object_property property=\"nonPlayerWeapon\" value=\"100\" />\r\n<set_object_property property=\"playerWeapon\" value=\"100\" />\r\n<set_object_property property=\"playerShields\" value=\"100\" />\r\n<big_message title=\"Unnamed mission\" subtitle1=\"by Unknown Author\" subtitle2=\"adventure for Artemis 2.7\" /><set_timer name=\"start_mission_timer_1\" seconds=\"10\" />\r\n<set_variable name=\"chapter_1\" value=\"1\" />";
                         break;
                 }
             }

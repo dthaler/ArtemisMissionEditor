@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Artemis Mission Editor")]
-[assembly: AssemblyDescription("Complete mission editor suite for Artemis SBS\r\n\r\nGet the latest version on Artemis Wiki:\r\nhttp://artemiswiki.pbworks.com/w/page/53389687/Mission_Editor\r\n\r\nUpdated for Artemis 2.1.1 by Russ Judge\r\n\r\nUpdated for Artemis 2.3.0 by Fish\r\n\r\nBug fixes and tweaking by David Wolfe, Alice and Gomeric\r\n\r\nUpdated for Artemis 2.5.1 and later by Dave Thaler, including contributions by Fish Evans and Scott Nalley\r\n\r\nReport bugs on the forum thread at: https://artemis.forumchitchat.com/post/artemis-mission-editor-8115862")]
+[assembly: AssemblyDescription("Complete mission editor suite for Artemis SBS\r\n\r\nGet the latest version on Artemis Wiki:\r\nhttp://artemiswiki.pbworks.com/w/page/53389687/Mission_Editor\r\n\r\nUpdated for Artemis 2.1.1 by Russ Judge\r\n\r\nUpdated for Artemis 2.3.0 by Fish\r\n\r\nBug fixes and tweaking by David Wolfe, Alice and Gomeric\r\n\r\nUpdated for Artemis 2.5.1 and later by Dave Thaler, including contributions by Fish Evans, Scott Nalley, and Stoo Johnston\r\n\r\nReport bugs on the forum thread at: https://artemis.forumchitchat.com/post/artemis-mission-editor-8115862")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ARME Corporation :-)")]
 [assembly: AssemblyProduct("Artemis Mission Editor")]

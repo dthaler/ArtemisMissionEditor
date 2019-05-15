@@ -1,5 +1,24 @@
 ;aiu;
 
+[Update 2.7.12]
+Name=Artemis Mission Editor 2.7.12
+ProductVersion=2.7.12
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.12.msi
+Size=1598464
+ReleaseDate=15/05/2019
+MD5=621c69988e1de8e7854a7d2b5fe1de67
+ServerFileName=ArtemisMissionEditorInstaller.2.7.12.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.12.0
+Feature=Added age, health, maxHealth, size, speed, and turnRate as monster properties added in Artemis 2.7.2
+Feature1=Added warning if use condition if_gm_button and action with use_gm_position since the GM console cannot a click button and have a position at same time
+Feature2=Added warning if warning_popup_message is used with a ship name other than Artemis
+Enhancement=Updated README file to render Youtube links as absolute paths in github UI
+BugFix=Fixed bogus warning if use set_side_value in an event with sideValue as condition
+BugFix1=Updated default script when using New to say Artemis 2.7 instead of 2.6
+Replaces=All
+
 [Update 2.7.11]
 ProductVersion=2.7.11
 Name=Artemis Mission Editor 2.7.11
@@ -19,8 +38,8 @@ BugFix3=Fixed bug where button list wasn't listing buttons only seen in a clear 
 Replaces=All
 
 [Update 2.7.10]
-Name=Artemis Mission Editor 2.7.10
 ProductVersion=2.7.10
+Name=Artemis Mission Editor 2.7.10
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.10.msi
 Size=1597440
 ReleaseDate=07/12/2018
@@ -70,8 +89,8 @@ BugFix1=Fixed bug where copy_object_property incorrectly allowed selecting globa
 Replaces=All
 
 [Update 2.7.7]
-Name=Artemis Mission Editor 2.7.7
 ProductVersion=2.7.7
+Name=Artemis Mission Editor 2.7.7
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.7.msi
 Size=1593344
 ReleaseDate=07/07/2018
@@ -87,8 +106,8 @@ BugFix=Removed "player_slot" option from set/addto numeric property, since those
 Replaces=All
 
 [Update 2.7.6]
-ProductVersion=2.7.6
 Name=Artemis Mission Editor 2.7.6
+ProductVersion=2.7.6
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.6.msi
 Size=1593344
 ReleaseDate=14/04/2018
@@ -114,8 +133,8 @@ BugFix1=Fixed bug where a Potential Problems warning was incorrectly shown when 
 Replaces=All
 
 [Update 2.7.5]
-ProductVersion=2.7.5
 Name=Artemis Mission Editor 2.7.5
+ProductVersion=2.7.5
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.5.msi
 Size=1592320
 ReleaseDate=05/04/2018
@@ -133,8 +152,8 @@ Enhancement1=List numeric properties in alphabetical order in menus
 Replaces=All
 
 [Update 2.7.4]
-Name=Artemis Mission Editor 2.7.4
 ProductVersion=2.7.4
+Name=Artemis Mission Editor 2.7.4
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.4.msi
 Size=1592320
 ReleaseDate=24/03/2018
@@ -184,8 +203,8 @@ BugFix3=Fixed bug where "Potential Problems" would treat expressions with unary 
 Replaces=All
 
 [Update 2.7.2]
-ProductVersion=2.7.2
 Name=Artemis Mission Editor 2.7.2
+ProductVersion=2.7.2
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.2.msi
 Size=1591808
 ReleaseDate=05/03/2018
@@ -259,8 +278,8 @@ BugFix3=Corrected display of DEFEND ai block arguments
 Replaces=All
 
 [Update 2.6.2]
-Name=Artemis Mission Editor 2.6.2
 ProductVersion=2.6.2
+Name=Artemis Mission Editor 2.6.2
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.2.msi
 Size=1586176
 ReleaseDate=06/02/2018
@@ -276,8 +295,8 @@ BugFix1=Cleaned up code so it builds without any compiler warnings
 Replaces=All
 
 [Update 2.6.1]
-Name=Artemis Mission Editor 2.6.1
 ProductVersion=2.6.1
+Name=Artemis Mission Editor 2.6.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.1.msi
 Size=1585664
 ReleaseDate=16/01/2018
@@ -293,8 +312,8 @@ BugFix= Fixed some more typos
 Replaces=All
 
 [Update 2.6.0.1]
-ProductVersion=2.6.0.1
 Name=Artemis Mission Editor 2.6.0.1
+ProductVersion=2.6.0.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.0.1.msi
 Size=1583616
 ReleaseDate=26/12/2017
@@ -313,8 +332,8 @@ BugFix2=Fixed bug in update available detection
 Replaces=All
 
 [Update 2.6]
-ProductVersion=2.6.0.0
 Name=Artemis Mission Editor 2.6
+ProductVersion=2.6.0.0
 URL=http://www.example.com/downloads/ArtemisMissionEditorInstaller.2.6.msi
 Size=1583616
 MD5=72deef9dc1ae805094af04d469c065f4
