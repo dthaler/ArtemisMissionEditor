@@ -349,6 +349,8 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD NameAIShip =                 new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedAIShipName,null,null,"\"","\" ");
         /// <summary> Ship (neutral, enemy, or player) "name" from [create] </summary>
         public static EMVD NameShip =                   new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedShipName,null,null,"\"","\" ");
+        /// <summary> Ship (neutral, enemy, or player) "name" from [create] </summary>
+        public static EMVD NameShipOrMonster =          new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedShipOrMonsterName,null,null,"\"","\" ");
         /// <summary> AI (neutral or enemy) ship or monster "name" from [create] </summary>
         public static EMVD NameAIShipOrMonster =        new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.NamedAIShipOrMonsterName,null,null,"\"","\" ");
         /// <summary> Scannable object "name" from [create] </summary>

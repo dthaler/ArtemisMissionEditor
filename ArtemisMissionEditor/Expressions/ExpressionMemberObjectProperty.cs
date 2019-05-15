@@ -103,7 +103,7 @@ namespace ArtemisMissionEditor.Expressions
             new EMOP(EMVDS.NameShip, "throttle",                EMVDS.Flt_NegInf_PosInf),
             new EMOP(EMVDS.NameShip, "steering",                EMVDS.Flt_NegInf_PosInf),
             new EMOP(EMVDS.NameShip, "topSpeed",                EMVDS.Flt_NegInf_PosInf, "hm/s"),
-            new EMOP(EMVDS.NameShip, "turnRate",                EMVDS.Flt_NegInf_PosInf, "radians/cycle"),
+            new EMOP(EMVDS.NameShipOrMonster, "turnRate",       EMVDS.Flt_NegInf_PosInf, "radians/cycle"),
             new EMOP(EMVDS.NameShip, "shieldStateFront",        EMVDS.Int_NegInf_PosInf),
             new EMOP(EMVDS.NameShip, "shieldMaxStateFront",     EMVDS.Int_NegInf_PosInf),
             new EMOP(EMVDS.NameShip, "shieldStateBack",         EMVDS.Int_NegInf_PosInf),

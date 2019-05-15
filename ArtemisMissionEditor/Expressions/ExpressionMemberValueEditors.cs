@@ -73,6 +73,7 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor NamedEnemyName;
         public static ExpressionMemberValueEditor NamedNeutralName;
         public static ExpressionMemberValueEditor NamedShipName;
+        public static ExpressionMemberValueEditor NamedShipOrMonsterName;
         public static ExpressionMemberValueEditor NamedAIShipName;
         public static ExpressionMemberValueEditor NamedAIShipOrMonsterName;
         public static ExpressionMemberValueEditor ScannableObjectName;
@@ -358,8 +359,10 @@ namespace ArtemisMissionEditor.Expressions
             AddToPropertyDictionary("throttle", "throttle");
             AddToPropertyDictionary("topSpeed", "topSpeed");
             AddToPropertyDictionary("triggersMines", "triggersMines");
-            AddToPropertyDictionary("turnRate", "turnRate");
             AddPropertyMenuGroup("Shielded ships");
+
+            AddToPropertyDictionary("turnRate", "turnRate");
+            AddPropertyMenuGroup("Mobile objects");
 
             // AddToPropertyDictionary("setShipSide", "Set Ship Side");
             AddToPropertyDictionary("eliteAIType", "eliteAIType");
@@ -373,11 +376,11 @@ namespace ArtemisMissionEditor.Expressions
             AddToPropertyDictionary("tauntImmunityIndex", "tauntImmunityIndex");
             AddPropertyMenuGroup("Enemies");
 
-            AddToPropertyDictionary("speed", "speed");
+            AddToPropertyDictionary("age", "age");
             AddToPropertyDictionary("health", "health");
             AddToPropertyDictionary("maxHealth", "maxHealth");
-            AddToPropertyDictionary("age", "age");
             AddToPropertyDictionary("size", "size");
+            AddToPropertyDictionary("speed", "speed");
             AddPropertyMenuGroup("Monsters");
 
             AddToPropertyDictionary("exitPointX", "exitPointX");
@@ -698,6 +701,10 @@ namespace ArtemisMissionEditor.Expressions
             NamedAIShipOrMonsterName = new ExpressionMemberValueEditor();
             NamedAIShipOrMonsterName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedAIShipOrMonsterNameList;
             Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedAIShipOrMonsterName.InvalidateContextMenuStrip(); });
+
+            NamedShipOrMonsterName = new ExpressionMemberValueEditor();
+            NamedShipOrMonsterName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NamedShipOrMonsterNameList;
+            Mission.NamesListUpdated += new EventHandler<NamesListUpdatedEventArgs>((s, e) => { NamedShipOrMonsterName.InvalidateContextMenuStrip(); });
 
             ScannableObjectName = new ExpressionMemberValueEditor();
             ScannableObjectName.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_ScannableObjectNameList;
