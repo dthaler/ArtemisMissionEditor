@@ -1,3 +1,13 @@
+Version 2.7.12 [2019-May-14] (Dave Thaler, Stoo Johnston)
+* Added age, health, maxHealth, size, speed, and turnRate as monster properties
+  added in Artemis 2.7.2
+* Added warning if use condition if_gm_button and action with use_gm_position
+  since the GM console cannot a click button and have a position at same time
+* Added warning if warning_popup_message is used with a ship name other than Artemis
+* Fixed bogus warning if use set_side_value in an event with sideValue as condition
+* Updated default script when using New to say Artemis 2.7 instead of 2.6
+* Updated README file to render Youtube links as absolute paths in github UI
+----------------------
 Version 2.7.11 [2019-January-5] (Dave Thaler)
 * Fixed bug where scrollbar wasn't visible in statement editor
 * Fixed bogus warning when using AI blocks on an object with variables in its name
