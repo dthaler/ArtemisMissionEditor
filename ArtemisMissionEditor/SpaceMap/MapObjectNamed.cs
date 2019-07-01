@@ -988,7 +988,14 @@ namespace ArtemisMissionEditor.SpaceMap
 
     public sealed class MapObjectNamed_Anomaly : MapObjectNamed
     {
-        //MONSTER TYPE
+        private string _beaconEffect;
+        [DisplayName("beaconEffect"), Description("Beacon Effect 0=Attract 1=Repel")]
+        public string beaconEffect { get { return _beaconEffect; } set { _beaconEffect = value; } }
+
+        private string _beaconMonsterType;
+        [DisplayName("beaconMonsterType"), Description("Beacon Monster Type 0=Typhon")]
+        public string beaconMonsterType { get { return _beaconMonsterType; } set { _beaconMonsterType = value; } }
+
         private string _pickupType;
         [DisplayName("pickupType"), Description("Anomaly Type 0=Energy")]
         public string pickupType { get { return _pickupType; } set { _pickupType = value; } }
@@ -1000,7 +1007,12 @@ namespace ArtemisMissionEditor.SpaceMap
         public override int _selectionSize { get { return 10; } }
 
         //PROPERTIES
-        public override bool IsPropertyAvailable(string pName) { return base.IsPropertyAvailable(pName); }
+        public override bool IsPropertyAvailable(string pName)
+        {
+            if (pName == "beaconEffect") return true;
+            if (pName == "beaconMonsterType") return true;
+            return base.IsPropertyAvailable(pName);
+        }
         public override bool IsPropertyMandatory(string pName)
         {
             if (pName == "pickupType") return true;
@@ -1057,6 +1069,14 @@ namespace ArtemisMissionEditor.SpaceMap
             {
                 __AddNewAttribute(xDoc, create, "pickupType", _pickupType.ToString());
             }
+            if (!String.IsNullOrEmpty(_beaconEffect))
+            {
+                __AddNewAttribute(xDoc, create, "beaconEffect", _beaconEffect.ToString());
+            }
+            if (!String.IsNullOrEmpty(_beaconMonsterType))
+            {
+                __AddNewAttribute(xDoc, create, "beaconMonsterType", _beaconMonsterType.ToString());
+            }
             return create;
         }
 
@@ -1068,9 +1088,15 @@ namespace ArtemisMissionEditor.SpaceMap
             {
                 switch (att.Name)
                 {
+                    case "beaconEffect":
+                        _beaconEffect = att.Value;
+                        break;
+                    case "beaconMonsterType":
+                        _beaconMonsterType = att.Value;
+                        break;
                     case "pickupType":
                         _pickupType = att.Value;
-                    break;
+                        break;
                 }
             }
         }
@@ -1135,7 +1161,10 @@ namespace ArtemisMissionEditor.SpaceMap
     public sealed class MapObjectNamed_monster : MapObjectNamedA
     {
 
-        //MONSTER TYPE
+        private string _age;
+        [DisplayName("Age"), Description("Monster age 1=Young 2=Mature 3=Ancient")]
+        public string age { get { return _age; } set { _age = value; } }
+
         private string _monsterType;
         [DisplayName("Monster Type"), Description("Monster Type 0=Classic")]
         public string monsterType { get { return _monsterType; } set { _monsterType = value; } }
@@ -1153,6 +1182,7 @@ namespace ArtemisMissionEditor.SpaceMap
         //PROPERTIES
         public override bool IsPropertyAvailable(string pName)
         {
+            if (pName == "age") return true;
             if (pName == "monsterType") return true;
             if (pName == "podnumber") return true;
             return base.IsPropertyAvailable(pName);
@@ -1213,10 +1243,14 @@ namespace ArtemisMissionEditor.SpaceMap
             else
             {
                 __AddNewAttribute(xDoc, create, "monsterType", _monsterType.ToString());
-                if (!String.IsNullOrEmpty(_podnumber))
-                {
-                    __AddNewAttribute(xDoc, create, "podnumber", _podnumber.ToString());
-                }
+            }
+            if (!String.IsNullOrEmpty(_age))
+            {
+                __AddNewAttribute(xDoc, create, "age", _age.ToString());
+            }
+            if (!String.IsNullOrEmpty(_podnumber))
+            {
+                __AddNewAttribute(xDoc, create, "podnumber", _podnumber.ToString());
             }
             return create;
         }
@@ -1228,6 +1262,9 @@ namespace ArtemisMissionEditor.SpaceMap
             {
                 switch (att.Name)
                 {
+                    case "age":
+                        _age = att.Value;
+                        break;
                     case "monsterType":
                         _monsterType = att.Value;
                         break;
