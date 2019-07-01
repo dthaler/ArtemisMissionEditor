@@ -140,6 +140,25 @@ namespace ArtemisMissionEditor.SpaceMap
             return false;
         }
 
+        /// <summary>
+        /// Set the Browsable property.
+        /// NOTE: Be sure to decorate the property with [Browsable(true)] or [Browsable(false)]
+        /// </summary>
+        /// <param name="PropertyName">Name of the variable</param>
+        /// <param name="bIsBrowsable">Browsable Value</param>
+        protected void SetBrowsableProperty(string strPropertyName, bool bIsBrowsable)
+        {
+            // Get the Descriptor's Properties
+            PropertyDescriptor theDescriptor = TypeDescriptor.GetProperties(this.GetType())[strPropertyName];
+
+            // Get the Descriptor's "Browsable" Attribute
+            BrowsableAttribute theDescriptorBrowsableAttribute = (BrowsableAttribute)theDescriptor.Attributes[typeof(BrowsableAttribute)];
+            FieldInfo isBrowsable = theDescriptorBrowsableAttribute.GetType().GetField("Browsable", BindingFlags.IgnoreCase | BindingFlags.NonPublic | BindingFlags.Instance);
+
+            // Set the Descriptor's "Browsable" Attribute
+            isBrowsable.SetValue(theDescriptorBrowsableAttribute, bIsBrowsable);
+        }
+
         #endregion
 
         #region INHERITANCE
@@ -986,11 +1005,57 @@ namespace ArtemisMissionEditor.SpaceMap
         #endregion
     }
 
+    public sealed class BeaconEffectConverter : StringConverter
+    {
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context) { return true; }
+        public override bool GetStandardValuesExclusive(ITypeDescriptorContext context) { return true; }
+
+        public override TypeConverter.StandardValuesCollection
+        GetStandardValues(ITypeDescriptorContext context)
+        {
+            List<string> tmp = new List<string>();
+
+            tmp.Add("Attract");
+            tmp.Add("Repel");
+
+            return new StandardValuesCollection(tmp.ToArray());
+        }
+    }
+
     public sealed class MapObjectNamed_Anomaly : MapObjectNamed
     {
-        private string _beaconEffect;
-        [DisplayName("beaconEffect"), Description("Beacon Effect 0=Attract 1=Repel")]
-        public string beaconEffect { get { return _beaconEffect; } set { _beaconEffect = value; } }
+        private int _beaconEffect;
+        [Browsable(false)]
+        public string BeaconEffectToString
+        {
+            get
+            {
+                switch (_beaconEffect)
+                {
+                    case 1:
+                        return "Repel";
+                    default:
+                        return "Attract";
+                }
+            }
+        }
+        [DisplayName("Beacon Effect"), Browsable(false), Description("Indicates the beacon effect."), DefaultValue(0), TypeConverter(typeof(BeaconEffectConverter))]
+        public string BeaconEffectToString_Display
+        {
+            get { return MapObjectNameless.ConvertPascalToDisplay(BeaconEffectToString); }
+            set
+            {
+                switch (value.ToLower())
+                {
+                    case "repel":
+                        _beaconEffect = 1;
+                        break;
+                    default:
+                        _beaconEffect = 0;
+                        break;
+                }
+            }
+        }
 
         private string _beaconMonsterType;
         [DisplayName("beaconMonsterType"), Description("Beacon Monster Type 0=Typhon")]
@@ -998,7 +1063,13 @@ namespace ArtemisMissionEditor.SpaceMap
 
         private string _pickupType;
         [DisplayName("pickupType"), Description("Anomaly Type 0=Energy")]
-        public string pickupType { get { return _pickupType; } set { _pickupType = value; } }
+        public string pickupType {
+            get { return _pickupType; }
+            set {
+                _pickupType = value;
+                SetBrowsableProperty(nameof(BeaconEffectToString_Display), value.ToLower() == "8");
+            }
+        }
 
         #region INHERITANCE
 
@@ -1069,7 +1140,7 @@ namespace ArtemisMissionEditor.SpaceMap
             {
                 __AddNewAttribute(xDoc, create, "pickupType", _pickupType.ToString());
             }
-            if (!String.IsNullOrEmpty(_beaconEffect))
+            if (_pickupType == "8")
             {
                 __AddNewAttribute(xDoc, create, "beaconEffect", _beaconEffect.ToString());
             }
@@ -1089,13 +1160,13 @@ namespace ArtemisMissionEditor.SpaceMap
                 switch (att.Name)
                 {
                     case "beaconEffect":
-                        _beaconEffect = att.Value;
+                        _beaconEffect = Helper.StringToInt(att.Value);
                         break;
                     case "beaconMonsterType":
                         _beaconMonsterType = att.Value;
                         break;
                     case "pickupType":
-                        _pickupType = att.Value;
+                        pickupType = att.Value;
                         break;
                 }
             }

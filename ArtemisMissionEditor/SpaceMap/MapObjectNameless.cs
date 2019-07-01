@@ -312,7 +312,7 @@ namespace ArtemisMissionEditor.SpaceMap
 
         #region SHARED
     
-        string ConvertPascalToDisplay(string s)
+        public static string ConvertPascalToDisplay(string s)
         {
             if (string.IsNullOrEmpty(s)) 
                 return string.Empty;
