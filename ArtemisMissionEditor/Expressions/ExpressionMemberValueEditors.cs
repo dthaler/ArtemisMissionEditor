@@ -610,9 +610,9 @@ namespace ArtemisMissionEditor.Expressions
 
             MonsterAge = new ExpressionMemberValueEditor();
             MonsterAge.AddToDictionary(null, "Default");
-            MonsterAge.AddToDictionary("1",  "1 (Young)");
-            MonsterAge.AddToDictionary("2",  "2 (Mature)");
-            MonsterAge.AddToDictionary("3",  "3 (Ancient)");
+            MonsterAge.AddToDictionary("1",  "Young");
+            MonsterAge.AddToDictionary("2",  "Mature");
+            MonsterAge.AddToDictionary("3",  "Ancient");
             MonsterAge.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
 
 			Comparator = new ExpressionMemberValueEditor();

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using System.Drawing;
 using System.Xml;
+using ArtemisMissionEditor.Expressions;
 
 namespace ArtemisMissionEditor.SpaceMap
 {
@@ -1014,10 +1015,8 @@ namespace ArtemisMissionEditor.SpaceMap
         GetStandardValues(ITypeDescriptorContext context)
         {
             List<string> tmp = new List<string>();
-
             tmp.Add("Attract");
             tmp.Add("Repel");
-
             return new StandardValuesCollection(tmp.ToArray());
         }
     }
@@ -1071,7 +1070,7 @@ namespace ArtemisMissionEditor.SpaceMap
             }
         }
 
-        #region INHERITANCE
+#region INHERITANCE
 
         //SELECTION
         public override bool _selectionAbsolute { get { return base._selectionAbsolute; } }
@@ -1177,12 +1176,12 @@ namespace ArtemisMissionEditor.SpaceMap
             : base(posX, posY, posZ, name, makeSelected)
         { _pickupType = pickupType; }
 
-        #endregion
+#endregion
     }
 
     public sealed class MapObjectNamed_blackHole : MapObjectNamed
     {
-        #region INHERITANCE
+#region INHERITANCE
 
         //SELECTION
         public override bool _selectionAbsolute { get { return true; } }
@@ -1226,15 +1225,57 @@ namespace ArtemisMissionEditor.SpaceMap
             : base(posX, posY, posZ, name, makeSelected)
         { }
 
-        #endregion
+#endregion
+    }
+
+    public sealed class AgeConverter : StringConverter
+    {
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context) { return true; }
+        public override bool GetStandardValuesExclusive(ITypeDescriptorContext context) { return true; }
+
+        public override TypeConverter.StandardValuesCollection
+        GetStandardValues(ITypeDescriptorContext context)
+        {
+            List<string> tmp = new List<string>();
+            foreach (string key in ExpressionMemberValueEditors.MonsterAge.MenuValueToXml.Keys)
+            {
+                tmp.Add(key);
+            }
+            return new StandardValuesCollection(tmp.ToArray());
+        }
     }
 
     public sealed class MapObjectNamed_monster : MapObjectNamedA
     {
 
-        private string _age;
-        [DisplayName("Age"), Description("Monster age 1=Young 2=Mature 3=Ancient")]
-        public string age { get { return _age; } set { _age = value; } }
+        private int _age;
+        [Browsable(false)]
+        public string AgeToString
+        {
+            get
+            {
+                string value = _age.ToString();
+                if (ExpressionMemberValueEditors.MonsterAge.XmlValueToMenu.ContainsKey(value))
+                {
+                    return ExpressionMemberValueEditors.MonsterAge.XmlValueToMenu[value];
+                }
+                return "";
+            }
+        }
+        [DisplayName("Age"), Description("Indicates the monster age."), DefaultValue(0), TypeConverter(typeof(AgeConverter))]
+        public string AgeToString_Display
+        {
+            get { return MapObjectNameless.ConvertPascalToDisplay(AgeToString); }
+            set
+            {
+                string xmlValue = null;
+                if (ExpressionMemberValueEditors.MonsterAge.MenuValueToXml.ContainsKey(value))
+                {
+                    xmlValue = ExpressionMemberValueEditors.MonsterAge.MenuValueToXml[value];
+                }
+                _age = Convert.ToInt32(xmlValue);
+            }
+        }
 
         private string _monsterType;
         [DisplayName("Monster Type"), Description("Monster Type 0=Classic")]
@@ -1244,7 +1285,7 @@ namespace ArtemisMissionEditor.SpaceMap
         [DisplayName("Pod Number"), Description("Whale pod number, identifies packs of whales that travel together")]
         public string podnumber { get { return _podnumber; } set { _podnumber = value; } }
 
-        #region INHERITANCE
+#region INHERITANCE
 
         //SELECTION
         public override bool _selectionAbsolute { get { return base._selectionAbsolute; } }
@@ -1315,7 +1356,7 @@ namespace ArtemisMissionEditor.SpaceMap
             {
                 __AddNewAttribute(xDoc, create, "monsterType", _monsterType.ToString());
             }
-            if (!String.IsNullOrEmpty(_age))
+            if (_age > 0)
             {
                 __AddNewAttribute(xDoc, create, "age", _age.ToString());
             }
@@ -1334,7 +1375,7 @@ namespace ArtemisMissionEditor.SpaceMap
                 switch (att.Name)
                 {
                     case "age":
-                        _age = att.Value;
+                        _age = Helper.StringToInt(att.Value);
                         break;
                     case "monsterType":
                         _monsterType = att.Value;
@@ -1351,12 +1392,12 @@ namespace ArtemisMissionEditor.SpaceMap
             : base(posX, posY, posZ, makeSelected, angle, name)
         { _monsterType = monsterType; }
 
-        #endregion
+#endregion
     }
 
     public sealed class MapObjectNamed_player : MapObjectNamedAS
     {
-        #region INHERITANCE
+#region INHERITANCE
 
         //SELECTION
         public override bool _selectionAbsolute { get { return base._selectionAbsolute; } }
@@ -1400,7 +1441,7 @@ namespace ArtemisMissionEditor.SpaceMap
             : base(posX, posY, posZ, makeSelected, angle, name)
         { }
 
-        #endregion
+#endregion
     }
 
     public sealed class MapObjectNamed_whale : MapObjectNamedA
@@ -1410,7 +1451,7 @@ namespace ArtemisMissionEditor.SpaceMap
         [DisplayName("Pod Number"), Description("Whale pod number, identifies packs of whales that travel together")]
         public string podnumber { get { return _podnumber; } set { _podnumber = value; } }
 
-        #region INHERITANCE
+#region INHERITANCE
 
         //SELECTION
         public override bool _selectionAbsolute { get { return base._selectionAbsolute; } }
@@ -1464,12 +1505,12 @@ namespace ArtemisMissionEditor.SpaceMap
             : base(posX, posY, posZ, makeSelected, angle, name)
         { _podnumber = podnumber; }
 
-        #endregion
+#endregion
     }
 
     public sealed class MapObjectNamed_station : MapObjectNamedArhKS
     {
-        #region INHERITANCE
+#region INHERITANCE
 
         //SELECTION
         public override bool _selectionAbsolute { get { return base._selectionAbsolute; } }
@@ -1517,12 +1558,12 @@ namespace ArtemisMissionEditor.SpaceMap
             : base(posX, posY, posZ, makeSelected, angle, name, _race_Keys, _race_Names, _vessel_ClassNames, _vessel_BroadTypes)
         { }
 
-        #endregion
+#endregion
     }
 
     public sealed class MapObjectNamed_neutral : MapObjectNamedArhKS
     {
-        #region INHERITANCE
+#region INHERITANCE
 
         //SELECTION
         public override bool _selectionAbsolute { get { return base._selectionAbsolute; } }
@@ -1571,7 +1612,7 @@ namespace ArtemisMissionEditor.SpaceMap
             : base(posX, posY, posZ, makeSelected, angle, name, _race_Keys, _race_Names, _vessel_ClassNames, _vessel_BroadTypes)
         { }
 
-        #endregion
+#endregion
     }
 
     public sealed class MapObjectNamed_enemy : MapObjectNamedArhKS
@@ -1581,7 +1622,7 @@ namespace ArtemisMissionEditor.SpaceMap
         [DisplayName("Fleet Number"), Description("Enemy fleet number, identifies packs of ships that travel together, following fleet leader")]
         public string fleetnumber { get { return _fleetnumber; } set {_fleetnumber = value; } }
 
-        #region INHERITANCE
+#region INHERITANCE
 
         //SELECTION
         public override bool _selectionAbsolute { get { return base._selectionAbsolute; } }
@@ -1666,7 +1707,7 @@ namespace ArtemisMissionEditor.SpaceMap
             : base(posX, posY, posZ, makeSelected, angle, name, _race_Keys, _race_Names, _vessel_ClassNames, _vessel_BroadTypes)
         { _fleetnumber = fleetnumber; }
 
-        #endregion
+#endregion
     }
 
     public sealed class MapObjectNamed_genericMesh : MapObjectNamedA
@@ -1718,7 +1759,7 @@ namespace ArtemisMissionEditor.SpaceMap
             set { _color = Color.FromArgb(_color.R, _color.G, (int)Math.Round(255 * value)); }
         }
 
-        #region INHERITANCE
+#region INHERITANCE
 
         //SELECTION
         public override bool _selectionAbsolute { get { return base._selectionAbsolute; } }
@@ -1980,6 +2021,6 @@ namespace ArtemisMissionEditor.SpaceMap
             this._color = Color.FromArgb(255,0,255);
         }
 
-        #endregion
+#endregion
     }
 }
