@@ -31,7 +31,7 @@ namespace ArtemisMissionEditor.SpaceMap
         }
     }
 
-    public class MapObjectNamed
+    public class MapObjectNamed : MapObjectBase
     {
         //IMPORTED
         [Browsable(false)]
@@ -48,33 +48,6 @@ namespace ArtemisMissionEditor.SpaceMap
         public string name { get { return _name; } set { _name = value; } }
 
         #region SHARED
-
-        public object GetPropertyByName(string pName)
-        {
-            Type t = GetType();
-            PropertyInfo p = t.GetProperty(pName);
-            return p.GetValue(this, null);
-        }
-
-        public void SetPropertyByName(string pName, object value)
-        {
-            Type t = GetType();
-            PropertyInfo p = t.GetProperty(pName);
-            p.SetValue(this, value, null);
-        }
-
-        protected static void __AddNewAttribute(XmlDocument doc, XmlElement element, string name, string value)
-        {
-            XmlAttribute att = doc.CreateAttribute(name);
-            att.Value = value;
-            element.Attributes.Append(att);
-        }
-
-        protected static void __RememberPropertyIfMissing(List<string> missingProperties, string pName, bool required)
-        {
-            if (!required) return;
-            missingProperties.Add(pName);
-        }
 
         public static MapObjectNamed NewFromXml(XmlNode item)
         {
@@ -139,25 +112,6 @@ namespace ArtemisMissionEditor.SpaceMap
                     return true;
             }
             return false;
-        }
-
-        /// <summary>
-        /// Set the Browsable property.
-        /// NOTE: Be sure to decorate the property with [Browsable(true)] or [Browsable(false)]
-        /// </summary>
-        /// <param name="PropertyName">Name of the variable</param>
-        /// <param name="bIsBrowsable">Browsable Value</param>
-        protected void SetBrowsableProperty(string strPropertyName, bool bIsBrowsable)
-        {
-            // Get the Descriptor's Properties
-            PropertyDescriptor theDescriptor = TypeDescriptor.GetProperties(this.GetType())[strPropertyName];
-
-            // Get the Descriptor's "Browsable" Attribute
-            BrowsableAttribute theDescriptorBrowsableAttribute = (BrowsableAttribute)theDescriptor.Attributes[typeof(BrowsableAttribute)];
-            FieldInfo isBrowsable = theDescriptorBrowsableAttribute.GetType().GetField("Browsable", BindingFlags.IgnoreCase | BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Set the Descriptor's "Browsable" Attribute
-            isBrowsable.SetValue(theDescriptorBrowsableAttribute, bIsBrowsable);
         }
 
         #endregion
@@ -1024,8 +978,8 @@ namespace ArtemisMissionEditor.SpaceMap
     public sealed class MapObjectNamed_Anomaly : MapObjectNamed
     {
         private int _beaconEffect;
-        [Browsable(false)]
-        public string BeaconEffectToString
+        [DisplayName("Beacon Effect"), Browsable(false), Description("Indicates the beacon effect."), DefaultValue(0), TypeConverter(typeof(BeaconEffectConverter))]
+        public string BeaconEffectToString_Display
         {
             get
             {
@@ -1037,11 +991,6 @@ namespace ArtemisMissionEditor.SpaceMap
                         return "Attract";
                 }
             }
-        }
-        [DisplayName("Beacon Effect"), Browsable(false), Description("Indicates the beacon effect."), DefaultValue(0), TypeConverter(typeof(BeaconEffectConverter))]
-        public string BeaconEffectToString_Display
-        {
-            get { return MapObjectNameless.ConvertPascalToDisplay(BeaconEffectToString); }
             set
             {
                 switch (value.ToLower())
@@ -1056,17 +1005,29 @@ namespace ArtemisMissionEditor.SpaceMap
             }
         }
 
-        private string _beaconMonsterType;
-        [DisplayName("beaconMonsterType"), Description("Beacon Monster Type 0=Typhon")]
-        public string beaconMonsterType { get { return _beaconMonsterType; } set { _beaconMonsterType = value; } }
+        private int _beaconMonsterType;
+        [DisplayName("Beacon Monster Type"), Browsable(false), Description("Indicates the monster type affected by the beacon."), DefaultValue(0), TypeConverter(typeof(MonsterTypeConverter))]
+        public string BeaconMonsterTypeToString_Display
+        {
+            get { return IntToStandardValue(MethodBase.GetCurrentMethod(), _beaconMonsterType); }
+            set { _beaconMonsterType = StandardValueToInt(MethodBase.GetCurrentMethod(), value, 0); }
+        }
 
-        private string _pickupType;
-        [DisplayName("pickupType"), Description("Anomaly Type 0=Energy")]
+        private int _pickupType;
+        [DisplayName("Anomaly Type"), Description("Indicates the type of pickup"), DefaultValue(0), TypeConverter(typeof(AnomalyTypeConverter))]
         public string pickupType {
+            get { return IntToStandardValue(MethodBase.GetCurrentMethod(), PickupType); }
+            set { PickupType = StandardValueToInt(MethodBase.GetCurrentMethod(), value, 0); }
+        }
+        [Browsable(false)]
+        public int PickupType
+        {
             get { return _pickupType; }
-            set {
+            set
+            {
                 _pickupType = value;
-                SetBrowsableProperty(nameof(BeaconEffectToString_Display), value.ToLower() == "8");
+                SetBrowsableProperty(nameof(BeaconEffectToString_Display), value == 8);
+                SetBrowsableProperty(nameof(BeaconMonsterTypeToString_Display), value == 8);
             }
         }
 
@@ -1101,8 +1062,7 @@ namespace ArtemisMissionEditor.SpaceMap
             if (source.Count() == 0)
                 return;
 
-            //monsterType
-            string tmp1 = "";
+            int tmp1 = 0;
             bool same = true;
             bool found = false;
             foreach (MapObjectNamed item in source)
@@ -1131,20 +1091,10 @@ namespace ArtemisMissionEditor.SpaceMap
             if (String.IsNullOrEmpty(type))
                 type = TypeToString;
             XmlElement create = base.ToXml(xDoc, missingProperties, type);
-            if (String.IsNullOrEmpty(_pickupType))
-            {
-                __AddNewAttribute(xDoc, create, "pickupType", "0");
-            }
-            else
-            {
-                __AddNewAttribute(xDoc, create, "pickupType", _pickupType.ToString());
-            }
-            if (_pickupType == "8")
+            __AddNewAttribute(xDoc, create, "pickupType", _pickupType.ToString());
+            if (_pickupType == 8) // Beacon
             {
                 __AddNewAttribute(xDoc, create, "beaconEffect", _beaconEffect.ToString());
-            }
-            if (!String.IsNullOrEmpty(_beaconMonsterType))
-            {
                 __AddNewAttribute(xDoc, create, "beaconMonsterType", _beaconMonsterType.ToString());
             }
             return create;
@@ -1162,10 +1112,10 @@ namespace ArtemisMissionEditor.SpaceMap
                         _beaconEffect = Helper.StringToInt(att.Value);
                         break;
                     case "beaconMonsterType":
-                        _beaconMonsterType = att.Value;
+                        _beaconMonsterType = Helper.StringToInt(att.Value);
                         break;
                     case "pickupType":
-                        pickupType = att.Value;
+                        PickupType = Helper.StringToInt(att.Value);
                         break;
                 }
             }
@@ -1174,7 +1124,7 @@ namespace ArtemisMissionEditor.SpaceMap
         //CONSTRUCTOR
         public MapObjectNamed_Anomaly(int posX = 0, int posY = 0, int posZ = 0, string name = "", bool makeSelected = false)
             : base(posX, posY, posZ, name, makeSelected)
-        { _pickupType = pickupType; }
+        { }
 
 #endregion
     }
@@ -1228,8 +1178,26 @@ namespace ArtemisMissionEditor.SpaceMap
 #endregion
     }
 
-    public sealed class AgeConverter : StringConverter
+    public class ExpressionMemberValueEditorConverter : StringConverter
     {
+        public readonly ExpressionMemberValueEditor Editor;
+
+        public ExpressionMemberValueEditorConverter(ExpressionMemberValueEditor editor)
+            : base()
+        {
+            this.Editor = editor;
+        }
+
+        public string IntToStandardValue(int intValue)
+        {
+            string strValue = intValue.ToString();
+            if (this.Editor.XmlValueToMenu.ContainsKey(strValue))
+            {
+                return this.Editor.XmlValueToMenu[strValue];
+            }
+            return "";
+        }
+
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context) { return true; }
         public override bool GetStandardValuesExclusive(ITypeDescriptorContext context) { return true; }
 
@@ -1237,7 +1205,7 @@ namespace ArtemisMissionEditor.SpaceMap
         GetStandardValues(ITypeDescriptorContext context)
         {
             List<string> tmp = new List<string>();
-            foreach (string key in ExpressionMemberValueEditors.MonsterAge.MenuValueToXml.Keys)
+            foreach (string key in this.Editor.MenuValueToXml.Keys)
             {
                 tmp.Add(key);
             }
@@ -1245,41 +1213,39 @@ namespace ArtemisMissionEditor.SpaceMap
         }
     }
 
+    public sealed class AgeConverter : ExpressionMemberValueEditorConverter
+    {
+        public AgeConverter() : base(ExpressionMemberValueEditors.MonsterAge) { }
+    }
+
+    public sealed class MonsterTypeConverter : ExpressionMemberValueEditorConverter
+    {
+        public MonsterTypeConverter() : base(ExpressionMemberValueEditors.MonsterType) { }
+    }
+
+    public sealed class AnomalyTypeConverter : ExpressionMemberValueEditorConverter
+    {
+        public AnomalyTypeConverter() : base(ExpressionMemberValueEditors.AnomalyType) { }
+    }
+
     public sealed class MapObjectNamed_monster : MapObjectNamedA
     {
 
         private int _age;
-        [Browsable(false)]
-        public string AgeToString
-        {
-            get
-            {
-                string value = _age.ToString();
-                if (ExpressionMemberValueEditors.MonsterAge.XmlValueToMenu.ContainsKey(value))
-                {
-                    return ExpressionMemberValueEditors.MonsterAge.XmlValueToMenu[value];
-                }
-                return "";
-            }
-        }
         [DisplayName("Age"), Description("Indicates the monster age."), DefaultValue(0), TypeConverter(typeof(AgeConverter))]
         public string AgeToString_Display
         {
-            get { return MapObjectNameless.ConvertPascalToDisplay(AgeToString); }
-            set
-            {
-                string xmlValue = null;
-                if (ExpressionMemberValueEditors.MonsterAge.MenuValueToXml.ContainsKey(value))
-                {
-                    xmlValue = ExpressionMemberValueEditors.MonsterAge.MenuValueToXml[value];
-                }
-                _age = Convert.ToInt32(xmlValue);
-            }
+            get { return IntToStandardValue(MethodBase.GetCurrentMethod(), _age); }
+            set { _age = StandardValueToInt(MethodBase.GetCurrentMethod(), value, 0); }
         }
 
-        private string _monsterType;
-        [DisplayName("Monster Type"), Description("Monster Type 0=Classic")]
-        public string monsterType { get { return _monsterType; } set { _monsterType = value; } }
+        private int _monsterType;
+        [DisplayName("Monster Type"), Description("Indicates the monster type."), DefaultValue(0), TypeConverter(typeof(MonsterTypeConverter))]
+        public string MonsterTypeToString_Display
+        {
+            get { return IntToStandardValue(MethodBase.GetCurrentMethod(), _monsterType); }
+            set { _monsterType = StandardValueToInt(MethodBase.GetCurrentMethod(), value, 0); }
+        }
 
         private string _podnumber;
         [DisplayName("Pod Number"), Description("Whale pod number, identifies packs of whales that travel together")]
@@ -1319,7 +1285,7 @@ namespace ArtemisMissionEditor.SpaceMap
                 return;
 
             //monsterType
-            string tmp1 = "";
+            int tmp1 = 0;
             bool same = true;
             bool found = false;
             foreach (MapObjectNamed item in source)
@@ -1348,14 +1314,7 @@ namespace ArtemisMissionEditor.SpaceMap
             if (String.IsNullOrEmpty(type))
                 type = TypeToString;
             XmlElement create = base.ToXml(xDoc, missingProperties, type);
-            if (String.IsNullOrEmpty(_monsterType))
-            {
-                __AddNewAttribute(xDoc, create, "monsterType", "0");
-            }
-            else
-            {
-                __AddNewAttribute(xDoc, create, "monsterType", _monsterType.ToString());
-            }
+            __AddNewAttribute(xDoc, create, "monsterType", _monsterType.ToString());
             if (_age > 0)
             {
                 __AddNewAttribute(xDoc, create, "age", _age.ToString());
@@ -1378,7 +1337,7 @@ namespace ArtemisMissionEditor.SpaceMap
                         _age = Helper.StringToInt(att.Value);
                         break;
                     case "monsterType":
-                        _monsterType = att.Value;
+                        _monsterType = Helper.StringToInt(att.Value);
                         break;
                     case "podnumber":
                         _podnumber = att.Value;
@@ -1390,7 +1349,7 @@ namespace ArtemisMissionEditor.SpaceMap
         //CONSTRUCTOR
         public MapObjectNamed_monster(int posX = 0, int posY = 0, int posZ = 0, bool makeSelected = false, int angle = 0, string name = "")
             : base(posX, posY, posZ, makeSelected, angle, name)
-        { _monsterType = monsterType; }
+        { }
 
 #endregion
     }

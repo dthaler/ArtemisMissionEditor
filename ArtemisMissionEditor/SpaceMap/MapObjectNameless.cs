@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using System.Drawing;
 using System.Xml;
+using ArtemisMissionEditor.Expressions;
 
 namespace ArtemisMissionEditor.SpaceMap
 {
@@ -30,22 +31,9 @@ namespace ArtemisMissionEditor.SpaceMap
         }
     }
 
-    public sealed class NebulaTypeConverter : StringConverter
+    public sealed class NebulaTypeConverter : ExpressionMemberValueEditorConverter
     {
-        public override bool GetStandardValuesSupported(ITypeDescriptorContext context) { return true; }
-        public override bool GetStandardValuesExclusive(ITypeDescriptorContext context) { return true; }
-
-        public override TypeConverter.StandardValuesCollection
-        GetStandardValues(ITypeDescriptorContext context)
-        {
-            List<string> tmp = new List<string>();
-
-            tmp.Add("Purple");
-            tmp.Add("Blue");
-            tmp.Add("Yellow");
-
-            return new StandardValuesCollection(tmp.ToArray());
-        }
+        public NebulaTypeConverter() : base(ExpressionMemberValueEditors.NebulaType) { }
     }
 
     public enum MapObjectNamelessType
@@ -56,7 +44,7 @@ namespace ArtemisMissionEditor.SpaceMap
         mines
     }
 
-    public sealed class MapObjectNameless
+    public sealed class MapObjectNameless : MapObjectBase
     {
         public static readonly int _minRadius = 0;
         public static readonly int _maxRadius = 100000;
@@ -178,46 +166,11 @@ namespace ArtemisMissionEditor.SpaceMap
         public int randomSeed { get { return _randomSeed; } set { if (value < 0) _randomSeed = 0; else _randomSeed = value; } }
 
         private int _nebType;
-        [Browsable(false)]
-        public string NebulaTypeToString
-        {
-            get
-            {
-                switch (_nebType)
-                {
-                    case 1:
-                        return "purple";
-                    case 2:
-                        return "blue";
-                    case 3:
-                        return "yellow";
-                    default:
-                        return "";
-                }
-            }
-        }
         [DisplayName("Color"), Browsable(false), Description("Indicates the nebula color."), DefaultValue(0), TypeConverter(typeof(NebulaTypeConverter))]
         public string NebulaTypeToString_Display
-        { 
-            get { return ConvertPascalToDisplay(NebulaTypeToString); } 
-            set
-            {
-                switch (value.ToLower())
-                {
-                    case "purple":
-                        _nebType = 1; 
-                        break;
-                    case "blue":
-                        _nebType = 2; 
-                        break;
-                    case "yellow":
-                        _nebType = 3; 
-                        break;
-                    default:
-                        _nebType = 0; 
-                        break;
-                }
-            } 
+        {
+            get { return IntToStandardValue(MethodBase.GetCurrentMethod(), _nebType); }
+            set { _nebType = StandardValueToInt(MethodBase.GetCurrentMethod(), value, 0); }
         }
 
         //TYPE
@@ -242,24 +195,7 @@ namespace ArtemisMissionEditor.SpaceMap
                 }
             }
         }
-        /// <summary>
-        /// Set the Browsable property.
-        /// NOTE: Be sure to decorate the property with [Browsable(true)] or [Browsable(false)]
-        /// </summary>
-        /// <param name="PropertyName">Name of the variable</param>
-        /// <param name="bIsBrowsable">Browsable Value</param>
-        private void SetBrowsableProperty(string strPropertyName, bool bIsBrowsable)
-        {
-            // Get the Descriptor's Properties
-            PropertyDescriptor theDescriptor = TypeDescriptor.GetProperties(this.GetType())[strPropertyName];
 
-            // Get the Descriptor's "Browsable" Attribute
-            BrowsableAttribute theDescriptorBrowsableAttribute = (BrowsableAttribute)theDescriptor.Attributes[typeof(BrowsableAttribute)];
-            FieldInfo isBrowsable = theDescriptorBrowsableAttribute.GetType().GetField("Browsable", BindingFlags.IgnoreCase | BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Set the Descriptor's "Browsable" Attribute
-            isBrowsable.SetValue(theDescriptorBrowsableAttribute, bIsBrowsable);
-        }
         [DisplayName("Type"), Description("Indicates object's type (nebula, asteroid etc.)"), Category("ID"), TypeConverter(typeof(NamelessTypeConverter))]
         public string TypeToString_Display
         {
@@ -311,48 +247,6 @@ namespace ArtemisMissionEditor.SpaceMap
         }
 
         #region SHARED
-    
-        public static string ConvertPascalToDisplay(string s)
-        {
-            if (string.IsNullOrEmpty(s)) 
-                return string.Empty;
-
-            for (int i = s.Length - 1; i >= 0; i--)
-            {
-                if (char.IsUpper(s[i]))
-                {
-                    s = s.Insert(i, " ");
-                }
-            }
-            return char.ToUpper(s[0]) + s.Substring(1);
-        }
-
-        public object GetPropertyByName(string pName)
-        {
-            Type t = GetType();
-            PropertyInfo p = t.GetProperty(pName);
-            return p.GetValue(this, null);
-        }
-
-        public void SetPropertyByName(string pName, object value)
-        {
-            Type t = GetType();
-            PropertyInfo p = t.GetProperty(pName);
-            p.SetValue(this, value, null);
-        }
-
-        private static void __AddNewAttribute(XmlDocument doc, XmlElement element, string name, string value)
-        {
-            XmlAttribute att = doc.CreateAttribute(name);
-            att.Value = value;
-            element.Attributes.Append(att);
-        }
-
-        private static void __RememberPropertyIfMissing(List<string> missingProperties, string pName, bool required)
-        {
-            if (!required) return;
-            missingProperties.Add(pName);
-        }
 
         public static MapObjectNameless NewFromXml(XmlNode item)
         {

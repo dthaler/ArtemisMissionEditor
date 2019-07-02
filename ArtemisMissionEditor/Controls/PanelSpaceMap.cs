@@ -645,7 +645,7 @@ namespace ArtemisMissionEditor
                             g.DrawCircle(penAsteroidBG, x, zy, sizeNamelessAsteroid);
                             break;
                         case MapObjectNamelessType.nebulas:
-                            switch (item.NebulaTypeToString)
+                            switch (item.NebulaTypeToString_Display.ToLower())
                             {
                                 case "blue":
                                     g.DrawCircle(penBlueNebula, x, zy, sizeNamelessNebula);
@@ -699,7 +699,7 @@ namespace ArtemisMissionEditor
                             g.DrawCircle(penAsteroid, x, zy, sizeNamelessAsteroid);
                             break;
                         case MapObjectNamelessType.nebulas:
-                            switch (item.NebulaTypeToString)
+                            switch (item.NebulaTypeToString_Display.ToLower())
                             {
                                 case "blue":
                                     g.FillCircle(brushBlueNebula, x, zy, sizeNamelessNebula);

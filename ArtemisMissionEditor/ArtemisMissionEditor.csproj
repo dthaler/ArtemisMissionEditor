@@ -166,6 +166,7 @@
     <Compile Include="Mission\MissionNode.cs" />
     <Compile Include="Mission\MissionStatement.cs" />
     <Compile Include="Mission\MissionSavedState.cs" />
+    <Compile Include="SpaceMap\MapObjectBase.cs" />
     <Compile Include="Utility Classes\DictionaryPropertyGridAdapter.cs" />
     <Compile Include="Utility Classes\Helper.cs" />
     <Compile Include="Utility Classes\LegacySettings.cs" />
