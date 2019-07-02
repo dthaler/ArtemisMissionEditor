@@ -1,3 +1,8 @@
+Version 2.7.13 [2019-July-2] (Dave Thaler)
+* Added monster age, beacon effect, and beacon monster type properties to space map
+* Updated nebula color, monster type, and anomaly type properties on space map
+  to use a combo box to select values instead of having to type in values
+----------------------
 Version 2.7.12 [2019-May-14] (Dave Thaler, Stoo Johnston)
 * Added age, health, maxHealth, size, speed, and turnRate as monster properties
   added in Artemis 2.7.2
