@@ -1,3 +1,6 @@
+Version 2.7.14 [2020-January-4] (Dave Thaler)
+* Added canLaunchFighters and canShoot as station properties added in Artemis 2.7.4
+----------------------
 Version 2.7.13 [2019-July-2] (Dave Thaler)
 * Added monster age, beacon effect, and beacon monster type properties to space map
 * Updated nebula color, monster type, and anomaly type properties on space map

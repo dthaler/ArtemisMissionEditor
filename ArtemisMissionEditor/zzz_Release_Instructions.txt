@@ -2,7 +2,7 @@
    x.x.y where 'x.x' is the Artemis version, and 'y' counts up from 0 for each
    Artemis Mission Editor release that supports that Artemis version.
 2. Build the release as follows:
-    2.1. Launch Visual Studio 2017
+    2.1. Launch Visual Studio 2019
     2.2. Build the Release x86 configuration.
     2.3. Do "Analyze->Run Code Analysis->On Solution" and look for any warnings.
 3. Update zzz_Changelog.txt with release notes.
