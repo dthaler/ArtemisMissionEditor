@@ -301,6 +301,8 @@ namespace ArtemisMissionEditor.Expressions
             if ((bits & 512) == 512) result += "AntiTorp ";
             if ((bits & 1024) == 1024) result += "ShldDrain ";
             if ((bits & 2048) == 2048) result += "ShldVamp ";
+            if ((bits & 4096) == 4096) result += "TeleBack ";
+            if ((bits & 8192) == 8192) result += "ShldReset ";
 
             if (result.Length > 0)
                 return "(" + result.Substring(0, result.Length - 1) + ")";

@@ -39,6 +39,8 @@ namespace ArtemisMissionEditor.Forms
                 form.cbAntiTorp.Checked  = (value & 512) == 512;
                 form.cbShldDrain.Checked = (value & 1024) == 1024;
                 form.cbShldVamp.Checked  = (value & 2048) == 2048;
+                form.cbTeleBack.Checked  = (value & 4096) == 4096;
+                form.cbShldReset.Checked = (value & 8192) == 8192;
 
                 if (form.ShowDialog() == DialogResult.Cancel)
                     return new KeyValuePair<bool, string>(false, null);
@@ -55,6 +57,8 @@ namespace ArtemisMissionEditor.Forms
                 result += form.cbAntiTorp.Checked ? 512 : 0;
                 result += form.cbShldDrain.Checked ? 1024 : 0;
                 result += form.cbShldVamp.Checked ? 2048 : 0;
+                result += form.cbTeleBack.Checked ? 4096 : 0;
+                result += form.cbShldReset.Checked ? 8192 : 0;
             }
 			return new KeyValuePair<bool, string>(true, result.ToString());
 		}
@@ -84,6 +88,8 @@ namespace ArtemisMissionEditor.Forms
             if (e.KeyData == Keys.O || e.KeyData == Keys.D0)       cbAntiTorp.Checked = !cbAntiTorp.Checked;
             if (e.KeyData == Keys.S || e.KeyData == Keys.OemMinus) cbShldDrain.Checked = !cbShldDrain.Checked;
             if (e.KeyData == Keys.V || e.KeyData == Keys.Oemplus)  cbShldVamp.Checked = !cbShldVamp.Checked;
+            if (e.KeyData == Keys.Y)                               cbTeleBack.Checked = !cbTeleBack.Checked;
+            if (e.KeyData == Keys.R)                               cbShldReset.Checked = !cbShldReset.Checked;
 
             if (e.KeyData == (Keys.M | Keys.Shift) || e.KeyData == (Keys.D1 | Keys.Shift))       cbStealth.Checked = true;
             if (e.KeyData == (Keys.L | Keys.Shift) || e.KeyData == (Keys.D2 | Keys.Shift))       cbLowVis.Checked = true;
@@ -97,6 +103,8 @@ namespace ArtemisMissionEditor.Forms
             if (e.KeyData == (Keys.O | Keys.Shift) || e.KeyData == (Keys.D0 | Keys.Shift))       cbAntiTorp.Checked = true;
             if (e.KeyData == (Keys.S | Keys.Shift) || e.KeyData == (Keys.OemMinus | Keys.Shift)) cbShldDrain.Checked = true;
             if (e.KeyData == (Keys.V | Keys.Shift) || e.KeyData == (Keys.Oemplus | Keys.Shift))  cbShldVamp.Checked = true;
+            if (e.KeyData == (Keys.Y | Keys.Shift))                                              cbTeleBack.Checked = true;
+            if (e.KeyData == (Keys.R | Keys.Shift))                                              cbShldReset.Checked = true;
 
             if (e.KeyData == (Keys.M | Keys.Alt) || e.KeyData == (Keys.D1 | Keys.Alt))       cbStealth.Checked = false;
             if (e.KeyData == (Keys.L | Keys.Alt) || e.KeyData == (Keys.D2 | Keys.Alt))       cbLowVis.Checked = false;
@@ -110,6 +118,8 @@ namespace ArtemisMissionEditor.Forms
             if (e.KeyData == (Keys.O | Keys.Alt) || e.KeyData == (Keys.D0 | Keys.Alt))       cbAntiTorp.Checked = false;
             if (e.KeyData == (Keys.S | Keys.Alt) || e.KeyData == (Keys.OemMinus | Keys.Alt)) cbShldDrain.Checked = false;
             if (e.KeyData == (Keys.V | Keys.Alt) || e.KeyData == (Keys.Oemplus | Keys.Alt))  cbShldVamp.Checked = false;
+            if (e.KeyData == (Keys.Y | Keys.Alt))                                            cbTeleBack.Checked = false;
+            if (e.KeyData == (Keys.R | Keys.Alt))                                            cbShldReset.Checked = false;
 
             if (e.KeyData == (Keys.A | Keys.Shift) || e.KeyData == (Keys.Oemtilde | Keys.Shift))
             {
@@ -125,6 +135,8 @@ namespace ArtemisMissionEditor.Forms
                 cbAntiTorp.Checked = true;
                 cbShldDrain.Checked = true;
                 cbShldVamp.Checked = true;
+                cbTeleBack.Checked = true;
+                cbShldReset.Checked = true;
             }
 
             if (e.KeyData == (Keys.A | Keys.Alt) || e.KeyData == (Keys.Oemtilde | Keys.Alt))
@@ -141,6 +153,8 @@ namespace ArtemisMissionEditor.Forms
                 cbAntiTorp.Checked = false;
                 cbShldDrain.Checked = false;
                 cbShldVamp.Checked = false;
+                cbTeleBack.Checked = false;
+                cbShldReset.Checked = false;
             }
 
             if (e.KeyData == (Keys.A | Keys.Control) || e.KeyData == Keys.A
@@ -160,6 +174,8 @@ namespace ArtemisMissionEditor.Forms
                     cbAntiTorp.Checked = false;
                     cbShldDrain.Checked = false;
                     cbShldVamp.Checked = false;
+                    cbTeleBack.Checked = false;
+                    cbShldReset.Checked = false;
                 }
                 else
                 {
@@ -175,6 +191,8 @@ namespace ArtemisMissionEditor.Forms
                     cbAntiTorp.Checked = true;
                     cbShldDrain.Checked = true;
                     cbShldVamp.Checked = true;
+                    cbTeleBack.Checked = true;
+                    cbShldReset.Checked = true;
                 }
             }
         }

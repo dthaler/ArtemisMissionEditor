@@ -587,6 +587,8 @@ namespace ArtemisMissionEditor.Expressions
             SpecialSpecialState.AddToDictionary("AntiTorp", "AntiTorp");
             SpecialSpecialState.AddToDictionary("ShldDrain", "ShldDrain");
             SpecialSpecialState.AddToDictionary("ShldVamp", "ShldVamp");
+            SpecialSpecialState.AddToDictionary("TeleBack", "TeleBack");
+            SpecialSpecialState.AddToDictionary("ShldReset", "ShldReset");
             SpecialSpecialState.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
 
             Side = new ExpressionMemberValueEditor();

@@ -63,6 +63,8 @@ namespace ArtemisMissionEditor.Expressions
                 ConvertSpecialAbility(ref xml, container, 512, "AntiTorp");
                 ConvertSpecialAbility(ref xml, container, 1024, "ShldDrain");
                 ConvertSpecialAbility(ref xml, container, 2048, "ShldVamp");
+                ConvertSpecialAbility(ref xml, container, 4096, "TeleBack");
+                ConvertSpecialAbility(ref xml, container, 8192, "ShldReset");
 
                 // Replace the original statement with the new XML.  Use the clipboard so that ctrl-Z works to revert.
                 Mission.Current.StatementDelete();
