@@ -1559,6 +1559,7 @@ namespace ArtemisMissionEditor
         {
             MissionStatement newStatement = new MissionStatement((MissionNode)TreeViewNodes.SelectedNode.Tag);
             newStatement.Name = "set_variable";
+            newStatement.SetAttribute("integer", "yes");
 
             if (StatementAddNew(newStatement, nodeUnderCursor))
                 RegisterChange("New action statement");
