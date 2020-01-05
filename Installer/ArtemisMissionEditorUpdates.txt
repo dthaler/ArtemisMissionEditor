@@ -1,5 +1,20 @@
 ;aiu;
 
+[Update 2.7.15]
+ProductVersion=2.7.15
+Name=Artemis Mission Editor 2.7.15
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.15.msi
+Size=1600000
+ReleaseDate=04/01/2020
+MD5=95534a3c5974caeb885073e3ce233c1f
+ServerFileName=ArtemisMissionEditorInstaller.2.7.15.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.15.0
+Feature=Added TeleBack and ShldReset elite abilities added in Artemis 2.7.2
+Enhancement=Make set_variable default to integer when adding a new statement
+Replaces=All
+
 [Update 2.7.14]
 Name=Artemis Mission Editor 2.7.14
 ProductVersion=2.7.14
@@ -15,8 +30,8 @@ Feature=Added canLaunchFighters and canShoot as station properties added in Arte
 Replaces=All
 
 [Update 2.7.13]
-Name=Artemis Mission Editor 2.7.13
 ProductVersion=2.7.13
+Name=Artemis Mission Editor 2.7.13
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.13.msi
 Size=1599488
 ReleaseDate=02/07/2019
@@ -30,8 +45,8 @@ Enhancement=Updated nebula color, monster type, and anomaly type properties on s
 Replaces=All
 
 [Update 2.7.12]
-Name=Artemis Mission Editor 2.7.12
 ProductVersion=2.7.12
+Name=Artemis Mission Editor 2.7.12
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.12.msi
 Size=1598464
 ReleaseDate=15/05/2019
@@ -49,8 +64,8 @@ BugFix1=Updated default script when using New to say Artemis 2.7 instead of 2.6
 Replaces=All
 
 [Update 2.7.11]
-ProductVersion=2.7.11
 Name=Artemis Mission Editor 2.7.11
+ProductVersion=2.7.11
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.11.msi
 Size=1597952
 ReleaseDate=05/01/2019
@@ -118,8 +133,8 @@ BugFix1=Fixed bug where copy_object_property incorrectly allowed selecting globa
 Replaces=All
 
 [Update 2.7.7]
-ProductVersion=2.7.7
 Name=Artemis Mission Editor 2.7.7
+ProductVersion=2.7.7
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.7.msi
 Size=1593344
 ReleaseDate=07/07/2018
@@ -135,8 +150,8 @@ BugFix=Removed "player_slot" option from set/addto numeric property, since those
 Replaces=All
 
 [Update 2.7.6]
-Name=Artemis Mission Editor 2.7.6
 ProductVersion=2.7.6
+Name=Artemis Mission Editor 2.7.6
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.6.msi
 Size=1593344
 ReleaseDate=14/04/2018
@@ -162,8 +177,8 @@ BugFix1=Fixed bug where a Potential Problems warning was incorrectly shown when 
 Replaces=All
 
 [Update 2.7.5]
-ProductVersion=2.7.5
 Name=Artemis Mission Editor 2.7.5
+ProductVersion=2.7.5
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.5.msi
 Size=1592320
 ReleaseDate=05/04/2018
@@ -181,8 +196,8 @@ Enhancement1=List numeric properties in alphabetical order in menus
 Replaces=All
 
 [Update 2.7.4]
-Name=Artemis Mission Editor 2.7.4
 ProductVersion=2.7.4
+Name=Artemis Mission Editor 2.7.4
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.4.msi
 Size=1592320
 ReleaseDate=24/03/2018
@@ -212,8 +227,8 @@ BugFix3=Fixed some typos in the Help dialog
 Replaces=All
 
 [Update 2.7.3]
-ProductVersion=2.7.3
 Name=Artemis Mission Editor 2.7.3
+ProductVersion=2.7.3
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.3.msi
 Size=1592320
 ReleaseDate=14/03/2018
@@ -324,8 +339,8 @@ BugFix1=Cleaned up code so it builds without any compiler warnings
 Replaces=All
 
 [Update 2.6.1]
-Name=Artemis Mission Editor 2.6.1
 ProductVersion=2.6.1
+Name=Artemis Mission Editor 2.6.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.1.msi
 Size=1585664
 ReleaseDate=16/01/2018
@@ -361,8 +376,8 @@ BugFix2=Fixed bug in update available detection
 Replaces=All
 
 [Update 2.6]
-Name=Artemis Mission Editor 2.6
 ProductVersion=2.6.0.0
+Name=Artemis Mission Editor 2.6
 URL=http://www.example.com/downloads/ArtemisMissionEditorInstaller.2.6.msi
 Size=1583616
 MD5=72deef9dc1ae805094af04d469c065f4

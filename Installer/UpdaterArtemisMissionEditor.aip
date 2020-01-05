@@ -28,8 +28,8 @@
     <ROW Section="Update 2.6.0.1" Key="Feature" Value="Added support for set_player_carried_type to force fighter name/type carried by a playership&#13;&#10;Added support for set_player_station_carried to force a fighter name/type that will be picked up as a replacement from a station by player ships&#13;&#10;Added support for clear_player_station_carried&#13;&#10;Added a drop down list for selecting comms types&#13;&#10;"/>
     <ROW Section="Update 2.6.0.1" Key="BugFix" Value="Changed events to use &quot;name&quot; instead of &quot;name_arme&quot; to fix F7 debug screen event display in Artemis&#13;&#10;Fixed some more typos&#13;&#10;Fixed bug in update available detection"/>
     <ROW Section="Update 2.6.0.1" Key="Replaces" Value="Update 2.6"/>
-    <ROW Section="Update 2.6.1" Key="ProductVersion" Value="2.6.1"/>
     <ROW Section="Update 2.6.1" Key="Name" Value="Artemis Mission Editor 2.6.1"/>
+    <ROW Section="Update 2.6.1" Key="ProductVersion" Value="2.6.1"/>
     <ROW Section="Update 2.6.1" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.1.msi"/>
     <ROW Section="Update 2.6.1" Key="Size" Value="ArtemisMissionEditorInstaller.2.6.1.msi"/>
     <ROW Section="Update 2.6.1" Key="ReleaseDate" Value="19504"/>
@@ -41,8 +41,8 @@
     <ROW Section="Update 2.6.1" Key="Feature" Value="Added sideValue and countSurrendered arguments to if_fleet_count&#13;&#10;Added value2 argument to TARGET_THROTTLE AI block&#13;&#10;Added support for multiple message types in the same comms message&#13;&#10;"/>
     <ROW Section="Update 2.6.1" Key="BugFix" Value=" Fixed some more typos"/>
     <ROW Section="Update 2.6.1" Key="Replaces" Value="Update 2.6;Update 2.6.0.1"/>
-    <ROW Section="Update 2.6.2" Key="ProductVersion" Value="2.6.2"/>
     <ROW Section="Update 2.6.2" Key="Name" Value="Artemis Mission Editor 2.6.2"/>
+    <ROW Section="Update 2.6.2" Key="ProductVersion" Value="2.6.2"/>
     <ROW Section="Update 2.6.2" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.2.msi"/>
     <ROW Section="Update 2.6.2" Key="Size" Value="ArtemisMissionEditorInstaller.2.6.2.msi"/>
     <ROW Section="Update 2.6.2" Key="ReleaseDate" Value="19526"/>
@@ -55,8 +55,8 @@
     <ROW Section="Update 2.6.2" Key="Enhancement" Value="Many improvements to &quot;Potential Problems&quot; checking"/>
     <ROW Section="Update 2.6.2" Key="BugFix" Value="Fixed some more typos&#13;&#10;Cleaned up code so it builds without any compiler warnings"/>
     <ROW Section="Update 2.6.2" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1"/>
-    <ROW Section="Update 2.7" Key="Name" Value="Artemis Mission Editor 2.7"/>
     <ROW Section="Update 2.7" Key="ProductVersion" Value="2.7"/>
+    <ROW Section="Update 2.7" Key="Name" Value="Artemis Mission Editor 2.7"/>
     <ROW Section="Update 2.7" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.msi"/>
     <ROW Section="Update 2.7" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.msi"/>
     <ROW Section="Update 2.7" Key="ReleaseDate" Value="19539"/>
@@ -69,8 +69,8 @@
     <ROW Section="Update 2.7" Key="Enhancement" Value="More improvements to &quot;Potential Problems&quot; checking"/>
     <ROW Section="Update 2.7" Key="BugFix" Value="Subtitles are now correctly marked as optional in big_message&#13;&#10;Preserve the string values of use_gm_position and use_gm_selection attributes&#13;&#10;Don&apos;t lose integer attribute when setting a variable to a random int&#13;&#10;Corrected display of DEFEND ai block arguments"/>
     <ROW Section="Update 2.7" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2"/>
-    <ROW Section="Update 2.7.1" Key="ProductVersion" Value="2.7.1"/>
     <ROW Section="Update 2.7.1" Key="Name" Value="Artemis Mission Editor 2.7.1"/>
+    <ROW Section="Update 2.7.1" Key="ProductVersion" Value="2.7.1"/>
     <ROW Section="Update 2.7.1" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.1.msi"/>
     <ROW Section="Update 2.7.1" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.1.msi"/>
     <ROW Section="Update 2.7.1" Key="ReleaseDate" Value="19544"/>
@@ -83,8 +83,8 @@
     <ROW Section="Update 2.7.1" Key="Enhancement" Value="Convert obsolete values: ELITE_AI to SPCL_AI, countECM to countEMP, missileStoresECM to missileStoresEMP&#13;&#10;Convert incoming_comms_text &quot;side&quot; to &quot;sideValue&quot;&#13;&#10;More improvements to &quot;Potential Problems&quot; checking"/>
     <ROW Section="Update 2.7.1" Key="BugFix" Value="For actions/conditions that affect AI ships or scannable objects, only show the object types that are allowed&#13;&#10;Remove player_slot from set_damcon_members since it doesn&apos;t work"/>
     <ROW Section="Update 2.7.1" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7"/>
-    <ROW Section="Update 2.7.2" Key="Name" Value="Artemis Mission Editor 2.7.2"/>
     <ROW Section="Update 2.7.2" Key="ProductVersion" Value="2.7.2"/>
+    <ROW Section="Update 2.7.2" Key="Name" Value="Artemis Mission Editor 2.7.2"/>
     <ROW Section="Update 2.7.2" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.2.msi"/>
     <ROW Section="Update 2.7.2" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.2.msi"/>
     <ROW Section="Update 2.7.2" Key="ReleaseDate" Value="19557"/>
@@ -110,8 +110,8 @@
     <ROW Section="Update 2.7.3" Key="Feature" Value="Added Drones ability to set_special&#13;&#10;Added isTagged and tagOwnerSide object properties&#13;&#10;Added a &quot;Potential Problems&quot; warning for unknown property names "/>
     <ROW Section="Update 2.7.3" Key="BugFix" Value="Fixed bug where set_variable showed negative values as invalid&#13;&#10;Fixed bug where addto_object_property didn&apos;t work with some global properties&#13;&#10;Fixed bug where {set,if}_object_property wanted an object name for global properties&#13;&#10;Fixed bug where &quot;Potential Problems&quot; would treat expressions with unary &quot;-&quot; operator as invalid"/>
     <ROW Section="Update 2.7.3" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1;Update 2.7.2"/>
-    <ROW Section="Update 2.7.4" Key="Name" Value="Artemis Mission Editor 2.7.4"/>
     <ROW Section="Update 2.7.4" Key="ProductVersion" Value="2.7.4"/>
+    <ROW Section="Update 2.7.4" Key="Name" Value="Artemis Mission Editor 2.7.4"/>
     <ROW Section="Update 2.7.4" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.4.msi"/>
     <ROW Section="Update 2.7.4" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.4.msi"/>
     <ROW Section="Update 2.7.4" Key="ReleaseDate" Value="19576"/>
@@ -124,8 +124,8 @@
     <ROW Section="Update 2.7.4" Key="Enhancement" Value="Made Potential Problems check for writing to a read-only object property&#13;&#10;Made Potential Problems check for monster AI commands added to ships, and vice versa&#13;&#10;* Made addto/copy/if_object_property commands correct property name casing if needed&#13;&#10;Improved the display wording of several commands, including displaying units on some properties&#13;&#10;Don&apos;t lose bad AI command names, just flag them as invalid&#13;&#10;Updated object property commands to only allow choosing object types that the property applies to&#13;&#10;Only allow selecting &quot;with player slot&quot; on properties that can affect players&#13;&#10;Reorganized brain stack block selection by type for easier navigation&#13;&#10;"/>
     <ROW Section="Update 2.7.4" Key="BugFix" Value="Fixed crash if configure incoming_comms_text without a type&#13;&#10;Fixed bug where named objects positions weren&apos;t up to date on space map after saving / opening mission&#13;&#10;Updated the forum link in the About dialog&#13;&#10;Fixed some typos in the Help dialog"/>
     <ROW Section="Update 2.7.4" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1;Update 2.7.2;Update 2.7.3"/>
-    <ROW Section="Update 2.7.5" Key="ProductVersion" Value="2.7.5"/>
     <ROW Section="Update 2.7.5" Key="Name" Value="Artemis Mission Editor 2.7.5"/>
+    <ROW Section="Update 2.7.5" Key="ProductVersion" Value="2.7.5"/>
     <ROW Section="Update 2.7.5" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.5.msi"/>
     <ROW Section="Update 2.7.5" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.5.msi"/>
     <ROW Section="Update 2.7.5" Key="ReleaseDate" Value="19589"/>
@@ -222,8 +222,8 @@
     <ROW Section="Update 2.7.11" Key="Enhancement" Value="Updated CHASE_{STATION,FLEET,OTHER_MONSTERS,WHALE,MONSTER} text to say &quot;anywhere&quot; instead of &quot;closer than 0&quot;, for consistency with CHASE_{AI_SHIP,PLAYER}"/>
     <ROW Section="Update 2.7.11" Key="BugFix" Value="Fixed bug where scrollbar wasn&apos;t visible in statement editor&#13;&#10;Fixed bogus warning when using AI blocks on an object with variables in its name&#13;&#10;Fixed bug in &quot;recent files&quot; list where the latest file might not be listed&#13;&#10;Fixed bug where button list wasn&apos;t listing buttons only seen in a clear command"/>
     <ROW Section="Update 2.7.11" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1;Update 2.7.2;Update 2.7.3;Update 2.7.4;Update 2.7.5;Update 2.7.6;Update 2.7.7;Update 2.7.8;Update 2.7.9;Update 2.7.10"/>
-    <ROW Section="Update 2.7.12" Key="Name" Value="Artemis Mission Editor 2.7.12"/>
     <ROW Section="Update 2.7.12" Key="ProductVersion" Value="2.7.12"/>
+    <ROW Section="Update 2.7.12" Key="Name" Value="Artemis Mission Editor 2.7.12"/>
     <ROW Section="Update 2.7.12" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.12.msi"/>
     <ROW Section="Update 2.7.12" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.12.msi"/>
     <ROW Section="Update 2.7.12" Key="ReleaseDate" Value="20143"/>
@@ -237,8 +237,8 @@
     <ROW Section="Update 2.7.12" Key="Enhancement" Value="Updated README file to render Youtube links as absolute paths in github UI"/>
     <ROW Section="Update 2.7.12" Key="BugFix" Value="Fixed bogus warning if use set_side_value in an event with sideValue as condition&#13;&#10;Updated default script when using New to say Artemis 2.7 instead of 2.6"/>
     <ROW Section="Update 2.7.12" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1;Update 2.7.2;Update 2.7.3;Update 2.7.4;Update 2.7.5;Update 2.7.6;Update 2.7.7;Update 2.7.8;Update 2.7.9;Update 2.7.10;Update 2.7.11"/>
-    <ROW Section="Update 2.7.13" Key="ProductVersion" Value="2.7.13"/>
     <ROW Section="Update 2.7.13" Key="Name" Value="Artemis Mission Editor 2.7.13"/>
+    <ROW Section="Update 2.7.13" Key="ProductVersion" Value="2.7.13"/>
     <ROW Section="Update 2.7.13" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.13.msi"/>
     <ROW Section="Update 2.7.13" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.13.msi"/>
     <ROW Section="Update 2.7.13" Key="ReleaseDate" Value="20194"/>
@@ -251,8 +251,8 @@
     <ROW Section="Update 2.7.13" Key="Feature" Value="Added monster age, beacon effect, and beacon monster type properties to space map"/>
     <ROW Section="Update 2.7.13" Key="Enhancement" Value="Updated nebula color, monster type, and anomaly type properties on space map to use a combo box to select values instead of having to type in values"/>
     <ROW Section="Update 2.7.13" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1;Update 2.7.2;Update 2.7.3;Update 2.7.4;Update 2.7.5;Update 2.7.6;Update 2.7.7;Update 2.7.8;Update 2.7.9;Update 2.7.10;Update 2.7.11;Update 2.7.12"/>
-    <ROW Section="Update 2.7.14" Key="Name" Value="Artemis Mission Editor 2.7.14"/>
     <ROW Section="Update 2.7.14" Key="ProductVersion" Value="2.7.14"/>
+    <ROW Section="Update 2.7.14" Key="Name" Value="Artemis Mission Editor 2.7.14"/>
     <ROW Section="Update 2.7.14" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.14.msi"/>
     <ROW Section="Update 2.7.14" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.14.msi"/>
     <ROW Section="Update 2.7.14" Key="ReleaseDate" Value="20516"/>
@@ -264,6 +264,20 @@
     <ROW Section="Update 2.7.14" Key="Description" Value="&#13;&#10;"/>
     <ROW Section="Update 2.7.14" Key="Feature" Value="Added canLaunchFighters and canShoot as station properties added in Artemis 2.7.4"/>
     <ROW Section="Update 2.7.14" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1;Update 2.7.2;Update 2.7.3;Update 2.7.4;Update 2.7.5;Update 2.7.6;Update 2.7.7;Update 2.7.8;Update 2.7.9;Update 2.7.10;Update 2.7.11;Update 2.7.12;Update 2.7.13"/>
+    <ROW Section="Update 2.7.15" Key="ProductVersion" Value="2.7.15"/>
+    <ROW Section="Update 2.7.15" Key="Name" Value="Artemis Mission Editor 2.7.15"/>
+    <ROW Section="Update 2.7.15" Key="URL" Value="http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.15.msi"/>
+    <ROW Section="Update 2.7.15" Key="Size" Value="ArtemisMissionEditorInstaller.2.7.15.msi"/>
+    <ROW Section="Update 2.7.15" Key="ReleaseDate" Value="20516"/>
+    <ROW Section="Update 2.7.15" Key="MD5" Value="ArtemisMissionEditorInstaller.2.7.15.msi"/>
+    <ROW Section="Update 2.7.15" Key="ServerFileName" Value="ArtemisMissionEditorInstaller.2.7.15.msi"/>
+    <ROW Section="Update 2.7.15" Key="Flags" Value="Critical"/>
+    <ROW Section="Update 2.7.15" Key="FilePath" Value="[APPDIR]ArtemisMissionEditor.exe"/>
+    <ROW Section="Update 2.7.15" Key="Version" Value="2.7.15.0"/>
+    <ROW Section="Update 2.7.15" Key="Description" Value="&#13;&#10;"/>
+    <ROW Section="Update 2.7.15" Key="Feature" Value="Added TeleBack and ShldReset elite abilities added in Artemis 2.7.2"/>
+    <ROW Section="Update 2.7.15" Key="Enhancement" Value="Make set_variable default to integer when adding a new statement"/>
+    <ROW Section="Update 2.7.15" Key="Replaces" Value="Update 2.6;Update 2.6.0.1;Update 2.6.1;Update 2.6.2;Update 2.7;Update 2.7.1;Update 2.7.2;Update 2.7.3;Update 2.7.4;Update 2.7.5;Update 2.7.6;Update 2.7.7;Update 2.7.8;Update 2.7.9;Update 2.7.10;Update 2.7.11;Update 2.7.12;Update 2.7.13;Update 2.7.14"/>
     <ATTRIBUTE name="OutputFileName" value="ArtemisMissionEditorUpdates.txt"/>
     <ATTRIBUTE name="OutputFolder" value="."/>
   </COMPONENT>
