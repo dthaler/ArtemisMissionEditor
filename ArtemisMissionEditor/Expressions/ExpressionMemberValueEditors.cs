@@ -326,6 +326,8 @@ namespace ArtemisMissionEditor.Expressions
             AddPropertyMenuGroup("Generic meshes");
 
             AddToPropertyDictionary("canBuild", "canBuild");
+            AddToPropertyDictionary("canLaunchFighters", "canLaunchFighters");
+            AddToPropertyDictionary("canShoot", "canShoot");
             AddToPropertyDictionary("missileStoresBeacon", "missileStoresBeacon");
             AddToPropertyDictionary("missileStoresEMP", "missileStoresEMP");
             AddToPropertyDictionary("missileStoresHoming", "missileStoresHoming");

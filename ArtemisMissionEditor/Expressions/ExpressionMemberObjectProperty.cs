@@ -89,6 +89,8 @@ namespace ArtemisMissionEditor.Expressions
             // Station properties.
             new EMOP(EMVDS.NameStation, "shieldState",         EMVDS.Flt_NegInf_PosInf),
             new EMOP(EMVDS.NameStation, "canBuild",            EMVDS.Bool_Yes_No),
+            new EMOP(EMVDS.NameStation, "canLaunchFighters",   EMVDS.Bool_Yes_No),
+            new EMOP(EMVDS.NameStation, "canShoot",            EMVDS.Bool_Yes_No),
             new EMOP(EMVDS.NameStation, "missileStoresHoming", EMVDS.Int_0_PosInf),
             new EMOP(EMVDS.NameStation, "missileStoresNuke",   EMVDS.Int_0_PosInf),
             new EMOP(EMVDS.NameStation, "missileStoresMine",   EMVDS.Int_0_PosInf),

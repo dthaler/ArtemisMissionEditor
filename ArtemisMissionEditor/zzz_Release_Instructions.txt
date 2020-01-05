@@ -19,12 +19,12 @@
     5.2. Click the "Updates" button in the menu bar and select Duplicate
     5.3. Update Duplicate description to include new version number
     5.4. Right click current update description and select Add Update -> Replaces
-         Verify all updates are selected to replace, click OK. 
+         Check all updates, click OK.
     5.5  Select the Properites Tab.
     5.6. Update Download URL to point to current msi file name
-    5.7. Update Product Version 
+    5.7. Update Product Version
     5.8. Set Release Date to today
-    5.9. Update Display `Name' to include current version number 
+    5.9. Update Display `Name' to include current version number
     5.10. Click the ... next to File Path to select current msi file
     5.11. Click ... after "Expected Value" file version
     5.12. Select ArtemisMissionEditor\bin\Release\ArtemisMissionEditor.exe click Open
