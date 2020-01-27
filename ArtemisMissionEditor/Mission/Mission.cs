@@ -2858,6 +2858,19 @@ namespace ArtemisMissionEditor
                     }
                 }
 
+                if (statement.Name == "get_object_property")
+                {
+                    string var_name = statement.GetAttribute("variable");
+                    if (var_name != null)
+                    {
+                        var_name = CollapseName(var_name);
+                        if (!VariableNames.Contains(var_name))
+                            VariableNames.Add(var_name);
+                        if (!VariableSetNames.Contains(var_name))
+                            VariableSetNames.Add(var_name);
+                    }
+                }
+
                 if (statement.Name == "set_timer")
                 {
                     string var_timer = statement.GetAttribute("name");
@@ -3550,6 +3563,7 @@ namespace ArtemisMissionEditor
                 "add_ai",
                 "clear_ai",
                 "direct",
+                "get_object_property",
                 "set_object_property",
                 "addto_object_property",
                 "set_to_gm_position",
@@ -3697,6 +3711,8 @@ namespace ArtemisMissionEditor
                                     continue;
                                 if (mNode.Actions[i].Name == "set_variable")
                                     variablesSetHere.Add(CollapseName(mNode.Actions[i].GetAttribute("name")));
+                                if (mNode.Actions[i].Name == "get_object_property")
+                                    variablesSetHere.Add(CollapseName(mNode.Actions[i].GetAttribute("variable")));
                                 if (mNode.Actions[i].Name == "set_timer")
                                     timersSetHere.Add(CollapseName(mNode.Actions[i].GetAttribute("name")));
                                 if (mNode.Actions[i].Name == "set_side_value")
@@ -3899,6 +3915,8 @@ namespace ArtemisMissionEditor
                     // Reference to a variable that is never checked.
                     string attName;
                     if (statement.Name == "set_variable" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !VariableCheckNames.Contains(CollapseName(attName)))
+                        result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Variable named \"" + attName + "\" is set, but never checked.", node, statement));
+                    if (statement.Name == "get_object_property" && !String.IsNullOrEmpty(attName = statement.GetAttribute("variable")) && !VariableCheckNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Variable named \"" + attName + "\" is set, but never checked.", node, statement));
 
                     // Reference to a timer that is never checked.

@@ -127,6 +127,7 @@
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_XmlNameCondition.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_PropertyCopy.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_PropertyAdd.cs" />
+    <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_PropertyGet.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_PropertySet.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_AddAIType.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_SetVariable.cs" />

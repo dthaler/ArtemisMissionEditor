@@ -187,6 +187,7 @@ namespace ArtemisMissionEditor.Expressions
             XmlNameActionCheck.AddToDictionary("set_variable", "Set variable");
             XmlNameActionCheck.NewMenuGroup("Triggers");
 
+            XmlNameActionCheck.AddToDictionary("get_object_property", "Get numeric property");
             XmlNameActionCheck.AddToDictionary("set_object_property", "Set numeric property");
             XmlNameActionCheck.AddToDictionary("addto_object_property", "Add", "Add to numeric property");
             XmlNameActionCheck.AddToDictionary("copy_object_property", "Copy numeric property");

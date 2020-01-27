@@ -14,45 +14,46 @@ namespace ArtemisMissionEditor.Expressions
     public sealed class ExpressionMemberCheck_XmlNameAction : ExpressionMemberCheck
     {
         /// <summary>
-        /// This function is called when check needs to decide which list of ExpressionMembers to output. 
-        /// After it is called, SetValue will be called, to allow for error correction. 
+        /// This function is called when check needs to decide which list of ExpressionMembers to output.
+        /// After it is called, SetValue will be called, to allow for error correction.
         /// </summary>
         /// <example>If input is wrong, decide will choose something, and then the input will be corrected in the SetValue function</example>
         public override string Decide(ExpressionMemberContainer container)
         {
             switch (container.Statement.Name)
             {
-                case "create":                    
-                case "add_ai":                    
-                case "clear_ai":                
-                case "log":                        
-                case "set_variable":            
-                case "set_timer":                
-                case "incoming_message":        
-                case "big_message":                
-                case "end_mission":                
-                case "incoming_comms_text":        
-                case "gm_instructions":        
-                case "set_object_property":        
+                case "create":
+                case "add_ai":
+                case "clear_ai":
+                case "log":
+                case "set_variable":
+                case "set_timer":
+                case "incoming_message":
+                case "big_message":
+                case "end_mission":
+                case "incoming_comms_text":
+                case "gm_instructions":
+                case "get_object_property":
+                case "set_object_property":
                 case "set_fleet_property":
                 case "set_comms_button":
                 case "set_gm_button":
                 case "gm_button":
                 case "clear_comms_button":
                 case "clear_gm_button":
-                case "addto_object_property":    
-                case "copy_object_property":    
-                case "set_relative_position":    
-                case "set_to_gm_position":        
-                case "set_skybox_index":        
-                case "warning_popup_message":    
-                case "set_difficulty_level":    
-                case "set_player_grid_damage":    
-                case "play_sound_now":            
-                case "set_damcon_members":        
-                case "direct":                    
-                case "start_getting_keypresses_from":   
-                case "end_getting_keypresses_from": 
+                case "addto_object_property":
+                case "copy_object_property":
+                case "set_relative_position":
+                case "set_to_gm_position":
+                case "set_skybox_index":
+                case "warning_popup_message":
+                case "set_difficulty_level":
+                case "set_player_grid_damage":
+                case "play_sound_now":
+                case "set_damcon_members":
+                case "direct":
+                case "start_getting_keypresses_from":
+                case "end_getting_keypresses_from":
                 case "set_ship_text":
                 case "set_special":
                 case "set_side_value":
@@ -85,12 +86,12 @@ namespace ArtemisMissionEditor.Expressions
                 //Only set the node name if this is a straight 1 to 1 check value, otherwise the name would be modified by other code that will follow
                 if (!String.IsNullOrEmpty(value) && !value.Contains(' ') && !value.Contains('>') && !value.Contains('<'))
                     container.Statement.Name = value;
-                
+
                 //For custom one-to-one
                 //if (value == "<DIRECT_DETECTED>")
-                
+
                 //}
-                
+
                 //For all many-to-one
                 if (value == "<destroy>")
                     if (container.Statement.Name != "destroy" && container.Statement.Name != "destroy_near")
@@ -121,8 +122,15 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMemberCheck_Named_Nameless());
 
             #endregion
-            
+
             AddSeparator();
+
+            #region get_object_property
+
+            eML = this.Add("get_object_property");
+            eML.Add(new ExpressionMemberCheck_PropertyGet());
+
+            #endregion
 
             #region set_object_property
 
@@ -394,7 +402,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMemberCheck_SetVariable());
 
             #endregion
-                        
+
             #region set_timer
 
             eML = this.Add("set_timer");
@@ -527,9 +535,9 @@ namespace ArtemisMissionEditor.Expressions
             #region start_getting_keypresses_from
 
             eML = this.Add("start_getting_keypresses_from");
-            
+
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Consoles, "consoles"));
-            
+
             #endregion
 
             #region end_getting_keypresses_from
@@ -540,7 +548,7 @@ namespace ArtemisMissionEditor.Expressions
 
 
             #endregion
-            
+
             #region big_message
 
             eML = this.Add("big_message");
