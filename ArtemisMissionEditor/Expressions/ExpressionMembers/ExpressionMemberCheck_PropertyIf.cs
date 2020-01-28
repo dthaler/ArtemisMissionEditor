@@ -14,8 +14,8 @@ namespace ArtemisMissionEditor.Expressions
     public sealed class ExpressionMemberCheck_PropertyIf : ExpressionMemberCheck
 	{
         /// <summary>
-        /// This function is called when check needs to decide which list of ExpressionMembers to output. 
-        /// After it is called, SetValue will be called, to allow for error correction. 
+        /// This function is called when check needs to decide which list of ExpressionMembers to output.
+        /// After it is called, SetValue will be called, to allow for error correction.
         /// </summary>
         /// <example>If input is wrong, decide will choose something, and then the input will be corrected in the SetValue function</example>
         public override string Decide(ExpressionMemberContainer container)
@@ -80,7 +80,8 @@ namespace ArtemisMissionEditor.Expressions
                 if (property.ObjectDescription != null)
                 {
     			    eML.Add(new ExpressionMember("of "));
-        			eML.Add(new ExpressionMember("<>", property.ObjectDescription, "name", true));
+    			    eML.Add(new ExpressionMember("object "));
+    			    eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll));
                 }
     			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Comparator, "comparator"));
     			eML.Add(new ExpressionMember("<>", property.ValueDescription, "value", true));
@@ -89,7 +90,7 @@ namespace ArtemisMissionEditor.Expressions
 			#region <UNKNOWN_PROPERTY>
 
 			eML = this.Add("<UNKNOWN_PROPERTY>");
-            
+
 			eML.Add(new ExpressionMember("<property>", ExpressionMemberValueDescriptions.ReadableProperty, "property"));
 			eML.Add(new ExpressionMember("of "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name", true));
