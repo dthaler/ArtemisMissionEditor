@@ -88,7 +88,7 @@ namespace ArtemisMissionEditor.Expressions
 			List<ExpressionMember> eML;
 			
 			eML = this.Add("named object"); //Choices[0]
-			eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAll));
+			eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll));
 
 			eML = this.Add("asteroids"); //Choices[1]
 			____Add_Nameless(eML);

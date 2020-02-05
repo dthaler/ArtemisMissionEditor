@@ -316,9 +316,7 @@ namespace ArtemisMissionEditor.Expressions
             eML = this.Add("set_relative_position");
             eML.Add(new ExpressionMember("of "));
             eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMember("with "));
-            eML.Add(new ExpressionMember("name "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name2"));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll, true, "name2", "<none>", "player_slot2"));
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Radius, "distance"));
             eML.Add(new ExpressionMember("meters "));
@@ -335,9 +333,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("location "));
             eML.Add(new ExpressionMember("of "));
             eML.Add(new ExpressionMember("object "));
-            eML.Add(new ExpressionMember("with "));
-            eML.Add(new ExpressionMember("name "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name1"));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll, true, "name1", "<none>", "player_slot1"));
 
             #endregion
 

@@ -75,14 +75,10 @@ namespace ArtemisMissionEditor.Expressions
 		{
 			eML.Add(new ExpressionMember("from "));
 			eML.Add(new ExpressionMember("object "));
-			eML.Add(new ExpressionMember("with "));
-			eML.Add(new ExpressionMember("name "));
-			eML.Add(new ExpressionMember("<>", type, "name1", true));
+			eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll, true, "name1", "<none>", "player_slot1"));
 			eML.Add(new ExpressionMember("to "));
 			eML.Add(new ExpressionMember("object "));
-			eML.Add(new ExpressionMember("with "));
-			eML.Add(new ExpressionMember("name "));
-			eML.Add(new ExpressionMember("<>", type, "name2", true));
+			eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll, true, "name2", "<none>", "player_slot2"));
 		}
 
         /// <summary>
