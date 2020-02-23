@@ -134,7 +134,7 @@ namespace ArtemisMissionEditor.Expressions
             #region if_damcon_members
 
             eML = this.Add("if_damcon_members");
-            eML.Add(new ExpressionMemberCheck_Slot_GM(ExpressionMemberValueDescriptions.NamePlayer));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer));
             eML.Add(new ExpressionMember("in "));
 			eML.Add(new ExpressionMember("team "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Teamindex, "team_index"));
@@ -177,7 +177,7 @@ namespace ArtemisMissionEditor.Expressions
 			#region if_in_nebula
 
 			eML = this.Add("if_in_nebula");
-			eML.Add(new ExpressionMemberCheck_Slot_GM(ExpressionMemberValueDescriptions.NamePlayer));
+			eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer));
 			eML.Add(new ExpressionMember("is "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NebulaTypeOrNone, "compare", true));
             eML.Add(new ExpressionMember("nebula"));
@@ -187,8 +187,9 @@ namespace ArtemisMissionEditor.Expressions
             #region if_player_is_targeting
 
             eML = this.Add("if_player_is_targeting");
-			eML.Add(new ExpressionMember("named "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NamePlayer, "player_name", false));
+			eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer,
+				nameAttributeName:"player_name",
+				useGMSelectionAttributeName:"<none>"));
 			eML.Add(new ExpressionMember("is "));
 			eML.Add(new ExpressionMember("targeting "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name", true));

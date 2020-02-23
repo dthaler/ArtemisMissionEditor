@@ -12,7 +12,7 @@ namespace ArtemisMissionEditor.Expressions
     /// This check is for name vs gm selection in multiple statements that do something to/with an object.
     /// </summary>
     public sealed class ExpressionMemberCheck_Name_GM_Slot : ExpressionMemberCheck
-	{
+    {
         private static readonly string NameChoice = "with name";
         private static readonly string UseGMChoice = "selected by GM ";
         private static readonly string PlayerSlotChoice = "in player slot";
@@ -22,8 +22,8 @@ namespace ArtemisMissionEditor.Expressions
         private string UseGMSelectionAttributeName { get; set; }
 
         /// <summary>
-        /// This function is called when check needs to decide which list of ExpressionMembers to output. 
-        /// After it is called, SetValue will be called, to allow for error correction. 
+        /// This function is called when check needs to decide which list of ExpressionMembers to output.
+        /// After it is called, SetValue will be called, to allow for error correction.
         /// </summary>
         /// <example>If input is wrong, decide will choose something, and then the input will be corrected in the SetValue function</example>
         public override string Decide(ExpressionMemberContainer container)
@@ -45,7 +45,7 @@ namespace ArtemisMissionEditor.Expressions
 
             // Default is name.
             return NameChoice;
-        }		
+        }
 
         /// <summary>
         /// Called after Decide has made its choice, or, as usual for ExpressionMembers, after user edited the value through a Dialog.
@@ -53,7 +53,7 @@ namespace ArtemisMissionEditor.Expressions
         /// <example>If you chose "Use GM ...", SetValue will set "use_gm_..." attribute to "" if it was null</example>
         /// </summary>
         protected override void SetValueInternal(ExpressionMemberContainer container, string value)
-		{
+        {
             if (value == NameChoice)
             {
                 container.SetAttribute(UseGMSelectionAttributeName, null);
@@ -72,21 +72,21 @@ namespace ArtemisMissionEditor.Expressions
                 container.SetAttribute(NameAttributeName, null);
                 container.SetAttributeIfNull(PlayerSlotAttributeName, "");
             }
-			base.SetValueInternal(container, value);
-		}
+            base.SetValueInternal(container, value);
+        }
 
         /// <summary>
         /// Represents a single member in an expression, which provides branching via checking a condition.
         /// This check is for name vs gm selection in multiple statements that do something to/with an object.
         /// </summary>
         public ExpressionMemberCheck_Name_GM_Slot(
-            ExpressionMemberValueDescription name = null, 
+            ExpressionMemberValueDescription name = null,
             bool mandatory = true,
             string nameAttributeName = "name",
             string useGMSelectionAttributeName = "use_gm_selection",
             string playerSlotAttributeName = "player_slot")
-			: base("", ExpressionMemberValueDescriptions.Check_Name_GMSelection)
-		{
+            : base("", ExpressionMemberValueDescriptions.Check_Name_GMSelection)
+        {
             name = name ?? ExpressionMemberValueDescriptions.Name;
 
             NameAttributeName = nameAttributeName;
@@ -100,11 +100,11 @@ namespace ArtemisMissionEditor.Expressions
                 eML = this.Add(NameChoice);
                 eML.Add(new ExpressionMember("<>", name, NameAttributeName, mandatory));
             }
-           
+
             if (UseGMSelectionAttributeName != "<none>")
             {
                 eML = this.Add(UseGMChoice);
-    			eML.Add(new ExpressionMember("", ExpressionMemberValueDescriptions.UseGM, UseGMSelectionAttributeName));
+                eML.Add(new ExpressionMember("", ExpressionMemberValueDescriptions.UseGM, UseGMSelectionAttributeName));
             }
 
             if (PlayerSlotChoice != "<none>")
@@ -113,5 +113,5 @@ namespace ArtemisMissionEditor.Expressions
                 eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.UseSlot, PlayerSlotAttributeName, true));
             }
         }
-	}
+    }
 }

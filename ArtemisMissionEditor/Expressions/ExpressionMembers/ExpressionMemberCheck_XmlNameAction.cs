@@ -524,7 +524,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("consoles: "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Consoles, "consoles"));
             eML.Add(new ExpressionMember("on ship "));
-            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NamePlayer));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer));
 
             #endregion
 
@@ -594,7 +594,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("to "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Damage, "value"));
             eML.Add(new ExpressionMember("on ship "));
-            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NamePlayer));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer));
             eML.Add(new ExpressionMember(", "));
             eML.Add(new ExpressionMember("node "));
             eML.Add(new ExpressionMember("number "));
@@ -622,7 +622,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("number "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Teamindex, "team_index"));
             eML.Add(new ExpressionMember("on ship "));
-            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NamePlayer));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer));
 
             #endregion
 

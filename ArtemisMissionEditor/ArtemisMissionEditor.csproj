@@ -103,7 +103,6 @@
     <Compile Include="Expressions\ExpressionMemberObjectProperty.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_DistanceNoNebula.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_DriveType.cs" />
-    <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_Slot_GM.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_Name_GM_Slot.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_Point_Name_GM.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_SpecialAbilityBitsConversion.cs" />
