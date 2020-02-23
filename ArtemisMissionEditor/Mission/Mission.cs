@@ -1743,6 +1743,17 @@ namespace ArtemisMissionEditor
             List<MissionStatement> newStatements = new List<MissionStatement>();
             TreeNode lastNode = null;
 
+            // First validate input before actually modifying the mission.
+            foreach (XmlNode childNode in root)
+            {
+                MissionStatement newMStatement = MissionStatement.NewFromXML(childNode, (MissionNode)TreeViewNodes.SelectedNode.Tag);
+                if (newMStatement == null)
+                {
+                    return false;
+                }
+            }
+
+            // The input is valid, so actually do the modifications.
             BeginUpdate(true);
 
             foreach (XmlNode childNode in root)

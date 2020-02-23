@@ -374,6 +374,11 @@ namespace ArtemisMissionEditor
 
 			mn.FromXml(item);
 
+			if (string.IsNullOrEmpty(mn.Name))
+			{
+				return null;
+			}
+
 			mn.Update();
 
             return mn;
