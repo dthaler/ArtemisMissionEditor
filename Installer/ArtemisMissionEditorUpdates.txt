@@ -1,5 +1,23 @@
 ;aiu;
 
+[Update 2.7.18]
+ProductVersion=2.7.18
+Name=Artemis Mission Editor 2.7.18
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.18.msi
+Size=1600000
+ReleaseDate=25/02/2020
+MD5=c22744bfde5cd10c2596c07dbcbc8b49
+ServerFileName=ArtemisMissionEditorInstaller.2.7.18.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.18.0
+Feature=Added support for get_object_property command added for Artemis 2.7.5
+Feature1=Added player_slot support for {get,set,if}_object_property added in Artemis 2.7.5
+Feature2=Added player_slot support for if_player_is_targeting, if_not_exists, set_damcon_members, set_player_grid_damage, and warning_popup_message 
+Feature3=Added player_slot support for destroy, copy_object_property, and set_relative_position
+BugFix=Fixed crashing bug when pasting invalid XML
+Replaces=All
+
 [Update 2.7.15]
 ProductVersion=2.7.15
 Name=Artemis Mission Editor 2.7.15
@@ -16,8 +34,8 @@ Enhancement=Make set_variable default to integer when adding a new statement
 Replaces=All
 
 [Update 2.7.14]
-Name=Artemis Mission Editor 2.7.14
 ProductVersion=2.7.14
+Name=Artemis Mission Editor 2.7.14
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.14.msi
 Size=1599488
 ReleaseDate=04/01/2020
@@ -45,8 +63,8 @@ Enhancement=Updated nebula color, monster type, and anomaly type properties on s
 Replaces=All
 
 [Update 2.7.12]
-ProductVersion=2.7.12
 Name=Artemis Mission Editor 2.7.12
+ProductVersion=2.7.12
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.12.msi
 Size=1598464
 ReleaseDate=15/05/2019
@@ -64,8 +82,8 @@ BugFix1=Updated default script when using New to say Artemis 2.7 instead of 2.6
 Replaces=All
 
 [Update 2.7.11]
-Name=Artemis Mission Editor 2.7.11
 ProductVersion=2.7.11
+Name=Artemis Mission Editor 2.7.11
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.11.msi
 Size=1597952
 ReleaseDate=05/01/2019
@@ -116,8 +134,8 @@ BugFix=Fixed bug where nebula colors were lost by the space map
 Replaces=All
 
 [Update 2.7.8]
-ProductVersion=2.7.8
 Name=Artemis Mission Editor 2.7.8
+ProductVersion=2.7.8
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.8.msi
 Size=1593344
 ReleaseDate=25/08/2018
@@ -177,8 +195,8 @@ BugFix1=Fixed bug where a Potential Problems warning was incorrectly shown when 
 Replaces=All
 
 [Update 2.7.5]
-Name=Artemis Mission Editor 2.7.5
 ProductVersion=2.7.5
+Name=Artemis Mission Editor 2.7.5
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.5.msi
 Size=1592320
 ReleaseDate=05/04/2018
@@ -274,8 +292,8 @@ BugFix2=Fixed display of if_fleet_count when countSurrendered is absent
 Replaces=All
 
 [Update 2.7.1]
-Name=Artemis Mission Editor 2.7.1
 ProductVersion=2.7.1
+Name=Artemis Mission Editor 2.7.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.1.msi
 Size=1590272
 ReleaseDate=24/02/2018
@@ -356,8 +374,8 @@ BugFix= Fixed some more typos
 Replaces=All
 
 [Update 2.6.0.1]
-ProductVersion=2.6.0.1
 Name=Artemis Mission Editor 2.6.0.1
+ProductVersion=2.6.0.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.0.1.msi
 Size=1583616
 ReleaseDate=26/12/2017
@@ -376,8 +394,8 @@ BugFix2=Fixed bug in update available detection
 Replaces=All
 
 [Update 2.6]
-ProductVersion=2.6.0.0
 Name=Artemis Mission Editor 2.6
+ProductVersion=2.6.0.0
 URL=http://www.example.com/downloads/ArtemisMissionEditorInstaller.2.6.msi
 Size=1583616
 MD5=72deef9dc1ae805094af04d469c065f4
