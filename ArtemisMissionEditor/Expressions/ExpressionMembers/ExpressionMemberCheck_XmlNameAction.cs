@@ -524,7 +524,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("consoles: "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Consoles, "consoles"));
             eML.Add(new ExpressionMember("on ship "));
-            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer, mandatory:false));
 
             #endregion
 
