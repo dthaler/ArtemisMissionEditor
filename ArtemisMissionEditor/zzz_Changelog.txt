@@ -1,3 +1,12 @@
+Version 2.7.19 [2020-March-17] (Dave Thaler)
+* Added use_gm_selection and target_slot attributes to if_player_is_targeting
+* Added player_slot, accent color, and drive type to player ship properties
+  on space map
+* Fixed bug where player_slot, accent color, and drive type would be lost
+  from create commands after accepting space map changes
+* Fixed bug where if_player_is_targeting didn't treat player_name as optional
+* Fixed spurious warning about warning_popup_message with no ship name
+----------------------
 Version 2.7.18 [2020-February-22] (Dave Thaler)
 * Added player_slot support for if_player_is_targeting, if_not_exists,
   set_damcon_members, set_player_grid_damage, and warning_popup_message 
