@@ -1,8 +1,26 @@
 ;aiu;
 
+[Update 2.7.19]
+Name=Artemis Mission Editor 2.7.19
+ProductVersion=2.7.19
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.19.msi
+Size=1600512
+ReleaseDate=17/03/2020
+MD5=7822be1f137214965ee1db0703678978
+ServerFileName=ArtemisMissionEditorInstaller.2.7.19.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.19.0
+Feature=Added use_gm_selection and target_slot attributes to if_player_is_targeting
+Feature1=Added player_slot, accent color, and drive type to player ship properties on space map
+BugFix=Fixed bug where player_slot, accent color, and drive type would be lost from create commands after accepting space map changes
+BugFix1=Fixed bug where if_player_is_targeting didn't treat player_name as optional
+BugFix2=Fixed spurious warning about warning_popup_message with no ship name
+Replaces=All
+
 [Update 2.7.18]
-ProductVersion=2.7.18
 Name=Artemis Mission Editor 2.7.18
+ProductVersion=2.7.18
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.18.msi
 Size=1600000
 ReleaseDate=25/02/2020
@@ -19,8 +37,8 @@ BugFix=Fixed crashing bug when pasting invalid XML
 Replaces=All
 
 [Update 2.7.15]
-ProductVersion=2.7.15
 Name=Artemis Mission Editor 2.7.15
+ProductVersion=2.7.15
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.15.msi
 Size=1600000
 ReleaseDate=04/01/2020
@@ -34,8 +52,8 @@ Enhancement=Make set_variable default to integer when adding a new statement
 Replaces=All
 
 [Update 2.7.14]
-ProductVersion=2.7.14
 Name=Artemis Mission Editor 2.7.14
+ProductVersion=2.7.14
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.14.msi
 Size=1599488
 ReleaseDate=04/01/2020
@@ -48,8 +66,8 @@ Feature=Added canLaunchFighters and canShoot as station properties added in Arte
 Replaces=All
 
 [Update 2.7.13]
-ProductVersion=2.7.13
 Name=Artemis Mission Editor 2.7.13
+ProductVersion=2.7.13
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.13.msi
 Size=1599488
 ReleaseDate=02/07/2019
@@ -63,8 +81,8 @@ Enhancement=Updated nebula color, monster type, and anomaly type properties on s
 Replaces=All
 
 [Update 2.7.12]
-Name=Artemis Mission Editor 2.7.12
 ProductVersion=2.7.12
+Name=Artemis Mission Editor 2.7.12
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.12.msi
 Size=1598464
 ReleaseDate=15/05/2019
@@ -134,8 +152,8 @@ BugFix=Fixed bug where nebula colors were lost by the space map
 Replaces=All
 
 [Update 2.7.8]
-Name=Artemis Mission Editor 2.7.8
 ProductVersion=2.7.8
+Name=Artemis Mission Editor 2.7.8
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.8.msi
 Size=1593344
 ReleaseDate=25/08/2018
@@ -151,8 +169,8 @@ BugFix1=Fixed bug where copy_object_property incorrectly allowed selecting globa
 Replaces=All
 
 [Update 2.7.7]
-Name=Artemis Mission Editor 2.7.7
 ProductVersion=2.7.7
+Name=Artemis Mission Editor 2.7.7
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.7.msi
 Size=1593344
 ReleaseDate=07/07/2018
@@ -374,8 +392,8 @@ BugFix= Fixed some more typos
 Replaces=All
 
 [Update 2.6.0.1]
-Name=Artemis Mission Editor 2.6.0.1
 ProductVersion=2.6.0.1
+Name=Artemis Mission Editor 2.6.0.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.0.1.msi
 Size=1583616
 ReleaseDate=26/12/2017
