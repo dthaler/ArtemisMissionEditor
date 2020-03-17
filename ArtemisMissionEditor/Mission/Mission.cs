@@ -4036,7 +4036,7 @@ namespace ArtemisMissionEditor
                     if (statement.Name == "warning_popup_message")
                     {
                         string name = statement.GetAttribute("name");
-                        if (name != null && name != "Artemis")
+                        if (!string.IsNullOrEmpty(name) && (name != "Artemis"))
                         {
                             result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "warning_popup_message does not support ship names other than Artemis", node, statement));
                         }
