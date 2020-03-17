@@ -188,11 +188,14 @@ namespace ArtemisMissionEditor.Expressions
 
             eML = this.Add("if_player_is_targeting");
 			eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer,
-				nameAttributeName:"player_name",
-				useGMSelectionAttributeName:"<none>"));
+				mandatory:false,
+				nameAttributeName:"player_name"));
 			eML.Add(new ExpressionMember("is "));
 			eML.Add(new ExpressionMember("targeting "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "name", true));
+			eML.Add(new ExpressionMember("object "));
+			eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NameAll,
+				useGMSelectionAttributeName: "<none>",
+				playerSlotAttributeName:"target_slot"));
 
 			#endregion
 
