@@ -213,7 +213,7 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("on "));
             eML.Add(new ExpressionMemberCheck_Side());
             eML.Add(new ExpressionMember("with "));
-            eML.Add(new ExpressionMember("accent colour "));
+            eML.Add(new ExpressionMember("accent color "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.accent_color, "accent_color"));
             ____Add_Check_HullID_HullRaceKeysP(eML);
             eML.Add(new ExpressionMember(". Ship uses "));

@@ -975,6 +975,23 @@ namespace ArtemisMissionEditor.SpaceMap
         }
     }
 
+    public sealed class DriveTypeConverter : StringConverter
+    {
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context) { return true; }
+        public override bool GetStandardValuesExclusive(ITypeDescriptorContext context) { return true; }
+
+        public override TypeConverter.StandardValuesCollection
+        GetStandardValues(ITypeDescriptorContext context)
+        {
+            List<string> tmp = new List<string>();
+            foreach (string key in ExpressionMemberValueEditors.DriveType.DisplayValueToXml.Keys)
+            {
+                tmp.Add(key);
+            }
+            return new StandardValuesCollection(tmp.ToArray());
+        }
+    }
+
     public sealed class MapObjectNamed_Anomaly : MapObjectNamed
     {
         private int _beaconEffect;
@@ -1356,14 +1373,35 @@ namespace ArtemisMissionEditor.SpaceMap
 
     public sealed class MapObjectNamed_player : MapObjectNamedAS
     {
-#region INHERITANCE
+        //POD NUMBER
+        private string _playerslot;
+        [DisplayName("Player Slot"), Description("Player slot number"), DefaultValue("")]
+        public string playerslot { get { return _playerslot; } set { _playerslot = value; } }
+
+        //DRIVE TYPE
+        private string _drivetype;
+        [DisplayName("Drive Type"), Description("Drive type"), DefaultValue(""), TypeConverter(typeof(DriveTypeConverter))]
+        public string drivetype { get { return _drivetype; } set { _drivetype = value; } }
+
+        //ACCENT COLOR
+        private string _accentcolor;
+        [DisplayName("Accent Color"), Description("Accent color"), DefaultValue("")]
+        public string accentcolor { get { return _accentcolor; } set { _accentcolor = value; } }
+
+        #region INHERITANCE
 
         //SELECTION
         public override bool _selectionAbsolute { get { return base._selectionAbsolute; } }
         public override int _selectionSize { get { return 30; } }
 
         //PROPERTIES
-        public override bool IsPropertyAvailable(string pName) { return base.IsPropertyAvailable(pName); }
+        public override bool IsPropertyAvailable(string pName)
+        {
+            if (pName == "player_slot") return true;
+            if (pName == "jump") return true;
+            if (pName == "warp") return true;
+            return base.IsPropertyAvailable(pName);
+        }
         public override bool IsPropertyMandatory(string pName) { return base.IsPropertyMandatory(pName); }
 
         //TYPE
@@ -1381,6 +1419,30 @@ namespace ArtemisMissionEditor.SpaceMap
                 type = TypeToString;
             XmlElement create = base.ToXml(xDoc, missingProperties, type);
 
+            if (!string.IsNullOrEmpty(playerslot))
+            {
+                __AddNewAttribute(xDoc, create, "player_slot", playerslot.ToString());
+            }
+            if (!string.IsNullOrEmpty(accentcolor))
+            {
+                __AddNewAttribute(xDoc, create, "accent_color", accentcolor.ToString());
+            }
+
+            string warp = null;
+            string jump = null;
+            if (_drivetype == "Warp")
+            {
+                warp = "yes";
+                jump = "no";
+            }
+            else if (_drivetype == "Jump")
+            {
+                warp = "no";
+                jump = "yes";
+            }
+            __AddNewAttribute(xDoc, create, "warp", warp);
+            __AddNewAttribute(xDoc, create, "jump", jump);
+
             return create;
         }
 
@@ -1388,11 +1450,25 @@ namespace ArtemisMissionEditor.SpaceMap
         public override void FromXml(XmlNode item)
         {
             base.FromXml(item);
-            //foreach (XmlAttribute att in item.Attributes)
-            //    switch (att.Name)
-            //    {
-
-            //    }
+            _drivetype = "Any";
+            foreach (XmlAttribute att in item.Attributes)
+            {
+                switch (att.Name)
+                {
+                    case "player_slot":
+                        _playerslot = att.Value;
+                        break;
+                    case "accent_color":
+                        _accentcolor = att.Value;
+                        break;
+                    case "warp":
+                        _drivetype = (att.Value == "yes") ? "Warp" : "Jump";
+                        break;
+                    case "jump":
+                        _drivetype = (att.Value == "yes") ? "Jump" : "Warp";
+                        break;
+                }
+            }
         }
 
         //CONSTRUCTOR
