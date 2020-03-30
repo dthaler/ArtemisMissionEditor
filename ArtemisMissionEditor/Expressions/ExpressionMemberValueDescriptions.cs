@@ -283,7 +283,7 @@ namespace ArtemisMissionEditor.Expressions
         /// <summary> "comparator" from [if_variable] </summary>
         public static EMVD Comparator =                 new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.Comparator,null,null,""," ","EQUALS");
         /// <summary> "value" from [if_damcon_members] </summary>
-        public static EMVD DCAmountF =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.TeamAmountF, null, null,""," ","0");
+        public static EMVD DCAmountF =                  new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.TeamAmount, null, null,""," ","0");
 
         /// <summary> Check allships/fleetnumber from [if_fleet_count] </summary>
         public static EMVD Check_AllShips_FleetNumber = new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DefaultCheck);

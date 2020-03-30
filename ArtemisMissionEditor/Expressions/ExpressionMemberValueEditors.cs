@@ -40,7 +40,6 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor DamageValue;
         public static ExpressionMemberValueEditor TeamIndex;
         public static ExpressionMemberValueEditor TeamAmount;
-        public static ExpressionMemberValueEditor TeamAmountF;
         public static ExpressionMemberValueEditor SpecialShipType;
         public static ExpressionMemberValueEditor MonsterType;
         public static ExpressionMemberValueEditor DriveType;
@@ -438,6 +437,12 @@ namespace ArtemisMissionEditor.Expressions
             WritableProperty.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
             WritableObjectProperty.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_NestedList;
 
+            //
+            // When setting the PrepareContextMenuStripMethod below, note that using PrepareContextMenuString_DefaultList
+            // will constrain the values to only those in the list, which also means that variable names cannot be used.
+            // To use variable names with a numeric value, use PrepareContextMenuString_DefaultListPlusDialog instead.
+            //
+
 			PropertyFleet = new ExpressionMemberValueEditor();
 			PropertyFleet.AddToDictionary("fleetSpacing",   "spacing");
 			PropertyFleet.AddToDictionary("fleetMaxRadius", "max radius");
@@ -449,9 +454,9 @@ namespace ArtemisMissionEditor.Expressions
 			SkyboxIndex.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListPlusDialog;
 
 			Difficulty = new ExpressionMemberValueEditor();
-            for (int i = 0; i <= 11; i++)
+            for (int i = 1; i <= 11; i++)
                 Difficulty.AddToDictionary(i.ToString(), i.ToString());
-			Difficulty.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList;
+			Difficulty.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListPlusDialog;
 
 			ShipSystem = new ExpressionMemberValueEditor();
 			ShipSystem.AddToDictionary("systemBeam",            "Primary Beam");
@@ -482,7 +487,7 @@ namespace ArtemisMissionEditor.Expressions
 			TeamIndex.AddToDictionary("0", "0");
 			TeamIndex.AddToDictionary("1", "1");
 			TeamIndex.AddToDictionary("2", "2");
-			TeamIndex.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList;
+			TeamIndex.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListPlusDialog;
 
 			TeamAmount = new ExpressionMemberValueEditor();
 			TeamAmount.AddToDictionary("0", "0");
@@ -492,17 +497,7 @@ namespace ArtemisMissionEditor.Expressions
 			TeamAmount.AddToDictionary("4", "4");
 			TeamAmount.AddToDictionary("5", "5");
 			TeamAmount.AddToDictionary("6", "6");
-			TeamAmount.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList;
-
-			TeamAmountF = new ExpressionMemberValueEditor();
-			TeamAmountF.AddToDictionary("0", "0");
-			TeamAmountF.AddToDictionary("1", "1");
-			TeamAmountF.AddToDictionary("2", "2");
-			TeamAmountF.AddToDictionary("3", "3");
-			TeamAmountF.AddToDictionary("4", "4");
-			TeamAmountF.AddToDictionary("5", "5");
-			TeamAmountF.AddToDictionary("6", "6");
-			TeamAmountF.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListPlusDialog;
+			TeamAmount.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListPlusDialog;
 
             SpecialShipType = new ExpressionMemberValueEditor();
             SpecialShipType.AddToDictionary(null,   "Unspecified");
@@ -543,7 +538,6 @@ namespace ArtemisMissionEditor.Expressions
             SensorRange.AddToDictionary("3", "11K");
             SensorRange.AddToDictionary("4", "8K");
             SensorRange.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
-
 
             AnomalyType = new ExpressionMemberValueEditor();
             AnomalyType.AddToDictionary("0", "Energy");
@@ -739,7 +733,7 @@ namespace ArtemisMissionEditor.Expressions
 			WarpState.AddToDictionary("2", "2");
 			WarpState.AddToDictionary("3", "3");
 			WarpState.AddToDictionary("4", "4");
-			WarpState.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultList;
+			WarpState.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListPlusDialog;
 
             PathEditor = new ExpressionMemberValueEditor_PathEditor();
 
