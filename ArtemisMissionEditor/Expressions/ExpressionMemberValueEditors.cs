@@ -499,13 +499,14 @@ namespace ArtemisMissionEditor.Expressions
 			TeamAmount.AddToDictionary("6", "6");
 			TeamAmount.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListPlusDialog;
 
+            // The SpecialShipType values completely changed between Artemis v2.3 and v2.4.
+            // The values below are those used in v2.4 and later.
             SpecialShipType = new ExpressionMemberValueEditor();
             SpecialShipType.AddToDictionary(null,   "Unspecified");
             SpecialShipType.AddToDictionary("-1",   "Nothing");
             SpecialShipType.AddToDictionary("0",    "Upgraded");
             SpecialShipType.AddToDictionary("1",    "Overpowered");
             SpecialShipType.AddToDictionary("2",    "Underpowered");
-            //SpecialShipType.AddToDictionary("3",    "Dilapidated");
             SpecialShipType.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultListWithFirstSeparated;
 
             MonsterType = new ExpressionMemberValueEditor();
