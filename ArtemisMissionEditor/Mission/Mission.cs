@@ -2556,13 +2556,11 @@ namespace ArtemisMissionEditor
         }
 
         /// <summary>
-        /// Update names lists for variables embedded in text.
+        /// Update names lists for variables embedded in raw text.
         /// </summary>
-        /// <param name="statement">Statement</param>
-        /// <param name="attName">Attribute name</param>
-        private void UpdateNamesLists_ScanText(MissionStatement statement, string attName)
+        /// <param name="text">Text to scan</param>
+        private void UpdateNamesLists_ScanText(string text)
         {
-            string text = statement.GetAttribute(attName);
             if (text == null)
             {
                 return;
@@ -2573,6 +2571,17 @@ namespace ArtemisMissionEditor
                 string var_name = substrings[i];
                 VariableCheckNames.Add(var_name);
             }
+        }
+
+        /// <summary>
+        /// Update names lists for variables embedded in text in an attribute.
+        /// </summary>
+        /// <param name="statement">Statement</param>
+        /// <param name="attName">Attribute name</param>
+        private void UpdateNamesLists_ScanTextAttribute(MissionStatement statement, string attName)
+        {
+            string text = statement.GetAttribute(attName);
+            UpdateNamesLists_ScanText(text);
         }
 
         /// <summary>
@@ -2840,7 +2849,17 @@ namespace ArtemisMissionEditor
 
                 if (statement.Name == "log_text")
                 {
-                    UpdateNamesLists_ScanText(statement, "text");
+                    UpdateNamesLists_ScanTextAttribute(statement, "text");
+                }
+                if (statement.Name == "incoming_comms_text")
+                {
+                    UpdateNamesLists_ScanText(statement.Body);
+                }
+                if (statement.Name == "big_message")
+                {
+                    UpdateNamesLists_ScanTextAttribute(statement, "title");
+                    UpdateNamesLists_ScanTextAttribute(statement, "subtitle1");
+                    UpdateNamesLists_ScanTextAttribute(statement, "subtitle2");
                 }
 
                 if (statement.Name == "spawn_external_program")
@@ -2906,6 +2925,7 @@ namespace ArtemisMissionEditor
                         if (!GMButtonNames.Contains(var_text))
                             GMButtonNames.Add(var_text);
                     }
+                    UpdateNamesLists_ScanTextAttribute(statement, "text");
                 }
 
                 if (statement.Name == "set_gm_button")
@@ -2919,6 +2939,7 @@ namespace ArtemisMissionEditor
                         if (!GMButtonSetNames.Contains(var_text))
                             GMButtonSetNames.Add(var_text);
                     }
+                    UpdateNamesLists_ScanTextAttribute(statement, "text");
                 }
 
                 if (statement.Name == "clear_comms_button")
@@ -2930,6 +2951,7 @@ namespace ArtemisMissionEditor
                         if (!CommsButtonNames.Contains(var_text))
                             CommsButtonNames.Add(var_text);
                     }
+                    UpdateNamesLists_ScanTextAttribute(statement, "text");
                 }
 
                 if (statement.Name == "set_comms_button")
@@ -2943,12 +2965,13 @@ namespace ArtemisMissionEditor
                         if (!CommsButtonSetNames.Contains(var_text))
                             CommsButtonSetNames.Add(var_text);
                     }
+                    UpdateNamesLists_ScanTextAttribute(statement, "text");
                 }
 
                 if (statement.Name == "set_ship_text")
                 {
-                    UpdateNamesLists_ScanText(statement, "scan_desc");
-                    UpdateNamesLists_ScanText(statement, "hailtext");
+                    UpdateNamesLists_ScanTextAttribute(statement, "scan_desc");
+                    UpdateNamesLists_ScanTextAttribute(statement, "hailtext");
                 }
 
                 if (statement.Name == "end_mission")
@@ -3464,7 +3487,7 @@ namespace ArtemisMissionEditor
                 FindProblems_RecursivelyCheckNodes(node, ref curNode, result);
 
             if (AmountOfCreatePlayerStatements > 1)
-                result.Add(new MissionSearchResult(0, 0, "Multiple \"Create player\" statements detected in the script. Note that creating multiple player ships does not work properly. If your indention is to create a multi-ship mission, you should not create additional player ships, but rather have the players spawn additional ships in the usual way (joining as a Main Screen).", null, null));
+                result.Add(new MissionSearchResult(0, 0, "Multiple \"Create player\" statements detected in the script. Note that creating multiple player ships does not work properly. If your intention is to create a multi-ship mission, you should not create additional player ships, but rather have the players spawn additional ships in the usual way (joining as a Main Screen).", null, null));
 
             if (AmountOfMissionEndStatements == 0)
                 result.Add(new MissionSearchResult(0, 0, "\"End Mission\" action is not present anywhere in the script. Unless you are making a script that only ends with player ship being destroyed, you should consider adding this action.", null, null));
