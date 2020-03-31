@@ -214,9 +214,6 @@ namespace ArtemisMissionEditor
         /// <summary> Whether or not the mission contains an "End Mission" statement (and how many of them)</summary>
         public int AmountOfMissionEndStatements { get; private set; }
 
-        /// <summary> How many "Create player" statements there are in the mission</summary>
-        public int AmountOfCreatePlayerStatements { get; private set; }
-
         #endregion
 
         #region Mission inner parameters
@@ -618,7 +615,6 @@ namespace ArtemisMissionEditor
             Dependencies = new DependencyGraph();
 
             AmountOfMissionEndStatements = 0;
-            AmountOfCreatePlayerStatements = 0;
             VariableSetNames = new List<string>();
             VariableCheckNames = new List<string>();
             VariableCheckLocations = new Dictionary<string, List<MissionNode>>();
@@ -2439,7 +2435,6 @@ namespace ArtemisMissionEditor
                 kvp.Value.Clear();
             NamedObjectNames["player"].AddRange(PlayerShipNames);
             AmountOfMissionEndStatements = 0;
-            AmountOfCreatePlayerStatements = 0;
             ExternalProgramIDs.Clear();
             ExternalProgramSpawnIDs.Clear();
             ExternalProgramCheckIDs.Clear();
@@ -2792,9 +2787,6 @@ namespace ArtemisMissionEditor
                         if (!AllCreatedObjectNames.Contains(named_name))
                             AllCreatedObjectNames.Add(named_name);
                     }
-
-                    if (type == "player")
-                        AmountOfCreatePlayerStatements++;
 
                     // Scan the expression for relevant attributes.
                     if (NamedObjectNames.ContainsKey(type))
@@ -3485,9 +3477,6 @@ namespace ArtemisMissionEditor
 
             foreach (TreeNode node in TreeViewNodes.Nodes)
                 FindProblems_RecursivelyCheckNodes(node, ref curNode, result);
-
-            if (AmountOfCreatePlayerStatements > 1)
-                result.Add(new MissionSearchResult(0, 0, "Multiple \"Create player\" statements detected in the script. Note that creating multiple player ships does not work properly. If your intention is to create a multi-ship mission, you should not create additional player ships, but rather have the players spawn additional ships in the usual way (joining as a Main Screen).", null, null));
 
             if (AmountOfMissionEndStatements == 0)
                 result.Add(new MissionSearchResult(0, 0, "\"End Mission\" action is not present anywhere in the script. Unless you are making a script that only ends with player ship being destroyed, you should consider adding this action.", null, null));
