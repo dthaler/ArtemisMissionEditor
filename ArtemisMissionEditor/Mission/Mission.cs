@@ -3623,6 +3623,13 @@ namespace ArtemisMissionEditor
                 "set_relative_position",
                 "if_distance",
                 };
+            string[] statementsThatTakeObjectProperty = new string[]{
+                "addto_object_property",
+                "copy_object_property",
+                "if_object_property",
+                "get_object_property",
+                "set_object_property",
+                };
             string[] noticableOnEndMissionStatements = new string[]{
                 "big_message",
                 "log",
@@ -3890,6 +3897,13 @@ namespace ArtemisMissionEditor
                             if ((statement.Name == "if_docked" || statement.Name == "if_player_is_targeting") && !String.IsNullOrEmpty(attName = statement.GetAttribute("player_name")) && !namesCheckedHere.Contains(CollapseName(attName)))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "Ship named \"" + attName + "\" is checked with " + statement.Name + ", but not tested for existence so ship 0 might be tested instead.", node, statement));
 
+                            if (statementsThatTakeObjectProperty.Contains(statement.Name))
+                            {
+                                string propertyName = statement.GetAttribute("property");
+                                if (propertyName == "triggersMines" || propertyName == "blocksShotFlag")
+                                    result.Add(new MissionSearchResult(curNode, i + 1, "The property \"" + propertyName + "\" does not work.  It has no effect.", node, statement));
+                            }
+
                             // Reference to a name never created
                             List<string> namesToCheck = new List<string>();
                             if (statementsThatTakeName.Contains(statement.Name))
@@ -3961,6 +3975,13 @@ namespace ArtemisMissionEditor
                     // Reference to clearing a Comms button that is never set.
                     if (statement.Name == "clear_comms_button" && !String.IsNullOrEmpty(attName = statement.GetAttribute("text")) && !CommsButtonSetNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Comms button named \"" + attName + "\" is cleared, but never set.", node, statement));
+
+                    if (statementsThatTakeObjectProperty.Contains(statement.Name))
+                    {
+                        string propertyName = statement.GetAttribute("property");
+                        if (propertyName == "triggersMines" || propertyName == "blocksShotFlag")
+                            result.Add(new MissionSearchResult(curNode, i + 1, "The property \"" + propertyName + "\" does not work.  It has no effect.", node, statement));
+                    }
 
                     // Adding a monster AI block to a ship or vice versa.
                     string attType;
