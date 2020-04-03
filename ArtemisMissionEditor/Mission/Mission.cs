@@ -145,8 +145,11 @@ namespace ArtemisMissionEditor
         /// <summary> All nodes where the variable is checked</summary>
         public Dictionary<string, List<MissionNode>> VariableCheckLocations { get; private set; }
 
-        /// <summary> All variables that are set</summary>
-        public List<string> VariableSetNames { get; private set; }
+        /// <summary> All float variables that are set</summary>
+        public List<string> FloatVariableSetNames { get; private set; }
+
+        /// <summary> All integer variables that are set</summary>
+        public List<string> IntegerVariableSetNames { get; private set; }
 
         /// <summary> All variables that are checked</summary>
         public List<string> VariableCheckNames { get; private set; }
@@ -615,7 +618,8 @@ namespace ArtemisMissionEditor
             Dependencies = new DependencyGraph();
 
             AmountOfMissionEndStatements = 0;
-            VariableSetNames = new List<string>();
+            FloatVariableSetNames = new List<string>();
+            IntegerVariableSetNames = new List<string>();
             VariableCheckNames = new List<string>();
             VariableCheckLocations = new Dictionary<string, List<MissionNode>>();
             TimerSetNames = new List<string>();
@@ -2440,7 +2444,8 @@ namespace ArtemisMissionEditor
             ExternalProgramCheckIDs.Clear();
             ExternalProgramCheckLocations.Clear();
             VariableNames.Clear();
-            VariableSetNames.Clear();
+            IntegerVariableSetNames.Clear();
+            FloatVariableSetNames.Clear();
             VariableCheckNames.Clear();
             VariableCheckLocations.Clear();
             TimerSetNames.Clear();
@@ -2875,8 +2880,18 @@ namespace ArtemisMissionEditor
                         var_name = CollapseName(var_name);
                         if (!VariableNames.Contains(var_name))
                             VariableNames.Add(var_name);
-                        if (!VariableSetNames.Contains(var_name))
-                            VariableSetNames.Add(var_name);
+                        if (!IntegerVariableSetNames.Contains(var_name) && !FloatVariableSetNames.Contains(var_name))
+                        {
+                            string isInteger = statement.GetAttribute("integer");
+                            if (isInteger == "yes")
+                            {
+                                IntegerVariableSetNames.Add(var_name);
+                            }
+                            else
+                            {
+                                FloatVariableSetNames.Add(var_name);
+                            }
+                        }
                     }
                 }
 
@@ -2888,8 +2903,8 @@ namespace ArtemisMissionEditor
                         var_name = CollapseName(var_name);
                         if (!VariableNames.Contains(var_name))
                             VariableNames.Add(var_name);
-                        if (!VariableSetNames.Contains(var_name))
-                            VariableSetNames.Add(var_name);
+                        if (!IntegerVariableSetNames.Contains(var_name) && !FloatVariableSetNames.Contains(var_name))
+                            FloatVariableSetNames.Add(var_name);
                     }
                 }
 
@@ -3863,7 +3878,7 @@ namespace ArtemisMissionEditor
 
                             // Reference to a variable that is never set
                             string attName;
-                            if (statement.Name == "if_variable" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !VariableSetNames.Contains(CollapseName(attName)))
+                            if (statement.Name == "if_variable" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !FloatVariableSetNames.Contains(CollapseName(attName)) && !IntegerVariableSetNames.Contains(CollapseName(attName)))
                                 result.Add(new MissionSearchResult(curNode, i + 1, "Variable named \"" + attName + "\" is checked for, but never set.", node, statement));
 
                             // Reference to an external program ID that is never spawned
@@ -3955,6 +3970,23 @@ namespace ArtemisMissionEditor
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Variable named \"" + attName + "\" is set, but never checked.", node, statement));
                     if (statement.Name == "get_object_property" && !String.IsNullOrEmpty(attName = statement.GetAttribute("variable")) && !VariableCheckNames.Contains(CollapseName(attName)))
                         result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "Variable named \"" + attName + "\" is set, but never checked.", node, statement));
+
+                    // Reference to an integer variable from get_object_property.
+                    if (statement.Name == "get_object_property" && !String.IsNullOrEmpty(attName = statement.GetAttribute("variable")) && IntegerVariableSetNames.Contains(CollapseName(attName)))
+                        result.Add(new MissionSearchResult(curNode, i + 1, "Integer variable named \"" + attName + "\" is used with get_object_property which requires a Float variable.", node, statement));
+
+                    // Setting a float variable with integer=yes.
+                    string attInteger;
+                    if (statement.Name == "set_variable" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) &&
+                        !String.IsNullOrEmpty(attInteger = statement.GetAttribute("integer")) && (attInteger == "yes") &&
+                        FloatVariableSetNames.Contains(CollapseName(attName)))
+                        result.Add(new MissionSearchResult(curNode, i + 1, "Float variable named \"" + attName + "\" is set as an Integer.", node, statement));
+
+                    // Setting an integer variable without integer=yes.
+                    if (statement.Name == "set_variable" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) &&
+                        String.IsNullOrEmpty(attInteger = statement.GetAttribute("integer")) &&
+                        IntegerVariableSetNames.Contains(CollapseName(attName)))
+                        result.Add(new MissionSearchResult(curNode, i + 1, "Integer variable named \"" + attName + "\" is set as a Float.", node, statement));
 
                     // Reference to a timer that is never checked.
                     if (statement.Name == "set_timer" && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")) && !TimerCheckNames.Contains(CollapseName(attName)))
