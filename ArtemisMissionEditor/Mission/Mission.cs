@@ -2744,6 +2744,35 @@ namespace ArtemisMissionEditor
                 if (statement.Kind != MissionStatementKind.Action)
                     continue;
 
+                if (StatementsThatTakeName.Contains(statement.Name))
+                {
+                    UpdateNamesLists_ScanTextAttribute(statement, "name");
+                }
+                if (StatementsThatTakeTargetName.Contains(statement.Name))
+                {
+                    UpdateNamesLists_ScanTextAttribute(statement, "targetName");
+                }
+                if (StatementsThatTakeObjectName.Contains(statement.Name))
+                {
+                    UpdateNamesLists_ScanTextAttribute(statement, "objectName");
+                }
+                if (StatementsThatTakePlayerName.Contains(statement.Name))
+                {
+                    UpdateNamesLists_ScanTextAttribute(statement, "player_name");
+                }
+                if (StatementsThatTakeName12.Contains(statement.Name))
+                {
+                    UpdateNamesLists_ScanTextAttribute(statement, "name1");
+                    UpdateNamesLists_ScanTextAttribute(statement, "name2");
+                }
+                if (StatementsThatTakeText.Contains(statement.Name))
+                {
+                    UpdateNamesLists_ScanTextAttribute(statement, "text");
+                }
+                if (StatementsWithTextBody.Contains(statement.Name))
+                {
+                    UpdateNamesLists_ScanText(statement.Body);
+                }
 
                 if (statement.Name == "add_ai")
                 {
@@ -2844,14 +2873,6 @@ namespace ArtemisMissionEditor
                     }
                 }
 
-                if (statement.Name == "log_text")
-                {
-                    UpdateNamesLists_ScanTextAttribute(statement, "text");
-                }
-                if (statement.Name == "incoming_comms_text")
-                {
-                    UpdateNamesLists_ScanText(statement.Body);
-                }
                 if (statement.Name == "big_message")
                 {
                     UpdateNamesLists_ScanTextAttribute(statement, "title");
@@ -2975,10 +2996,27 @@ namespace ArtemisMissionEditor
                     UpdateNamesLists_ScanTextAttribute(statement, "text");
                 }
 
+                if (statement.Name == "set_monster_tag_data")
+                {
+                    UpdateNamesLists_ScanTextAttribute(statement, "datetext");
+                    UpdateNamesLists_ScanTextAttribute(statement, "sourcetext");
+                }
+
+                if (statement.Name == "set_named_object_tag_state")
+                {
+                    UpdateNamesLists_ScanTextAttribute(statement, "tagSourceName");
+                }
+
+                if (statement.Name == "set_player_station_carried")
+                {
+                    UpdateNamesLists_ScanTextAttribute(statement, "singleSeatName");
+                }
+
                 if (statement.Name == "set_ship_text")
                 {
-                    UpdateNamesLists_ScanTextAttribute(statement, "scan_desc");
+                    UpdateNamesLists_ScanTextAttribute(statement, "desc");
                     UpdateNamesLists_ScanTextAttribute(statement, "hailtext");
+                    UpdateNamesLists_ScanTextAttribute(statement, "scan_desc");
                 }
 
                 if (statement.Name == "end_mission")
@@ -3588,14 +3626,8 @@ namespace ArtemisMissionEditor
             }
         }
 
-        /// <summary>
-        /// Finds problematic places in the child nodes of the current node.
-        /// Called from FindProblems and recursively calls itself.
-        /// </summary>
-        private void FindProblems_RecursivelyCheckNodes(TreeNode node, ref int curNode, List<MissionSearchResult> result)
-        {
-            // Preset list of statements that take names (under different, khm, names) of named objects.
-            string[] statementsThatTakeName = new string[]{
+        // Preset list of statements that take names (under different, khm, names) of named objects.
+        static string[] StatementsThatTakeName = new string[]{
                 "destroy",
                 "destroy_near",
                 "add_ai",
@@ -3623,21 +3655,36 @@ namespace ArtemisMissionEditor
                 "if_monster_tag_matches",
                 "if_scan_level",
                 };
-            string[] statementsThatTakeTargetName = new string[]{
+        string[] StatementsThatTakeTargetName = new string[]{
                 "direct",
                 };
-            string[] statementsThatTakeObjectName = new string[]{
+        string[] StatementsThatTakeObjectName = new string[]{
                 "if_object_tag_matches",
                 };
-            string[] statementsThatTakePlayerName = new string[]{
+        string[] StatementsThatTakePlayerName = new string[]{
                 "if_docked",
                 "if_player_is_targeting",
                 };
-            string[] statementsThatTakeName12 = new string[]{
+        string[] StatementsThatTakeName12 = new string[]{
                 "copy_object_property",
                 "set_relative_position",
                 "if_distance",
                 };
+        string[] StatementsThatTakeText = new string[]{
+                "gm_instructions",
+                "log",
+                };
+        string[] StatementsWithTextBody = new string[]{
+                "gm_instructions",
+                "incoming_comms_text",
+                };
+
+        /// <summary>
+        /// Finds problematic places in the child nodes of the current node.
+        /// Called from FindProblems and recursively calls itself.
+        /// </summary>
+        private void FindProblems_RecursivelyCheckNodes(TreeNode node, ref int curNode, List<MissionSearchResult> result)
+        {
             string[] statementsThatTakeObjectProperty = new string[]{
                 "addto_object_property",
                 "copy_object_property",
@@ -3727,13 +3774,13 @@ namespace ArtemisMissionEditor
                                 propertiesCheckedHere.Add(name);
                             }
                             // Look for names whose existence is checked for.
-                            if (statementsThatTakeName.Contains(statement.Name) && statement.Name != "if_not_exists")
+                            if (StatementsThatTakeName.Contains(statement.Name) && statement.Name != "if_not_exists")
                             {
                                 string name = statement.GetAttribute("name");
                                 if (!String.IsNullOrEmpty(name))
                                     namesCheckedHere.Add(CollapseName(name));
                             }
-                            if (statementsThatTakeName12.Contains(statement.Name))
+                            if (StatementsThatTakeName12.Contains(statement.Name))
                             {
                                 string name = statement.GetAttribute("name1");
                                 if (!String.IsNullOrEmpty(name))
@@ -3921,15 +3968,15 @@ namespace ArtemisMissionEditor
 
                             // Reference to a name never created
                             List<string> namesToCheck = new List<string>();
-                            if (statementsThatTakeName.Contains(statement.Name))
+                            if (StatementsThatTakeName.Contains(statement.Name))
                                 namesToCheck.Add(CollapseName(statement.GetAttribute("name")));
-                            if (statementsThatTakeTargetName.Contains(statement.Name))
+                            if (StatementsThatTakeTargetName.Contains(statement.Name))
                                 namesToCheck.Add(CollapseName(statement.GetAttribute("targetName")));
-                            if (statementsThatTakeObjectName.Contains(statement.Name))
+                            if (StatementsThatTakeObjectName.Contains(statement.Name))
                                 namesToCheck.Add(CollapseName(statement.GetAttribute("objectName")));
-                            if (statementsThatTakePlayerName.Contains(statement.Name))
+                            if (StatementsThatTakePlayerName.Contains(statement.Name))
                                 namesToCheck.Add(CollapseName(statement.GetAttribute("player_name")));
-                            if (statementsThatTakeName12.Contains(statement.Name))
+                            if (StatementsThatTakeName12.Contains(statement.Name))
                             {
                                 namesToCheck.Add(CollapseName(statement.GetAttribute("name1")));
                                 namesToCheck.Add(CollapseName(statement.GetAttribute("name2")));
@@ -4068,15 +4115,15 @@ namespace ArtemisMissionEditor
 
                     // Reference to a name never created.
                     List<string> namesToCheck = new List<string>();
-                    if (statementsThatTakeName.Contains(statement.Name) && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")))
+                    if (StatementsThatTakeName.Contains(statement.Name) && !String.IsNullOrEmpty(attName = statement.GetAttribute("name")))
                         namesToCheck.Add(CollapseName(attName));
-                    if (statementsThatTakeTargetName.Contains(statement.Name))
+                    if (StatementsThatTakeTargetName.Contains(statement.Name))
                         namesToCheck.Add(CollapseName(statement.GetAttribute("targetName")));
-                    if (statementsThatTakeObjectName.Contains(statement.Name))
+                    if (StatementsThatTakeObjectName.Contains(statement.Name))
                         namesToCheck.Add(CollapseName(statement.GetAttribute("objectName")));
-                    if (statementsThatTakePlayerName.Contains(statement.Name))
+                    if (StatementsThatTakePlayerName.Contains(statement.Name))
                         namesToCheck.Add(CollapseName(statement.GetAttribute("player_name")));
-                    if (statementsThatTakeName12.Contains(statement.Name))
+                    if (StatementsThatTakeName12.Contains(statement.Name))
                     {
                         namesToCheck.Add(CollapseName(statement.GetAttribute("name1")));
                         namesToCheck.Add(CollapseName(statement.GetAttribute("name2")));
