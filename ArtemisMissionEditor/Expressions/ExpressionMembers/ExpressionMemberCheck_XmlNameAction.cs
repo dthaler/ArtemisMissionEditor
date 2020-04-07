@@ -278,9 +278,9 @@ namespace ArtemisMissionEditor.Expressions
             #region set_player_station_carried
 
             eML = this.Add("set_player_station_carried");
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameStation, "name"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameStation, "name", mandatory:true));
             eML.Add(new ExpressionMember("with "));
-            eML.Add(new ExpressionMemberCheck_HullID_HullRaceKeys(false));
+            eML.Add(new ExpressionMemberCheck_HullID_HullRaceKeys(true));
             eML.Add(new ExpressionMember("named "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAll, "singleSeatName"));
 
@@ -289,7 +289,7 @@ namespace ArtemisMissionEditor.Expressions
             #region clear_player_station_carried
 
             eML = this.Add("clear_player_station_carried");
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameStation, "name"));
+            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameStation, "name", mandatory:true));
 
             #endregion
 
