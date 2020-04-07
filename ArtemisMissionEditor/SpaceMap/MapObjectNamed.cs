@@ -269,6 +269,7 @@ namespace ArtemisMissionEditor.SpaceMap
         #endregion
     }
 
+    // A named map object with an angle property.
     public class MapObjectNamedA : MapObjectNamed
     {
         //ANGLE
@@ -380,6 +381,7 @@ namespace ArtemisMissionEditor.SpaceMap
         #endregion
     }
 
+    // A named map object with angle and side properties.
     public class MapObjectNamedAS : MapObjectNamedA
     {
         //Side
@@ -487,6 +489,7 @@ namespace ArtemisMissionEditor.SpaceMap
         #endregion
     }
 
+    // A named map object with angle and race/hull keys/ID properties.
     public class MapObjectNamedArhK : MapObjectNamedA
     {
         #region raceKeys
@@ -853,6 +856,7 @@ namespace ArtemisMissionEditor.SpaceMap
         #endregion
     }
 
+    // A named map object with angle, race/hull keys/ID, and side properties.
     public class MapObjectNamedArhKS : MapObjectNamedArhK
     {
         //Side
@@ -1371,7 +1375,7 @@ namespace ArtemisMissionEditor.SpaceMap
 #endregion
     }
 
-    public sealed class MapObjectNamed_player : MapObjectNamedAS
+    public sealed class MapObjectNamed_player : MapObjectNamedArhKS
     {
         //POD NUMBER
         private string _playerslot;
