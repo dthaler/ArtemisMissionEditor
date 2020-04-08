@@ -1,3 +1,24 @@
+Version 2.7.20 [2020-April-7] (Dave Thaler)
+* Added ability to use variables with  warpState, difficulty, damcon 
+  team number, and damcon member counts
+* Added a warning if blocksShotFlag or triggersMines properties are used
+  since they do not work with any recent version of Artemis
+* Added a warning if the same variable name is set as an int and a float
+* Added a warning if get_object_property is used with an int variable
+  since it get_object_property only supports float variables
+* Removed warning about multiple player ships in the Start block not working
+  since that was fixed in an earlier version of Artemis
+* Fixed bug where ship special value 3 wasn't disallowed even though
+  Artemis removed it long ago
+* Fixed bug where "from" attribute wasn't required in incoming_comms_text
+* Fixed spurious warning about a variable never being checked when it was
+  just used in an incoming comms message, big_message, or comms or GM button,
+  or referenced inside text strings in various statements
+* Fixed bug where player ship race/hull keys were lost from create statements
+  after accepting changes made from the Space Map 
+* Fixed bug where set_player_station_carried didn't show race/hull information
+  as required but the server will crash without it
+----------------------
 Version 2.7.19 [2020-March-17] (Dave Thaler)
 * Added use_gm_selection and target_slot attributes to if_player_is_targeting
 * Added player_slot, accent color, and drive type to player ship properties
