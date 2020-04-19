@@ -723,26 +723,20 @@ namespace ArtemisMissionEditor
                     ParserLog.Add("Could not locate version attribute in vessel_data tag or it was blank");
             }
 
-            //Parse based on the version
-            switch (version){
+            // Parse based on the version.
+            switch (version)
+            {
                 case "1.56":
-                    FromXml_Version_1_56(xDoc);
-                    break;
-				case "1.65":
-					FromXml_Version_1_56(xDoc);
-					break;
+                case "1.65":
                 case "1.66":
-                    FromXml_Version_1_56(xDoc);
-                    break;
                 case "1.7":
-                    FromXml_Version_1_56(xDoc);
-                    break;
                 case "2.1":
+                case "2.6":
                     FromXml_Version_1_56(xDoc);
                     break;
                 default:
-                    ParserLog.Add("Attempting to parse unknown version: \""+version+"\", will use oldest loading method possible.");
-                    FromXml_Version_1_56(xDoc); //Using oldest method
+                    ParserLog.Add("Attempting to parse unknown version: \""+version+"\", will use newest loading method possible.");
+                    FromXml_Version_1_56(xDoc); // Using newest method
                     break;
             }
         }
