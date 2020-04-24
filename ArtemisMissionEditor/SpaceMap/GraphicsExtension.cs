@@ -67,7 +67,7 @@ namespace ArtemisMissionEditor.SpaceMap
         /// </summary>
         public static void DrawCircleArc(this Graphics g, Pen pen, double x, double y, double size, double startAngle, double sweepAngle)
         {
-            g.DrawArc(pen, (int)Math.Round(x - size / 2.0), (int)Math.Round(y - size / 2.0), (int)Math.Round(size), (int)Math.Round(size), (float)startAngle, (float)sweepAngle);
+            g.DrawArc(pen, (float)(x - size / 2.0), (float)(y - size / 2.0), (float)size, (float)size, (float)startAngle, (float)sweepAngle);
         }
     }
 }
