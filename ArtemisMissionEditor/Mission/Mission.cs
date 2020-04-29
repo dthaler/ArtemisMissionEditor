@@ -2601,7 +2601,7 @@ namespace ArtemisMissionEditor
             for (int i = 0; i < expr.Length; i++)
             {
                 char c = expr[i];
-                if (Char.IsLetter(c))
+                if (Char.IsLetter(c) || (c == '_'))
                 {
                     if (!inVariable)
                     {
