@@ -2682,6 +2682,7 @@ namespace ArtemisMissionEditor
                 if (statement.Name == "if_distance" ||
                     statement.Name == "if_difficulty" ||
                     statement.Name == "if_fleet_count" ||
+                    statement.Name == "if_object_property" ||
                     statement.Name == "if_variable")
                 {
                     UpdateNamesLists_ScanExpression(statement, "value");
