@@ -4155,10 +4155,23 @@ namespace ArtemisMissionEditor
                         }
                     }
 
-                    // Create statement having wrong keys.
                     if (statement.Name == "create")
                     {
                         string type = statement.GetAttribute("type");
+
+                        // Create statement not supporting an angle.
+                        if (type == "station" || type == "anomaly" || type == "blackHole" || type == "genericMesh")
+                        {
+                            string angle = statement.GetAttribute("angle");
+                            if (angle != null && angle != "0")
+                            {
+                                double degreesClockwiseFromNorth = Convert.ToDouble(angle);
+                                double radiansClockwiseFromSouth = ((degreesClockwiseFromNorth + 180) / 180 * Math.PI);
+                                result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create " + statement.GetAttribute("type") + "\" statement no longer supports setting an angle for initial bearing, instead use set_object_property to set angle to " + (float)radiansClockwiseFromSouth + " radians.", node, statement));
+                            }
+                        }
+
+                        // Create statement having wrong keys.
                         if (type == "station" || type == "enemy" || type == "neutral")
                         {
                             if (String.IsNullOrWhiteSpace(statement.GetAttribute("hullID")) && String.IsNullOrWhiteSpace(statement.GetAttribute("hullKeys")))
