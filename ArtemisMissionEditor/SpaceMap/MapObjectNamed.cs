@@ -332,11 +332,27 @@ namespace ArtemisMissionEditor.SpaceMap
                 {
                     if (!found)
                     {
-                        found = true;
-                        tmp1 = ((MapObjectNamedA)item).A_deg;
+                        if (item as MapObjectNamedA != null)
+                        {
+                            found = true;
+                            tmp1 = ((MapObjectNamedA)item).A_deg;
+                        }
+                        if (item as MapObjectNamedArhKS != null)
+                        {
+                            found = true;
+                            tmp1 = ((MapObjectNamedArhKS)item).A_deg;
+                        }
                     }
                     else
-                        same = same && (((MapObjectNamedA)item).A_deg != tmp1);
+                    {
+                        double tmp2 = 0;
+                        if (item as MapObjectNamedA != null)
+                            tmp2 = ((MapObjectNamedA)item).A_deg;
+                        if (item as MapObjectNamedArhKS != null)
+                            tmp2 = ((MapObjectNamedArhKS)item).A_deg;
+
+                        same = same && (tmp2 != tmp1);
+                    }
                 }
             }
             if (found && same)
@@ -381,8 +397,8 @@ namespace ArtemisMissionEditor.SpaceMap
         #endregion
     }
 
-    // A named map object with angle and side properties.
-    public class MapObjectNamedAS : MapObjectNamedA
+    // A named map object with side property.
+    public class MapObjectNamedS : MapObjectNamed
     {
         //Side
         private int? _sideValue;
@@ -423,12 +439,12 @@ namespace ArtemisMissionEditor.SpaceMap
                 {
                     if (!found)
                     {
-                        if (item as MapObjectNamedAS != null && ((MapObjectNamedAS)item).sideValue.HasValue)
+                        if (item as MapObjectNamedS != null && ((MapObjectNamedS)item).sideValue.HasValue)
                         {
                             found = true;
-                            tmp1 = ((MapObjectNamedAS)item).sideValue.Value;
+                            tmp1 = ((MapObjectNamedS)item).sideValue.Value;
                         }
-                        if (item as MapObjectNamedArhK != null && ((MapObjectNamedArhKS)item).sideValue.HasValue)
+                        if (item as MapObjectNamedArhKS != null && ((MapObjectNamedArhKS)item).sideValue.HasValue)
                         {
                             found = true;
                             tmp1 = ((MapObjectNamedArhKS)item).sideValue.Value;
@@ -437,9 +453,9 @@ namespace ArtemisMissionEditor.SpaceMap
                     else
                     {
                         int tmp2 = 0;
-                        if (item as MapObjectNamedAS != null && ((MapObjectNamedAS)item).sideValue.HasValue)
-                            tmp2 = ((MapObjectNamedAS)item).sideValue.Value;
-                        if (item as MapObjectNamedArhK != null && ((MapObjectNamedArhKS)item).sideValue.HasValue)
+                        if (item as MapObjectNamedS != null && ((MapObjectNamedS)item).sideValue.HasValue)
+                            tmp2 = ((MapObjectNamedS)item).sideValue.Value;
+                        if (item as MapObjectNamedArhKS != null && ((MapObjectNamedArhKS)item).sideValue.HasValue)
                             tmp2 = ((MapObjectNamedArhKS)item).sideValue.Value;
 
                         same = same && (tmp2 != tmp1);
@@ -482,15 +498,15 @@ namespace ArtemisMissionEditor.SpaceMap
         }
 
         //CONSTRUCTOR
-        public MapObjectNamedAS(int posX = 0, int posY = 0, int posZ = 0, bool makeSelected = false, int angle = 0, string name = "", int? _sideValue = null)
-            : base(posX, posY, posZ, makeSelected, angle, name)
+        public MapObjectNamedS(int posX = 0, int posY = 0, int posZ = 0, bool makeSelected = false, string name = "", int? _sideValue = null)
+            : base(posX, posY, posZ, name, makeSelected)
         { sideValue = _sideValue; }
 
         #endregion
     }
 
-    // A named map object with angle and race/hull keys/ID properties.
-    public class MapObjectNamedArhK : MapObjectNamedA
+    // A named map object with side and race/hull keys/ID properties.
+    public class MapObjectNamedSrhK : MapObjectNamedS
     {
         #region raceKeys
 
@@ -668,10 +684,10 @@ namespace ArtemisMissionEditor.SpaceMap
                         if (!found)
                         {
                             found = true;
-                            tmp1 = ((MapObjectNamedArhK)item)._race_Keys;
+                            tmp1 = ((MapObjectNamedSrhK)item)._race_Keys;
                         }
                         else
-                            same = same && (((MapObjectNamedArhK)item)._race_Keys != tmp1);
+                            same = same && (((MapObjectNamedSrhK)item)._race_Keys != tmp1);
                     }
                 }
                 if (found && same)
@@ -688,10 +704,10 @@ namespace ArtemisMissionEditor.SpaceMap
                         if (!found)
                         {
                             found = true;
-                            tmp1 = ((MapObjectNamedArhK)item)._race_Names;
+                            tmp1 = ((MapObjectNamedSrhK)item)._race_Names;
                         }
                         else
-                            same = same && (((MapObjectNamedArhK)item)._race_Names != tmp1);
+                            same = same && (((MapObjectNamedSrhK)item)._race_Names != tmp1);
                     }
                 }
                 if (found && same)
@@ -708,10 +724,10 @@ namespace ArtemisMissionEditor.SpaceMap
                         if (!found)
                         {
                             found = true;
-                            tmp1 = ((MapObjectNamedArhK)item)._race_Unrecognised;
+                            tmp1 = ((MapObjectNamedSrhK)item)._race_Unrecognised;
                         }
                         else
-                            same = same && (((MapObjectNamedArhK)item)._race_Unrecognised != tmp1);
+                            same = same && (((MapObjectNamedSrhK)item)._race_Unrecognised != tmp1);
                     }
                 }
                 if (found && same)
@@ -729,10 +745,10 @@ namespace ArtemisMissionEditor.SpaceMap
                         if (!found)
                         {
                             found = true;
-                            tmp1 = ((MapObjectNamedArhK)item)._vessel_BroadTypes;
+                            tmp1 = ((MapObjectNamedSrhK)item)._vessel_BroadTypes;
                         }
                         else
-                            same = same && (((MapObjectNamedArhK)item)._vessel_BroadTypes != tmp1);
+                            same = same && (((MapObjectNamedSrhK)item)._vessel_BroadTypes != tmp1);
                     }
                 }
                 if (found && same)
@@ -749,10 +765,10 @@ namespace ArtemisMissionEditor.SpaceMap
                         if (!found)
                         {
                             found = true;
-                            tmp1 = ((MapObjectNamedArhK)item)._vessel_ClassNames;
+                            tmp1 = ((MapObjectNamedSrhK)item)._vessel_ClassNames;
                         }
                         else
-                            same = same && (((MapObjectNamedArhK)item)._vessel_ClassNames != tmp1);
+                            same = same && (((MapObjectNamedSrhK)item)._vessel_ClassNames != tmp1);
                     }
                 }
                 if (found && same)
@@ -769,10 +785,10 @@ namespace ArtemisMissionEditor.SpaceMap
                         if (!found)
                         {
                             found = true;
-                            tmp1 = ((MapObjectNamedArhK)item)._vessel_Unrecognised;
+                            tmp1 = ((MapObjectNamedSrhK)item)._vessel_Unrecognised;
                         }
                         else
-                            same = same && (((MapObjectNamedArhK)item)._vessel_Unrecognised != tmp1);
+                            same = same && (((MapObjectNamedSrhK)item)._vessel_Unrecognised != tmp1);
                     }
                 }
                 if (found && same)
@@ -790,10 +806,10 @@ namespace ArtemisMissionEditor.SpaceMap
                         if (!found)
                         {
                             found = true;
-                            tmp1 = ((MapObjectNamedArhK)item)._hullID;
+                            tmp1 = ((MapObjectNamedSrhK)item)._hullID;
                         }
                         else
-                            same = same && (((MapObjectNamedArhK)item)._hullID != tmp1);
+                            same = same && (((MapObjectNamedSrhK)item)._hullID != tmp1);
                     }
                 }
                 if (found && same)
@@ -849,20 +865,40 @@ namespace ArtemisMissionEditor.SpaceMap
         }
 
         //CONSTRUCTOR
-        public MapObjectNamedArhK(int posX = 0, int posY = 0, int posZ = 0, bool makeSelected = false, int angle = 0, string name = "", string _race_Keys = "", string _race_Names = "", string _vessel_ClassNames = "", string _vessel_BroadTypes = "")
-            : base(posX, posY, posZ, makeSelected, angle, name)
+        public MapObjectNamedSrhK(int posX = 0, int posY = 0, int posZ = 0, bool makeSelected = false, int? sideValue = null, string name = "", string _race_Keys = "", string _race_Names = "", string _vessel_ClassNames = "", string _vessel_BroadTypes = "")
+            : base(posX, posY, posZ, makeSelected, name, sideValue)
         { this._race_Keys = _race_Keys; this._race_Names = _race_Names; this._race_Unrecognised = ""; this._vessel_ClassNames = _vessel_ClassNames; this._vessel_BroadTypes = _vessel_BroadTypes; this._vessel_Unrecognised = ""; this._hullID = ""; }
 
         #endregion
     }
 
     // A named map object with angle, race/hull keys/ID, and side properties.
-    public class MapObjectNamedArhKS : MapObjectNamedArhK
+    public class MapObjectNamedArhKS : MapObjectNamedSrhK
     {
-        //Side
-        private int? _sideValue;
-        [DisplayName("Side"), Description("Side the entity is allied with (0 = none, 1 = enemy, 2+ = player)")]
-        public int? sideValue { get { return _sideValue; } set { _sideValue = value; } }
+        //ANGLE
+        private double _a;
+        [DisplayName("Angle"), Description("Indicates object's angle in degrees relative to the upright position, clockwise rotation considered positive"), Category("\t\t\tPosition"), DefaultValue(0)]
+        public double A_deg
+        {
+            get { return _a; }
+            set
+            {
+                while (value < 0) value += 360;
+                while (value >= 360) value -= 360;
+                _a = value;
+            }
+        }
+        [Browsable(false)]
+        public double A_rad
+        {
+            get { return (_a) / 360.0 * Math.PI * 2.0; }
+            set
+            {
+                while (value < 0.0) value += 2.0 * Math.PI;
+                while (value > 2.0 * Math.PI) value -= 2.0 * Math.PI;
+                _a = Math.Round(value / 2.0 / Math.PI * 3600.0) / 10.0;
+            }
+        }
 
         #region INHERITANCE
 
@@ -873,7 +909,8 @@ namespace ArtemisMissionEditor.SpaceMap
         //PROPERTIES
         public override bool IsPropertyAvailable(string pName)
         {
-            if (pName == "sideValue") return true;
+            if (pName == "angle")
+                return true;
             return base.IsPropertyAvailable(pName);
         }
         public override bool IsPropertyMandatory(string pName) { return base.IsPropertyMandatory(pName); }
@@ -888,41 +925,41 @@ namespace ArtemisMissionEditor.SpaceMap
             if (source.Count() == 0)
                 return;
 
-            //Side
-            int tmp1 = 0;
+            //Angle
+            double tmp1 = 0;
             bool same = true;
             bool found = false;
             foreach (MapObjectNamed item in source)
             {
-                if (item.IsPropertyAvailable("sideValue"))
+                if (item.IsPropertyAvailable("angle"))
                 {
                     if (!found)
                     {
-                        if (item as MapObjectNamedAS != null && ((MapObjectNamedAS)item).sideValue.HasValue)
+                        if (item as MapObjectNamedA != null)
                         {
                             found = true;
-                            tmp1 = ((MapObjectNamedAS)item).sideValue.Value;
+                            tmp1 = ((MapObjectNamedA)item).A_deg;
                         }
-                        if (item as MapObjectNamedArhK != null && ((MapObjectNamedArhKS)item).sideValue.HasValue)
+                        if (item as MapObjectNamedArhKS != null)
                         {
                             found = true;
-                            tmp1 = ((MapObjectNamedArhKS)item).sideValue.Value;
+                            tmp1 = ((MapObjectNamedArhKS)item).A_deg;
                         }
                     }
                     else
                     {
-                        int tmp2 = 0;
-                        if (item as MapObjectNamedAS != null && ((MapObjectNamedAS)item).sideValue.HasValue)
-                            tmp2 = ((MapObjectNamedAS)item).sideValue.Value;
-                        if (item as MapObjectNamedArhK != null && ((MapObjectNamedArhKS)item).sideValue.HasValue)
-                            tmp2 = ((MapObjectNamedArhKS)item).sideValue.Value;
+                        double tmp2 = 0;
+                        if (item as MapObjectNamedA != null)
+                            tmp2 = ((MapObjectNamedA)item).A_deg;
+                        if (item as MapObjectNamedArhKS != null)
+                            tmp2 = ((MapObjectNamedArhKS)item).A_deg;
 
                         same = same && (tmp2 != tmp1);
                     }
                 }
             }
             if (found && same)
-                this.sideValue = tmp1;
+                this.A_deg = tmp1;
 
             base.Copy(excludeCoordinates, source);
         }
@@ -930,11 +967,12 @@ namespace ArtemisMissionEditor.SpaceMap
         //TO XML
         public override XmlElement ToXml(XmlDocument xDoc, List<string> missingProperties, string type = "")
         {
-            if (String.IsNullOrEmpty(type)) type = TypeToString;//If this was the first called ToXml - set this object's type
+            //If this was the first called ToXml - set this object's type
+            if (String.IsNullOrEmpty(type))
+                type = TypeToString;
             XmlElement create = base.ToXml(xDoc, missingProperties, type);
 
-            if (sideValue.HasValue)
-                __AddNewAttribute(xDoc, create, "sideValue", sideValue.ToString());
+            __AddNewAttribute(xDoc, create, "angle", A_deg.ToString());
 
             return create;
         }
@@ -947,18 +985,18 @@ namespace ArtemisMissionEditor.SpaceMap
             {
                 switch (att.Name)
                 {
-                    case "sideValue":
-                        sideValue = Helper.StringToInt(att.Value);
+                    case "angle":
+                        A_deg = Helper.StringToDouble(att.Value);
                         break;
                 }
             }
         }
 
         //CONSTRUCTOR
-        public MapObjectNamedArhKS(int posX = 0, int posY = 0, int posZ = 0, bool makeSelected = false, int angle = 0, string name = "", string _race_Keys = "", string _race_Names = "", string _vessel_ClassNames = "", string _vessel_BroadTypes = "", int? _sideValue = null)
-            : base(posX, posY, posZ, makeSelected, angle, name, _race_Keys, _race_Names, _vessel_ClassNames, _vessel_BroadTypes)
+        public MapObjectNamedArhKS(int posX = 0, int posY = 0, int posZ = 0, bool makeSelected = false, int angle = 0, string name = "", string _race_Keys = "", string _race_Names = "", string _vessel_ClassNames = "", string _vessel_BroadTypes = "", int? sideValue = null)
+            : base(posX, posY, posZ, makeSelected, sideValue, name, _race_Keys, _race_Names, _vessel_ClassNames, _vessel_BroadTypes)
         {
-            sideValue = _sideValue;
+            this.A_rad = angle;
         }
 
         #endregion
@@ -1547,7 +1585,7 @@ namespace ArtemisMissionEditor.SpaceMap
 #endregion
     }
 
-    public sealed class MapObjectNamed_station : MapObjectNamedArhKS
+    public sealed class MapObjectNamed_station : MapObjectNamedSrhK
     {
 #region INHERITANCE
 
@@ -1593,8 +1631,8 @@ namespace ArtemisMissionEditor.SpaceMap
         }
 
         //CONSTRUCTOR
-        public MapObjectNamed_station(int posX = 0, int posY = 0, int posZ = 0, bool makeSelected = false, int angle = 0, string name = "", string _race_Keys = "", string _race_Names = "", string _vessel_ClassNames = "", string _vessel_BroadTypes = "")
-            : base(posX, posY, posZ, makeSelected, angle, name, _race_Keys, _race_Names, _vessel_ClassNames, _vessel_BroadTypes)
+        public MapObjectNamed_station(int posX = 0, int posY = 0, int posZ = 0, bool makeSelected = false, string name = "", string _race_Keys = "", string _race_Names = "", string _vessel_ClassNames = "", string _vessel_BroadTypes = "")
+            : base(posX, posY, posZ, makeSelected, 0, name, _race_Keys, _race_Names, _vessel_ClassNames, _vessel_BroadTypes)
         { }
 
 #endregion

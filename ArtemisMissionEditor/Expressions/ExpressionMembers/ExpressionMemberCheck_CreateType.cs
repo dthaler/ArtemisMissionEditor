@@ -7,65 +7,68 @@ using System.Windows.Forms;
 
 namespace ArtemisMissionEditor.Expressions
 {
-    /// <summary>
-    /// Represents a single member in an expression, which provides branching via checking a condition.
-    /// This check is for "type" from [create], it is hidden since create statement has type as a member
-    /// </summary>
-    public sealed class ExpressionMemberCheck_CreateType : ExpressionMemberCheck
+	/// <summary>
+	/// Represents a single member in an expression, which provides branching via checking a condition.
+	/// This check is for "type" from [create], it is hidden since create statement has type as a member
+	/// </summary>
+	public sealed class ExpressionMemberCheck_CreateType : ExpressionMemberCheck
 	{
-        /// <summary>
-        /// This function is called when check needs to decide which list of ExpressionMembers to output.
-        /// After it is called, SetValue will be called, to allow for error correction.
-        /// </summary>
-        /// <example>If input is wrong, Decide will choose something, and then the input will be corrected in the SetValue function</example>
-        public override string Decide(ExpressionMemberContainer container)
+		/// <summary>
+		/// This function is called when check needs to decide which list of ExpressionMembers to output.
+		/// After it is called, SetValue will be called, to allow for error correction.
+		/// </summary>
+		/// <example>If input is wrong, Decide will choose something, and then the input will be corrected in the SetValue function</example>
+		public override string Decide(ExpressionMemberContainer container)
 		{
-            string type = container.GetAttribute("type");
-            if (type != null)
-            {
-                type = type.ToLower();
-            }
+			string type = container.GetAttribute("type");
+			if (type != null)
+			{
+				type = type.ToLower();
+			}
 
 			string angle = container.GetAttribute("angle");
 
 			switch (type)
 			{
-				case "anomaly":		if (container.GetAttribute("pickupType") == "8")
-                                        return "Beacon";
-                                    else
-                                        return "Anomaly";
-				case "blackhole":	return "<NAMED_MAP_OBJECT>";
-				case "player":		return "player";
-				case "whale":		return "whale";
-				case "monster":		if (container.GetAttribute("monsterType") == "1" ||
-                                        container.GetAttribute("monsterType") == "4")
-                                        return "PodMonster";
-                                    else
-                                        return "monster";
-				case "neutral":		return "neutral";
-				case "station":		return "station";
-				case "enemy":		return "enemy";
-				case "genericmesh":	if (angle == null)
-                                        return "genericMesh";
-                                    else
-                                        return "GenericMeshWithDeprecatedAngle";
-				case "nebulas":		return "nebulas";
-				case "asteroids":	return "<NAMELESS_MAP_OBJECT>";
-				case "mines":		return "<NAMELESS_MAP_OBJECT>";
-                case "monstertype": return "Classic";
-                case "anomalytype": return "Energy";
-                case null:			return "<NULL>";
+				case "anomaly": if (container.GetAttribute("pickupType") == "8")
+						return "Beacon";
+					else
+						return "Anomaly";
+				case "blackhole": return "<NAMED_MAP_OBJECT>";
+				case "player": return "player";
+				case "whale": return "whale";
+				case "monster": if (container.GetAttribute("monsterType") == "1" ||
+									container.GetAttribute("monsterType") == "4")
+						return "PodMonster";
+					else
+						return "monster";
+				case "neutral": return "neutral";
+				case "station": if (angle == null)
+						return "station";
+					else
+						return "StationWithDeprecatedAngle";
+				case "enemy": return "enemy";
+				case "genericmesh": if (angle == null)
+						return "genericMesh";
+					else
+						return "GenericMeshWithDeprecatedAngle";
+				case "nebulas": return "nebulas";
+				case "asteroids": return "<NAMELESS_MAP_OBJECT>";
+				case "mines": return "<NAMELESS_MAP_OBJECT>";
+				case "monstertype": return "Classic";
+				case "anomalytype": return "Energy";
+				case null: return "<NULL>";
 				default:
 					return "<INVALID_TYPE>";//This must be further converted in SetValue to some valid one, and type must be set there as well
 			}
 		}
 
-        /// <summary>
-        /// Called after Decide has made its choice, or, as usual for ExpressionMembers, after user edited the value through a Dialog.
-        /// For checks, SetValue must change the attributes/etc of the statement according to the newly chosen value
-        /// <example>If you chose "Use GM ...", SetValue will set "use_gm_..." attribute to ""</example>
-        /// </summary>
-        protected override void SetValueInternal(ExpressionMemberContainer container, string value)
+		/// <summary>
+		/// Called after Decide has made its choice, or, as usual for ExpressionMembers, after user edited the value through a Dialog.
+		/// For checks, SetValue must change the attributes/etc of the statement according to the newly chosen value
+		/// <example>If you chose "Use GM ...", SetValue will set "use_gm_..." attribute to ""</example>
+		/// </summary>
+		protected override void SetValueInternal(ExpressionMemberContainer container, string value)
 		{
 			if (value == "<NULL>")
 			{
@@ -85,7 +88,7 @@ namespace ArtemisMissionEditor.Expressions
 		/// </summary>
 		private void ____Add_Type(List<ExpressionMember> eML)
 		{
-            eML.Add(new ExpressionMember("<type>", ExpressionMemberValueDescriptions.Type, "type"));
+			eML.Add(new ExpressionMember("<type>", ExpressionMemberValueDescriptions.Type, "type"));
 		}
 
 		/// <summary>
@@ -97,25 +100,32 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMemberCheck_Point_GM());
 		}
 
-        /// <summary>
-        /// Adds "bearing (angle) degrees "
-        /// </summary>
+		/// <summary>
+		/// Adds "bearing (angle) degrees "
+		/// </summary>
 
-        private void ____Add_Monster(List<ExpressionMember> eML, bool nameMandatory = true)
-        {
-            eML.Add(new ExpressionMember("of "));
-            eML.Add(new ExpressionMember("type "));
-            eML.Add(new ExpressionMember("<SELECT>", ExpressionMemberValueDescriptions.MonsterType, "monsterType"));
-            eML.Add(new ExpressionMember(" "));
-            eML.Add(new ExpressionMember("and "));
-            eML.Add(new ExpressionMember("age "));
-            eML.Add(new ExpressionMember("<SELECT>", ExpressionMemberValueDescriptions.MonsterAge, "age"));
-        }
+		private void ____Add_Monster(List<ExpressionMember> eML, bool nameMandatory = true)
+		{
+			eML.Add(new ExpressionMember("of "));
+			eML.Add(new ExpressionMember("type "));
+			eML.Add(new ExpressionMember("<SELECT>", ExpressionMemberValueDescriptions.MonsterType, "monsterType"));
+			eML.Add(new ExpressionMember(" "));
+			eML.Add(new ExpressionMember("and "));
+			eML.Add(new ExpressionMember("age "));
+			eML.Add(new ExpressionMember("<SELECT>", ExpressionMemberValueDescriptions.MonsterAge, "age"));
+		}
 
-        private void ____Add_Angle(List<ExpressionMember> eML, bool nameMandatory = false)
+		private void ____Add_Angle(List<ExpressionMember> eML, bool nameMandatory = false)
 		{
 			eML.Add(new ExpressionMember("bearing "));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.Angle, "angle"));
+			eML.Add(new ExpressionMember("degrees "));
+		}
+
+		private void ____Add_AngleDeprecated(List<ExpressionMember> eML, bool nameMandatory = false)
+		{
+			eML.Add(new ExpressionMember("bearing "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.AngleDeprecated, "angle"));
 			eML.Add(new ExpressionMember("degrees "));
 		}
 
@@ -124,7 +134,7 @@ namespace ArtemisMissionEditor.Expressions
 		/// </summary>
 		private void ____Add_Name(List<ExpressionMember> eML, bool nameMandatory = false, ExpressionMemberValueDescription name = null)
 		{
-            name = name ?? ExpressionMemberValueDescriptions.Name;
+			name = name ?? ExpressionMemberValueDescriptions.Name;
 
 			eML.Add(new ExpressionMember("with "));
 			eML.Add(new ExpressionMember("name "));
@@ -139,19 +149,17 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("and "));
 			eML.Add(new ExpressionMemberCheck_HullID_HullRaceKeys(keysMandatory));
 		}
-        private void ____Add_Check_HullID_HullRaceKeysP(List<ExpressionMember> eML, bool keysMandatory = false)
-        {
-            eML.Add(new ExpressionMember("and "));
-            eML.Add(new ExpressionMemberCheck_HullID_HullRaceKeys(keysMandatory));
-        }
+		private void ____Add_Check_HullID_HullRaceKeysP(List<ExpressionMember> eML, bool keysMandatory = false)
+		{
+			eML.Add(new ExpressionMember("and "));
+			eML.Add(new ExpressionMemberCheck_HullID_HullRaceKeys(keysMandatory));
+		}
 
 		private void ____Add_GenericMeshAttributes(List<ExpressionMember> eML)
 		{
 			____Add_Type(eML);
 			____Add_Check_Point_GM(eML);
-			eML.Add(new ExpressionMember("bearing "));
-			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.AngleDeprecated, "angle"));
-			eML.Add(new ExpressionMember("degrees "));
+			____Add_AngleDeprecated(eML);
 			____Add_Name(eML);
 			eML.Add(new ExpressionMember("using "));
 			eML.Add(new ExpressionMember("the "));
@@ -176,6 +184,17 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ColorR, "colorRed"));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ColorG, "colorGreen"));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ColorB, "colorBlue"));
+		}
+
+		private void ____Add_StationAttributes(List<ExpressionMember> eML)
+		{
+			____Add_Type(eML);
+			____Add_Check_Point_GM(eML);
+			____Add_AngleDeprecated(eML);
+			____Add_Name(eML, true);
+			____Add_Check_HullID_HullRaceKeys(eML);
+			eML.Add(new ExpressionMember("on "));
+			eML.Add(new ExpressionMemberCheck_Side());
 		}
 
 		/// <summary>
@@ -291,13 +310,14 @@ namespace ArtemisMissionEditor.Expressions
 			#region station				(Station)
 
 			eML = this.Add("station");
-			____Add_Type(eML);
-			____Add_Check_Point_GM(eML);
-			____Add_Angle(eML);
-			____Add_Name(eML,true);
-			____Add_Check_HullID_HullRaceKeys(eML);
-            eML.Add(new ExpressionMember("on "));
-            eML.Add(new ExpressionMemberCheck_Side());
+			____Add_StationAttributes(eML);
+
+			eML = this.Add("StationWithDeprecatedAngle");
+			____Add_StationAttributes(eML);
+			eML.Add(new ExpressionMember("(THE ANGLE ATTRIBUTE IS OBSOLETE) "));
+			// We require the user to click to convert since we can't cover cases where
+			// the value is an expression with a variable.
+			eML.Add(new ExpressionMemberCheck_AngleConversion());
 
 			#endregion
 

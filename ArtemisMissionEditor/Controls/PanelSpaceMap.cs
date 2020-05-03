@@ -1028,7 +1028,7 @@ namespace ArtemisMissionEditor
 					case "enemy":
 						if (zy < z)
                             DrawSpaceMap_DrawHeightLine(g, penHeight, brushHeight, x, zy, z);
-						angle = ((MapObjectNamedA)mo).A_rad;
+						angle = ((MapObjectNamedArhKS)mo).A_rad;
 						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel);
 						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel);
 						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel);
@@ -1044,7 +1044,7 @@ namespace ArtemisMissionEditor
 					case "player":
 						if (zy < z)
                             DrawSpaceMap_DrawHeightLine(g, penHeight, brushHeight, x, zy, z);
-						angle = ((MapObjectNamedA)mo).A_rad;
+						angle = ((MapObjectNamedArhKS)mo).A_rad;
 						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel);
 						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel);
 						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel);
@@ -1074,7 +1074,7 @@ namespace ArtemisMissionEditor
 					case "neutral":
 						if (zy < z)
                             DrawSpaceMap_DrawHeightLine(g, penHeight, brushHeight, x, zy, z);
-						angle = ((MapObjectNamedA)mo).A_rad;
+						angle = ((MapObjectNamedArhKS)mo).A_rad;
 						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel);
 						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel);
 						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel);
@@ -1692,7 +1692,7 @@ namespace ArtemisMissionEditor
 			if (_possibleRacesLB != null) _possibleRacesLB.Items.Clear();
 			if (_possibleVesselsLB != null) _possibleVesselsLB.Items.Clear();
 
-			MapObjectNamedArhK mo = new MapObjectNamedArhK();
+			var mo = new MapObjectNamedSrhK();
             mo.Copy(true, SpaceMap.GetSelectionNamed());
 
 			if (!String.IsNullOrEmpty(mo.hullID))

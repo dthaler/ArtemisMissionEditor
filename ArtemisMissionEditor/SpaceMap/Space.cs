@@ -120,7 +120,7 @@ namespace ArtemisMissionEditor.SpaceMap
             switch (type)
             {
                 case "station":
-                    mo = new MapObjectNamed_station(posX, posY, posZ, makeSelected, angle);
+                    mo = new MapObjectNamed_station(posX, posY, posZ, makeSelected);
                     break;
                 case "neutral":
                     mo = new MapObjectNamed_neutral(posX, posY, posZ, makeSelected, angle);
