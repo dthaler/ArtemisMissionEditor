@@ -14,8 +14,8 @@ namespace ArtemisMissionEditor.Expressions
     public sealed class ExpressionMemberCheck_CreateType : ExpressionMemberCheck
 	{
         /// <summary>
-        /// This function is called when check needs to decide which list of ExpressionMembers to output. 
-        /// After it is called, SetValue will be called, to allow for error correction. 
+        /// This function is called when check needs to decide which list of ExpressionMembers to output.
+        /// After it is called, SetValue will be called, to allow for error correction.
         /// </summary>
         /// <example>If input is wrong, Decide will choose something, and then the input will be corrected in the SetValue function</example>
         public override string Decide(ExpressionMemberContainer container)
@@ -26,6 +26,8 @@ namespace ArtemisMissionEditor.Expressions
                 type = type.ToLower();
             }
 
+			string angle = container.GetAttribute("angle");
+
 			switch (type)
 			{
 				case "anomaly":		if (container.GetAttribute("pickupType") == "8")
@@ -35,7 +37,7 @@ namespace ArtemisMissionEditor.Expressions
 				case "blackhole":	return "<NAMED_MAP_OBJECT>";
 				case "player":		return "player";
 				case "whale":		return "whale";
-				case "monster":		if (container.GetAttribute("monsterType") == "1" || 
+				case "monster":		if (container.GetAttribute("monsterType") == "1" ||
                                         container.GetAttribute("monsterType") == "4")
                                         return "PodMonster";
                                     else
@@ -43,7 +45,10 @@ namespace ArtemisMissionEditor.Expressions
 				case "neutral":		return "neutral";
 				case "station":		return "station";
 				case "enemy":		return "enemy";
-				case "genericmesh":	return "genericMesh";
+				case "genericmesh":	if (angle == null)
+                                        return "genericMesh";
+                                    else
+                                        return "GenericMeshWithDeprecatedAngle";
 				case "nebulas":		return "nebulas";
 				case "asteroids":	return "<NAMELESS_MAP_OBJECT>";
 				case "mines":		return "<NAMELESS_MAP_OBJECT>";
@@ -125,7 +130,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("name "));
 			eML.Add(new ExpressionMember("<>", name, "name", nameMandatory));
 		}
-      
+
 		/// <summary>
 		/// Adds "and hull ID (hullID) " or "and race/hull keys ("raceKeys") ("hullKeys") "
 		/// </summary>
@@ -140,11 +145,44 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMemberCheck_HullID_HullRaceKeys(keysMandatory));
         }
 
-        /// <summary>
-        /// Represents a single member in an expression, which provides branching via checking a condition.
-        /// This check is for "type" from [create], it is hidden since create statement has type as a member
-        /// </summary>
-        public ExpressionMemberCheck_CreateType()
+		private void ____Add_GenericMeshAttributes(List<ExpressionMember> eML)
+		{
+			____Add_Type(eML);
+			____Add_Check_Point_GM(eML);
+			eML.Add(new ExpressionMember("bearing "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.AngleDeprecated, "angle"));
+			eML.Add(new ExpressionMember("degrees "));
+			____Add_Name(eML);
+			eML.Add(new ExpressionMember("using "));
+			eML.Add(new ExpressionMember("the "));
+			eML.Add(new ExpressionMember("mesh "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.MeshFileName, "meshFileName", true));
+			eML.Add(new ExpressionMember("with "));
+			eML.Add(new ExpressionMember("texture "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.TextureFileName, "textureFileName", true));
+			eML.Add(new ExpressionMember("having "));
+			eML.Add(new ExpressionMember("hull "));
+			eML.Add(new ExpressionMember("race "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.HullRace, "hullRace"));
+			eML.Add(new ExpressionMember("and "));
+			eML.Add(new ExpressionMember("type "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.HullType, "hullType"));
+			eML.Add(new ExpressionMember("having "));
+			eML.Add(new ExpressionMemberCheck_FakeShields());
+			eML.Add(new ExpressionMember("and "));
+			eML.Add(new ExpressionMember("color "));
+			eML.Add(new ExpressionMember("RGB "));
+			eML.Add(new ExpressionMember("of "));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ColorR, "colorRed"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ColorG, "colorGreen"));
+			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.ColorB, "colorBlue"));
+		}
+
+		/// <summary>
+		/// Represents a single member in an expression, which provides branching via checking a condition.
+		/// This check is for "type" from [create], it is hidden since create statement has type as a member
+		/// </summary>
+		public ExpressionMemberCheck_CreateType()
 			: base()
 		{
 			List<ExpressionMember> eML;
@@ -277,42 +315,23 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("fleet "   ));
 			eML.Add(new ExpressionMember("number "  ));
 			eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.FleetNumberOrNone, "fleetnumber"));
-            
+
 			#endregion
 
 			#region genericMesh			(Generic Mesh)
 
 			eML = this.Add("genericMesh");
-			____Add_Type(eML);
-			____Add_Check_Point_GM(eML);
-			____Add_Angle(eML);
-			____Add_Name(eML);
-			eML.Add(new ExpressionMember("using "	));
-			eML.Add(new ExpressionMember("the "		));
-			eML.Add(new ExpressionMember("mesh "	));
-			eML.Add(new ExpressionMember("<>",		ExpressionMemberValueDescriptions.MeshFileName, "meshFileName", true));
-			eML.Add(new ExpressionMember("with "	));
-			eML.Add(new ExpressionMember("texture "	));
-			eML.Add(new ExpressionMember("<>",		ExpressionMemberValueDescriptions.TextureFileName, "textureFileName", true));
-			eML.Add(new ExpressionMember("having "	));
-			eML.Add(new ExpressionMember("hull "	));
-			eML.Add(new ExpressionMember("race "	));
-			eML.Add(new ExpressionMember("<>",		ExpressionMemberValueDescriptions.HullRace, "hullRace"));
-			eML.Add(new ExpressionMember("and "		));
-			eML.Add(new ExpressionMember("type "	));
-			eML.Add(new ExpressionMember("<>",		ExpressionMemberValueDescriptions.HullType, "hullType"));
-			eML.Add(new ExpressionMember("having "	));
-			eML.Add(new ExpressionMemberCheck_FakeShields());
-			eML.Add(new ExpressionMember("and "		));
-			eML.Add(new ExpressionMember("color "	));
-			eML.Add(new ExpressionMember("RGB "		));
-			eML.Add(new ExpressionMember("of "		));
-			eML.Add(new ExpressionMember("<>",		ExpressionMemberValueDescriptions.ColorR, "colorRed"));
-			eML.Add(new ExpressionMember("<>",		ExpressionMemberValueDescriptions.ColorG, "colorGreen"));
-			eML.Add(new ExpressionMember("<>",		ExpressionMemberValueDescriptions.ColorB, "colorBlue"));
+			____Add_GenericMeshAttributes(eML);
+
+			eML = this.Add("GenericMeshWithDeprecatedAngle");
+			____Add_GenericMeshAttributes(eML);
+			eML.Add(new ExpressionMember("(THE ANGLE ATTRIBUTE IS OBSOLETE) "));
+			// We require the user to click to convert since we can't cover cases where
+			// the value is an expression with a variable.
+			eML.Add(new ExpressionMemberCheck_AngleConversion());
 
 			#endregion
-           
+
 			#region <NAMELESS_MAP_OBJECT>		(Asteroids / Mines)
 
 			eML = this.Add("<NAMELESS_MAP_OBJECT>");
@@ -322,7 +341,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("the "		));
 			eML.Add(new ExpressionMemberCheck_Line_Circle());
 			eML.Add(new ExpressionMember("spread "	));
-			eML.Add(new ExpressionMember("randomly ")); 
+			eML.Add(new ExpressionMember("randomly "));
 			eML.Add(new ExpressionMember("in "      ));
 			eML.Add(new ExpressionMember("the "     ));
 			eML.Add(new ExpressionMember("range "	));
@@ -349,7 +368,7 @@ namespace ArtemisMissionEditor.Expressions
 			eML.Add(new ExpressionMember("the "		));
 			eML.Add(new ExpressionMemberCheck_Line_Circle());
 			eML.Add(new ExpressionMember("spread "	));
-			eML.Add(new ExpressionMember("randomly ")); 
+			eML.Add(new ExpressionMember("randomly "));
 			eML.Add(new ExpressionMember("in "      ));
 			eML.Add(new ExpressionMember("the "     ));
 			eML.Add(new ExpressionMember("range "	));

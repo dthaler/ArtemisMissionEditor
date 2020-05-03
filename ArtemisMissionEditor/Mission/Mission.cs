@@ -4163,12 +4163,8 @@ namespace ArtemisMissionEditor
                         if (type == "station" || type == "anomaly" || type == "blackHole" || type == "genericMesh")
                         {
                             string angle = statement.GetAttribute("angle");
-                            if (angle != null && angle != "0")
-                            {
-                                double degreesClockwiseFromNorth = Convert.ToDouble(angle);
-                                double radiansClockwiseFromSouth = ((degreesClockwiseFromNorth + 180) / 180 * Math.PI);
-                                result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create " + statement.GetAttribute("type") + "\" statement no longer supports setting an angle for initial bearing, instead use set_object_property to set angle to " + (float)radiansClockwiseFromSouth + " radians.", node, statement));
-                            }
+                            if (angle != null)
+                                result.Add(new MissionSearchResult(curNode, mNode.Conditions.Count + i + 1, "\"Create " + statement.GetAttribute("type") + "\" statement no longer supports setting an angle for initial bearing, instead use set_object_property to set angle.", node, statement));
                         }
 
                         // Create statement having wrong keys.

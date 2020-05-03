@@ -1099,11 +1099,10 @@ namespace ArtemisMissionEditor
 			            Brush brushGenericMeshCurrent;
 			            if (zy < z)
                             DrawSpaceMap_DrawHeightLine(g, penHeight, brushHeight, x, zy, z);
-						angle = ((MapObjectNamedA)mo).A_rad;
-						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel * 0.80);
-						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel * 0.80);
-						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel * 0.80);
-						tp[3] = DrawSpaceMap_RotateScalePoint(vesselPoint3, x, zy, angle, sizeVessel * 0.80);
+						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, 0, sizeVessel * 0.80);
+						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, 0, sizeVessel * 0.80);
+						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, 0, sizeVessel * 0.80);
+						tp[3] = DrawSpaceMap_RotateScalePoint(vesselPoint3, x, zy, 0, sizeVessel * 0.80);
 						bool tooDark = false;
 						if (!Settings.Current.UseGenericMeshColor)
 						{

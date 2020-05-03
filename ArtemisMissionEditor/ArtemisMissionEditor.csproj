@@ -101,6 +101,7 @@
     <Compile Include="DependencyGraph\DependencyGraph.cs" />
     <Compile Include="DependencyGraph\DependencyPrecursor.cs" />
     <Compile Include="Expressions\ExpressionMemberObjectProperty.cs" />
+    <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_AngleConversion.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_DistanceNoNebula.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_DriveType.cs" />
     <Compile Include="Expressions\ExpressionMembers\ExpressionMemberCheck_Name_GM_Slot.cs" />

@@ -141,7 +141,7 @@ namespace ArtemisMissionEditor.SpaceMap
                     mo = new MapObjectNamed_enemy(posX, posY, posZ, makeSelected, angle);
                     break;
                 case "genericMesh":
-                    mo = new MapObjectNamed_genericMesh(posX, posY, posZ, makeSelected, angle);
+                    mo = new MapObjectNamed_genericMesh(posX, posY, posZ, makeSelected);
                     break;
 				case "whale":
 					mo = new MapObjectNamed_whale(posX, posY, posZ, makeSelected, angle);

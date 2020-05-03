@@ -57,6 +57,7 @@ namespace ArtemisMissionEditor.Expressions
         public static ExpressionMemberValueEditor Comparator;
         public static ExpressionMemberValueEditor DistanceNebulaCheck;
         public static ExpressionMemberValueEditor DistanceNoNebulaCheck;
+        public static ExpressionMemberValueEditor ConvertAngleCheck;
         public static ExpressionMemberValueEditor ConvertDirectCheck;
         public static ExpressionMemberValueEditor ConvertSpecialAbilityBitsCheck;
         public static ExpressionMemberValueEditor TimerName;
@@ -634,6 +635,11 @@ namespace ArtemisMissionEditor.Expressions
 			DistanceNoNebulaCheck.AddToDictionary("anywhere", "anywhere", "anywhere on the map");
 			DistanceNoNebulaCheck.AddToDictionary("closer than", "closer than", "closer than ...");
 			DistanceNoNebulaCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
+
+			ConvertAngleCheck = new ExpressionMemberValueEditor();
+			ConvertAngleCheck.AddToDictionary("Do nothing", "(Click here to convert)", "Do nothing");
+			ConvertAngleCheck.AddToDictionary("Convert angle to set_object_property", "YOU SHOULD NEVER SEE THIS", "Convert angle to set_object_property");
+			ConvertAngleCheck.PrepareContextMenuStripMethod = ExpressionMemberValueEditor.PrepareContextMenuStrip_DefaultCheck;
 
 			ConvertDirectCheck = new ExpressionMemberValueEditor();
 			ConvertDirectCheck.AddToDictionary("Do nothing", "(Click here to convert)", "Do nothing");

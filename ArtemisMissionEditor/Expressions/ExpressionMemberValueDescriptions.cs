@@ -95,6 +95,8 @@ namespace ArtemisMissionEditor.Expressions
         public static EMVD NameWithComma =              new EMVD(EMVT.VarString,    EMVB.StoredWhenFilled,  EMVE.DefaultString, null, null, "\"", "\", ");
         /// <summary> "angle" from [create, ...] </summary>
         public static EMVD Angle =                      new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, 0, 360);
+        /// <summary> Deprecated "angle" from [create, ...], only null is legal </summary>
+        public static EMVD AngleDeprecated =            new EMVD(EMVT.VarEnumString,EMVB.StoredWhenFilled,  EMVE.DefaultString);
         /// <summary> "fleetnumber" from [create, ...] </summary>
         public static EMVD FleetNumberOrNone =          new EMVD(EMVT.VarInteger,   EMVB.StoredWhenFilled,  EMVE.DefaultInteger, -1, 99);
         /// <summary> "podnumber" from [create] </summary>
@@ -183,8 +185,11 @@ namespace ArtemisMissionEditor.Expressions
         
         /// <summary> Check targetName / point from [direct]  </summary>
         public static EMVD Check_Point_TargetName =     new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.DefaultCheck,null,null,""," ");
+        /// <summary> Check convert angle from [create] </summary>
+        public static EMVD Check_ConvertAngle =         new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.ConvertAngleCheck);
         /// <summary> Check convert direct    from [direct]  </summary>
         public static EMVD Check_ConvertDirect =        new EMVD(EMVT.VarString,    EMVB.NotStored,         EMVE.ConvertDirectCheck,null,null,""," ");
+        /// <summary> Check convert specialAbilityBits from [set_object_property] </summary>
         public static EMVD Check_ConvertSpecialAbilityBits = new EMVD(EMVT.VarString, EMVB.NotStored,       EMVE.ConvertSpecialAbilityBitsCheck,null,null,""," ");
 
         /// <summary> "seconds" from [set_timer] </summary>
