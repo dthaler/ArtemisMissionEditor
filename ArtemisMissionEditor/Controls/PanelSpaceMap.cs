@@ -1145,13 +1145,25 @@ namespace ArtemisMissionEditor
                         penGenericMeshCurrent3 = null;
                         break;
 					case "monster":
+						string monsterType = ((MapObjectNamed_monster)mo).MonsterTypeToString_Display;
+						Brush brush = (monsterType == "Whale" || monsterType == "Jelly") ? brushWhale : brushMonster;
 						if (zy < z)
                             DrawSpaceMap_DrawHeightLine(g, penHeight, brushHeight, x, zy, z);
-						g.DrawCircle(penMonster, x, zy, sizeVessel * 18.0 / 20.0);
+						angle = ((MapObjectNamedA)mo).A_rad;
+						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel * 0.80);
+						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel * 0.80);
+						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel * 0.80);
+						tp[3] = DrawSpaceMap_RotateScalePoint(vesselPoint3, x, zy, angle, sizeVessel * 0.80);
+						g.FillPolygon(brush, tp);
 						if (zy > z)
                             DrawSpaceMap_DrawHeightLine(g, penHeight, brushHeight, x, zy, z);
 						name = string.IsNullOrEmpty(mo.name) ? "" : (string.IsNullOrWhiteSpace(mo.name) && Settings.Current.MarkWhitespaceNamesOnSpaceMap ? "<" + mo.name + ">" : mo.name);
-						g.DrawStringD(name, fontMonster, brushMonster, x, zy - fontMonster.Size * 3.0 - 2.0, drawFormat);
+						g.DrawStringD(name, fontMonster, brush, x, zy - fontMonster.Size * 3.0 - 2.0, drawFormat);
+						if (monsterType == "Whale" || monsterType == "Piranha")
+						{
+							podNumberNotInt = !Helper.IntTryParse(((MapObjectNamed_monster)mo).podnumber, out podNumber);
+							g.DrawStringD(podNumberNotInt ? "x" : (podNumber >= 0 && podNumber <= 9) ? podNumber.ToString() : "<!>", fontFleet, brush, x + sizeVessel * 2.0 / 3.0 + 2.0, zy + sizeVessel * 2.0 / 3.0 + 2.0, StringFormat.GenericDefault);
+						}
 						break;
 				}
 			}
