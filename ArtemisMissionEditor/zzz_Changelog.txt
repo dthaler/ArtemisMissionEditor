@@ -1,3 +1,24 @@
+Version 2.7.21 [2020-May-6] (Dave Thaler)
+* Removed bogus warning about using an old vesselData.xml file
+* Fixed crash in space map when viewing properties of an object with an arc
+  of size 0
+* Removed bogus warning about variable never checked if the variable name
+  contained an underscore
+* Removed bogus warning about variable never checked when the variable was
+  checked in an if_object_property condition
+* Added warning if script tries to set angle when creating a genericMesh or
+  station since Artemis does not support it
+* Added ability to convert setting angle when creating a genericMesh or
+  station to the set_object_property method that Artemis supports
+* Display monsters on spacemap with a pointer indicating direction, as
+  was previously only done with whale objects
+* Podnumber is now displayed on spacemap for whales and piranhas, where
+  previously it was only displayed for type whale objects before whales
+  were converted to monster types
+* Fixed bug where the whale color configured in settings wasn't being
+  used for whales, where now it is used for whales and jellies
+* Added warning if the mission version is left at the default of 1.0
+----------------------
 Version 2.7.20 [2020-April-7] (Dave Thaler)
 * Added ability to use variables with  warpState, difficulty, damcon 
   team number, and damcon member counts
