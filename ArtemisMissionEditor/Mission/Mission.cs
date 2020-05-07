@@ -3526,6 +3526,9 @@ namespace ArtemisMissionEditor
 
             int curNode = 0;
 
+            if (String.IsNullOrEmpty(this.VersionNumber) || (this.VersionNumber == "1.0"))
+                result.Add(new MissionSearchResult(0, 0, "Mission has version 1.0. Suggest setting this to the version of Artemis the mission was designed for, under Edit->Properties...", null, null));
+
             if (String.IsNullOrEmpty(Description))
                 result.Add(new MissionSearchResult(0, 0, "Mission has no description. Consider adding one under Edit->Properties...", null, null));
 
