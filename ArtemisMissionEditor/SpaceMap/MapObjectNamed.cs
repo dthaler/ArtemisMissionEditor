@@ -31,6 +31,12 @@ namespace ArtemisMissionEditor.SpaceMap
         }
     }
 
+    public interface IMapObjectNamedA
+    {
+        double A_deg { get; set; }
+        double A_rad { get; set; }
+    }
+
     public class MapObjectNamed : MapObjectBase
     {
         //IMPORTED
@@ -270,7 +276,7 @@ namespace ArtemisMissionEditor.SpaceMap
     }
 
     // A named map object with an angle property.
-    public class MapObjectNamedA : MapObjectNamed
+    public class MapObjectNamedA : MapObjectNamed, IMapObjectNamedA
     {
         //ANGLE
         private double _a;
@@ -332,24 +338,17 @@ namespace ArtemisMissionEditor.SpaceMap
                 {
                     if (!found)
                     {
-                        if (item as MapObjectNamedA != null)
+                        if (item is IMapObjectNamedA)
                         {
                             found = true;
-                            tmp1 = ((MapObjectNamedA)item).A_deg;
-                        }
-                        if (item as MapObjectNamedArhKS != null)
-                        {
-                            found = true;
-                            tmp1 = ((MapObjectNamedArhKS)item).A_deg;
+                            tmp1 = ((IMapObjectNamedA)item).A_deg;
                         }
                     }
                     else
                     {
                         double tmp2 = 0;
-                        if (item as MapObjectNamedA != null)
-                            tmp2 = ((MapObjectNamedA)item).A_deg;
-                        if (item as MapObjectNamedArhKS != null)
-                            tmp2 = ((MapObjectNamedArhKS)item).A_deg;
+                        if (item is IMapObjectNamedA)
+                            tmp2 = ((IMapObjectNamedA)item).A_deg;
 
                         same = same && (tmp2 != tmp1);
                     }
@@ -873,7 +872,7 @@ namespace ArtemisMissionEditor.SpaceMap
     }
 
     // A named map object with angle, race/hull keys/ID, and side properties.
-    public class MapObjectNamedArhKS : MapObjectNamedSrhK
+    public class MapObjectNamedArhKS : MapObjectNamedSrhK, IMapObjectNamedA
     {
         //ANGLE
         private double _a;
@@ -935,24 +934,17 @@ namespace ArtemisMissionEditor.SpaceMap
                 {
                     if (!found)
                     {
-                        if (item as MapObjectNamedA != null)
+                        if (item is IMapObjectNamedA)
                         {
                             found = true;
-                            tmp1 = ((MapObjectNamedA)item).A_deg;
-                        }
-                        if (item as MapObjectNamedArhKS != null)
-                        {
-                            found = true;
-                            tmp1 = ((MapObjectNamedArhKS)item).A_deg;
+                            tmp1 = ((IMapObjectNamedA)item).A_deg;
                         }
                     }
                     else
                     {
                         double tmp2 = 0;
-                        if (item as MapObjectNamedA != null)
-                            tmp2 = ((MapObjectNamedA)item).A_deg;
-                        if (item as MapObjectNamedArhKS != null)
-                            tmp2 = ((MapObjectNamedArhKS)item).A_deg;
+                        if (item is IMapObjectNamedA)
+                            tmp2 = ((IMapObjectNamedA)item).A_deg;
 
                         same = same && (tmp2 != tmp1);
                     }

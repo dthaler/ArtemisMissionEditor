@@ -704,7 +704,7 @@ namespace ArtemisMissionEditor.SpaceMap
                 {
                     if (!item.IsPropertyAvailable("angle"))
                         continue;
-                    ((MapObjectNamedA)item).A_rad = angle + (controlPressed ? -Math.PI / 2 : Math.PI / 2);
+                    ((IMapObjectNamedA)item).A_rad = angle + (controlPressed ? -Math.PI / 2 : Math.PI / 2);
                 }
                 return true;
             }
@@ -715,7 +715,8 @@ namespace ArtemisMissionEditor.SpaceMap
                     continue;
 
                 double angle = Helper.CalcaulateAngle(item.Coordinates.X_Scr, item.Coordinates.Z_Scr, x, z);
-                ((MapObjectNamedA)item).A_rad = angle + (controlPressed ? -Math.PI / 2 : Math.PI / 2);
+                double rad = angle + (controlPressed ? -Math.PI / 2 : Math.PI / 2);
+                ((IMapObjectNamedA)item).A_rad = rad;
             }
             return true;
         }
