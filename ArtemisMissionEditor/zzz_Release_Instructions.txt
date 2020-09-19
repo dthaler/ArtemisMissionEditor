@@ -6,7 +6,7 @@
     2.1. Launch Visual Studio 2019
     2.2. Build the Release x86 configuration.
     2.3. Do "Analyze->Run Code Analysis->On Solution" and look for any warnings.
-3. Update zzz_Changelog.txt with release notes.
+3. Update ArtemisMissionEditor\zzz_Changelog.txt with release notes.
 4. Generate MSI as follows:
     4.1. Launch Advanced Installer 10.0
     4.2. Open the Installer file for Artemis Mission Editor (ArtemisMissionEditor.aip)
