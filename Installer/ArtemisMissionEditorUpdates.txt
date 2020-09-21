@@ -1,8 +1,22 @@
 ;aiu;
 
+[Update 2.7.23]
+Name=Artemis Mission Editor 2.7.23
+ProductVersion=2.7.23
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.23.msi
+Size=1601536
+ReleaseDate=20/09/2020
+MD5=86d4b4e55252d6a7c8fb0471d3026a84
+ServerFileName=ArtemisMissionEditorInstaller.2.7.23.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.7.23.0
+BugFix=Fixed potential exception opening space map
+Replaces=All
+
 [Update 2.7.22]
-Name=Artemis Mission Editor 2.7.22
 ProductVersion=2.7.22
+Name=Artemis Mission Editor 2.7.22
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.22.msi
 Size=1601024
 ReleaseDate=19/09/2020
@@ -15,8 +29,8 @@ BugFix=Fixed exception doing "Turn to cursor" on space map
 Replaces=All
 
 [Update 2.7.21]
-Name=Artemis Mission Editor 2.7.21
 ProductVersion=2.7.21
+Name=Artemis Mission Editor 2.7.21
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.21.msi
 Size=1601024
 ReleaseDate=06/05/2020
@@ -38,8 +52,8 @@ BugFix4=Fixed bug where the whale color configured in settings wasn't being used
 Replaces=All
 
 [Update 2.7.20]
-ProductVersion=2.7.20
 Name=Artemis Mission Editor 2.7.20
+ProductVersion=2.7.20
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.20.msi
 Size=1601536
 ReleaseDate=07/04/2020
@@ -79,8 +93,8 @@ BugFix2=Fixed spurious warning about warning_popup_message with no ship name
 Replaces=All
 
 [Update 2.7.18]
-Name=Artemis Mission Editor 2.7.18
 ProductVersion=2.7.18
+Name=Artemis Mission Editor 2.7.18
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.18.msi
 Size=1600000
 ReleaseDate=25/02/2020
@@ -97,8 +111,8 @@ BugFix=Fixed crashing bug when pasting invalid XML
 Replaces=All
 
 [Update 2.7.15]
-ProductVersion=2.7.15
 Name=Artemis Mission Editor 2.7.15
+ProductVersion=2.7.15
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.15.msi
 Size=1600000
 ReleaseDate=04/01/2020
@@ -112,8 +126,8 @@ Enhancement=Make set_variable default to integer when adding a new statement
 Replaces=All
 
 [Update 2.7.14]
-ProductVersion=2.7.14
 Name=Artemis Mission Editor 2.7.14
+ProductVersion=2.7.14
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.14.msi
 Size=1599488
 ReleaseDate=04/01/2020
@@ -160,8 +174,8 @@ BugFix1=Updated default script when using New to say Artemis 2.7 instead of 2.6
 Replaces=All
 
 [Update 2.7.11]
-ProductVersion=2.7.11
 Name=Artemis Mission Editor 2.7.11
+ProductVersion=2.7.11
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.11.msi
 Size=1597952
 ReleaseDate=05/01/2019
@@ -178,8 +192,8 @@ BugFix3=Fixed bug where button list wasn't listing buttons only seen in a clear 
 Replaces=All
 
 [Update 2.7.10]
-Name=Artemis Mission Editor 2.7.10
 ProductVersion=2.7.10
+Name=Artemis Mission Editor 2.7.10
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.10.msi
 Size=1597440
 ReleaseDate=07/12/2018
@@ -212,8 +226,8 @@ BugFix=Fixed bug where nebula colors were lost by the space map
 Replaces=All
 
 [Update 2.7.8]
-ProductVersion=2.7.8
 Name=Artemis Mission Editor 2.7.8
+ProductVersion=2.7.8
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.8.msi
 Size=1593344
 ReleaseDate=25/08/2018
@@ -229,8 +243,8 @@ BugFix1=Fixed bug where copy_object_property incorrectly allowed selecting globa
 Replaces=All
 
 [Update 2.7.7]
-Name=Artemis Mission Editor 2.7.7
 ProductVersion=2.7.7
+Name=Artemis Mission Editor 2.7.7
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.7.msi
 Size=1593344
 ReleaseDate=07/07/2018
@@ -246,8 +260,8 @@ BugFix=Removed "player_slot" option from set/addto numeric property, since those
 Replaces=All
 
 [Update 2.7.6]
-ProductVersion=2.7.6
 Name=Artemis Mission Editor 2.7.6
+ProductVersion=2.7.6
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.6.msi
 Size=1593344
 ReleaseDate=14/04/2018
@@ -292,8 +306,8 @@ Enhancement1=List numeric properties in alphabetical order in menus
 Replaces=All
 
 [Update 2.7.4]
-Name=Artemis Mission Editor 2.7.4
 ProductVersion=2.7.4
+Name=Artemis Mission Editor 2.7.4
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.4.msi
 Size=1592320
 ReleaseDate=24/03/2018
@@ -435,8 +449,8 @@ BugFix1=Cleaned up code so it builds without any compiler warnings
 Replaces=All
 
 [Update 2.6.1]
-ProductVersion=2.6.1
 Name=Artemis Mission Editor 2.6.1
+ProductVersion=2.6.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.1.msi
 Size=1585664
 ReleaseDate=16/01/2018

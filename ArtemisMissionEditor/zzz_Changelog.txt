@@ -1,3 +1,6 @@
+Version 2.7.23 [2020-September-20] (Dave Thaler)
+* Fixed potential exception opening space map
+----------------------
 Version 2.7.22 [2020-September-19] (Dave Thaler)
 * Fixed exception doing "Turn to cursor" on space map
 ----------------------
