@@ -965,7 +965,7 @@ namespace ArtemisMissionEditor
 				 switch (mo.TypeToString)
 				{
 					case "enemy":
-						angle = ((MapObjectNamedA)mo).A_rad;
+						angle = ((IMapObjectNamedA)mo).A_rad;
 						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel);
 						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel);
 						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel);
@@ -973,7 +973,7 @@ namespace ArtemisMissionEditor
 						g.DrawPolygon(penEnemyBG, tp);
 						break;
 					case "player":
-						angle = ((MapObjectNamedA)mo).A_rad;
+						angle = ((IMapObjectNamedA)mo).A_rad;
 						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel);
 						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel);
 						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel);
@@ -981,7 +981,7 @@ namespace ArtemisMissionEditor
 						g.DrawPolygon(penPlayerBG, tp);
 						break;
 					case "whale":
-						angle = ((MapObjectNamedA)mo).A_rad;
+						angle = ((IMapObjectNamedA)mo).A_rad;
 						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel * 0.8);
 						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel * 0.8);
 						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel * 0.8);
@@ -989,7 +989,7 @@ namespace ArtemisMissionEditor
 						g.DrawPolygon(penWhaleBG, tp);
 						break;
 					case "neutral":
-						angle = ((MapObjectNamedA)mo).A_rad;
+						angle = ((IMapObjectNamedA)mo).A_rad;
 						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel);
 						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel);
 						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel);
@@ -1000,7 +1000,7 @@ namespace ArtemisMissionEditor
 						g.DrawCircle(penStationBG, x, zy, sizeVessel * 18.0 / 20.0);
 						break;
 					case "genericMesh":
-						angle = ((MapObjectNamedA)mo).A_rad;
+						angle = ((IMapObjectNamedA)mo).A_rad;
 						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel * 0.8);
 						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel * 0.8);
 						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel * 0.8);
@@ -1028,7 +1028,7 @@ namespace ArtemisMissionEditor
 					case "enemy":
 						if (zy < z)
                             DrawSpaceMap_DrawHeightLine(g, penHeight, brushHeight, x, zy, z);
-						angle = ((MapObjectNamedArhKS)mo).A_rad;
+						angle = ((IMapObjectNamedA)mo).A_rad;
 						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel);
 						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel);
 						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel);
@@ -1044,7 +1044,7 @@ namespace ArtemisMissionEditor
 					case "player":
 						if (zy < z)
                             DrawSpaceMap_DrawHeightLine(g, penHeight, brushHeight, x, zy, z);
-						angle = ((MapObjectNamedArhKS)mo).A_rad;
+						angle = ((IMapObjectNamedA)mo).A_rad;
 						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel);
 						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel);
 						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel);
@@ -1058,7 +1058,7 @@ namespace ArtemisMissionEditor
 					case "whale":
 						if (zy < z)
                             DrawSpaceMap_DrawHeightLine(g, penHeight, brushHeight, x, zy, z);
-						angle = ((MapObjectNamedA)mo).A_rad;
+						angle = ((IMapObjectNamedA)mo).A_rad;
 						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel * 0.80);
 						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel * 0.80);
 						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel * 0.80);
@@ -1074,7 +1074,7 @@ namespace ArtemisMissionEditor
 					case "neutral":
 						if (zy < z)
                             DrawSpaceMap_DrawHeightLine(g, penHeight, brushHeight, x, zy, z);
-						angle = ((MapObjectNamedArhKS)mo).A_rad;
+						angle = ((IMapObjectNamedA)mo).A_rad;
 						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel);
 						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel);
 						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel);
@@ -1149,7 +1149,7 @@ namespace ArtemisMissionEditor
 						Brush brush = (monsterType == "Whale" || monsterType == "Jelly") ? brushWhale : brushMonster;
 						if (zy < z)
                             DrawSpaceMap_DrawHeightLine(g, penHeight, brushHeight, x, zy, z);
-						angle = ((MapObjectNamedA)mo).A_rad;
+						angle = ((IMapObjectNamedA)mo).A_rad;
 						tp[0] = DrawSpaceMap_RotateScalePoint(vesselPoint0, x, zy, angle, sizeVessel * 0.80);
 						tp[1] = DrawSpaceMap_RotateScalePoint(vesselPoint1, x, zy, angle, sizeVessel * 0.80);
 						tp[2] = DrawSpaceMap_RotateScalePoint(vesselPoint2, x, zy, angle, sizeVessel * 0.80);
