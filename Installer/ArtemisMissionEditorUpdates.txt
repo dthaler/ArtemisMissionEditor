@@ -1,5 +1,20 @@
 ;aiu;
 
+[Update 2.8.0]
+ProductVersion=2.8.0
+Name=Artemis Mission Editor 2.8.0
+URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.8.0.msi
+Size=1605632
+ReleaseDate=15/01/2022
+MD5=5515c12a1136929574e7fefd32521583
+ServerFileName=ArtemisMissionEditorInstaller.2.8.0.msi
+Flags=Critical
+FilePath=[APPDIR]ArtemisMissionEditor.exe
+Version=2.8.0.0
+Feature=Added support for ship-specific comms buttons
+Feature1=Remove warning about triggersMines not working
+Replaces=All
+
 [Update 2.7.23]
 Name=Artemis Mission Editor 2.7.23
 ProductVersion=2.7.23
@@ -15,8 +30,8 @@ BugFix=Fixed potential exception opening space map
 Replaces=All
 
 [Update 2.7.22]
-ProductVersion=2.7.22
 Name=Artemis Mission Editor 2.7.22
+ProductVersion=2.7.22
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.22.msi
 Size=1601024
 ReleaseDate=19/09/2020
@@ -52,8 +67,8 @@ BugFix4=Fixed bug where the whale color configured in settings wasn't being used
 Replaces=All
 
 [Update 2.7.20]
-Name=Artemis Mission Editor 2.7.20
 ProductVersion=2.7.20
+Name=Artemis Mission Editor 2.7.20
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.20.msi
 Size=1601536
 ReleaseDate=07/04/2020
@@ -75,8 +90,8 @@ BugFix5=Fixed bug where set_player_station_carried didn't show race/hull informa
 Replaces=All
 
 [Update 2.7.19]
-ProductVersion=2.7.19
 Name=Artemis Mission Editor 2.7.19
+ProductVersion=2.7.19
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.19.msi
 Size=1600512
 ReleaseDate=17/03/2020
@@ -111,8 +126,8 @@ BugFix=Fixed crashing bug when pasting invalid XML
 Replaces=All
 
 [Update 2.7.15]
-Name=Artemis Mission Editor 2.7.15
 ProductVersion=2.7.15
+Name=Artemis Mission Editor 2.7.15
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.15.msi
 Size=1600000
 ReleaseDate=04/01/2020
@@ -126,8 +141,8 @@ Enhancement=Make set_variable default to integer when adding a new statement
 Replaces=All
 
 [Update 2.7.14]
-Name=Artemis Mission Editor 2.7.14
 ProductVersion=2.7.14
+Name=Artemis Mission Editor 2.7.14
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.14.msi
 Size=1599488
 ReleaseDate=04/01/2020
@@ -140,8 +155,8 @@ Feature=Added canLaunchFighters and canShoot as station properties added in Arte
 Replaces=All
 
 [Update 2.7.13]
-Name=Artemis Mission Editor 2.7.13
 ProductVersion=2.7.13
+Name=Artemis Mission Editor 2.7.13
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.13.msi
 Size=1599488
 ReleaseDate=02/07/2019
@@ -174,8 +189,8 @@ BugFix1=Updated default script when using New to say Artemis 2.7 instead of 2.6
 Replaces=All
 
 [Update 2.7.11]
-Name=Artemis Mission Editor 2.7.11
 ProductVersion=2.7.11
+Name=Artemis Mission Editor 2.7.11
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.11.msi
 Size=1597952
 ReleaseDate=05/01/2019
@@ -192,8 +207,8 @@ BugFix3=Fixed bug where button list wasn't listing buttons only seen in a clear 
 Replaces=All
 
 [Update 2.7.10]
-ProductVersion=2.7.10
 Name=Artemis Mission Editor 2.7.10
+ProductVersion=2.7.10
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.10.msi
 Size=1597440
 ReleaseDate=07/12/2018
@@ -306,8 +321,8 @@ Enhancement1=List numeric properties in alphabetical order in menus
 Replaces=All
 
 [Update 2.7.4]
-ProductVersion=2.7.4
 Name=Artemis Mission Editor 2.7.4
+ProductVersion=2.7.4
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.4.msi
 Size=1592320
 ReleaseDate=24/03/2018
@@ -337,8 +352,8 @@ BugFix3=Fixed some typos in the Help dialog
 Replaces=All
 
 [Update 2.7.3]
-Name=Artemis Mission Editor 2.7.3
 ProductVersion=2.7.3
+Name=Artemis Mission Editor 2.7.3
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.3.msi
 Size=1592320
 ReleaseDate=14/03/2018
@@ -384,8 +399,8 @@ BugFix2=Fixed display of if_fleet_count when countSurrendered is absent
 Replaces=All
 
 [Update 2.7.1]
-ProductVersion=2.7.1
 Name=Artemis Mission Editor 2.7.1
+ProductVersion=2.7.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.1.msi
 Size=1590272
 ReleaseDate=24/02/2018
@@ -405,8 +420,8 @@ BugFix1=Remove player_slot from set_damcon_members since it doesn't work
 Replaces=All
 
 [Update 2.7]
-ProductVersion=2.7
 Name=Artemis Mission Editor 2.7
+ProductVersion=2.7
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.7.msi
 Size=1589248
 ReleaseDate=19/02/2018
@@ -432,8 +447,8 @@ BugFix3=Corrected display of DEFEND ai block arguments
 Replaces=All
 
 [Update 2.6.2]
-Name=Artemis Mission Editor 2.6.2
 ProductVersion=2.6.2
+Name=Artemis Mission Editor 2.6.2
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.2.msi
 Size=1586176
 ReleaseDate=06/02/2018
@@ -449,8 +464,8 @@ BugFix1=Cleaned up code so it builds without any compiler warnings
 Replaces=All
 
 [Update 2.6.1]
-Name=Artemis Mission Editor 2.6.1
 ProductVersion=2.6.1
+Name=Artemis Mission Editor 2.6.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.1.msi
 Size=1585664
 ReleaseDate=16/01/2018
@@ -466,8 +481,8 @@ BugFix= Fixed some more typos
 Replaces=All
 
 [Update 2.6.0.1]
-ProductVersion=2.6.0.1
 Name=Artemis Mission Editor 2.6.0.1
+ProductVersion=2.6.0.1
 URL=http://www.armidalesoftware.com/Artemis/ArtemisMissionEditorInstaller.2.6.0.1.msi
 Size=1583616
 ReleaseDate=26/12/2017
@@ -486,8 +501,8 @@ BugFix2=Fixed bug in update available detection
 Replaces=All
 
 [Update 2.6]
-Name=Artemis Mission Editor 2.6
 ProductVersion=2.6.0.0
+Name=Artemis Mission Editor 2.6
 URL=http://www.example.com/downloads/ArtemisMissionEditorInstaller.2.6.msi
 Size=1583616
 MD5=72deef9dc1ae805094af04d469c065f4
