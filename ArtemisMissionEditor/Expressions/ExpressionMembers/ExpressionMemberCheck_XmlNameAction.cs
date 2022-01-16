@@ -175,6 +175,8 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("with "));
             eML.Add(new ExpressionMember("text "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.TextCommsButton, "text"));
+            eML.Add(new ExpressionMember("on ship "));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer, mandatory: false));
             eML.Add(new ExpressionMember("on "));
             eML.Add(new ExpressionMember("side "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "sideValue"));
@@ -187,6 +189,8 @@ namespace ArtemisMissionEditor.Expressions
             eML.Add(new ExpressionMember("with "));
             eML.Add(new ExpressionMember("text "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.TextCommsButton, "text"));
+            eML.Add(new ExpressionMember("on ship "));
+            eML.Add(new ExpressionMemberCheck_Name_GM_Slot(ExpressionMemberValueDescriptions.NamePlayer, mandatory: false));
             eML.Add(new ExpressionMember("on "));
             eML.Add(new ExpressionMember("side "));
             eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.SideValue, "sideValue"));

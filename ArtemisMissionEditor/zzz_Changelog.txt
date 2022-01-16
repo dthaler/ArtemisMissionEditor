@@ -1,3 +1,7 @@
+Version 2.7.23 [2022-January-15] (Dave Thaler)
+* Added support for ship-specific comms buttons
+* Removed warning about triggersMines not working
+----------------------
 Version 2.7.23 [2020-September-20] (Dave Thaler)
 * Fixed potential exception opening space map
 ----------------------

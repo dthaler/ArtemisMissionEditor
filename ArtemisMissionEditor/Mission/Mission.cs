@@ -3966,7 +3966,7 @@ namespace ArtemisMissionEditor
                             if (statementsThatTakeObjectProperty.Contains(statement.Name))
                             {
                                 string propertyName = statement.GetAttribute("property");
-                                if (propertyName == "triggersMines" || propertyName == "blocksShotFlag")
+                                if (propertyName == "blocksShotFlag")
                                     result.Add(new MissionSearchResult(curNode, i + 1, "The property \"" + propertyName + "\" does not work.  It has no effect.", node, statement));
                             }
 
@@ -4062,7 +4062,7 @@ namespace ArtemisMissionEditor
                     if (statementsThatTakeObjectProperty.Contains(statement.Name))
                     {
                         string propertyName = statement.GetAttribute("property");
-                        if (propertyName == "triggersMines" || propertyName == "blocksShotFlag")
+                        if (propertyName == "blocksShotFlag")
                             result.Add(new MissionSearchResult(curNode, i + 1, "The property \"" + propertyName + "\" does not work.  It has no effect.", node, statement));
                     }
 
