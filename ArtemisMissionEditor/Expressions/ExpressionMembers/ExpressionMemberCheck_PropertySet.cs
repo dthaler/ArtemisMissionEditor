@@ -91,7 +91,8 @@ namespace ArtemisMissionEditor.Expressions
 
             if ((type == ExpressionMemberValueDescriptions.NameAll) ||
                 (type == ExpressionMemberValueDescriptions.NamePlayer) ||
-                (type == ExpressionMemberValueDescriptions.NameShip))
+                (type == ExpressionMemberValueDescriptions.NameShip) ||
+                (type == ExpressionMemberValueDescriptions.NameShipOrMonster))
                 eML.Add(new ExpressionMemberCheck_Name_GM_Slot(type));
             else
                 eML.Add(new ExpressionMemberCheck_Name_GM(type, true));
