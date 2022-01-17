@@ -271,7 +271,7 @@ namespace ArtemisMissionEditor
             foreach (XmlNode xNode in item.ChildNodes)
             {
                 MissionStatement nStatement = MissionStatement.NewFromXML(xNode,this);
-                switch (nStatement.Kind)
+                switch (nStatement?.Kind)
                 {
                     case MissionStatementKind.Action:
                         {
