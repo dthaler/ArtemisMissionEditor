@@ -1,4 +1,8 @@
-Version 2.7.23 [2022-January-15] (Dave Thaler)
+Version 2.8.1 [2022-January-17] (Dave Thaler)
+* Added support for player_slot for turnRate property
+* Fixed exception when loading XML file with extraneous &gt;
+----------------------
+Version 2.8.0 [2022-January-15] (Dave Thaler)
 * Added support for ship-specific comms buttons
 * Removed warning about triggersMines not working
 ----------------------
