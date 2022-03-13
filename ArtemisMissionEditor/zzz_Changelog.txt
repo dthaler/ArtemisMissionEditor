@@ -1,3 +1,7 @@
+Version 2.8.2 [2022-March-12] (Dave Thaler)
+* Add support for angle on genericMesh to fix space map crash
+* Add support for use_gm_selection for set_special
+----------------------
 Version 2.8.1 [2022-January-17] (Dave Thaler)
 * Added support for player_slot for turnRate property
 * Fixed exception when loading XML file with extraneous &gt;
