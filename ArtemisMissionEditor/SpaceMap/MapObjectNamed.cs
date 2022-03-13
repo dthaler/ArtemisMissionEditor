@@ -1779,7 +1779,7 @@ namespace ArtemisMissionEditor.SpaceMap
 #endregion
     }
 
-    public sealed class MapObjectNamed_genericMesh : MapObjectNamed
+    public sealed class MapObjectNamed_genericMesh : MapObjectNamedA
     {
         private string _meshFileName;
         [DisplayName("Mesh Filename"), Description("Path to the mesh file, relative to the game directory")]
@@ -2079,8 +2079,8 @@ namespace ArtemisMissionEditor.SpaceMap
         }
 
         //CONSTRUCTOR
-        public MapObjectNamed_genericMesh(int posX = 0, int posY = 0, int posZ = 0, bool makeSelected = false, string name = "", string _hull_Race = "", string _hull_Type="")
-            : base(posX, posY, posZ, name, makeSelected)
+        public MapObjectNamed_genericMesh(int posX = 0, int posY = 0, int posZ = 0, bool makeSelected = false, int angle = 0, string name = "", string _hull_Race = "", string _hull_Type="")
+            : base(posX, posY, posZ, makeSelected, angle, name)
         {
             this._meshFileName = "";
             this._textureFileName = "";
