@@ -465,9 +465,7 @@ namespace ArtemisMissionEditor.Expressions
             eML = this.Add("set_special");
             eML.Add(new ExpressionMember("for "));
             eML.Add(new ExpressionMember("ship "));
-            eML.Add(new ExpressionMember("with "));
-            eML.Add(new ExpressionMember("name "));
-            eML.Add(new ExpressionMember("<>", ExpressionMemberValueDescriptions.NameAIShip, "name", true));
+            eML.Add(new ExpressionMemberCheck_Name_GM(ExpressionMemberValueDescriptions.NameAIShip));
             eML.Add(new ExpressionMember(". Set "));
             eML.Add(new ExpressionMember("ship "));
             eML.Add(new ExpressionMember("subtype "));
