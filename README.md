@@ -1,5 +1,7 @@
 # Artemis Mission Editor
 
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/dthaler/ArtemisMissionEditor/badge)](https://scorecard.dev/viewer/?uri=github.com/dthaler/ArtemisMissionEditor)
+
 ## About
 
 **Artemis Mission Editor** is a program developed by players (not affiliated 
